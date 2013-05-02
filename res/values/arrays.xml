@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="developinfo">
+        <item>DreamNarae (Root)</item>
+        <item>Emotional Android Tweak Application</item>
+        <item>Made by Angeloid Team</item>
+        <item>Leader : Rinne(Ji-Yeon, Jung)</item>
+        <item>APP : Sopiane (Dong Gil, Seo)</item>
+        <item>Tweak : Rie (Eun-Hee, Lee)</item>
+        <item>Tweak : Iren (Jung-Yeon, Lee)</item>
+        <item>Tweak : Ayana (Eun-Jung, Lee)</item>
+        <item>Design : Ghana(Seung-Woo, Yeom)</item>
+        <item>Voice : Dorothy(@bmnh123_)</item>
+        <item>Team Member :  Primes</item>
+        <item>Team Member : ITCraft</item>
+        <item>Team Member : NEON</item>
+        <item>and, Project-Koikaki Team in Angeloid Team</item>
+        <item>and many Users!</item>
+        <item>Thank You!</item>
+    </string-array>
+    <string-array name="updateinfo">
+        <item>Ver 2.1 (Release : GMT +9 Seoul, Tokyo)</item>
+    </string-array>
+
+</resources>

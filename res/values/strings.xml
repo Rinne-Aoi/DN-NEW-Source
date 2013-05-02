@@ -1,0 +1,90 @@
+<resources>
+    <string name="app_name">DreamNarae</string>
+    <string name="bootcomplete">Success Excute DreamNarae Boot Script! Enjoy Your Device with DreamNarae!</string>
+    <string name="noroottoast">The non-root mode in the applicable DreamNarae / delete disabled, but you can use all the other features.</string>
+    <string name="quittitle">Quit</string>
+    <string name="quitmessage">Do you quit DreamNarae?</string>
+    <string name="easteregg1">To be Developer,</string>
+    <string name="easteregg2">Step left.</string>
+    <string name="easteregg3">Are you the developer. So please Rating.</string>
+    <string name="secondegg1">To be the god of this world</string>
+    <string name="isleaving">The god of the world, tries to break away!</string>
+    <string name="secondegg2">Became the god of this world.</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="reboottitle">Reboot?</string>
+    <string name="rebootmessage">Reboot your Device?</string>
+    <string name="errortitle">Failed!</string>
+    <string name="error2message">DreamNarae has not been applied properly. Please try again later.</string>
+    <string name="sdcarderrortitle">SDCard Error</string>
+    <string name="sdcarderrormessage">Not Access to SDCard. check your sdcard.</string>
+    <string name="infoclose">Close</string>
+    <string name="noquittitle">Unavailable Quit!</string>
+    <string name="noquitmessage">You cannot quit this screen :D</string>
+    <string name="apply">Install DreamNarae</string>
+    <string name="info">See Details</string>
+    <string name="spica_info">Is version of the SPiCa started in July 2012 with the initial version of the DreamNarae version of this a memory / Setprop related focus on stability is turned.Is effective for light work such as SNS.</string>
+    <string name="miracle_info">Miracle to supplement the time lacking performance of SPiCa the only version that began in December 2012, all of the values ​​of the Miracle focused on the performance is aligned with the version, and the possibility of devices malfunction, the stability is somewhat less. Heavy work such as 3D gaming effect.</string>
+    <string name="save_info">Save the standby battery efficiency, in both versions of the existing version of the memory-related values ​​that began in December 2012, focused on battery efficiency version. The standby battery efficiency / use the battery more quickly exhausted, but very large effect on the music.</string>
+    <string name="prev_info">Prev at the time the effect of SPiCa the away day by day, it is a version of memory-related value of stability and battery efficiency focused on improving a little bit more stability sought by the former SPiCa version started in January 2013. It is mainly effective for light work.</string>
+    <string name="spisave_info">SPiSave is geared than one purpose, to enjoy at the same time the efficiency the stability of SPiCa and Save standby battery time, starting in January 2013, but As a result of the failure of adjust the value of Tweak staff focused on the performance and the possibility of device malfunction. Effect mainly from the heavy work.</string>
+    <string name="brand_info">The disadvantages was the use of the time, save battery exhausted, in order to prevent the increase began in February 2013 version Save more focus on efficiency using the battery are tailored version of the Brand. Effect light and music.</string>
+    <string name="pure_info">Gained on the basis of the know-how for about five months, began in February 2013 version of the final version of the DreamNarae the Pure, the efficiency of the batteries performance and stability focus on the effects of three kinds of harmony is aligned inversion.Of current DreamNarae version is the recommended version, mainly very large effect on light work and music.</string>
+    <string name="spica_title">DreamNarae SPiCa 5.5 information</string>
+    <string name="miracle_title">DreamNarae Miracle 3.5 information</string>
+    <string name="save_title">DreamNarae Save 3.5 information</string>
+    <string name="prev_title">DreamNarae Prev 2.0 information</string>
+    <string name="spisave_title">DreamNarae SPiSave 1.5 information</string>
+    <string name="brand_title">DreamNarae Brand 1.5 information</string>
+    <string name="pure_title">DreamNarae Pure 1.5 information</string>
+    <string name="voice">Listen Info</string>
+    <string name="installactivity">Installing..</string>
+    <string name="kakaotalkmessage">The wings on the phone! Just Use the Angeloid of works DreamNarae, and Experience the faster your device!</string>
+    <string name="receivepresent">The gift has arrived!</string>
+    <string name="obtain">Obtained by clicking</string>
+    <string name="paypaldonate">Paypal Donate</string>
+    <string name="thanksdonate">Thanks to Donate!</string>
+    <string name="koreaaccount">Korea Account Donate(Account Holder : Dong Gil, Seo)</string>
+    <string name="setting1_title">Disable Boot DreamNarae</string>
+    <string name="setting1_summary">Disable it if device support init.d</string>
+    <string name="setting2_title">Enable Main Screen Voice</string>
+    <string name="setting2_summary">Enable it if you want Cute Korean voice :D</string>
+    <string name="setting3_title">Send mail to us!</string>
+    <string name="setting3_summary">Send Mail to Angeloid Team!</string>
+    <string name="setting4_title">DreamNarae License</string>
+    <string name="setting4_summary">Show DreamNarae License</string>
+    <string name="license">License</string>
+    <string name="applysetting">Apply Settings</string>
+    <string name="go">Go</string>
+    <string name="savedsetting">Saved Settings</string>
+    <string name="promotingnot">Go to Main Screen, and Try it.</string>
+
+    <!-- Menu -->
+    <string name="main">Main Screen</string>
+    <string name="update">Update Log</string>
+    <string name="spica">SPiCa</string>
+    <string name="pure">Pure</string>
+    <string name="save">Save</string>
+    <string name="prev">Prev</string>
+    <string name="miracle">Miracle</string>
+    <string name="brand">Brand</string>
+    <string name="spisave">SPiSave</string>
+    <string name="delete">Delete</string>
+    <string name="promoting">Promoting</string>
+    <string name="setting">Setting</string>
+    <string name="developerinfo">Developer Info</string>
+    <string name="donate">Donate</string>
+    
+    <!-- Process -->
+    <string name="wait1">Wait for Safety Install...</string>
+    <string name="working1">Download Data on /sdcard/</string>
+    
+    <string name="working2">Move data file on /system/</string>
+    <string name="working3">Permission files..</string>
+    <string name="workingok">Install Complete! Please Reboot!</string>
+    <string name="workingfail">Failed Installion. Error code is 550. Please Contact Admin.</string>
+    <string name="dworking1">Delete File on /system/</string>
+    <string name="dworkingok">Delete Complete! Please Reboot!</string>
+    <string name="dworkingfail">Failed Delete. Error code is 551. Please Contact Admin.</string>
+
+</resources>
