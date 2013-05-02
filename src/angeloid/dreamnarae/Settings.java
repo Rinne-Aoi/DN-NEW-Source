@@ -155,23 +155,23 @@ public class Settings extends Activity {
 		if (setting1_check.isChecked() == true) {
 			SharedPreferences pref = getSharedPreferences("pref", MODE_PRIVATE);
 			SharedPreferences.Editor editor = pref.edit();
-			editor.putBoolean("bootcheck", true);
+			editor.putString("bootcheck", "true");
 			editor.commit();
 		} else {
 			SharedPreferences pref = getSharedPreferences("pref", MODE_PRIVATE);
 			SharedPreferences.Editor editor = pref.edit();
-			editor.putBoolean("bootcheck", false);
+			editor.putString("bootcheck", "false");
 			editor.commit();
 		}
 		if (setting2_check.isChecked() == true) {
 			SharedPreferences pref = getSharedPreferences("pref", MODE_PRIVATE);
 			SharedPreferences.Editor editor = pref.edit();
-			editor.putBoolean("mainvoice", true);
+			editor.putString("mainvoice", "true");
 			editor.commit();
 		} else {
 			SharedPreferences pref = getSharedPreferences("pref", MODE_PRIVATE);
 			SharedPreferences.Editor editor = pref.edit();
-			editor.putBoolean("mainvoice", false);
+			editor.putString("mainvoice", "false");
 			editor.commit();
 		}
 		Toast.makeText(this, R.string.savedsetting, Toast.LENGTH_SHORT).show();
