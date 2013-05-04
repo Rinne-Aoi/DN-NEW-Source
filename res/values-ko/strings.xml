@@ -57,23 +57,27 @@
     <string name="applysetting">설정 저장</string>
     <string name="go">Go</string>
     <string name="savedsetting">설정을 저장했습니다.</string>
-    <string name="promotingnot">메인 화면으로 가서 시도하세요.</string>
 
     <!-- Menu -->
     <string name="menu">메뉴</string>
+    <string name="main">메인 화면</string>
     <string name="update">업데이트 내역</string>
-    <string name="spica">스피카</string>
-    <string name="pure">퓨어</string>
-    <string name="save">세이브</string>
-    <string name="prev">프레브</string>
-    <string name="miracle">미라클</string>
-    <string name="brand">브랜드</string>
-    <string name="spisave">스피세이브</string>
+    <string name="spica">SPiCa</string>
+    <string name="pure">Pure</string>
+    <string name="save">Save</string>
+    <string name="prev">Prev</string>
+    <string name="miracle">Miracle</string>
+    <string name="brand">Brand</string>
+    <string name="spisave">SPiSave</string>
     <string name="delete">삭제</string>
     <string name="promoting">카카오톡으로 알리기</string>
     <string name="setting">설정</string>
     <string name="developerinfo">개발자 정보</string>
     <string name="donate">기부</string>
+    
+    <!-- Menu String -->
+    <string name="dntweak">드림나래 트윅</string>
+    <string name="settings">도구</string>
     
 
 </resources>

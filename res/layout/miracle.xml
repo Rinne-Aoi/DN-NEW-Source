@@ -3,6 +3,7 @@
     android:id="@+id/slideHolder"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
+
     <ScrollView
         android:id="@+id/slidelist"
         android:layout_width="250dp"
@@ -13,21 +14,35 @@
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:orientation="vertical" >
+
             <LinearLayout
                 android:layout_width="fill_parent"
-                android:layout_height="32dp"
+                android:layout_height="wrap_content"
                 android:background="#a6ffc5" >
 
                 <TextView
                     android:id="@+id/tabtextview2"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="32.0dip"
                     android:layout_marginLeft="5.0dip"
-                    android:layout_marginTop="13.0dip"
+                    android:layout_marginTop="16.0dip"
                     android:text="@string/menu"
                     android:textColor="#000000"
-                    android:textSize="9pt" />
+                    android:textSize="12pt" />
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/tools"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="left|center_vertical"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dip"
+                android:paddingTop="5dp"
+                android:text="@string/settings"
+                android:textColor="#000000"
+                android:textSize="15sp" />
+
             <View
                 android:layout_width="fill_parent"
                 android:layout_height="2sp"
@@ -46,7 +61,7 @@
                 android:paddingLeft="10dip"
                 android:paddingTop="5dp"
                 android:text="@string/main"
-                android:textSize="20sp" >
+                android:textSize="30sp" >
             </Button>
 
             <View
@@ -67,175 +82,7 @@
                 android:paddingLeft="10dip"
                 android:paddingTop="5dp"
                 android:text="@string/update"
-                android:textSize="20sp" >
-            </Button>
-
-            <View
-                android:layout_width="fill_parent"
-                android:layout_height="2sp"
-                android:background="#CCCCCC" />
-
-            <Button
-                android:id="@+id/spica"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="#00000000"
-                android:drawableLeft="@drawable/icon_spica"
-                android:drawablePadding="15dip"
-                android:gravity="left|center_vertical"
-                android:onClick="spicascreen"
-                android:paddingBottom="5dp"
-                android:paddingLeft="10dip"
-                android:paddingTop="5dp"
-                android:text="@string/spica"
-                android:textSize="20sp" >
-            </Button>
-
-            <View
-                android:layout_width="fill_parent"
-                android:layout_height="2sp"
-                android:background="#CCCCCC" />
-
-            <Button
-                android:id="@+id/pure"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="#00000000"
-                android:drawableLeft="@drawable/icon_pure"
-                android:drawablePadding="15dip"
-                android:gravity="left|center_vertical"
-                android:onClick="purescreen"
-                android:paddingBottom="5dp"
-                android:paddingLeft="10dip"
-                android:paddingTop="5dp"
-                android:text="@string/pure"
-                android:textSize="20sp" >
-            </Button>
-
-            <View
-                android:layout_width="fill_parent"
-                android:layout_height="2sp"
-                android:background="#CCCCCC" />
-
-            <Button
-                android:id="@+id/save"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="#00000000"
-                android:drawableLeft="@drawable/icon_save"
-                android:drawablePadding="15dip"
-                android:gravity="left|center_vertical"
-                android:onClick="savescreen"
-                android:paddingBottom="5dp"
-                android:paddingLeft="10dip"
-                android:paddingTop="5dp"
-                android:text="@string/save"
-                android:textSize="20sp" >
-            </Button>
-
-            <View
-                android:layout_width="fill_parent"
-                android:layout_height="2sp"
-                android:background="#CCCCCC" />
-
-            <Button
-                android:id="@+id/prev"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="#00000000"
-                android:drawableLeft="@drawable/icon_prev"
-                android:drawablePadding="15dip"
-                android:gravity="left|center_vertical"
-                android:onClick="prevscreen"
-                android:paddingBottom="5dp"
-                android:paddingLeft="10dip"
-                android:paddingTop="5dp"
-                android:text="@string/prev"
-                android:textSize="20sp" >
-            </Button>
-
-            <View
-                android:layout_width="fill_parent"
-                android:layout_height="2sp"
-                android:background="#CCCCCC" />
-
-            <Button
-                android:id="@+id/miracle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="#00000000"
-                android:drawableLeft="@drawable/icon_miracle"
-                android:drawablePadding="15dip"
-                android:gravity="left|center_vertical"
-                android:onClick="miraclescreen"
-                android:paddingBottom="5dp"
-                android:paddingLeft="10dip"
-                android:paddingTop="5dp"
-                android:text="@string/miracle"
-                android:textSize="20sp" >
-            </Button>
-
-            <View
-                android:layout_width="fill_parent"
-                android:layout_height="2sp"
-                android:background="#CCCCCC" />
-
-            <Button
-                android:id="@+id/brand"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="#00000000"
-                android:drawableLeft="@drawable/icon_brand"
-                android:drawablePadding="15dip"
-                android:gravity="left|center_vertical"
-                android:onClick="brandscreen"
-                android:paddingBottom="5dp"
-                android:paddingLeft="10dip"
-                android:paddingTop="5dp"
-                android:text="@string/brand"
-                android:textSize="20sp" >
-            </Button>
-
-            <View
-                android:layout_width="fill_parent"
-                android:layout_height="2sp"
-                android:background="#CCCCCC" />
-
-            <Button
-                android:id="@+id/spisave"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="#00000000"
-                android:drawableLeft="@drawable/icon_spisave"
-                android:drawablePadding="15dip"
-                android:gravity="left|center_vertical"
-                android:onClick="spisavescreen"
-                android:paddingBottom="5dp"
-                android:paddingLeft="10dip"
-                android:paddingTop="5dp"
-                android:text="@string/spisave"
-                android:textSize="20sp" >
-            </Button>
-
-            <View
-                android:layout_width="fill_parent"
-                android:layout_height="2sp"
-                android:background="#CCCCCC" />
-
-            <Button
-                android:id="@+id/delete"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="#00000000"
-                android:drawableLeft="@drawable/icon_delete"
-                android:drawablePadding="15dip"
-                android:gravity="left|center_vertical"
-                android:onClick="deletescreen"
-                android:paddingBottom="5dp"
-                android:paddingLeft="10dip"
-                android:paddingTop="5dp"
-                android:text="@string/delete"
-                android:textSize="20sp" >
+                android:textSize="30sp" >
             </Button>
 
             <View
@@ -256,7 +103,7 @@
                 android:paddingLeft="10dip"
                 android:paddingTop="5dp"
                 android:text="@string/promoting"
-                android:textSize="20sp" >
+                android:textSize="30sp" >
             </Button>
 
             <View
@@ -277,7 +124,7 @@
                 android:paddingLeft="10dip"
                 android:paddingTop="5dp"
                 android:text="@string/setting"
-                android:textSize="20sp" >
+                android:textSize="30sp" >
             </Button>
 
             <View
@@ -298,7 +145,7 @@
                 android:paddingLeft="10dip"
                 android:paddingTop="5dp"
                 android:text="@string/developerinfo"
-                android:textSize="20sp" >
+                android:textSize="30sp" >
             </Button>
 
             <View
@@ -319,7 +166,188 @@
                 android:paddingLeft="10dip"
                 android:paddingTop="5dp"
                 android:text="@string/donate"
-                android:textSize="20sp" >
+                android:textSize="30sp" >
+            </Button>
+            
+             <TextView
+                android:id="@+id/dntweaks"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="left|center_vertical"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dip"
+                android:paddingTop="5dp"
+                android:text="@string/dntweak"
+                android:textColor="#000000"
+                android:textSize="15sp" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="2sp"
+                android:background="#CCCCCC" />
+            
+
+            <Button
+                android:id="@+id/spica"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#00000000"
+                android:drawableLeft="@drawable/icon_spica"
+                android:drawablePadding="15dip"
+                android:gravity="left|center_vertical"
+                android:onClick="spicascreen"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dip"
+                android:paddingTop="5dp"
+                android:text="@string/spica"
+                android:textSize="30sp" >
+            </Button>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="2sp"
+                android:background="#CCCCCC" />
+
+            <Button
+                android:id="@+id/pure"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#00000000"
+                android:drawableLeft="@drawable/icon_pure"
+                android:drawablePadding="15dip"
+                android:gravity="left|center_vertical"
+                android:onClick="purescreen"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dip"
+                android:paddingTop="5dp"
+                android:text="@string/pure"
+                android:textSize="30sp" >
+            </Button>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="2sp"
+                android:background="#CCCCCC" />
+
+            <Button
+                android:id="@+id/save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#00000000"
+                android:drawableLeft="@drawable/icon_save"
+                android:drawablePadding="15dip"
+                android:gravity="left|center_vertical"
+                android:onClick="savescreen"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dip"
+                android:paddingTop="5dp"
+                android:text="@string/save"
+                android:textSize="30sp" >
+            </Button>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="2sp"
+                android:background="#CCCCCC" />
+
+            <Button
+                android:id="@+id/prev"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#00000000"
+                android:drawableLeft="@drawable/icon_prev"
+                android:drawablePadding="15dip"
+                android:gravity="left|center_vertical"
+                android:onClick="prevscreen"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dip"
+                android:paddingTop="5dp"
+                android:text="@string/prev"
+                android:textSize="30sp" >
+            </Button>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="2sp"
+                android:background="#CCCCCC" />
+
+            <Button
+                android:id="@+id/miracle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#00000000"
+                android:drawableLeft="@drawable/icon_miracle"
+                android:drawablePadding="15dip"
+                android:gravity="left|center_vertical"
+                android:onClick="miraclescreen"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dip"
+                android:paddingTop="5dp"
+                android:text="@string/miracle"
+                android:textSize="30sp" >
+            </Button>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="2sp"
+                android:background="#CCCCCC" />
+
+            <Button
+                android:id="@+id/brand"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#00000000"
+                android:drawableLeft="@drawable/icon_brand"
+                android:drawablePadding="15dip"
+                android:gravity="left|center_vertical"
+                android:onClick="brandscreen"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dip"
+                android:paddingTop="5dp"
+                android:text="@string/brand"
+                android:textSize="30sp" >
+            </Button>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="2sp"
+                android:background="#CCCCCC" />
+
+            <Button
+                android:id="@+id/spisave"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#00000000"
+                android:drawableLeft="@drawable/icon_spisave"
+                android:drawablePadding="15dip"
+                android:gravity="left|center_vertical"
+                android:onClick="spisavescreen"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dip"
+                android:paddingTop="5dp"
+                android:text="@string/spisave"
+                android:textSize="30sp" >
+            </Button>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="2sp"
+                android:background="#CCCCCC" />
+
+            <Button
+                android:id="@+id/delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#00000000"
+                android:drawableLeft="@drawable/icon_delete"
+                android:drawablePadding="15dip"
+                android:gravity="left|center_vertical"
+                android:onClick="deletescreen"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dip"
+                android:paddingTop="5dp"
+                android:text="@string/delete"
+                android:textSize="30sp" >
             </Button>
 
             <View

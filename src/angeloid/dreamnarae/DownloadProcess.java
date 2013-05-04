@@ -57,7 +57,7 @@ public class DownloadProcess {
 			checklogic.connect();
 			if (!(checklogic.getResponseCode() == 200)) {
 				Log.d("Download Process", "Server Failed!");
-				// ì„¸ë²ˆì§¸ ì„œë²„
+				// ¼¼¹øÂ° ¼­¹ö
 			} else {
 				Log.d("Download Process", "Server Clear!");
 				startdownload();

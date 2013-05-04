@@ -5,6 +5,7 @@
 package angeloid.dreamnarae;
 
 import java.io.File;
+import java.io.IOException;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -40,9 +41,14 @@ public class Boot_Script extends BroadcastReceiver {
 						Runtime.getRuntime().exec("su");
 						String[] rmcommand = { "su", "-c",
 								"rm /data/data/angeloid.dreamnarae/files/scriptrunner.sh" };
-						Runtime.getRuntime().exec(rmcommand); 
-						Toast.makeText(c, R.string.bootcomplete,
-								Toast.LENGTH_SHORT).show();
+						try {
+							Runtime.getRuntime().exec(rmcommand);
+							Toast.makeText(c, R.string.bootcomplete,
+									Toast.LENGTH_SHORT).show();
+						} catch (IOException e) {
+							Log.e("LOGTAG", "Couldn't Execute" + e.getMessage());
+						}
+
 					} catch (Exception e) {
 						Log.e("LOGTAG", "Couldn't Execute" + e.getMessage());
 					}

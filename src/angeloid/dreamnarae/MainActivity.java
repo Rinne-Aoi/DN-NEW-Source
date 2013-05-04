@@ -29,6 +29,7 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.StatFs;
+import android.os.StrictMode;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -115,6 +116,11 @@ public class MainActivity extends Activity implements SensorEventListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.tab1);
+
+		// Disable StrickMode Policy
+		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
+				.permitAll().build();
+		StrictMode.setThreadPolicy(policy);
 
 		// Layout
 		LayoutTitle = (TextView) findViewById(R.id.tabtextview);
@@ -242,7 +248,7 @@ public class MainActivity extends Activity implements SensorEventListener {
 
 	private void initializeTypefaces() {
 		MainActivity.Font = Typeface.createFromAsset(getAssets(),
-				"fonts/MalGun.ttf");
+				"fonts/Arita.otf");
 	}
 
 	/**
@@ -353,21 +359,29 @@ public class MainActivity extends Activity implements SensorEventListener {
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		if (keyCode == KeyEvent.KEYCODE_BACK) {
-			new AlertDialog.Builder(this)
-					.setIcon(android.R.drawable.ic_dialog_alert)
-					.setTitle(R.string.quittitle)
-					.setMessage(R.string.quitmessage)
-					.setPositiveButton(android.R.string.yes,
-							new DialogInterface.OnClickListener() {
-								@Override
-								public void onClick(DialogInterface dialog,
-										int which) {
-									android.os.Process
-											.killProcess(android.os.Process
-													.myPid());
-								}
-							}).setNegativeButton(android.R.string.no, null)
-					.show();
+
+			View view = this.getLayoutInflater().inflate(R.layout.customdialog,
+					null);
+			TextView txtTitle = (TextView) view.findViewById(R.id.title);
+			txtTitle.setText(R.string.quittitle);
+			txtTitle.setTextColor(Color.WHITE);
+			txtTitle.setTextSize(20);
+			txtTitle.setTypeface(MainActivity.Font);
+			TextView message = (TextView) view.findViewById(R.id.message);
+			message.setText(R.string.quitmessage);
+			message.setTextColor(Color.WHITE);
+			message.setTypeface(MainActivity.Font);
+			AlertDialog.Builder builer = new AlertDialog.Builder(this);
+			builer.setView(view);
+			builer.setPositiveButton(android.R.string.yes,
+					new DialogInterface.OnClickListener() {
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							android.os.Process.killProcess(android.os.Process
+									.myPid());
+						}
+					});
+			builer.setNegativeButton(android.R.string.no, null).show();
 
 			return true;
 		}

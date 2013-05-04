@@ -1,21 +1,26 @@
 package angeloid.dreamnarae;
 
+import java.util.ArrayList;
+import java.util.Hashtable;
+import java.util.Map;
+
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class Developer_Info extends Activity {
 
 	// Layout
 	TextView LayoutTitle;
 	TextView LayoutTitle2;
-	
+
 	// Slide Menu
 	Button main;
 	Button update;
@@ -31,6 +36,8 @@ public class Developer_Info extends Activity {
 	Button setting;
 	Button developerinfo;
 	Button donate;
+	// Kakao Link / Story Link
+	private String encoding = "UTF-8";
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -82,6 +89,62 @@ public class Developer_Info extends Activity {
 		list.setAdapter(developerinfo);
 
 	}
+
+	/**
+	 * Send App data
+	 */
+	public void sendAppData(View v) throws NameNotFoundException {
+		ArrayList<Map<String, String>> metaInfoArray = new ArrayList<Map<String, String>>();
+
+		// If application is support Android platform.
+		Map<String, String> metaInfoAndroid = new Hashtable<String, String>(1);
+		metaInfoAndroid.put("os", "android");
+		metaInfoAndroid.put("devicetype", "phone");
+		metaInfoAndroid.put("installurl",
+				"market://details?id=angeloid.dreamnarae");
+		metaInfoAndroid.put("executeurl", "kakaoLinkTest://starActivity");
+
+		// add to array
+		metaInfoArray.add(metaInfoAndroid);
+
+		// Recommended: Use application context for parameter.
+		KakaoLink kakaoLink = KakaoLink.getLink(getApplicationContext());
+
+		// check, intent is available.
+		if (!kakaoLink.isAvailableIntent()) {
+			alert("Not installed KakaoTalk.");
+			return;
+		}
+
+		/**
+		 * @param activity
+		 * @param url
+		 * @param message
+		 * @param appId
+		 * @param appVer
+		 * @param appName
+		 * @param encoding
+		 * @param metaInfoArray
+		 */
+		String app_name = getString(R.string.app_name);
+		String message = getString(R.string.kakaotalkmessage);
+		kakaoLink
+				.openKakaoAppLink(
+						this,
+						"market://details?id=angeloid.dreamnarae",
+						message,
+						getPackageName(),
+						getPackageManager().getPackageInfo(getPackageName(), 0).versionName,
+						app_name, encoding, metaInfoArray);
+	}
+
+	private void alert(String message) {
+		new AlertDialog.Builder(this)
+				.setIcon(android.R.drawable.ic_dialog_alert)
+				.setTitle(R.string.app_name).setMessage(message)
+				.setPositiveButton(android.R.string.ok, null).create().show();
+	}
+
 	public void mainscreen(View v) {
 		startActivity(new Intent(this, MainActivity.class));
 		finish();
@@ -133,7 +196,11 @@ public class Developer_Info extends Activity {
 	}
 
 	public void promotingscreen(View v) {
-		Toast.makeText(this, R.string.promotingnot, Toast.LENGTH_SHORT).show();
+		try {
+			sendAppData(v);
+		} catch (NameNotFoundException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void settingscreen(View v) {
@@ -142,7 +209,7 @@ public class Developer_Info extends Activity {
 	}
 
 	public void developerinfoscreen(View v) {
-		//startActivity(new Intent(this, Developer_Info.class));
+		// startActivity(new Intent(this, Developer_Info.class));
 	}
 
 	public void donatescreen(View v) {

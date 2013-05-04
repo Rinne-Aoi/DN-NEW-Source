@@ -15,22 +15,34 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
-                        <LinearLayout
+            <LinearLayout
                 android:layout_width="fill_parent"
-                android:layout_height="32dp"
+                android:layout_height="wrap_content"
                 android:background="#ffd9fe" >
 
                 <TextView
                     android:id="@+id/tabtextview2"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="32.0dip"
                     android:layout_marginLeft="5.0dip"
-                    android:layout_marginTop="13.0dip"
+                    android:layout_marginTop="16.0dip"
                     android:text="@string/menu"
                     android:textColor="#000000"
-                    android:textSize="9pt" />
+                    android:textSize="12pt" />
             </LinearLayout>
-            
+
+            <TextView
+                android:id="@+id/tools"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="left|center_vertical"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dip"
+                android:paddingTop="5dp"
+                android:text="@string/settings"
+                android:textColor="#000000"
+                android:textSize="15sp" />
+
             <View
                 android:layout_width="fill_parent"
                 android:layout_height="2sp"
@@ -49,7 +61,7 @@
                 android:paddingLeft="10dip"
                 android:paddingTop="5dp"
                 android:text="@string/main"
-                android:textSize="20sp" >
+                android:textSize="30sp" >
             </Button>
 
             <View
@@ -61,16 +73,16 @@
                 android:id="@+id/updatelog"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="#00000000"
                 android:drawableLeft="@drawable/icon_updatelog"
                 android:drawablePadding="15dip"
                 android:gravity="left|center_vertical"
-                android:background="#00000000"
                 android:onClick="updatelog"
                 android:paddingBottom="5dp"
-                android:paddingTop="5dp"
                 android:paddingLeft="10dip"
+                android:paddingTop="5dp"
                 android:text="@string/update"
-                android:textSize="20sp" >
+                android:textSize="30sp" >
             </Button>
 
             <View
@@ -79,19 +91,116 @@
                 android:background="#CCCCCC" />
 
             <Button
+                android:id="@+id/promoting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#00000000"
+                android:drawableLeft="@drawable/icon_promoting"
+                android:drawablePadding="15dip"
+                android:gravity="left|center_vertical"
+                android:onClick="promotingscreen"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dip"
+                android:paddingTop="5dp"
+                android:text="@string/promoting"
+                android:textSize="30sp" >
+            </Button>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="2sp"
+                android:background="#CCCCCC" />
+
+            <Button
+                android:id="@+id/setting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#00000000"
+                android:drawableLeft="@drawable/icon_settings"
+                android:drawablePadding="15dip"
+                android:gravity="left|center_vertical"
+                android:onClick="settingscreen"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dip"
+                android:paddingTop="5dp"
+                android:text="@string/setting"
+                android:textSize="30sp" >
+            </Button>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="2sp"
+                android:background="#CCCCCC" />
+
+            <Button
+                android:id="@+id/developerinfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#00000000"
+                android:drawableLeft="@drawable/icon_developerinfo"
+                android:drawablePadding="15dip"
+                android:gravity="left|center_vertical"
+                android:onClick="developerinfoscreen"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dip"
+                android:paddingTop="5dp"
+                android:text="@string/developerinfo"
+                android:textSize="30sp" >
+            </Button>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="2sp"
+                android:background="#CCCCCC" />
+
+            <Button
+                android:id="@+id/donate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#00000000"
+                android:drawableLeft="@drawable/icon_donate"
+                android:drawablePadding="15dip"
+                android:gravity="left|center_vertical"
+                android:onClick="donatescreen"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dip"
+                android:paddingTop="5dp"
+                android:text="@string/donate"
+                android:textSize="30sp" >
+            </Button>
+            
+             <TextView
+                android:id="@+id/dntweaks"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="left|center_vertical"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dip"
+                android:paddingTop="5dp"
+                android:text="@string/dntweak"
+                android:textColor="#000000"
+                android:textSize="15sp" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="2sp"
+                android:background="#CCCCCC" />
+            
+
+            <Button
                 android:id="@+id/spica"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="#00000000"
                 android:drawableLeft="@drawable/icon_spica"
                 android:drawablePadding="15dip"
                 android:gravity="left|center_vertical"
-                android:background="#00000000"
                 android:onClick="spicascreen"
                 android:paddingBottom="5dp"
                 android:paddingLeft="10dip"
                 android:paddingTop="5dp"
                 android:text="@string/spica"
-                android:textSize="20sp" >
+                android:textSize="30sp" >
             </Button>
 
             <View
@@ -106,16 +215,16 @@
                 android:background="#00000000"
                 android:drawableLeft="@drawable/icon_pure"
                 android:drawablePadding="15dip"
-                android:paddingLeft="10dip"
                 android:gravity="left|center_vertical"
                 android:onClick="purescreen"
                 android:paddingBottom="5dp"
+                android:paddingLeft="10dip"
                 android:paddingTop="5dp"
                 android:text="@string/pure"
-                android:textSize="20sp" >
+                android:textSize="30sp" >
             </Button>
 
-           <View
+            <View
                 android:layout_width="fill_parent"
                 android:layout_height="2sp"
                 android:background="#CCCCCC" />
@@ -123,18 +232,19 @@
             <Button
                 android:id="@+id/save"
                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#00000000"
                 android:drawableLeft="@drawable/icon_save"
                 android:drawablePadding="15dip"
                 android:gravity="left|center_vertical"
-                android:layout_height="wrap_content"
-                android:paddingLeft="10dip"
-                android:background="#00000000"
                 android:onClick="savescreen"
                 android:paddingBottom="5dp"
+                android:paddingLeft="10dip"
                 android:paddingTop="5dp"
                 android:text="@string/save"
-                android:textSize="20sp" >
+                android:textSize="30sp" >
             </Button>
+
             <View
                 android:layout_width="fill_parent"
                 android:layout_height="2sp"
@@ -143,18 +253,19 @@
             <Button
                 android:id="@+id/prev"
                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#00000000"
                 android:drawableLeft="@drawable/icon_prev"
                 android:drawablePadding="15dip"
                 android:gravity="left|center_vertical"
-                android:paddingLeft="10dip"
-                android:layout_height="wrap_content"
-                android:background="#00000000"
                 android:onClick="prevscreen"
                 android:paddingBottom="5dp"
+                android:paddingLeft="10dip"
                 android:paddingTop="5dp"
                 android:text="@string/prev"
-                android:textSize="20sp" >
+                android:textSize="30sp" >
             </Button>
+
             <View
                 android:layout_width="fill_parent"
                 android:layout_height="2sp"
@@ -163,18 +274,19 @@
             <Button
                 android:id="@+id/miracle"
                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#00000000"
                 android:drawableLeft="@drawable/icon_miracle"
                 android:drawablePadding="15dip"
                 android:gravity="left|center_vertical"
-                android:layout_height="wrap_content"
-                android:background="#00000000"
-                android:paddingLeft="10dip"
                 android:onClick="miraclescreen"
                 android:paddingBottom="5dp"
+                android:paddingLeft="10dip"
                 android:paddingTop="5dp"
                 android:text="@string/miracle"
-                android:textSize="20sp" >
+                android:textSize="30sp" >
             </Button>
+
             <View
                 android:layout_width="fill_parent"
                 android:layout_height="2sp"
@@ -183,18 +295,19 @@
             <Button
                 android:id="@+id/brand"
                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#00000000"
                 android:drawableLeft="@drawable/icon_brand"
                 android:drawablePadding="15dip"
                 android:gravity="left|center_vertical"
-                android:layout_height="wrap_content"
-                android:paddingLeft="10dip"
-                android:background="#00000000"
                 android:onClick="brandscreen"
                 android:paddingBottom="5dp"
+                android:paddingLeft="10dip"
                 android:paddingTop="5dp"
                 android:text="@string/brand"
-                android:textSize="20sp" >
+                android:textSize="30sp" >
             </Button>
+
             <View
                 android:layout_width="fill_parent"
                 android:layout_height="2sp"
@@ -203,18 +316,19 @@
             <Button
                 android:id="@+id/spisave"
                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#00000000"
                 android:drawableLeft="@drawable/icon_spisave"
                 android:drawablePadding="15dip"
                 android:gravity="left|center_vertical"
-                android:layout_height="wrap_content"
-                android:paddingLeft="10dip"
-                android:background="#00000000"
                 android:onClick="spisavescreen"
                 android:paddingBottom="5dp"
+                android:paddingLeft="10dip"
                 android:paddingTop="5dp"
                 android:text="@string/spisave"
-                android:textSize="20sp" >
+                android:textSize="30sp" >
             </Button>
+
             <View
                 android:layout_width="fill_parent"
                 android:layout_height="2sp"
@@ -222,99 +336,20 @@
 
             <Button
                 android:id="@+id/delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#00000000"
                 android:drawableLeft="@drawable/icon_delete"
                 android:drawablePadding="15dip"
                 android:gravity="left|center_vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="#00000000"
-                android:paddingLeft="10dip"
                 android:onClick="deletescreen"
                 android:paddingBottom="5dp"
+                android:paddingLeft="10dip"
                 android:paddingTop="5dp"
                 android:text="@string/delete"
-                android:textSize="20sp" >
+                android:textSize="30sp" >
             </Button>
-            <View
-                android:layout_width="fill_parent"
-                android:layout_height="2sp"
-                android:background="#CCCCCC" />
 
-            <Button
-                android:id="@+id/promoting"
-                android:drawableLeft="@drawable/icon_promoting"
-                android:drawablePadding="15dip"
-                android:gravity="left|center_vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="#00000000"
-                android:onClick="promotingscreen"
-                android:paddingBottom="5dp"
-                android:paddingLeft="10dip"
-                android:paddingTop="5dp"
-                android:text="@string/promoting"
-                android:textSize="20sp" >
-            </Button>
-             <View
-                android:layout_width="fill_parent"
-                android:layout_height="2sp"
-                android:background="#CCCCCC" />
-
-            <Button
-                android:id="@+id/setting"
-                android:drawableLeft="@drawable/icon_settings"
-                android:drawablePadding="15dip"
-                android:gravity="left|center_vertical"
-                android:layout_width="wrap_content"
-                android:paddingLeft="10dip"
-                android:layout_height="wrap_content"
-                android:background="#00000000"
-                android:onClick="settingscreen"
-                android:paddingBottom="5dp"
-                android:paddingTop="5dp"
-                android:text="@string/setting"
-                android:textSize="20sp" >
-            </Button>
-            <View
-                android:layout_width="fill_parent"
-                android:layout_height="2sp"
-                android:background="#CCCCCC" />
-
-            <Button
-                android:id="@+id/developerinfo"
-                android:drawableLeft="@drawable/icon_developerinfo"
-                android:drawablePadding="15dip"
-                android:gravity="left|center_vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="#00000000"
-                android:paddingLeft="10dip"
-                android:onClick="developerinfoscreen"
-                android:paddingBottom="5dp"
-                android:paddingTop="5dp"
-                android:text="@string/developerinfo"
-                android:textSize="20sp" >
-            </Button>
-            <View
-                android:layout_width="fill_parent"
-                android:layout_height="2sp"
-                android:background="#CCCCCC" />
-
-            <Button
-                android:id="@+id/donate"
-                android:drawableLeft="@drawable/icon_donate"
-                android:drawablePadding="15dip"
-                android:gravity="left|center_vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="#00000000"
-                android:paddingLeft="10dip"
-                android:onClick="donatescreen"
-                android:paddingBottom="5dp"
-                android:paddingTop="5dp"
-                android:text="@string/donate"
-                android:textSize="20sp" >
-            </Button>
             <View
                 android:layout_width="fill_parent"
                 android:layout_height="2sp"

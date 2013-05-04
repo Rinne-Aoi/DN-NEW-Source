@@ -57,7 +57,6 @@
     <string name="applysetting">Apply Settings</string>
     <string name="go">Go</string>
     <string name="savedsetting">Saved Settings</string>
-    <string name="promotingnot">Go to Main Screen, and Try it.</string>
     
 
     <!-- Menu -->
@@ -76,6 +75,10 @@
     <string name="setting">Setting</string>
     <string name="developerinfo">Developer Info</string>
     <string name="donate">Donate</string>
+    
+        <!-- Menu String -->
+    <string name="dntweak">DreamNarae Tweak</string>
+    <string name="settings">Tools</string>
     
 
 </resources>

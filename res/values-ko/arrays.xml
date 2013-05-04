@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="developinfo">
+        <item>드림나래 (Root)</item>
+        <item>감성 안드로이드 트윅 어플리케이션</item>
+        <item>제작 : Angeloid Team</item>
+        <item>리더 : 린네(정지연)</item>
+        <item>앱 : 소피아네(서동길)</item>
+        <item>트윅 : 리에(이은희)</item>
+        <item>트윅 : 아이렌(이정연)</item>
+        <item>트윅 : 아야나 (이은정)</item>
+        <item>디자인 : Ghana(염승우)</item>
+        <item>팀원 :  Primes</item>
+        <item>팀원 :  ITCraft</item>
+        <item>팀원 :  NEON</item>
+        <item>이 앱은 아모레퍼시픽의 아리따글꼴을 사용하여 디자인되었습니다.</item>
+        <item>그리고 코이카키의 팀원들(반, 양파, 도로시, 쿠로, Toxic, 보쿠, 시로, 니스)</item>
+        <item>그리고 많은 사용자들!</item>
+        <item>감사합니다!</item>
+    </string-array>
+    <string-array name="updateinfo">
+        <item>버전 2.1 (릴리즈 : GMT +9 서울, 도쿄)</item>
+    </string-array>
+
+</resources> 
