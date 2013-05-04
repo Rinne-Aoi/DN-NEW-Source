@@ -23,56 +23,56 @@ public class DownloadProcess {
 	public static boolean isLowOnMemory;
 	public static boolean networkstate = false;
 	public static String BASE_FOLDER;
-	
-	// Server Link 
+
+	// Server Link
 	static URL url1;
 	static URL url2;
 
-	
-	public static void URLCheck() throws MalformedURLException {
+	public static void URLCheck(Context c) throws MalformedURLException {
 		try {
 			url1 = new URL("http://gecp.kr/dn/dn2.1f.zip");
 			checklogic = (HttpURLConnection) url1.openConnection();
 			checklogic.setConnectTimeout(3000);
-			checklogic.setReadTimeout(30000);
+			checklogic.setReadTimeout(3000);
 			checklogic.connect();
 			if (!(checklogic.getResponseCode() == 200)) {
 				Log.d("Download Process", "Server Failed!");
-				URLCheck2();
+				URLCheck2(c);
 			} else {
 				Log.d("Download Process", "Server Clear!");
-				startdownload();
+				finalURL = url1;
+				startdownload(c);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 
-	public static void URLCheck2() throws MalformedURLException {
+	public static void URLCheck2(Context c) throws MalformedURLException {
 		try {
 			url2 = new URL("http://sirospace.info/dn2f.zip");
 			checklogic = (HttpURLConnection) url2.openConnection();
 			checklogic.setConnectTimeout(3000);
-			checklogic.setReadTimeout(30000);
+			checklogic.setReadTimeout(3000);
 			checklogic.connect();
 			if (!(checklogic.getResponseCode() == 200)) {
 				Log.d("Download Process", "Server Failed!");
-				// ¼¼¹øÂ° ¼­¹ö
+				// ì„¸ë²ˆì§¸ ì„œë²„
 			} else {
 				Log.d("Download Process", "Server Clear!");
-				startdownload();
+				finalURL = url2;
+				startdownload(c);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 
-	public static void startdownload(){
-			finalURL = url1;
-			DownloadProcess.BASE_FOLDER = DownloadProcess.Context.getFilesDir()
-					.getPath();
-			DownloadProcess.isLowOnMemory = false;
-			new RunUnZipThread().start();
+	public static void startdownload(Context cxnt) {
+		Context = cxnt;
+		BASE_FOLDER = Context.getFilesDir().getPath();
+		isLowOnMemory = false;
+		new RunUnZipThread().start();
 	}
 
 	private static class RunUnZipThread extends Thread {
@@ -129,5 +129,5 @@ public class DownloadProcess {
 			DownloadProcess.isDownloadInProgress = false;
 		}
 	};
-	
+
 }
