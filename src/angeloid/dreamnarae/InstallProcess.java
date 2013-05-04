@@ -110,7 +110,7 @@ public class InstallProcess extends Activity {
 	}
 
 	public static void InstallSPiCa(Context c) throws Exception {
-		DownloadProcess.startdownload(c);
+		DownloadProcess.URLCheck();
 		File file = new File("/data/data/angeloid.dreamnarae/files/allflag");
 		if (file.length() > 0) {
 			SPiCaVersion(c);
@@ -119,7 +119,7 @@ public class InstallProcess extends Activity {
 	}
 
 	public static void InstallPure(Context c) throws Exception {
-		DownloadProcess.startdownload(c);
+		DownloadProcess.URLCheck();
 		File file = new File("/data/data/angeloid.dreamnarae/files/allflag");
 		if (file.length() > 0) {
 			PureVersion(c);
@@ -128,7 +128,7 @@ public class InstallProcess extends Activity {
 	}
 
 	public static void InstallSave(Context c) throws Exception {
-		DownloadProcess.startdownload(c);
+		DownloadProcess.URLCheck();
 		File file = new File("/data/data/angeloid.dreamnarae/files/allflag");
 		if (file.length() > 0) {
 			SaveVersion(c);
@@ -137,7 +137,7 @@ public class InstallProcess extends Activity {
 	}
 
 	public static void InstallPrev(Context c) throws Exception {
-		DownloadProcess.startdownload(c);
+		DownloadProcess.URLCheck();
 		File file = new File("/data/data/angeloid.dreamnarae/files/allflag");
 		if (file.length() > 0) {
 			PrevVersion(c);
@@ -146,7 +146,7 @@ public class InstallProcess extends Activity {
 	}
 
 	public static void InstallMiracle(Context c) throws Exception {
-		DownloadProcess.startdownload(c);
+		DownloadProcess.URLCheck();
 		File file = new File("/data/data/angeloid.dreamnarae/files/allflag");
 		if (file.length() > 0) {
 			MiracleVersion(c);
@@ -155,7 +155,7 @@ public class InstallProcess extends Activity {
 	}
 
 	public static void InstallBrand(Context c) throws Exception {
-		DownloadProcess.startdownload(c);
+		DownloadProcess.URLCheck();
 		File file = new File("/data/data/angeloid.dreamnarae/files/allflag");
 		if (file.length() > 0) {
 			BrandVersion(c);
@@ -164,7 +164,7 @@ public class InstallProcess extends Activity {
 	}
 
 	public static void InstallSPiSave(Context c) throws Exception {
-		DownloadProcess.startdownload(c);
+		DownloadProcess.URLCheck();
 		File file = new File("/data/data/angeloid.dreamnarae/files/allflag");
 		if (file.length() > 0) {
 			SPiSaveVersion(c);
@@ -178,11 +178,11 @@ public class InstallProcess extends Activity {
 		StringBuilder spica = new StringBuilder();
 		spica.append("mount -o rw,remount /system;");
 		spica.append("mkdir /system/etc/init.d;");
-		spica.append("cat /data/data/angeloid.dreamnarae/files/SPiCa/00prop > /system/etc/init.d/00prop;");
-		spica.append("cat /data/data/angeloid.dreamnarae/files/SPiCa/01io > /system/etc/init.d/01io;");
-		spica.append("cat /data/data/angeloid.dreamnarae/files/SPiCa/02freq > /system/etc/init.d/02freq;");
-		spica.append("cat /data/data/angeloid.dreamnarae/files/SPiCa/03zipalign > /system/etc/init.d/03zipalign;");
-		spica.append("cat /data/data/angeloid.dreamnarae/files/SPiCa/98banner_dreamnarae_spica > /system/98banner_dreamnarae_spica;");
+		spica.append("cat /data/data/angeloid.dreamnarae/files/spica/00prop > /system/etc/init.d/00prop;");
+		spica.append("cat /data/data/angeloid.dreamnarae/files/spica/01io > /system/etc/init.d/01io;");
+		spica.append("cat /data/data/angeloid.dreamnarae/files/spica/02freq > /system/etc/init.d/02freq;");
+		spica.append("cat /data/data/angeloid.dreamnarae/files/spica/03zipalign > /system/etc/init.d/03zipalign;");
+		spica.append("cat /data/data/angeloid.dreamnarae/files/spica/98banner_dreamnarae_spica > /system/98banner_dreamnarae_spica;");
 		spica.append("cat /data/data/angeloid.dreamnarae/files/allflag > /system/allflag;");
 		spica.append("chmod 755 /system/etc/init.d/00prop;");
 		spica.append("chmod 755 /system/etc/init.d/01io;");
@@ -204,11 +204,11 @@ public class InstallProcess extends Activity {
 		StringBuilder miracle = new StringBuilder();
 		miracle.append("mount -o rw,remount /system;");
 		miracle.append("mkdir /system/etc/init.d;");
-		miracle.append("cat /data/data/angeloid.dreamnarae/files/Miracle/00set > /system/etc/init.d/00set;");
-		miracle.append("cat /data/data/angeloid.dreamnarae/files/Miracle/01vsls > /system/etc/init.d/01vsls;");
-		miracle.append("cat /data/data/angeloid.dreamnarae/files/Miracle/02dch > /system/etc/init.d/02dch;");
-		miracle.append("cat /data/data/angeloid.dreamnarae/files/Miracle/03zipalign > /system/etc/init.d/03zipalign;");
-		miracle.append("cat /data/data/angeloid.dreamnarae/files/Miracle/98banner_dreamnarae_miracle > /system/98banner_dreamnarae_miracle;");
+		miracle.append("cat /data/data/angeloid.dreamnarae/files/miracle/00set > /system/etc/init.d/00set;");
+		miracle.append("cat /data/data/angeloid.dreamnarae/files/miracle/01vsls > /system/etc/init.d/01vsls;");
+		miracle.append("cat /data/data/angeloid.dreamnarae/files/miracle/02dch > /system/etc/init.d/02dch;");
+		miracle.append("cat /data/data/angeloid.dreamnarae/files/miracle/03zipalign > /system/etc/init.d/03zipalign;");
+		miracle.append("cat /data/data/angeloid.dreamnarae/files/miracle/98banner_dreamnarae_miracle > /system/98banner_dreamnarae_miracle;");
 		miracle.append("cat /data/data/angeloid.dreamnarae/files/allflag > /system/allflag;");
 		miracle.append("chmod 755 /system/etc/init.d/00set;");
 		miracle.append("chmod 755 /system/etc/init.d/01vsls;");
@@ -230,10 +230,10 @@ public class InstallProcess extends Activity {
 		StringBuilder save = new StringBuilder();
 		save.append("mount -o rw,remount /system;");
 		save.append("mkdir /system/etc/init.d;");
-		save.append("cat /data/data/angeloid.dreamnarae/files/Save/00sp > /system/etc/init.d/00sp;");
-		save.append("cat /data/data/angeloid.dreamnarae/files/Save/01v > /system/etc/init.d/01v;");
-		save.append("cat /data/data/angeloid.dreamnarae/files/Save/02deep > /system/etc/init.d/02deep;");
-		save.append("cat /data/data/angeloid.dreamnarae/files/Save/98banner_dreamnarae_save > /system/98banner_dreamnarae_save;");
+		save.append("cat /data/data/angeloid.dreamnarae/files/save/00sp > /system/etc/init.d/00sp;");
+		save.append("cat /data/data/angeloid.dreamnarae/files/save/01v > /system/etc/init.d/01v;");
+		save.append("cat /data/data/angeloid.dreamnarae/files/save/02deep > /system/etc/init.d/02deep;");
+		save.append("cat /data/data/angeloid.dreamnarae/files/save/98banner_dreamnarae_save > /system/98banner_dreamnarae_save;");
 		save.append("cat /data/data/angeloid.dreamnarae/files/allflag > /system/allflag;");
 		save.append("chmod 755 /system/etc/init.d/00sp;");
 		save.append("chmod 755 /system/etc/init.d/01v;");
@@ -254,10 +254,10 @@ public class InstallProcess extends Activity {
 		StringBuilder prev = new StringBuilder();
 		prev.append("mount -o rw,remount /system;");
 		prev.append("mkdir /system/etc/init.d;");
-		prev.append("cat /data/data/angeloid.dreamnarae/files/Prev/00proppv > /system/etc/init.d/00proppv;");
-		prev.append("cat /data/data/angeloid.dreamnarae/files/Prev/01iopv > /system/etc/init.d/01iopv;");
-		prev.append("cat /data/data/angeloid.dreamnarae/files/Prev/02freqpv > /system/etc/init.d/02freqpv;");
-		prev.append("cat /data/data/angeloid.dreamnarae/files/Prev/98banner_dreamnarae_prev > /system/98banner_dreamnarae_prev;");
+		prev.append("cat /data/data/angeloid.dreamnarae/files/prev/00proppv > /system/etc/init.d/00proppv;");
+		prev.append("cat /data/data/angeloid.dreamnarae/files/prev/01iopv > /system/etc/init.d/01iopv;");
+		prev.append("cat /data/data/angeloid.dreamnarae/files/prev/02freqpv > /system/etc/init.d/02freqpv;");
+		prev.append("cat /data/data/angeloid.dreamnarae/files/prev/98banner_dreamnarae_prev > /system/98banner_dreamnarae_prev;");
 		prev.append("cat /data/data/angeloid.dreamnarae/files/allflag > /system/allflag;");
 		prev.append("chmod 755 /system/etc/init.d/00proppv;");
 		prev.append("chmod 755 /system/etc/init.d/01iopv;");
@@ -278,10 +278,10 @@ public class InstallProcess extends Activity {
 		StringBuilder spisave = new StringBuilder();
 		spisave.append("mount -o rw,remount /system;");
 		spisave.append("mkdir /system/etc/init.d;");
-		spisave.append("cat /data/data/angeloid.dreamnarae/files/SPiSave/00prop > /system/etc/init.d/00prop;");
-		spisave.append("cat /data/data/angeloid.dreamnarae/files/SPiSave/01io > /system/etc/init.d/01io;");
-		spisave.append("cat /data/data/angeloid.dreamnarae/files/SPiSave/02freq > /system/etc/init.d/02freq;");
-		spisave.append("cat /data/data/angeloid.dreamnarae/files/SPiSave/98banner_dreamnarae_spisave > /system/98banner_dreamnarae_spisave;");
+		spisave.append("cat /data/data/angeloid.dreamnarae/files/spisave/00prop > /system/etc/init.d/00prop;");
+		spisave.append("cat /data/data/angeloid.dreamnarae/files/spisave/01io > /system/etc/init.d/01io;");
+		spisave.append("cat /data/data/angeloid.dreamnarae/files/spisave/02freq > /system/etc/init.d/02freq;");
+		spisave.append("cat /data/data/angeloid.dreamnarae/files/spisave/98banner_dreamnarae_spisave > /system/98banner_dreamnarae_spisave;");
 		spisave.append("cat /data/data/angeloid.dreamnarae/files/allflag > /system/allflag;");
 		spisave.append("chmod 755 /system/etc/init.d/00prop;");
 		spisave.append("chmod 755 /system/etc/init.d/01io;");
@@ -303,10 +303,10 @@ public class InstallProcess extends Activity {
 		brand.append("mount -o rw,remount /system;");
 		brand.append("mkdir /system/etc/init.d;");
 		brand.append("mkdir /system/etc/init.d;");
-		brand.append("cat /data/data/angeloid.dreamnarae/files/Brand/00b > /system/etc/init.d/00b;");
-		brand.append("cat /data/data/angeloid.dreamnarae/files/Brand/01r > /system/etc/init.d/01r;");
-		brand.append("cat /data/data/angeloid.dreamnarae/files/Brand/02and > /system/etc/init.d/02and;");
-		brand.append("cat /data/data/angeloid.dreamnarae/files/Brand/98banner_dreamnarae_brand > /system/98banner_dreamnarae_brand;");
+		brand.append("cat /data/data/angeloid.dreamnarae/files/brand/00b > /system/etc/init.d/00b;");
+		brand.append("cat /data/data/angeloid.dreamnarae/files/brand/01r > /system/etc/init.d/01r;");
+		brand.append("cat /data/data/angeloid.dreamnarae/files/brand/02and > /system/etc/init.d/02and;");
+		brand.append("cat /data/data/angeloid.dreamnarae/files/brand/98banner_dreamnarae_brand > /system/98banner_dreamnarae_brand;");
 		brand.append("cat /data/data/angeloid.dreamnarae/files/allflag > /system/allflag;");
 		brand.append("chmod 755 /system/etc/init.d/00b;");
 		brand.append("chmod 755 /system/etc/init.d/01r;");
@@ -327,12 +327,12 @@ public class InstallProcess extends Activity {
 		StringBuilder pure = new StringBuilder();
 		pure.append("mount -o rw,remount /system;");
 		pure.append("mkdir /system/etc/init.d;");
-		pure.append("cat /data/data/angeloid.dreamnarae/files/Pure/00cpu > /system/etc/init.d/00cpu;");
-		pure.append("cat /data/data/angeloid.dreamnarae/files/Pure/01memory > /system/etc/init.d/01memory;");
-		pure.append("cat /data/data/angeloid.dreamnarae/files/Pure/02prop > /system/etc/init.d/02prop;");
-		pure.append("cat /data/data/angeloid.dreamnarae/files/Pure/03cleaning > /system/etc/init.d/03cleaning;");
-		pure.append("cat /data/data/angeloid.dreamnarae/files/Pure/04zipalign > /system/etc/init.d/04zipalign;");
-		pure.append("cat /data/data/angeloid.dreamnarae/files/Pure/98banner_dreamnarae_pure > /system/98banner_dreamnarae_pure;");
+		pure.append("cat /data/data/angeloid.dreamnarae/files/pure/00cpu > /system/etc/init.d/00cpu;");
+		pure.append("cat /data/data/angeloid.dreamnarae/files/pure/01memory > /system/etc/init.d/01memory;");
+		pure.append("cat /data/data/angeloid.dreamnarae/files/pure/02prop > /system/etc/init.d/02prop;");
+		pure.append("cat /data/data/angeloid.dreamnarae/files/pure/03cleaning > /system/etc/init.d/03cleaning;");
+		pure.append("cat /data/data/angeloid.dreamnarae/files/pure/04zipalign > /system/etc/init.d/04zipalign;");
+		pure.append("cat /data/data/angeloid.dreamnarae/files/pure/98banner_dreamnarae_pure > /system/98banner_dreamnarae_pure;");
 		pure.append("cat /data/data/angeloid.dreamnarae/files/allflag > /system/allflag;");
 		pure.append("chmod 755 /system/etc/init.d/00cpu;");
 		pure.append("chmod 755 /system/etc/init.d/01memory;");
