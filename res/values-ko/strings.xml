@@ -60,7 +60,7 @@
     <string name="promotingnot">메인 화면으로 가서 시도하세요.</string>
 
     <!-- Menu -->
-    <string name="main">메인 화면</string>
+    <string name="menu">메뉴</string>
     <string name="update">업데이트 내역</string>
     <string name="spica">스피카</string>
     <string name="pure">퓨어</string>

@@ -21,16 +21,9 @@ public class InstallProcess extends Activity {
 	static View view;
 	static View view1;
 
-	// Layout
-	TextView wait1;
-
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.installprocess);
-
-		// Layout
-		wait1 = (TextView) findViewById(R.id.wait1);
-		wait1.setTypeface(MainActivity.Font);
 
 		// Dialog View
 		view = this.getLayoutInflater().inflate(R.layout.customdialog, null);

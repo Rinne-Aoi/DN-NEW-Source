@@ -16,9 +16,8 @@ public class Delete extends Activity {
 	
 	// Layout
 	TextView LayoutTitle;
+	TextView LayoutTitle2;
 	
-	// Slide Holder
-	private SlideMenu mSlideHolder;
 
 	// Slide Menu
 	Button main;
@@ -44,8 +43,8 @@ public class Delete extends Activity {
 		LayoutTitle.setTypeface(MainActivity.Font);
 		apply = (Button) findViewById(R.id.apply);
 		apply.setTypeface(MainActivity.Font);
-		// SlideHolder
-		mSlideHolder = (SlideMenu) findViewById(R.id.slideHolder);
+		LayoutTitle2 = (TextView) findViewById(R.id.tabtextview2);
+		LayoutTitle2.setTypeface(MainActivity.Font);
 
 		// Slide Menu
 		main = (Button) findViewById(R.id.mainscreen);

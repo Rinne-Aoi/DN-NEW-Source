@@ -14,9 +14,7 @@ public class Update_Main extends Activity {
 
 	// Layout
 	TextView LayoutTitle;
-
-	// Slide Holder
-	private SlideMenu mSlideHolder;
+	TextView LayoutTitle2;
 
 	// Slide Menu
 	Button main;
@@ -41,9 +39,8 @@ public class Update_Main extends Activity {
 		// Layout
 		LayoutTitle = (TextView) findViewById(R.id.tabtextview);
 		LayoutTitle.setTypeface(MainActivity.Font);
-
-		// SlideHolder
-		mSlideHolder = (SlideMenu) findViewById(R.id.slideHolder);
+		LayoutTitle2 = (TextView) findViewById(R.id.tabtextview2);
+		LayoutTitle2.setTypeface(MainActivity.Font);
 
 		// Slide Menu
 		main = (Button) findViewById(R.id.mainscreen);
@@ -60,6 +57,7 @@ public class Update_Main extends Activity {
 		setting = (Button) findViewById(R.id.setting);
 		developerinfo = (Button) findViewById(R.id.developerinfo);
 		donate = (Button) findViewById(R.id.donate);
+		
 
 		// Slide Menu Fonts
 		main.setTypeface(MainActivity.Font);

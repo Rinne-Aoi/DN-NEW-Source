@@ -24,8 +24,7 @@ public class SPiCa extends Activity {
 	ImageView imageview;
 	// Layout
 	TextView LayoutTitle;
-	// Slide Holder
-	private SlideMenu mSlideHolder;
+	TextView LayoutTitle2;
 
 	// Slide Menu
 	Button main;
@@ -53,8 +52,9 @@ public class SPiCa extends Activity {
 		info = (Button) findViewById(R.id.info);
 		apply.setTypeface(MainActivity.Font);
 		info.setTypeface(MainActivity.Font);
-		// SlideHolder
-		mSlideHolder = (SlideMenu) findViewById(R.id.slideHolder);
+		LayoutTitle2 = (TextView) findViewById(R.id.tabtextview2);
+		LayoutTitle2.setTypeface(MainActivity.Font);
+
 
 		// Slide Menu
 		main = (Button) findViewById(R.id.mainscreen);

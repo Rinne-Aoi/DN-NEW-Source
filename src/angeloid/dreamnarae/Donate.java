@@ -18,9 +18,7 @@ public class Donate extends Activity {
 	TextView koreaaccount;
 	Button gopaypal;
 	ImageView accountimage;
-
-	// Slide Holder
-	private SlideMenu mSlideHolder;
+	TextView LayoutTitle2;
 
 	// Slide Menu
 	Button main;
@@ -53,9 +51,8 @@ public class Donate extends Activity {
 		koreaaccount.setTypeface(MainActivity.Font);
 		gopaypal = (Button) findViewById(R.id.gopaypal);
 		accountimage = (ImageView) findViewById(R.id.accountimage);
-
-		// SlideHolder
-		mSlideHolder = (SlideMenu) findViewById(R.id.slideHolder);
+		LayoutTitle2 = (TextView) findViewById(R.id.tabtextview2);
+		LayoutTitle2.setTypeface(MainActivity.Font);
 
 		// Slide Menu
 		main = (Button) findViewById(R.id.mainscreen);

@@ -44,6 +44,7 @@ public class MainActivity extends Activity implements SensorEventListener {
 
 	// Layout
 	TextView LayoutTitle;
+	TextView LayoutTitle2;
 
 	// Easter Egg
 	private static Random m_rand = new Random();
@@ -118,6 +119,8 @@ public class MainActivity extends Activity implements SensorEventListener {
 		// Layout
 		LayoutTitle = (TextView) findViewById(R.id.tabtextview);
 		LayoutTitle.setTypeface(MainActivity.Font);
+		LayoutTitle2 = (TextView) findViewById(R.id.tabtextview2);
+		LayoutTitle2.setTypeface(MainActivity.Font);
 
 		// Font
 		initializeTypefaces();

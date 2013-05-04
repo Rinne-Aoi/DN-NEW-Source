@@ -12,10 +12,10 @@
     <string name="secondegg2">Became the god of this world.</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
-<string name="reboottitle">Reboot?</string>
-<string name="rebootmessage">Reboot your Device?</string>
-<string name="errortitle">Failed!</string>
-<string name="error2message">DreamNarae has not been applied properly. Please try again later.</string>
+    <string name="reboottitle">Reboot?</string>
+    <string name="rebootmessage">Reboot your Device?</string>
+    <string name="errortitle">Failed!</string>
+    <string name="error2message">DreamNarae has not been applied properly. Please try again later.</string>
     <string name="sdcarderrortitle">SDCard Error</string>
     <string name="sdcarderrormessage">Not Access to SDCard. check your sdcard.</string>
     <string name="infoclose">Close</string>
@@ -23,14 +23,13 @@
     <string name="noquitmessage">You cannot quit this screen :D</string>
     <string name="apply">Install DreamNarae</string>
     <string name="info">See Details</string>
-    <string name="spica_info">Pursues performance and stability at the same time. (Available since: July 2012)</string>
-    <string name="miracle_info">Extreme performance-oriented set of tweaks, relatively high chance of bricking your device. (Available since: December 2012)</string>
-    <string name="save_info">Aims high stability and long battery life. (Available since: December 2012)</string>
-    <string name="prev_info">Balances between performance and long battery life. (Available since: January 2013)</string>
-    <string name="spisave_info">Pursues performance, stability, and battery life all at the same time, but has relatively high chance of bricking your device when first applied. (Available since: January 2013)</string>
-    <string name="brand_info">Set of tweaks that focuses on minimizing power consumption. (Available since: February 2013)</string>
-    <string name="pure_info">DreamNarae's latest and best set of tweaks, pursues performance, stability, and battery all at the same time. (Available since: February 2013)</string>
-    <string name="pe_info">Focuses on even higher performance and stability, suitable for high-end devices. (Available since: April 2013)</string>
+    <string name="spica_info">Is version of the SPiCa started in July 2012 with the initial version of the DreamNarae version of this a memory / Setprop related focus on stability is turned.Is effective for light work such as SNS.</string>
+    <string name="miracle_info">Miracle to supplement the time lacking performance of SPiCa the only version that began in December 2012, all of the values ​​of the Miracle focused on the performance is aligned with the version, and the possibility of devices malfunction, the stability is somewhat less. Heavy work such as 3D gaming effect.</string>
+    <string name="save_info">Save the standby battery efficiency, in both versions of the existing version of the memory-related values ​​that began in December 2012, focused on battery efficiency version. The standby battery efficiency / use the battery more quickly exhausted, but very large effect on the music.</string>
+    <string name="prev_info">Prev at the time the effect of SPiCa the away day by day, it is a version of memory-related value of stability and battery efficiency focused on improving a little bit more stability sought by the former SPiCa version started in January 2013. It is mainly effective for light work.</string>
+    <string name="spisave_info">SPiSave is geared than one purpose, to enjoy at the same time the efficiency the stability of SPiCa and Save standby battery time, starting in January 2013, but As a result of the failure of adjust the value of Tweak staff focused on the performance and the possibility of device malfunction. Effect mainly from the heavy work.</string>
+    <string name="brand_info">The disadvantages was the use of the time, save battery exhausted, in order to prevent the increase began in February 2013 version Save more focus on efficiency using the battery are tailored version of the Brand. Effect light and music.</string>
+    <string name="pure_info">Gained on the basis of the know-how for about five months, began in February 2013 version of the final version of the DreamNarae the Pure, the efficiency of the batteries performance and stability focus on the effects of three kinds of harmony is aligned inversion.Of current DreamNarae version is the recommended version, mainly very large effect on light work and music.</string>
     <string name="spica_title">DreamNarae SPiCa 5.5 information</string>
     <string name="miracle_title">DreamNarae Miracle 3.5 information</string>
     <string name="save_title">DreamNarae Save 3.5 information</string>
@@ -59,8 +58,10 @@
     <string name="go">Go</string>
     <string name="savedsetting">Saved Settings</string>
     <string name="promotingnot">Go to Main Screen, and Try it.</string>
+    
 
     <!-- Menu -->
+    <string name="menu">Menu</string>
     <string name="main">Main Screen</string>
     <string name="update">Update Log</string>
     <string name="spica">SPiCa</string>
@@ -76,16 +77,5 @@
     <string name="developerinfo">Developer Info</string>
     <string name="donate">Donate</string>
     
-    <!-- Process -->
-    <string name="wait1">Wait for Safety Install...</string>
-    <string name="working1">Download Data on /sdcard/</string>
-    
-    <string name="working2">Move data file on /system/</string>
-    <string name="working3">Permission files..</string>
-    <string name="workingok">Install Complete! Please Reboot!</string>
-    <string name="workingfail">Failed Installion. Error code is 550. Please Contact Admin.</string>
-    <string name="dworking1">Delete File on /system/</string>
-    <string name="dworkingok">Delete Complete! Please Reboot!</string>
-    <string name="dworkingfail">Failed Delete. Error code is 551. Please Contact Admin.</string>
 
 </resources>
