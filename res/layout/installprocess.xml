@@ -48,15 +48,6 @@
                 android:layout_centerVertical="true"
                 android:src="@drawable/wait" />
 
-            <TextView
-                android:id="@+id/wait1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/imageView1"
-                android:layout_centerHorizontal="true"
-                android:text="@string/wait1"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
-
         </RelativeLayout>
 
     </LinearLayout>

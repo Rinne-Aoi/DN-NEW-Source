@@ -29,13 +29,12 @@ public class Settings extends Activity {
 	Button applysetting;
 	Button go1;
 	Button go2;
+	TextView LayoutTitle2;
 
 	// Settings
 	boolean bootcheck = true;
 	boolean mainvoice = false;
 
-	// Slide Holder
-	private SlideMenu mSlideHolder;
 
 	// Slide Menu
 	Button main;
@@ -64,6 +63,9 @@ public class Settings extends Activity {
 		boolean statvoice = prefs.getBoolean("mainvoice", false);
 		bootcheck = statboolean;
 		mainvoice = statvoice;
+		LayoutTitle2 = (TextView) findViewById(R.id.tabtextview2);
+		LayoutTitle2.setTypeface(MainActivity.Font);
+
 
 		// Layout
 		LayoutTitle = (TextView) findViewById(R.id.tabtextview);
@@ -93,8 +95,6 @@ public class Settings extends Activity {
 		go1.setTypeface(MainActivity.Font);
 		go2.setTypeface(MainActivity.Font);
 
-		// SlideHolder
-		mSlideHolder = (SlideMenu) findViewById(R.id.slideHolder);
 		// Slide Menu
 		main = (Button) findViewById(R.id.mainscreen);
 		update = (Button) findViewById(R.id.updatelog);

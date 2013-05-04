@@ -24,8 +24,7 @@ public class SPiSave extends Activity {
 	ImageView imageview;
 	// Layout
 	TextView LayoutTitle;
-	// Slide Holder
-	private SlideMenu mSlideHolder;
+	TextView LayoutTitle2;
 
 	// Slide Menu
 	Button main;
@@ -50,11 +49,12 @@ public class SPiSave extends Activity {
 		info = (Button) findViewById(R.id.info);
 		apply.setTypeface(MainActivity.Font);
 		info.setTypeface(MainActivity.Font);
+		LayoutTitle2 = (TextView) findViewById(R.id.tabtextview2);
+		LayoutTitle2.setTypeface(MainActivity.Font);
+
 		// Layout
 		LayoutTitle = (TextView) findViewById(R.id.tabtextview);
 		LayoutTitle.setTypeface(MainActivity.Font);
-		// SlideHolder
-		mSlideHolder = (SlideMenu) findViewById(R.id.slideHolder);
 
 		// Slide Menu
 		main = (Button) findViewById(R.id.mainscreen);

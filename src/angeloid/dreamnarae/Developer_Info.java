@@ -14,10 +14,8 @@ public class Developer_Info extends Activity {
 
 	// Layout
 	TextView LayoutTitle;
+	TextView LayoutTitle2;
 	
-	// Slide Holder
-	private SlideMenu mSlideHolder;
-
 	// Slide Menu
 	Button main;
 	Button update;
@@ -41,10 +39,8 @@ public class Developer_Info extends Activity {
 		// Layout
 		LayoutTitle = (TextView) findViewById(R.id.tabtextview);
 		LayoutTitle.setTypeface(MainActivity.Font);
-		
-
-		// SlideHolder
-		mSlideHolder = (SlideMenu) findViewById(R.id.slideHolder);
+		LayoutTitle2 = (TextView) findViewById(R.id.tabtextview2);
+		LayoutTitle2.setTypeface(MainActivity.Font);
 
 		// Slide Menu
 		main = (Button) findViewById(R.id.mainscreen);
