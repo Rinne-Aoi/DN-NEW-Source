@@ -300,10 +300,18 @@ public class MainActivity extends Activity implements SensorEventListener {
 	}
 
 	private void alert(String message) {
-		new AlertDialog.Builder(this)
-				.setIcon(android.R.drawable.ic_dialog_alert)
-				.setTitle(R.string.app_name).setMessage(message)
-				.setPositiveButton(android.R.string.ok, null).create().show();
+		View view = this.getLayoutInflater().inflate(R.layout.customdialog,
+				null);
+		TextView txtTitle = (TextView) view.findViewById(R.id.title);
+		txtTitle.setText(R.string.app_name);
+		txtTitle.setTextColor(Color.WHITE);
+		txtTitle.setTextSize(20);
+		TextView message1 = (TextView) view.findViewById(R.id.message);
+		message1.setText(message);
+		message1.setTextColor(Color.WHITE);
+		AlertDialog.Builder builder = new Builder(MainActivity.this);
+		builder.setView(view);
+		builder.setPositiveButton(android.R.string.ok, null).create().show();
 	}
 
 	// Non Root Mode

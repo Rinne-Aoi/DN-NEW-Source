@@ -57,6 +57,8 @@
     <string name="applysetting">설정 저장</string>
     <string name="go">Go</string>
     <string name="savedsetting">설정을 저장했습니다.</string>
+    <string name="loading">다운로드 중입니다. 잠시만 기다리세요.</string>
+    <string name="downloadfailed">다운로드에 실패하였습니다. 다른 서버로 다운로드를 시도합니다.</string>
 
     <!-- Menu -->
     <string name="menu">메뉴</string>

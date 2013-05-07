@@ -1,4 +1,11 @@
+/* Download Files DreamNarae Server
+ * on the 5~10 Servers!
+ * 
+ * Edit : So/piane(www.sirospace.com) in Angeloid Team 
+ */
+
 package angeloid.dreamnarae;
+
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -11,17 +18,16 @@ import java.net.URLConnection;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
-import android.content.Context;
 import android.util.Log;
 
 public class DownloadProcess {
 
 	static URL finalURL;
 	static HttpURLConnection checklogic;
-	public static Context Context;
 	public static boolean isDownloadInProgress;
 	public static boolean isLowOnMemory;
 	public static boolean networkstate = false;
+<<<<<<< HEAD
 	public static String BASE_FOLDER;
 
 	// Server Link
@@ -29,6 +35,23 @@ public class DownloadProcess {
 	static URL url2;
 
 	public static void URLCheck(Context c) throws MalformedURLException {
+=======
+	public static String BASE_FOLDER = "/data/data/angeloid.dreamnarae/";
+	// Server Link
+	static URL url1;
+	static URL url2;
+	static URL url3;
+	static URL url4;
+	static URL url5;
+	static URL url6;
+	static URL url7;
+	static URL url8;
+	static URL url9;
+	static URL url10;
+	
+	// TODO 다중서버(최대한 많은 직 링크 서버를 넣는다. 최대한 많이-!)
+	public static void URLCheck() throws MalformedURLException {
+>>>>>>> Last One ISSUE! but Test Device is broken...
 		try {
 			url1 = new URL("http://gecp.kr/dn/dn2.1f.zip");
 			checklogic = (HttpURLConnection) url1.openConnection();
@@ -41,7 +64,12 @@ public class DownloadProcess {
 			} else {
 				Log.d("Download Process", "Server Clear!");
 				finalURL = url1;
+<<<<<<< HEAD
 				startdownload(c);
+=======
+				checklogic.disconnect();
+				startdownload();
+>>>>>>> Last One ISSUE! but Test Device is broken...
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -54,6 +82,7 @@ public class DownloadProcess {
 			checklogic = (HttpURLConnection) url2.openConnection();
 			checklogic.setConnectTimeout(3000);
 			checklogic.setReadTimeout(3000);
+<<<<<<< HEAD
 			checklogic.connect();
 			if (!(checklogic.getResponseCode() == 200)) {
 				Log.d("Download Process", "Server Failed!");
@@ -62,15 +91,191 @@ public class DownloadProcess {
 				Log.d("Download Process", "Server Clear!");
 				finalURL = url2;
 				startdownload(c);
+=======
+			checklogic.connect();
+			if (!(checklogic.getResponseCode() == 200)) {
+				Log.d("Download Process", "Server Failed!");
+				URLCheck3();
+			} else {
+				Log.d("Download Process", "Server Clear!");
+				finalURL = url2;
+				checklogic.disconnect();
+				startdownload();
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 
+	public static void URLCheck3() throws MalformedURLException {
+		try {
+			url3 = new URL("");
+			checklogic = (HttpURLConnection) url3.openConnection();
+			checklogic.setConnectTimeout(3000);
+			checklogic.setReadTimeout(3000);
+			checklogic.connect();
+			if (!(checklogic.getResponseCode() == 200)) {
+				Log.d("Download Process", "Server Failed!");
+				URLCheck4();
+			} else {
+				Log.d("Download Process", "Server Clear!");
+				finalURL = url3;
+				startdownload();
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void URLCheck4() throws MalformedURLException {
+		try {
+			url4 = new URL("");
+			checklogic = (HttpURLConnection) url4.openConnection();
+			checklogic.setConnectTimeout(3000);
+			checklogic.setReadTimeout(3000);
+			checklogic.connect();
+			if (!(checklogic.getResponseCode() == 200)) {
+				Log.d("Download Process", "Server Failed!");
+				URLCheck5();
+			} else {
+				Log.d("Download Process", "Server Clear!");
+				finalURL = url4;
+				startdownload();
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void URLCheck5() throws MalformedURLException {
+		try {
+			url5 = new URL("");
+			checklogic = (HttpURLConnection) url5.openConnection();
+			checklogic.setConnectTimeout(3000);
+			checklogic.setReadTimeout(3000);
+			checklogic.connect();
+			if (!(checklogic.getResponseCode() == 200)) {
+				Log.d("Download Process", "Server Failed!");
+				URLCheck6();
+			} else {
+				Log.d("Download Process", "Server Clear!");
+				finalURL = url5;
+				startdownload();
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void URLCheck6() throws MalformedURLException {
+		try {
+			url6 = new URL("");
+			checklogic = (HttpURLConnection) url6.openConnection();
+			checklogic.setConnectTimeout(3000);
+			checklogic.setReadTimeout(3000);
+			checklogic.connect();
+			if (!(checklogic.getResponseCode() == 200)) {
+				Log.d("Download Process", "Server Failed!");
+				URLCheck7();
+			} else {
+				Log.d("Download Process", "Server Clear!");
+				finalURL = url6;
+				startdownload();
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void URLCheck7() throws MalformedURLException {
+		try {
+			url7 = new URL("");
+			checklogic = (HttpURLConnection) url7.openConnection();
+			checklogic.setConnectTimeout(3000);
+			checklogic.setReadTimeout(3000);
+			checklogic.connect();
+			if (!(checklogic.getResponseCode() == 200)) {
+				Log.d("Download Process", "Server Failed!");
+				URLCheck8();
+			} else {
+				Log.d("Download Process", "Server Clear!");
+				finalURL = url7;
+				startdownload();
+>>>>>>> Last One ISSUE! but Test Device is broken...
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+<<<<<<< HEAD
 	public static void startdownload(Context cxnt) {
 		Context = cxnt;
 		BASE_FOLDER = Context.getFilesDir().getPath();
+=======
+	public static void URLCheck8() throws MalformedURLException {
+		try {
+			url8 = new URL("");
+			checklogic = (HttpURLConnection) url8.openConnection();
+			checklogic.setConnectTimeout(3000);
+			checklogic.setReadTimeout(3000);
+			checklogic.connect();
+			if (!(checklogic.getResponseCode() == 200)) {
+				Log.d("Download Process", "Server Failed!");
+				URLCheck9();
+			} else {
+				Log.d("Download Process", "Server Clear!");
+				finalURL = url8;
+				startdownload();
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void URLCheck9() throws MalformedURLException {
+		try {
+			url9 = new URL("");
+			checklogic = (HttpURLConnection) url9.openConnection();
+			checklogic.setConnectTimeout(3000);
+			checklogic.setReadTimeout(3000);
+			checklogic.connect();
+			if (!(checklogic.getResponseCode() == 200)) {
+				Log.d("Download Process", "Server Failed!");
+				URLCheck10();
+			} else {
+				Log.d("Download Process", "Server Clear!");
+				finalURL = url9;
+				startdownload();
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void URLCheck10() throws MalformedURLException {
+		try {
+			url10 = new URL("");
+			checklogic = (HttpURLConnection) url10.openConnection();
+			checklogic.setConnectTimeout(3000);
+			checklogic.setReadTimeout(3000);
+			checklogic.connect();
+			if (!(checklogic.getResponseCode() == 200)) {
+				Log.d("Download Process", "Server Failed!");
+				URLCheck();
+			} else {
+				Log.d("Download Process", "Server Clear!");
+				finalURL = url10;
+				startdownload();
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void startdownload() {
+		
+>>>>>>> Last One ISSUE! but Test Device is broken...
 		isLowOnMemory = false;
 		new RunUnZipThread().start();
 	}
@@ -81,6 +286,8 @@ public class DownloadProcess {
 			DownloadProcess.isDownloadInProgress = true;
 			URLConnection urlConnection;
 			try {
+				checklogic.disconnect();
+				Log.d("sa", String.valueOf(finalURL));
 				urlConnection = finalURL.openConnection();
 				ZipInputStream ZIStream = new ZipInputStream(
 						urlConnection.getInputStream());
@@ -90,6 +297,7 @@ public class DownloadProcess {
 
 					String innerFileName = BASE_FOLDER + File.separator
 							+ zipEntry.getName();
+					Log.d("sa", innerFileName);
 					File innerFile = new File(innerFileName);
 
 					if (innerFile.exists()) {
@@ -130,4 +338,8 @@ public class DownloadProcess {
 		}
 	};
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> Last One ISSUE! but Test Device is broken...

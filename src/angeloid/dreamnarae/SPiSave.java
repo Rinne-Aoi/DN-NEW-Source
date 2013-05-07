@@ -1,6 +1,7 @@
 package angeloid.dreamnarae;
 
 import java.io.File;
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Map;
@@ -18,6 +19,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.stericson.RootTools.RootTools;
 
 public class SPiSave extends Activity {
 
@@ -30,8 +34,8 @@ public class SPiSave extends Activity {
 	TextView LayoutTitle2;
 
 	// Kakao Link / Story Link
-		private String encoding = "UTF-8";
-		
+	private String encoding = "UTF-8";
+
 	// Slide Menu
 	Button main;
 	Button update;
@@ -99,7 +103,17 @@ public class SPiSave extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				Intent();
+				if (RootTools.isAccessGiven()) {
+					try {
+						DownloadProcess.URLCheck();
+						Intent();
+					} catch (MalformedURLException e) {
+						e.printStackTrace();
+					}
+				} else {
+					Toast.makeText(SPiSave.this, R.string.noroottoast, Toast.LENGTH_LONG)
+							.show();
+				}
 			}
 		});
 		if (new File("/system/98banner_dreamnarae_spisave").exists()) {
@@ -119,7 +133,6 @@ public class SPiSave extends Activity {
 		});
 	}
 
-	
 	/**
 	 * Send App data
 	 */
@@ -169,13 +182,22 @@ public class SPiSave extends Activity {
 	}
 
 	private void alert(String message) {
-		new AlertDialog.Builder(this)
-				.setIcon(android.R.drawable.ic_dialog_alert)
-				.setTitle(R.string.app_name).setMessage(message)
-				.setPositiveButton(android.R.string.ok, null).create().show();
+		View view = this.getLayoutInflater().inflate(R.layout.customdialog,
+				null);
+		TextView txtTitle = (TextView) view.findViewById(R.id.title);
+		txtTitle.setText(R.string.app_name);
+		txtTitle.setTextColor(Color.WHITE);
+		txtTitle.setTextSize(20);
+		TextView message1 = (TextView) view.findViewById(R.id.message);
+		message1.setText(message);
+		message1.setTextColor(Color.WHITE);
+		AlertDialog.Builder builder = new Builder(SPiSave.this);
+		builder.setView(view);
+		builder.setPositiveButton(android.R.string.ok, null).create().show();
 	}
+
 	public void Intent() {
-		Intent intent = new Intent(this, InstallProcess.class);
+		Intent intent = new Intent(this, RootToolsInstallProcess.class);
 		intent.putExtra("Version", "SPiSave");
 		startActivity(intent);
 	}
@@ -211,6 +233,7 @@ public class SPiSave extends Activity {
 							}
 						}).show();
 	}
+
 	public void mainscreen(View v) {
 		startActivity(new Intent(this, MainActivity.class));
 		finish();
@@ -252,7 +275,7 @@ public class SPiSave extends Activity {
 	}
 
 	public void spisavescreen(View v) {
-		//startActivity(new Intent(this, SPiSave.class));
+		// startActivity(new Intent(this, SPiSave.class));
 	}
 
 	public void deletescreen(View v) {

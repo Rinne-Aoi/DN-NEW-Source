@@ -57,7 +57,9 @@
     <string name="applysetting">Apply Settings</string>
     <string name="go">Go</string>
     <string name="savedsetting">Saved Settings</string>
-    
+    <string name="loading">Downloading.. Please Wait.</string>
+    <string name="downloadfailed">Download Failed. Try Another Server..</string>
+    <string name="setwallpaper">Set Wallpaper</string>
 
     <!-- Menu -->
     <string name="menu">Menu</string>

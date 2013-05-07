@@ -6,8 +6,15 @@ import java.util.Map;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+<<<<<<< HEAD
 import android.content.Intent;
 import android.content.pm.PackageManager.NameNotFoundException;
+=======
+import android.app.AlertDialog.Builder;
+import android.content.Intent;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.graphics.Color;
+>>>>>>> Last One ISSUE! but Test Device is broken...
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -155,10 +162,25 @@ public class Donate extends Activity {
 	}
 
 	private void alert(String message) {
+<<<<<<< HEAD
 		new AlertDialog.Builder(this)
 				.setIcon(android.R.drawable.ic_dialog_alert)
 				.setTitle(R.string.app_name).setMessage(message)
 				.setPositiveButton(android.R.string.ok, null).create().show();
+=======
+		View view = this.getLayoutInflater().inflate(R.layout.customdialog,
+				null);
+		TextView txtTitle = (TextView) view.findViewById(R.id.title);
+		txtTitle.setText(R.string.app_name);
+		txtTitle.setTextColor(Color.WHITE);
+		txtTitle.setTextSize(20);
+		TextView message1 = (TextView) view.findViewById(R.id.message);
+		message1.setText(message);
+		message1.setTextColor(Color.WHITE);
+		AlertDialog.Builder builder = new Builder(Donate.this);
+		builder.setView(view);
+		builder.setPositiveButton(android.R.string.ok, null).create().show();
+>>>>>>> Last One ISSUE! but Test Device is broken...
 	}
 
 	public void mainscreen(View v) {

@@ -6,6 +6,11 @@ package angeloid.dreamnarae;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.concurrent.TimeoutException;
+
+import com.stericson.RootTools.RootTools;
+import com.stericson.RootTools.exceptions.RootDeniedException;
+import com.stericson.RootTools.execution.CommandCapture;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -25,36 +30,35 @@ public class Boot_Script extends BroadcastReceiver {
 		boolean statboolean = prefs.getBoolean("bootcheck", false);
 		Log.d("Tab_MainActivity", String.valueOf(statboolean));
 		Boot_Script.bootcheck = statboolean;
-		if (!(new File("/system/bin/su").exists())
-				&& !(new File("/system/xbin/su").exists())
-				&& !(new File("/system/bin/busybox").exists())) {
+		if (!(RootTools.isAccessGiven())) {
 			Toast.makeText(c, R.string.noroottoast, Toast.LENGTH_LONG).show();
 		} else {
 			if (bootcheck == false) {
 				if (new File("/system/allflag").exists()) {
-					StringBuilder boot = new StringBuilder();
-					boot.append("busybox mount -o rw,remount /system;");
-					boot.append("sh /system/etc/install-recovery.sh;");
-					boot.append("busybox run-parts /system/etc/init.d;");
-					Helper.instantExec(c, boot.toString());
+					CommandCapture command = new CommandCapture(0,
+							"busybox mount -o rw,remount /system",
+							"sh /system/etc/install-recovery.sh",
+							"busybox run-parts /system/etc/init.d");
 					try {
-						Runtime.getRuntime().exec("su");
-						String[] rmcommand = { "su", "-c",
-								"rm /data/data/angeloid.dreamnarae/files/scriptrunner.sh" };
-						try {
-							Runtime.getRuntime().exec(rmcommand);
-							Toast.makeText(c, R.string.bootcomplete,
-									Toast.LENGTH_SHORT).show();
-						} catch (IOException e) {
-							Log.e("LOGTAG", "Couldn't Execute" + e.getMessage());
-						}
+						RootTools.getShell(true).add(command).waitForFinish();
+						Toast.makeText(c, R.string.bootcomplete,
+								Toast.LENGTH_SHORT).show();
+					} catch (InterruptedException e) {
+						e.printStackTrace();
 
-					} catch (Exception e) {
-						Log.e("LOGTAG", "Couldn't Execute" + e.getMessage());
+					} catch (IOException e) {
+						e.printStackTrace();
+
+					} catch (TimeoutException e) {
+						e.printStackTrace();
+
+					} catch (RootDeniedException e) {
+						e.printStackTrace();
+
 					}
+
 				}
 			}
 		}
-
 	}
 }
