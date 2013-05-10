@@ -1,3 +1,49 @@
+/*
+ * DreamNarae, Emotional Android Tools.
+    Copyright (C) 2013 Seo, Dong-Gil in Angeloid Team. 
+
+ This code is dual-licensed under the terms of the Apache License Version 2.0 and
+    the terms of the General Public License (GPL) Version 2.
+    You may use this code according to either of these licenses as is most appropriate
+    for your project on a case-by-case basis.
+
+    The terms of each license can be found in the root directory of this project's repository as well as at:
+
+    * http://www.apache.org/licenses/LICENSE-2.0
+    * http://www.gnu.org/licenses/gpl-2.0.txt
+ 
+    Unless required by applicable law or agreed to in writing, software
+    distributed under these Licenses is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See each License for the specific language governing permissions and
+    limitations under that License.
+
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+	
+	Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+ */
 package angeloid.dreamnarae;
 
 import java.io.File;
@@ -155,20 +201,21 @@ public class RootToolsInstallProcess extends Activity {
 		Delete_File();
 		RootTools.log("Test Log // Excute Test Command_spica");
 		RootTools.copyFile("/data/data/angeloid.dreamnarae/files/spica/00prop",
-				"/system/etc/init.d/", false, true);
+				"/system/etc/init.d/00prop", true, false);
 		RootTools.copyFile("/data/data/angeloid.dreamnarae/files/spica/01io",
-				"/system/etc/init.d", false, true);
+				"/system/etc/init.d/01io", true, false);
 		RootTools.copyFile("/data/data/angeloid.dreamnarae/files/spica/02freq",
-				"/system/etc/init.d", false, true);
+				"/system/etc/init.d/02freq", true, false);
 		RootTools.copyFile(
 				"/data/data/angeloid.dreamnarae/files/spica/03zipalign",
-				"/system/etc/init.d", false, true);
+				"/system/etc/init.d/03zipalign", true, false);
 		RootTools
 				.copyFile(
-						"/data/data/angeloid.dreamnarae/files/spica/98banne_dreamnarae_spica",
-						"/system/", false, true);
+						"/data/data/angeloid.dreamnarae/files/spica/98banner_dreamnarae_spica",
+						"/system/98banner_dreamnarae_spica", true, false);
 		RootTools.copyFile("/data/data/angeloid.dreamnarae/files/allflag",
-				"/system/", false, true);
+				"/system/allflag", true, false);
+		RootTools.remount("/system/", "rw");
 		CommandCapture command = new CommandCapture(0,
 				"chmod 755 /system/etc/init.d/00prop",
 				"chmod 755 /system/etc/init.d/01io",
@@ -183,27 +230,27 @@ public class RootToolsInstallProcess extends Activity {
 	public void Install_Pure() throws InterruptedException, IOException,
 			TimeoutException, RootDeniedException {
 		Delete_File();
-		RootTools.remount("/system/", "rw");
 		RootTools.log("Test Log // Excute Test Command_pure");
 		RootTools.copyFile("/data/data/angeloid.dreamnarae/files/pure/00cpu",
-				"/system/etc/init.d/00cpu", false, false);
+				"/system/etc/init.d/00cpu", true, false);
 		RootTools.copyFile(
 				"/data/data/angeloid.dreamnarae/files/pure/01memory",
-				"/system/etc/init.d/01memory", false, false);
+				"/system/etc/init.d/01memory", true, false);
 		RootTools.copyFile("/data/data/angeloid.dreamnarae/files/pure/02prop",
-				"/system/etc/init.d/02prop", false, false);
+				"/system/etc/init.d/02prop", true, false);
 		RootTools.copyFile(
 				"/data/data/angeloid.dreamnarae/files/pure/03cleaning",
-				"/system/etc/init.d/03cleaning", false, false);
+				"/system/etc/init.d/03cleaning", true, false);
 		RootTools.copyFile(
 				"/data/data/angeloid.dreamnarae/files/pure/04izpalign",
-				"/system/etc/init.d/04zipalign", false, false);
+				"/system/etc/init.d/04zipalign", true, false);
 		RootTools
 				.copyFile(
-						"/data/data/angeloid.dreamnarae/files/pure/98banne_dreamnarae_pure",
-						"/system/98banner_dreamnarae_pure", false, false);
+						"/data/data/angeloid.dreamnarae/files/pure/98banner_dreamnarae_pure",
+						"/system/98banner_dreamnarae_pure", true, false);
 		RootTools.copyFile("/data/data/angeloid.dreamnarae/files/allflag",
-				"/system/allflag", false, false);
+				"/system/allflag", true, false);
+		RootTools.remount("/system/", "rw");
 		CommandCapture command = new CommandCapture(0,
 				"chmod 755 /system/etc/init.d/00cpu",
 				"chmod 755 /system/etc/init.d/01memory",
@@ -219,26 +266,26 @@ public class RootToolsInstallProcess extends Activity {
 	public void Install_Miracle() throws InterruptedException, IOException,
 			TimeoutException, RootDeniedException {
 		Delete_File();
-		RootTools.remount("/system/", "rw");
 		RootTools.log("Test Log // Excute Test Command_miracle");
 		RootTools.copyFile(
 				"/data/data/angeloid.dreamnarae/files/miracle/00set",
-				"/system/etc/init.d/00set", false, false);
+				"/system/etc/init.d/00set", true, false);
 		RootTools.copyFile(
 				"/data/data/angeloid.dreamnarae/files/miracle/01vsls",
-				"/system/etc/init.d/01vsls", false, false);
+				"/system/etc/init.d/01vsls", true, false);
 		RootTools.copyFile(
 				"/data/data/angeloid.dreamnarae/files/miracle/02dch",
-				"/system/etc/init.d/02dch", false, false);
+				"/system/etc/init.d/02dch", true, false);
 		RootTools.copyFile(
 				"/data/data/angeloid.dreamnarae/files/pure/03zipalign",
-				"/system/etc/init.d/03zipalign", false, false);
+				"/system/etc/init.d/03zipalign", true, false);
 		RootTools
 				.copyFile(
-						"/data/data/angeloid.dreamnarae/files/miracle/98banne_dreamnarae_miracle",
-						"/system/98banner_dreamnarae_miracle", false, false);
+						"/data/data/angeloid.dreamnarae/files/miracle/98banner_dreamnarae_miracle",
+						"/system/98banner_dreamnarae_miracle", true, false);
 		RootTools.copyFile("/data/data/angeloid.dreamnarae/files/allflag",
-				"/system/allflag", false, false);
+				"/system/allflag", true, false);
+		RootTools.remount("/system/", "rw");
 		CommandCapture command = new CommandCapture(0,
 				"chmod 755 /system/etc/init.d/00set",
 				"chmod 755 /system/etc/init.d/01vsls",
@@ -254,19 +301,19 @@ public class RootToolsInstallProcess extends Activity {
 			TimeoutException, RootDeniedException {
 		Delete_File();
 		RootTools.log("Test Log // Excute Test Command_save");
-		RootTools.remount("/system/", "rw");
 		RootTools.copyFile("/data/data/angeloid.dreamnarae/files/save/00sp",
-				"/system/etc/init.d/00sp", false, false);
+				"/system/etc/init.d/00sp", true, false);
 		RootTools.copyFile("/data/data/angeloid.dreamnarae/files/save/01v",
-				"/system/etc/init.d/01v", false, false);
+				"/system/etc/init.d/01v", true, false);
 		RootTools.copyFile("/data/data/angeloid.dreamnarae/files/save/02deep",
-				"/system/etc/init.d/02deep", false, false);
+				"/system/etc/init.d/02deep", true, false);
 		RootTools
 				.copyFile(
-						"/data/data/angeloid.dreamnarae/files/save/98banne_dreamnarae_save",
-						"/system/98banner_dreamnarae_save", false, false);
+						"/data/data/angeloid.dreamnarae/files/save/98banner_dreamnarae_save",
+						"/system/98banner_dreamnarae_save", true, false);
 		RootTools.copyFile("/data/data/angeloid.dreamnarae/files/allflag",
-				"/system/allflag", false, false);
+				"/system/allflag", true, false);
+		RootTools.remount("/system/", "rw");
 		CommandCapture command = new CommandCapture(0,
 				"chmod 755 /system/etc/init.d/00sp",
 				"chmod 755 /system/etc/init.d/01v",
@@ -280,22 +327,21 @@ public class RootToolsInstallProcess extends Activity {
 	public void Install_Prev() throws InterruptedException, IOException,
 			TimeoutException, RootDeniedException {
 		Delete_File();
-		RootTools.remount("/system/", "rw");
 		RootTools.log("Test Log // Excute Test Command_prev");
 		RootTools.copyFile(
 				"/data/data/angeloid.dreamnarae/files/prev/00proppv",
-				"/system/etc/init.d/00proppv", false, false);
+				"/system/etc/init.d/00proppv", true, false);
 		RootTools.copyFile("/data/data/angeloid.dreamnarae/files/prev/01iopv",
-				"/system/etc/init.d/01iopv", false, false);
+				"/system/etc/init.d/01iopv", true, false);
 		RootTools.copyFile(
 				"/data/data/angeloid.dreamnarae/files/prev/02freqpv",
-				"/system/etc/init.d/02freqpv", false, false);
+				"/system/etc/init.d/02freqpv", true, false);
 		RootTools
 				.copyFile(
-						"/data/data/angeloid.dreamnarae/files/prev/98banne_dreamnarae_prev",
-						"/system/98banner_dreamnarae_prev", false, false);
+						"/data/data/angeloid.dreamnarae/files/prev/98banner_dreamnarae_prev",
+						"/system/98banner_dreamnarae_prev", true, false);
 		RootTools.copyFile("/data/data/angeloid.dreamnarae/files/allflag",
-				"/system/allflag", false, false);
+				"/system/allflag", true, false);
 		CommandCapture command = new CommandCapture(0,
 				"chmod 755 /system/etc/init.d/00proppv",
 				"chmod 755 /system/etc/init.d/01iopv",
@@ -310,21 +356,21 @@ public class RootToolsInstallProcess extends Activity {
 			TimeoutException, RootDeniedException {
 		Delete_File();
 		RootTools.log("Test Log // Excute Test Command_spisave");
-		RootTools.remount("/system/", "rw");
 		RootTools.copyFile(
 				"/data/data/angeloid.dreamnarae/files/spisave/00prop",
-				"/system/etc/init.d/00prop", false, false);
+				"/system/etc/init.d/00prop", true, false);
 		RootTools.copyFile("/data/data/angeloid.dreamnarae/files/spisave/01io",
-				"/system/etc/init.d/01io", false, false);
+				"/system/etc/init.d/01io", true, false);
 		RootTools.copyFile(
 				"/data/data/angeloid.dreamnarae/files/spisave/02freq",
-				"/system/etc/init.d/02freq", false, false);
+				"/system/etc/init.d/02freq", true, false);
 		RootTools
 				.copyFile(
-						"/data/data/angeloid.dreamnarae/files/spisave/98banne_dreamnarae_spisave",
-						"/system/98banner_dreamnarae_pure", false, false);
+						"/data/data/angeloid.dreamnarae/files/spisave/98banner_dreamnarae_spisave",
+						"/system/98banner_dreamnarae_pure", true, false);
 		RootTools.copyFile("/data/data/angeloid.dreamnarae/files/allflag",
-				"/system/allflag", false, false);
+				"/system/allflag", true, false);
+		RootTools.remount("/system/", "rw");
 		CommandCapture command = new CommandCapture(0,
 				"chmod 755 /system/etc/init.d/00prop",
 				"chmod 755 /system/etc/init.d/01io",
@@ -339,20 +385,20 @@ public class RootToolsInstallProcess extends Activity {
 			TimeoutException, RootDeniedException {
 		Delete_File();
 		RootTools.log("Test Log // Excute Test Command_brand");
-		RootTools.remount("/system/", "rw");
 		RootTools.copyFile("/data/data/angeloid.dreamnarae/files/brand/00b",
-				"/system/etc/init.d/00b", false, false);
+				"/system/etc/init.d/00b", true, false);
 		RootTools.copyFile("/data/data/angeloid.dreamnarae/files/brand/01r",
-				"/system/etc/init.d/01r", false, false);
+				"/system/etc/init.d/01r", true, false);
 		RootTools.copyFile(
 				"/data/data/angeloid.dreamnarae/files/spisave/02and",
-				"/system/etc/init.d/02and", false, false);
+				"/system/etc/init.d/02and", true, false);
 		RootTools
 				.copyFile(
-						"/data/data/angeloid.dreamnarae/files/brand/98banne_dreamnarae_brand",
-						"/system/98banner_dreamnarae_brand", false, false);
+						"/data/data/angeloid.dreamnarae/files/brand/98banner_dreamnarae_brand",
+						"/system/98banner_dreamnarae_brand", true, false);
 		RootTools.copyFile("/data/data/angeloid.dreamnarae/files/allflag",
-				"/system/allflag", false, false);
+				"/system/allflag", true, false);
+		RootTools.remount("/system/", "rw");
 		CommandCapture command = new CommandCapture(0,
 				"chmod 755 /system/etc/init.d/00b",
 				"chmod 755 /system/etc/init.d/01r",
@@ -365,7 +411,7 @@ public class RootToolsInstallProcess extends Activity {
 
 	public static void Delete_File() throws InterruptedException, IOException,
 			TimeoutException, RootDeniedException {
-		RootTools.remount("/system/", "rw");
+		RootTools.remount("/system/", "RW");
 		CommandCapture command = new CommandCapture(0,
 				"rm /system/98banner_dreamnarae_spica",
 				"rm /system/98banner_dreamnarae_miracle",
@@ -436,7 +482,23 @@ public class RootToolsInstallProcess extends Activity {
 						@Override
 						public void onClick(DialogInterface dialog, int which) {
 							dialog.dismiss();
-							RootTools.restartAndroid();
+							try {
+								CommandCapture command = new CommandCapture(0,
+										"reboot");
+								try {
+									RootTools.getShell(true).add(command)
+											.waitForFinish();
+								} catch (InterruptedException e) {
+									e.printStackTrace();
+								} catch (TimeoutException e) {
+									e.printStackTrace();
+								} catch (RootDeniedException e) {
+									e.printStackTrace();
+								}
+							} catch (IOException e) {
+								e.printStackTrace();
+							}
+
 						}
 					})
 					.setNegativeButton(R.string.no,
@@ -445,6 +507,7 @@ public class RootToolsInstallProcess extends Activity {
 								public void onClick(DialogInterface dialog,
 										int which) {
 									dialog.dismiss();
+									finish();
 								}
 							}).show();
 		} else {
@@ -517,7 +580,22 @@ public class RootToolsInstallProcess extends Activity {
 						@Override
 						public void onClick(DialogInterface dialog, int which) {
 							dialog.dismiss();
-							RootTools.restartAndroid();
+							try {
+								CommandCapture command = new CommandCapture(0,
+										"reboot");
+								try {
+									RootTools.getShell(true).add(command)
+											.waitForFinish();
+								} catch (InterruptedException e) {
+									e.printStackTrace();
+								} catch (TimeoutException e) {
+									e.printStackTrace();
+								} catch (RootDeniedException e) {
+									e.printStackTrace();
+								}
+							} catch (IOException e) {
+								e.printStackTrace();
+							}
 						}
 					})
 					.setNegativeButton(R.string.no,
@@ -526,6 +604,7 @@ public class RootToolsInstallProcess extends Activity {
 								public void onClick(DialogInterface dialog,
 										int which) {
 									dialog.dismiss();
+									finish();
 
 								}
 							}).show();

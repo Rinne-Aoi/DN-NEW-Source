@@ -60,6 +60,7 @@
     <string name="loading">Downloading.. Please Wait.</string>
     <string name="downloadfailed">Download Failed. Try Another Server..</string>
     <string name="setwallpaper">Set Wallpaper</string>
+    <string name="ishavekatok">Not installed KakaoTalk</string>
 
     <!-- Menu -->
     <string name="menu">Menu</string>

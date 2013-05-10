@@ -429,43 +429,11 @@
                     android:background="#CCCCCC" />
 
                 <TextView
-                    android:id="@+id/setting2_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_below="@+id/view1"
-                    android:text="@string/setting2_title"
-                    android:textAppearance="?android:attr/textAppearanceLarge" />
-
-                <TextView
-                    android:id="@+id/setting2_summary"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_below="@+id/setting2_title"
-                    android:text="@string/setting2_summary" />
-
-                <CheckBox
-                    android:id="@+id/setting2_check"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBottom="@+id/setting2_summary"
-                    android:layout_alignParentRight="true" />
-
-                <View
-                    android:id="@+id/View01"
-                    android:layout_width="fill_parent"
-                    android:layout_height="2sp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_below="@+id/setting2_summary"
-                    android:background="#CCCCCC" />
-
-                <TextView
                     android:id="@+id/setting3_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
-                    android:layout_below="@+id/View01"
+                    android:layout_below="@+id/view1"
                     android:text="@string/setting3_title"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -526,7 +494,8 @@
                     android:layout_alignParentRight="true"
                     android:layout_alignTop="@+id/setting3_title"
                      android:background="#00000000"
-                    android:text="@string/go" />
+                    android:text="@string/go"
+                    android:textSize="11pt" />
 
                 <Button
                     android:id="@+id/go2"
@@ -535,7 +504,8 @@
                     android:layout_alignParentRight="true"
                     android:layout_alignTop="@+id/View02"
                     android:background="#00000000"
-                    android:text="@string/go" />
+                    android:text="@string/go"
+                    android:textSize="11pt" />
 
             </RelativeLayout>
 

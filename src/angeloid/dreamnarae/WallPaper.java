@@ -26,7 +26,6 @@ import android.widget.TextView;
 @SuppressWarnings("deprecation")
 public class WallPaper extends Activity implements
 		AdapterView.OnItemSelectedListener, OnClickListener {
-
 	private Gallery mGallery;
 	private ImageView mImageView;
 	private TextView mInfoView;
@@ -50,6 +49,7 @@ public class WallPaper extends Activity implements
 		mGallery = (Gallery) findViewById(R.id.gallery);
 		mGallery.setAdapter(new ImageAdapter(this));
 		mGallery.setOnItemSelectedListener(this);
+		mGallery.setCallbackDuringFling(false);
 
 		findViewById(R.id.set).setOnClickListener(this);
 
@@ -101,7 +101,9 @@ public class WallPaper extends Activity implements
 		}
 	}
 
-	public void onItemSelected(AdapterView<?> parent, View v, int position, long id) {
+	public void onItemSelected(
+			@SuppressWarnings("rawtypes") AdapterView parent, View v,
+			int position, long id) {
 		if (mLoader != null
 				&& mLoader.getStatus() != WallpaperLoader.Status.FINISHED) {
 			mLoader.cancel();
@@ -131,7 +133,8 @@ public class WallPaper extends Activity implements
 		}
 	}
 
-	public void onNothingSelected(AdapterView<?> parent) {
+	public void onNothingSelected(
+			@SuppressWarnings("rawtypes") AdapterView parent) {
 	}
 
 	private class ImageAdapter extends BaseAdapter {

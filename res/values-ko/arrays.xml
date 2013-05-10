@@ -1,26 +1,54 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string-array name="developinfo">
-        <item>드림나래 (Root)</item>
-        <item>감성 안드로이드 트윅 어플리케이션</item>
+        <item>드림나래</item>
+        <item>감성 안드로이드 툴</item>
         <item>제작 : Angeloid Team</item>
-        <item>리더 : 린네(정지연)</item>
-        <item>앱 : 소피아네(서동길)</item>
-        <item>트윅 : 리에(이은희)</item>
-        <item>트윅 : 아이렌(이정연)</item>
+        <item>리더 : 아오이 린네(青井 りんえ)</item>
+        <item>앱 : 소피아네 (서동길)</item>
+        <item>트윅 : 리에 (이은희)</item>
+        <item>트윅 : 아이렌 (이정연)</item>
         <item>트윅 : 아야나 (이은정)</item>
-        <item>디자인 : Ghana(염승우)</item>
-        <item>팀원 :  Primes</item>
-        <item>팀원 :  ITCraft</item>
-        <item>팀원 :  NEON</item>
-        <item>이 앱은 아모레퍼시픽의 아리따글꼴을 사용하여 디자인되었습니다.</item>
-        <item>그리고 코이카키의 팀원들(반, 양파, 도로시, 쿠로, Toxic, 보쿠, 시로, 니스)</item>
-        <item>그리고 많은 사용자들!</item>
-        <item>감사합니다!</item>
+		<item>트윅 : 유우키 카리나(誘起 かりな)</item>
+		<item>메인 디자인 : 아오이 린네(青井 りんね)</item>
+        <item>보조 디자인 : Ghana(염승우)</item>
+		<item>디버그 : ITCraft</item>
+		<item>음성 : Dorothy</item>
+        <item>팀원 : Primes</item>
+        <item>팀원 : NEON</item>
+		<item>메인 서버 : 충북고등학교 환경동아리 아우Re</item>
+		<item>보조 서버 : 미잘 서버(Thanks to 해삼말미잘)</item>
+		<item>라이브러리 : SlideHolder(by Dmitry Zaitsev)</item>
+		<item>라이브러리 : RootTools(by stericson)</item>
+		<item>이 앱은 아모레퍼시픽의 아리따글꼴을 사용하여 디자인되었습니다.</item>
+        <item>사용해주시는 모든 분들, 감사합니다!</item>
     </string-array>
     <string-array name="updateinfo">
-        <item>버전 2.1 (릴리즈 : GMT +9 서울, 도쿄)</item>
+        <item>드림나래 버전 2.1</item>
+		<item>릴리즈 : 2013년 5월 12일</item>
+		<item>"드림나래 4번째 메이저 업데이트, 'All New DreamNarae'"</item>
+		<item>엔젤로이드만의 감성이 풍부하게 들어간 디자인과, 새롭고 재미있는 기능으로 태어난 드림나래를 즐겨보세요!</item>
+		<item>업데이트 : 드림나래 SPiCa 6.0</item>
+		<item>업데이트 : 드림나래 Pure 2.0</item>
+		<item>기능 추가 : 2번째 이스터에그</item>
+		<item>기능 추가 : 엔젤로이드 로고 배경화면</item>
+		<item>기능 추가 : (한국어) 음성 지원(매우 귀엽습니다 :D)</item>
+		<item>기능 추가 : 다중 서버 다운로드</item>
+		<item>기능 추가 : 카카오톡 홍보</item>
+		<item>기능 추가 : 논 루트 모드</item>
+		<item>기능 추가 : 라이센스 화면</item>
+		<item>기능 개선 : 레이아웃 변경</item>
+		<item>기능 개선 : 라이브러리 변경</item>
+		<item>기능 개선 : +40 이스터에그</item>
+		<item>기능 개선 : 폰트 변경(아리따 글꼴)</item>
+		<item>기능 개선 : 부팅 스크립트</item>
+		<item>기능 개선 : 스플래시 이미지 변경</item>
+		<item>기능 개선 : 필요없는 소스 정리</item>
+		<item>기능 개선 : 아이콘 변경</item>
+		<item>기능 개선 : 커스텀 리스트뷰</item>
+		<item>기능 개선 : 커스텀 다이알로그</item>
+		<item>기능 개선 : 버그 리포트</item>
+		<item>기능 개선 : 루팅 확인</item>
     </string-array>
 
 </resources> 

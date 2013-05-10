@@ -1,25 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="developinfo">
-        <item>DreamNarae (Root)</item>
-        <item>Emotional Android Tweak Application</item>
-        <item>Made by Angeloid Team</item>
-        <item>Leader : Rinne(Ji-Yeon, Jung)</item>
-        <item>APP : Sopiane (Dong Gil, Seo)</item>
-        <item>Tweak : Rie (Eun-Hee, Lee)</item>
-        <item>Tweak : Iren (Jung-Yeon, Lee)</item>
-        <item>Tweak : Ayana (Eun-Jung, Lee)</item>
-        <item>Design : Ghana(Seung-Woo, Yeom)</item>
-        <item>Team Member :  Primes</item>
-        <item>Team Member : ITCraft</item>
-        <item>Team Member : NEON</item>
-        <item>App has been designed using the the Arida font of Amore Pacific</item>
-        <item>and, Project-Koikaki Team in Angeloid Team</item>
-        <item>and many Users!</item>
-        <item>Thank You!</item>
+        <item>DreamNarae</item>
+        <item>Emotional Android Tools</item>
+        <item>Produced by Angeloid Team</item>
+        <item>Leader : Rinne Aoi (青井 りんえ)</item>
+        <item>Application : Sopiane (Dong Gil, Seo)</item>
+        <item>Tweak : Rie (Eun Hee, Lee)</item>
+        <item>Tweak : Iren (Jung Yeon, Lee)</item>
+        <item>Tweak : Ayana (Eun Jung, Lee)</item>
+		<item>Tweak : Karina Yuuki(誘起 かりな)</item>
+		<item>Main Design : Rinne Aoi(青井 りんね)</item>
+        <item>Sub Design : Ghana(Seung-Woo, Yeom)</item>
+		<item>Debug : ITCraft</item>
+		<item>Voice : Dorothy</item>
+        <item>Team : Primes</item>
+        <item>Team : NEON</item>
+		<item>Main Server : Chung-Buk High School Environment Club AuRe(아우Re)</item>
+		<item>Sub Server : Mizal Server(Thank to Hesam Malmizal)</item>
+		<item>Library : SlideHolder(by Dmitry Zaitsev)</item>
+		<item>Library : RootTools(by stericson)</item>
+		<item>"This Design use "Arita Font" which made by "AmorePersipic""5</item>
+        <item>All of People use DreamNarae, Thanks You!</item>
     </string-array>
     <string-array name="updateinfo">
-        <item>Ver 2.1 (Release : GMT +9 Seoul, Tokyo)</item>
+        <item>DreamNarae Version 2.1</item>
+		<item>Release : </item>
+		<item>"DreamNarae 4th Major Update, 'All New DreamNarae'"</item>
+		<item>full of Emotional Design by Angeloid / Enjoy Re-born DreamNarae which have many New and Fun Fuctions!</item>
+		<item>Update : DreamNarae SPiCa 6.0</item>
+		<item>Update : DreamNarae Pure 2.0</item>
+		<item>New : 2rd Easter Egg(Fun Content!)</item>
+		<item>New : Logo Wallpaer of Angeloid Team</item>
+		<item>New : (Korean) Support Voice! (Very Cute Voice:D)</item>
+		<item>New : Muitiple Download Server</item>
+		<item>New : Promote DreamNarae by Kakao Talk!</item>
+		<item>New : Non-Root Mode</item>
+		<item>New : License Screen</item>
+		<item>Edit : Edit Layout(Design By Rinne Aoi)</item>
+		<item>Edit : New Library for Stability Application</item>
+		<item>Edit : +40 first Easter Egg</item>
+		<item>Edit : Font (Arita Font)</item>
+		<item>Edit : Boot Script</item>
+		<item>Edit : Splash Image</item>
+		<item>Edit : Clean Useless Soruce</item>
+		<item>Edit : Icon</item>
+		<item>Edit : Custom ListView</item>
+		<item>Edit : Custom Dialog</item>
+		<item>Edit : Bug Report</item>
+		<item>Edit : Root Check</item>
     </string-array>
 
-</resources>
+</resources> 
