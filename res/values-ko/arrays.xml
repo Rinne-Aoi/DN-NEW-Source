@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="developinfo">
         <item>드림나래</item>
@@ -49,6 +49,9 @@
 		<item>기능 개선 : 커스텀 다이알로그</item>
 		<item>기능 개선 : 버그 리포트</item>
 		<item>기능 개선 : 루팅 확인</item>
+		<item>기능 개선 : 드림나래 트윅 적용</item>
+		<item>기능 개선 : 빠른 트윅 적용 확인 알고리즘</item>
+		<item>기능 제거 : 부팅 스크립트 해제 옵션</item>
     </string-array>
 
 </resources> 
