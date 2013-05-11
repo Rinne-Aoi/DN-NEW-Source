@@ -179,6 +179,17 @@ public class SPiSave extends Activity {
 			}
 		});
 	}
+	
+	@Override
+	public void onResume() {
+		super.onResume();
+		if (new File("/system/98banner_dreamnarae_spisave").exists()) {
+			apply.setEnabled(false);
+			apply.setFocusable(false);
+			imageview.setImageResource(R.drawable.apply);
+		} else {
+		}
+	}
 
 	/**
 	 * Send App data

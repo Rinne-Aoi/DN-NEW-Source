@@ -1,3 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <lint>
+    <issue id="ExportedActivity">
+        <ignore path="AndroidManifest.xml" />
+    </issue>
+    <issue id="ExtraTranslation">
+        <ignore path="res\values-ko\strings.xml" />
+    </issue>
+    <issue id="IconDensities" severity="ignore">
+        <ignore path="" />
+    </issue>
+    <issue id="UnusedResources" severity="ignore" />
+    <issue id="UselessLeaf" severity="ignore" />
+    <issue id="UselessParent" severity="ignore" />
 </lint>

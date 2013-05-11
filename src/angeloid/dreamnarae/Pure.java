@@ -184,6 +184,17 @@ public class Pure extends Activity {
 	}
 	
 	@Override
+	public void onResume() {
+		super.onResume();
+		if (new File("/system/98banner_dreamnarae_pure").exists()) {
+			apply.setEnabled(false);
+			apply.setFocusable(false);
+			imageview.setImageResource(R.drawable.apply);
+		} else {
+		}
+	}
+	
+	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		if (keyCode == KeyEvent.KEYCODE_BACK) {
 

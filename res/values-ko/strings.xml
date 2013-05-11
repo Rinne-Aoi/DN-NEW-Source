@@ -61,6 +61,8 @@
     <string name="downloadfailed">다운로드에 실패하였습니다. 다른 서버로 다운로드를 시도합니다.</string>
     <string name="ishavekatok">카카오톡이 설치되있지 않습니다.</string>
     <string name="setwallpaper">배경화면 설정</string>
+    <string name="introduce1">매우 귀여운 설명을 들으려면</string>
+    <string name="introduce2">이미 재생중입니다. 부디 즐겨주세요!</string>
 
     <!-- Menu -->
     <string name="menu">메뉴</string>

@@ -249,6 +249,17 @@ public class Prev extends Activity {
 							}
 						}).show();
 	}
+	
+	@Override
+	public void onResume() {
+		super.onResume();
+		if (new File("/system/98banner_dreamnarae_prev").exists()) {
+			apply.setEnabled(false);
+			apply.setFocusable(false);
+			imageview.setImageResource(R.drawable.apply);
+		} else {
+		}
+	}
 
 	/**
 	 * Send App data

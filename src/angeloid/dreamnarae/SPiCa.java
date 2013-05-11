@@ -250,6 +250,17 @@ public class SPiCa extends Activity {
 		return super.onKeyDown(keyCode, event);
 	}
 	
+	@Override
+	public void onResume() {
+		super.onResume();
+		if (new File("/system/98banner_dreamnarae_spica").exists()) {
+			apply.setEnabled(false);
+			apply.setFocusable(false);
+			imageview.setImageResource(R.drawable.apply);
+		} else {
+		}
+	}
+	
 	/**
 	 * Send App data
 	 */

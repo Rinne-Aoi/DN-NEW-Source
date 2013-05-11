@@ -177,6 +177,17 @@ public class Save extends Activity {
 			}
 		});
 	}
+	
+	@Override
+	public void onResume() {
+		super.onResume();
+		if (new File("/system/98banner_dreamnarae_save").exists()) {
+			apply.setEnabled(false);
+			apply.setFocusable(false);
+			imageview.setImageResource(R.drawable.apply);
+		} else {
+		}
+	}
 
 	public void Intent() {
 		Intent intent = new Intent(this, RootToolsInstallProcess.class);

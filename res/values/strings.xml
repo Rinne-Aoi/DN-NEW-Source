@@ -47,8 +47,6 @@
     <string name="koreaaccount">Korea Account Donate(Account Holder : Dong Gil, Seo)</string>
     <string name="setting1_title">Disable Boot DreamNarae</string>
     <string name="setting1_summary">Disable it if device support init.d</string>
-    <string name="setting2_title">Enable Main Screen Voice</string>
-    <string name="setting2_summary">Enable it if you want Cute Korean voice :D</string>
     <string name="setting3_title">Send mail to us!</string>
     <string name="setting3_summary">Send Mail to Angeloid Team!</string>
     <string name="setting4_title">DreamNarae License</string>
@@ -57,11 +55,12 @@
     <string name="applysetting">Apply Settings</string>
     <string name="go">Go</string>
     <string name="savedsetting">Saved Settings</string>
-    <string name="loading">Downloading.. Please Wait.</string>
     <string name="downloadfailed">Download Failed. Try Another Server..</string>
     <string name="setwallpaper">Set Wallpaper</string>
     <string name="ishavekatok">Not installed KakaoTalk</string>
-
+    <string name="introduce1">To listen to a Description</string>
+    <string name="introduce2">It is already in play.</string>
+    
     <!-- Menu -->
     <string name="menu">Menu</string>
     <string name="main">Main Screen</string>
