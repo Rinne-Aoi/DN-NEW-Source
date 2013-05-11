@@ -49,6 +49,9 @@
 		<item>Edit : Custom Dialog</item>
 		<item>Edit : Bug Report</item>
 		<item>Edit : Root Check</item>
+		<item>Edit : Apply DreamNarae Tweak</item>
+		<item>Edit : Fast Check of DreamNarae Tweak</item>
+		<item>Delete : Option of Disable Boot Script</item>
     </string-array>
 
 </resources> 
