@@ -52,6 +52,7 @@
 		<item>기능 개선 : 드림나래 트윅 적용</item>
 		<item>기능 개선 : 빠른 트윅 적용 확인 알고리즘</item>
 		<item>기능 제거 : 부팅 스크립트 해제 옵션</item>
+		<item>기능 제거 : 트윅 일부 파일(벽돌 가능성을 줄이기 위한 방안)</item>
     </string-array>
 
 </resources> 
