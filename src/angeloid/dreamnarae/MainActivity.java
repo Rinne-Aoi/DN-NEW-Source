@@ -269,11 +269,6 @@ public class MainActivity extends Activity implements SensorEventListener {
 						}
 					}).show();
 		}
-/* Notice!
- *  Now, Root Check at OnCreate() is disable.
- *  Many Device has Crash OnCreate()
- *  So, We disable This option.
- */
 	}
 
 	private void initializeTypefaces() {
