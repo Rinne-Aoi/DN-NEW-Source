@@ -52,6 +52,7 @@
 		<item>Edit : Apply DreamNarae Tweak</item>
 		<item>Edit : Fast Check of DreamNarae Tweak</item>
 		<item>Delete : Option of Disable Boot Script</item>
+		<item>Delete : Some Tweak File(Measures to reduce the possibility of a brick.)</item>
     </string-array>
 
 </resources> 
