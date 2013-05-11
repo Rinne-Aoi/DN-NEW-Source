@@ -67,6 +67,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Developer_Info extends Activity {
 
@@ -154,17 +155,29 @@ public class Developer_Info extends Activity {
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				if (position == 0) {
-					int i = Integer.parseInt(man) - 1;
-					man = String.valueOf(i);
-					Log.d("Tab_MainActivity", man);
-					if (man.equals("0")) {
-						man = "10";
-						mplayer.start();
-					}
+					mplayer();
 				}
+
 			}
 
 		});
+	}
+
+	public void mplayer() {
+
+		int i = Integer.parseInt(man) - 1;
+		man = String.valueOf(i);
+		if (mplayer.isPlaying() == false) {
+			Log.d("Tab_MainActivity", man);
+		}
+		if (man.equals("0")) {
+			man = "10";
+			mplayer.start();
+			if (mplayer.isPlaying() == true) {
+				Toast.makeText(this, R.string.introduce2, Toast.LENGTH_SHORT)
+						.show();
+			}
+		}
 	}
 
 	/**
