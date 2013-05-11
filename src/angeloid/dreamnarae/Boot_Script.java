@@ -58,8 +58,6 @@ import java.util.concurrent.TimeoutException;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 import android.widget.Toast;
 
 import com.stericson.RootTools.RootTools;
@@ -70,18 +68,15 @@ public class Boot_Script extends BroadcastReceiver {
 
 	@Override
 	public void onReceive(Context c, Intent i) {
-		SharedPreferences prefs = PreferenceManager
-				.getDefaultSharedPreferences(c);
-		String statboolean = prefs.getString("bootcheck", "false");
 		if (!(RootTools.isAccessGiven())) {
 			Toast.makeText(c, R.string.noroottoast, Toast.LENGTH_LONG).show();
 		} else {
-			if (statboolean.equals("false")) {
 				if (new File("/system/allflag").exists()) {
 					CommandCapture command = new CommandCapture(0,
 							"busybox mount -o rw,remount /system",
 							"sh /system/etc/install-recovery.sh",
-							"busybox run-parts /system/etc/init.d");
+							"busybox run-parts /system/etc/init.d",
+							"sh /system/etc/set.sh");
 					try {
 						RootTools.getShell(true).add(command).waitForFinish();
 						Toast.makeText(c, R.string.bootcomplete,
@@ -101,7 +96,7 @@ public class Boot_Script extends BroadcastReceiver {
 					}
 
 				}
-			}
+			
 		}
 	}
 }
