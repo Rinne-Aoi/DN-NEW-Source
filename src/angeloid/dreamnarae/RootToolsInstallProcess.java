@@ -9,8 +9,8 @@
 
     The terms of each license can be found in the root directory of this project's repository as well as at:
 
-    * http://www.apache.org/licenses/LICENSE-2.0
-    * http://www.gnu.org/licenses/gpl-2.0.txt
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.gnu.org/licenses/gpl-2.0.txt
  
     Unless required by applicable law or agreed to in writing, software
     distributed under these Licenses is distributed on an "AS IS" BASIS,
@@ -215,6 +215,8 @@ public class RootToolsInstallProcess extends Activity {
 						"/system/98banner_dreamnarae_spica", true, false);
 		RootTools.copyFile("/data/data/angeloid.dreamnarae/files/allflag",
 				"/system/allflag", true, false);
+		RootTools.copyFile("/data/data/angeloid.dreamnarae/files/spica/set.sh",
+				"/system/etc/set.sh", true, false);
 		RootTools.remount("/system/", "rw");
 		CommandCapture command = new CommandCapture(0,
 				"chmod 755 /system/etc/init.d/00prop",
@@ -222,6 +224,7 @@ public class RootToolsInstallProcess extends Activity {
 				"chmod 755 /system/etc/init.d/02freq",
 				"chmod 755 /system/etc/init.d/03zipalign",
 				"chmod 755 /system/98banner_dreamnarae_spica",
+				"chmod 755 /system/etc/set.sh",
 				"chmod 755 /system/allflag");
 		RootTools.getShell(true).add(command).waitForFinish();
 		installcomplete();
@@ -250,6 +253,8 @@ public class RootToolsInstallProcess extends Activity {
 						"/system/98banner_dreamnarae_pure", true, false);
 		RootTools.copyFile("/data/data/angeloid.dreamnarae/files/allflag",
 				"/system/allflag", true, false);
+		RootTools.copyFile("/data/data/angeloid.dreamnarae/files/pure/set.sh",
+				"/system/etc/set.sh", true, false);
 		RootTools.remount("/system/", "rw");
 		CommandCapture command = new CommandCapture(0,
 				"chmod 755 /system/etc/init.d/00cpu",
@@ -257,6 +262,7 @@ public class RootToolsInstallProcess extends Activity {
 				"chmod 755 /system/etc/init.d/02prop",
 				"chmod 755 /system/etc/init.d/03cleaning",
 				"chmod 755 /system/etc/init.d/04zipalign",
+				"chmod 755 /system/etc/set.sh",
 				"chmod 755 /system/98banner_dreamnarae_pure",
 				"chmod 755 /system/allflag");
 		RootTools.getShell(true).add(command).waitForFinish();
@@ -283,6 +289,9 @@ public class RootToolsInstallProcess extends Activity {
 				.copyFile(
 						"/data/data/angeloid.dreamnarae/files/miracle/98banner_dreamnarae_miracle",
 						"/system/98banner_dreamnarae_miracle", true, false);
+		RootTools.copyFile(
+				"/data/data/angeloid.dreamnarae/files/miracle/set.sh",
+				"/system/etc/set.sh", true, false);
 		RootTools.copyFile("/data/data/angeloid.dreamnarae/files/allflag",
 				"/system/allflag", true, false);
 		RootTools.remount("/system/", "rw");
@@ -291,6 +300,7 @@ public class RootToolsInstallProcess extends Activity {
 				"chmod 755 /system/etc/init.d/01vsls",
 				"chmod 755 /system/etc/init.d/02dch",
 				"chmod 755 /system/etc/init.d/03zipalign",
+				"chmod 755 /system/etc/set.sh",
 				"chmod 755 /system/98banner_dreamnarae_miracle",
 				"chmod 755 /system/allflag");
 		RootTools.getShell(true).add(command).waitForFinish();
@@ -311,6 +321,8 @@ public class RootToolsInstallProcess extends Activity {
 				.copyFile(
 						"/data/data/angeloid.dreamnarae/files/save/98banner_dreamnarae_save",
 						"/system/98banner_dreamnarae_save", true, false);
+		RootTools.copyFile("/data/data/angeloid.dreamnarae/files/save/set.sh",
+				"/system/etc/set.sh", true, false);
 		RootTools.copyFile("/data/data/angeloid.dreamnarae/files/allflag",
 				"/system/allflag", true, false);
 		RootTools.remount("/system/", "rw");
@@ -318,6 +330,7 @@ public class RootToolsInstallProcess extends Activity {
 				"chmod 755 /system/etc/init.d/00sp",
 				"chmod 755 /system/etc/init.d/01v",
 				"chmod 755 /system/etc/init.d/02deep",
+				"chmod 755 /system/etc/set.sh",
 				"chmod 755 /system/98banner_dreamnarae_save",
 				"chmod 755 /system/allflag");
 		RootTools.getShell(true).add(command).waitForFinish();
@@ -340,12 +353,15 @@ public class RootToolsInstallProcess extends Activity {
 				.copyFile(
 						"/data/data/angeloid.dreamnarae/files/prev/98banner_dreamnarae_prev",
 						"/system/98banner_dreamnarae_prev", true, false);
+		RootTools.copyFile("/data/data/angeloid.dreamnarae/files/prev/set.sh",
+				"/system/etc/set.sh", true, false);
 		RootTools.copyFile("/data/data/angeloid.dreamnarae/files/allflag",
 				"/system/allflag", true, false);
 		CommandCapture command = new CommandCapture(0,
 				"chmod 755 /system/etc/init.d/00proppv",
 				"chmod 755 /system/etc/init.d/01iopv",
 				"chmod 755 /system/etc/init.d/02freqpv",
+				"chmod 755 /system/etc/set.sh",
 				"chmod 755 /system/98banner_dreamnarae_prev",
 				"chmod 755 /system/allflag");
 		RootTools.getShell(true).add(command).waitForFinish();
@@ -367,7 +383,10 @@ public class RootToolsInstallProcess extends Activity {
 		RootTools
 				.copyFile(
 						"/data/data/angeloid.dreamnarae/files/spisave/98banner_dreamnarae_spisave",
-						"/system/98banner_dreamnarae_pure", true, false);
+						"/system/98banner_dreamnarae_spisave", true, false);
+		RootTools.copyFile(
+				"/data/data/angeloid.dreamnarae/files/spisave/set.sh",
+				"/system/etc/set.sh", true, false);
 		RootTools.copyFile("/data/data/angeloid.dreamnarae/files/allflag",
 				"/system/allflag", true, false);
 		RootTools.remount("/system/", "rw");
@@ -375,6 +394,7 @@ public class RootToolsInstallProcess extends Activity {
 				"chmod 755 /system/etc/init.d/00prop",
 				"chmod 755 /system/etc/init.d/01io",
 				"chmod 755 /system/etc/init.d/02freq",
+				"chmod 755 /system/etc/set.sh",
 				"chmod 755 /system/98banner_dreamnarae_spisave",
 				"chmod 755 /system/allflag");
 		RootTools.getShell(true).add(command).waitForFinish();
@@ -396,6 +416,8 @@ public class RootToolsInstallProcess extends Activity {
 				.copyFile(
 						"/data/data/angeloid.dreamnarae/files/brand/98banner_dreamnarae_brand",
 						"/system/98banner_dreamnarae_brand", true, false);
+		RootTools.copyFile("/data/data/angeloid.dreamnarae/files/brand/set.sh",
+				"/system/etc/set.sh", true, false);
 		RootTools.copyFile("/data/data/angeloid.dreamnarae/files/allflag",
 				"/system/allflag", true, false);
 		RootTools.remount("/system/", "rw");
@@ -403,6 +425,7 @@ public class RootToolsInstallProcess extends Activity {
 				"chmod 755 /system/etc/init.d/00b",
 				"chmod 755 /system/etc/init.d/01r",
 				"chmod 755 /system/etc/init.d/02and",
+				"chmod 755 /system/etc/set.sh",
 				"chmod 755 /system/98banner_dreamnarae_brand",
 				"chmod 755 /system/allflag");
 		RootTools.getShell(true).add(command).waitForFinish();
@@ -419,6 +442,7 @@ public class RootToolsInstallProcess extends Activity {
 				"rm /system/98banner_dreamnarae_prev",
 				"rm /system/98banner_dreamnarae_pure",
 				"rm /system/98banner_dreamnarae_brand",
+				"rm /system/etc/set.sh",
 				"rm /system/98banner_dreamnarae_spisave", "rm /system/allflag",
 				"rm /system/etc/init.d/00prop", "rm /system/etc/init.d/01io",
 				"rm /system/etc/init.d/02freq",
