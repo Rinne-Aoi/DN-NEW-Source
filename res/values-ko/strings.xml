@@ -45,10 +45,6 @@
     <string name="paypaldonate">페이팔 기부</string>
     <string name="thanksdonate">기부 감사합니다!</string>
     <string name="koreaaccount">계좌번호 기부(예금주 : 서동길)</string>
-    <string name="setting1_title">부팅 드림나래 비활성화</string>
-    <string name="setting1_summary">기기가 init.d를 지원할 때 비활성화 하세요.</string>
-    <string name="setting2_title">메인 화면 음성 자동재생 활성화</string>
-    <string name="setting2_summary">"귀여운 목소리를 듣고 싶다면 Let's Enable! :D"</string>
     <string name="setting3_title">우리에게 메일을 보내기!</string>
     <string name="setting3_summary">엔젤로이드 기술지원팀에 메일을 보냅니다.</string>
     <string name="setting4_title">드림나래 라이센스</string>
