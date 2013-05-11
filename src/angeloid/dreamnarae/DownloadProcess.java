@@ -89,10 +89,9 @@ public class DownloadProcess {
 	static URL url9;
 	static URL url10;
 	
-	// TODO 다중서버(최대한 많은 직 링크 서버를 넣는다. 최대한 많이-!)
 	public static void URLCheck(Context c) throws MalformedURLException {
 		try {
-			url1 = new URL("http://gecp.kr/dn/dn2.1f.zip");
+			url1 = new URL("http://gecp.kr/dn/newdn2.1.zip");
 			checklogic = (HttpURLConnection) url1.openConnection();
 			checklogic.setConnectTimeout(3000);
 			checklogic.setReadTimeout(3000);
@@ -114,7 +113,7 @@ public class DownloadProcess {
 
 	public static void URLCheck2(Context c) throws MalformedURLException {
 		try {
-			url2 = new URL("http://sirospace.info/dn2f.zip");
+			url2 = new URL("http://sirospace.info/newdn2.1.zip");
 			checklogic = (HttpURLConnection) url2.openConnection();
 			checklogic.setConnectTimeout(3000);
 			checklogic.setReadTimeout(3000);
@@ -136,7 +135,7 @@ public class DownloadProcess {
 
 	public static void URLCheck3(Context c) throws MalformedURLException {
 		try {
-			url3 = new URL("http://mizal.net:82/_etc/dreamnarae/dn2.1f.zip");
+			url3 = new URL("");
 			checklogic = (HttpURLConnection) url3.openConnection();
 			checklogic.setConnectTimeout(3000);
 			checklogic.setReadTimeout(3000);
