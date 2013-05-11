@@ -55,31 +55,23 @@ import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class Settings extends Activity {
 
 	// Layout
 	TextView LayoutTitle;
-	TextView setting1_title;
 	TextView setting3_title;
 	TextView setting4_title;
-	TextView setting1_summary;
 	TextView setting3_summary;
 	TextView setting4_summary;
-	CheckBox setting1_check;
-	Button applysetting;
 	Button go1;
 	Button go2;
 	TextView LayoutTitle2;
@@ -113,33 +105,18 @@ public class Settings extends Activity {
 		// Layout
 		LayoutTitle = (TextView) findViewById(R.id.tabtextview);
 		LayoutTitle.setTypeface(MainActivity.Font);
-		setting1_title = (TextView) findViewById(R.id.setting1_title);
 		setting3_title = (TextView) findViewById(R.id.setting3_title);
 		setting4_title = (TextView) findViewById(R.id.setting4_title);
-		setting1_summary = (TextView) findViewById(R.id.setting1_summary);
 		setting3_summary = (TextView) findViewById(R.id.setting3_summary);
 		setting4_summary = (TextView) findViewById(R.id.setting4_summary);
-		setting1_title.setTypeface(MainActivity.Font);
 		setting3_title.setTypeface(MainActivity.Font);
 		setting4_title.setTypeface(MainActivity.Font);
-		setting1_summary.setTypeface(MainActivity.Font);
 		setting3_summary.setTypeface(MainActivity.Font);
 		setting4_summary.setTypeface(MainActivity.Font);
-		setting1_check = (CheckBox) findViewById(R.id.setting1_check);
-		applysetting = (Button) findViewById(R.id.applysetting);
-		applysetting.setTypeface(MainActivity.Font);
 		go1 = (Button) findViewById(R.id.go1);
 		go2 = (Button) findViewById(R.id.go2);
 		go1.setTypeface(MainActivity.Font);
 		go2.setTypeface(MainActivity.Font);
-		
-		// Settings 
-		SharedPreferences prefs = PreferenceManager
-				.getDefaultSharedPreferences(Settings.this);
-		String statboolean = prefs.getString("bootcheck", "true");
-		if (statboolean.equals("true")) {
-			setting1_check.setChecked(true);
-		}
 		
 		// Slide Menu
 		main = (Button) findViewById(R.id.mainscreen);
@@ -172,13 +149,7 @@ public class Settings extends Activity {
 		setting.setTypeface(MainActivity.Font);
 		developerinfo.setTypeface(MainActivity.Font);
 		donate.setTypeface(MainActivity.Font);
-		applysetting.setOnClickListener(new View.OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				ApplySetting();
-			}
-		});
+	
 		go1.setOnClickListener(new View.OnClickListener() {
 
 			@Override
@@ -230,20 +201,6 @@ public class Settings extends Activity {
 		return super.onKeyDown(keyCode, event);
 	}
 
-	public void ApplySetting() {
-		if (setting1_check.isChecked() == true) {
-			SharedPreferences pref = getSharedPreferences("pref", MODE_PRIVATE);
-			SharedPreferences.Editor editor = pref.edit();
-			editor.putString("bootcheck", "true");
-			editor.commit();
-		} else {
-			SharedPreferences pref = getSharedPreferences("pref", MODE_PRIVATE);
-			SharedPreferences.Editor editor = pref.edit();
-			editor.putString("bootcheck", "false");
-			editor.commit();
-		}
-		Toast.makeText(this, R.string.savedsetting, Toast.LENGTH_SHORT).show();
-	}
 
 	/**
 	 * Send App data
