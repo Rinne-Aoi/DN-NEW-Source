@@ -68,6 +68,7 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.StatFs;
@@ -95,6 +96,7 @@ public class MainActivity extends Activity implements SensorEventListener {
 	String easteregg1 = "O";
 	String man = "20000";
 	static String easteregg = "";
+	String intro = "5";
 
 	// Sensor
 	private long lastTime;
@@ -146,6 +148,9 @@ public class MainActivity extends Activity implements SensorEventListener {
 
 	// Fonts
 	public static Typeface Font;
+	
+	// MediaPlayer
+	MediaPlayer mplayer;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -178,6 +183,9 @@ public class MainActivity extends Activity implements SensorEventListener {
 		// SlideHolder
 		mSlideHolder = (SlideMenu) findViewById(R.id.slideHolder);
 		mSlideHolder.toggle();
+		
+		// MediaPlayer
+		mplayer = MediaPlayer.create(MainActivity.this, R.raw.fullintro);
 
 		// Slide Menu
 		main = (Button) findViewById(R.id.mainscreen);
@@ -424,6 +432,25 @@ public class MainActivity extends Activity implements SensorEventListener {
 			Toast.makeText(this, secondegg3, Toast.LENGTH_SHORT).show();
 		}
 
+	}
+	
+	public void Introduce(View v) {
+		int i = Integer.parseInt(intro) - 1;
+		intro = String.valueOf(i);
+		String secondegg1 = getString(R.string.introduce1);
+		String secondegg2 = getString(R.string.easteregg2);
+		CharSequence toasttrick = secondegg1 + " " + intro + " " + secondegg2;
+		if (mplayer.isPlaying() == false) {
+			Toast.makeText(this, toasttrick, Toast.LENGTH_SHORT).show();
+			Log.d("Tab_MainActivity", intro);
+		}
+		if (intro.equals("0")) {
+			intro = "5";
+			mplayer.start();
+			if (mplayer.isPlaying() == true) {
+				Toast.makeText(this, R.string.introduce2, Toast.LENGTH_SHORT).show();
+			}
+		}
 	}
 
 	public void eastereggevent(View v) {
