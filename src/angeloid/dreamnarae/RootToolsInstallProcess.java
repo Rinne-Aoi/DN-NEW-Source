@@ -200,8 +200,6 @@ public class RootToolsInstallProcess extends Activity {
 			TimeoutException, RootDeniedException {
 		Delete_File();
 		RootTools.log("Test Log // Excute Test Command_spica");
-		RootTools.copyFile("/data/data/angeloid.dreamnarae/files/spica/00prop",
-				"/system/etc/init.d/00prop", true, false);
 		RootTools.copyFile("/data/data/angeloid.dreamnarae/files/spica/01io",
 				"/system/etc/init.d/01io", true, false);
 		RootTools.copyFile("/data/data/angeloid.dreamnarae/files/spica/02freq",
@@ -219,7 +217,6 @@ public class RootToolsInstallProcess extends Activity {
 				"/system/etc/set.sh", true, false);
 		RootTools.remount("/system/", "rw");
 		CommandCapture command = new CommandCapture(0,
-				"chmod 755 /system/etc/init.d/00prop",
 				"chmod 755 /system/etc/init.d/01io",
 				"chmod 755 /system/etc/init.d/02freq",
 				"chmod 755 /system/etc/init.d/03zipalign",
@@ -239,8 +236,6 @@ public class RootToolsInstallProcess extends Activity {
 		RootTools.copyFile(
 				"/data/data/angeloid.dreamnarae/files/pure/01memory",
 				"/system/etc/init.d/01memory", true, false);
-		RootTools.copyFile("/data/data/angeloid.dreamnarae/files/pure/02prop",
-				"/system/etc/init.d/02prop", true, false);
 		RootTools.copyFile(
 				"/data/data/angeloid.dreamnarae/files/pure/03cleaning",
 				"/system/etc/init.d/03cleaning", true, false);
@@ -259,7 +254,6 @@ public class RootToolsInstallProcess extends Activity {
 		CommandCapture command = new CommandCapture(0,
 				"chmod 755 /system/etc/init.d/00cpu",
 				"chmod 755 /system/etc/init.d/01memory",
-				"chmod 755 /system/etc/init.d/02prop",
 				"chmod 755 /system/etc/init.d/03cleaning",
 				"chmod 755 /system/etc/init.d/04zipalign",
 				"chmod 755 /system/etc/set.sh",
@@ -273,9 +267,6 @@ public class RootToolsInstallProcess extends Activity {
 			TimeoutException, RootDeniedException {
 		Delete_File();
 		RootTools.log("Test Log // Excute Test Command_miracle");
-		RootTools.copyFile(
-				"/data/data/angeloid.dreamnarae/files/miracle/00set",
-				"/system/etc/init.d/00set", true, false);
 		RootTools.copyFile(
 				"/data/data/angeloid.dreamnarae/files/miracle/01vsls",
 				"/system/etc/init.d/01vsls", true, false);
@@ -296,7 +287,6 @@ public class RootToolsInstallProcess extends Activity {
 				"/system/allflag", true, false);
 		RootTools.remount("/system/", "rw");
 		CommandCapture command = new CommandCapture(0,
-				"chmod 755 /system/etc/init.d/00set",
 				"chmod 755 /system/etc/init.d/01vsls",
 				"chmod 755 /system/etc/init.d/02dch",
 				"chmod 755 /system/etc/init.d/03zipalign",
@@ -311,8 +301,6 @@ public class RootToolsInstallProcess extends Activity {
 			TimeoutException, RootDeniedException {
 		Delete_File();
 		RootTools.log("Test Log // Excute Test Command_save");
-		RootTools.copyFile("/data/data/angeloid.dreamnarae/files/save/00sp",
-				"/system/etc/init.d/00sp", true, false);
 		RootTools.copyFile("/data/data/angeloid.dreamnarae/files/save/01v",
 				"/system/etc/init.d/01v", true, false);
 		RootTools.copyFile("/data/data/angeloid.dreamnarae/files/save/02deep",
@@ -327,7 +315,6 @@ public class RootToolsInstallProcess extends Activity {
 				"/system/allflag", true, false);
 		RootTools.remount("/system/", "rw");
 		CommandCapture command = new CommandCapture(0,
-				"chmod 755 /system/etc/init.d/00sp",
 				"chmod 755 /system/etc/init.d/01v",
 				"chmod 755 /system/etc/init.d/02deep",
 				"chmod 755 /system/etc/set.sh",
@@ -341,9 +328,6 @@ public class RootToolsInstallProcess extends Activity {
 			TimeoutException, RootDeniedException {
 		Delete_File();
 		RootTools.log("Test Log // Excute Test Command_prev");
-		RootTools.copyFile(
-				"/data/data/angeloid.dreamnarae/files/prev/00proppv",
-				"/system/etc/init.d/00proppv", true, false);
 		RootTools.copyFile("/data/data/angeloid.dreamnarae/files/prev/01iopv",
 				"/system/etc/init.d/01iopv", true, false);
 		RootTools.copyFile(
@@ -358,7 +342,6 @@ public class RootToolsInstallProcess extends Activity {
 		RootTools.copyFile("/data/data/angeloid.dreamnarae/files/allflag",
 				"/system/allflag", true, false);
 		CommandCapture command = new CommandCapture(0,
-				"chmod 755 /system/etc/init.d/00proppv",
 				"chmod 755 /system/etc/init.d/01iopv",
 				"chmod 755 /system/etc/init.d/02freqpv",
 				"chmod 755 /system/etc/set.sh",
@@ -372,9 +355,6 @@ public class RootToolsInstallProcess extends Activity {
 			TimeoutException, RootDeniedException {
 		Delete_File();
 		RootTools.log("Test Log // Excute Test Command_spisave");
-		RootTools.copyFile(
-				"/data/data/angeloid.dreamnarae/files/spisave/00prop",
-				"/system/etc/init.d/00prop", true, false);
 		RootTools.copyFile("/data/data/angeloid.dreamnarae/files/spisave/01io",
 				"/system/etc/init.d/01io", true, false);
 		RootTools.copyFile(
@@ -391,7 +371,6 @@ public class RootToolsInstallProcess extends Activity {
 				"/system/allflag", true, false);
 		RootTools.remount("/system/", "rw");
 		CommandCapture command = new CommandCapture(0,
-				"chmod 755 /system/etc/init.d/00prop",
 				"chmod 755 /system/etc/init.d/01io",
 				"chmod 755 /system/etc/init.d/02freq",
 				"chmod 755 /system/etc/set.sh",
@@ -405,8 +384,6 @@ public class RootToolsInstallProcess extends Activity {
 			TimeoutException, RootDeniedException {
 		Delete_File();
 		RootTools.log("Test Log // Excute Test Command_brand");
-		RootTools.copyFile("/data/data/angeloid.dreamnarae/files/brand/00b",
-				"/system/etc/init.d/00b", true, false);
 		RootTools.copyFile("/data/data/angeloid.dreamnarae/files/brand/01r",
 				"/system/etc/init.d/01r", true, false);
 		RootTools.copyFile(
@@ -422,7 +399,6 @@ public class RootToolsInstallProcess extends Activity {
 				"/system/allflag", true, false);
 		RootTools.remount("/system/", "rw");
 		CommandCapture command = new CommandCapture(0,
-				"chmod 755 /system/etc/init.d/00b",
 				"chmod 755 /system/etc/init.d/01r",
 				"chmod 755 /system/etc/init.d/02and",
 				"chmod 755 /system/etc/set.sh",
