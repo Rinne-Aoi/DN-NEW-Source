@@ -45,8 +45,6 @@
     <string name="paypaldonate">Paypal Donate</string>
     <string name="thanksdonate">Thanks to Donate!</string>
     <string name="koreaaccount">Korea Account Donate(Account Holder : Dong Gil, Seo)</string>
-    <string name="setting1_title">Disable Boot DreamNarae</string>
-    <string name="setting1_summary">Disable it if device support init.d</string>
     <string name="setting3_title">Send mail to us!</string>
     <string name="setting3_summary">Send Mail to Angeloid Team!</string>
     <string name="setting4_title">DreamNarae License</string>
