@@ -1,4 +1,5 @@
 <resources>
+
     <string name="app_name">드림나래</string>
     <string name="bootcomplete">드림나래를 성공적으로 적용하였습니다.</string>
     <string name="noroottoast">논 루팅 모드에서는 트윅 적용 / 삭제를 제외한 기능만 사용이 가능합니다.</string>
@@ -59,6 +60,8 @@
     <string name="setwallpaper">배경화면 설정</string>
     <string name="introduce1">매우 귀여운 설명을 들으려면</string>
     <string name="introduce2">이미 재생중입니다. 부디 즐겨주세요!</string>
+    <string name="progress_title">다운로드중..</string>
+    <string name="progress_detail">다운로드 중입니다. 잠시만 기다리세요.</string>
 
     <!-- Menu -->
     <string name="menu">메뉴</string>
@@ -76,10 +79,9 @@
     <string name="setting">설정</string>
     <string name="developerinfo">개발자 정보</string>
     <string name="donate">기부</string>
-    
+
     <!-- Menu String -->
     <string name="dntweak">드림나래 트윅</string>
     <string name="settings">도구</string>
-    
 
 </resources>

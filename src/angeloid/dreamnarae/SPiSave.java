@@ -9,8 +9,8 @@
 
     The terms of each license can be found in the root directory of this project's repository as well as at:
 
-    * http://www.apache.org/licenses/LICENSE-2.0
-    * http://www.gnu.org/licenses/gpl-2.0.txt
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.gnu.org/licenses/gpl-2.0.txt
  
     Unless required by applicable law or agreed to in writing, software
     distributed under these Licenses is distributed on an "AS IS" BASIS,
@@ -44,10 +44,37 @@
    See the License for the specific language governing permissions and
    limitations under the License.
  */
+
+/**
+ * ZipDownloader
+ * 
+ * A simple app to demonstrate downloading and unpacking a .zip file
+ * as a background task.
+ * 
+ * Copyright (c) 2011 Michael J. Portuesi (http://www.jotabout.com)
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
 package angeloid.dreamnarae;
 
 import java.io.File;
-import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Map;
@@ -55,19 +82,25 @@ import java.util.Map;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.graphics.Color;
 import android.media.MediaPlayer;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.jotabout.zipdownloader.util.DecompressZip;
+import com.jotabout.zipdownloader.util.DownloadFile;
+import com.jotabout.zipdownloader.util.ExternalStorage;
 import com.stericson.RootTools.RootTools;
 
 public class SPiSave extends Activity {
@@ -76,6 +109,7 @@ public class SPiSave extends Activity {
 	Button info;
 	static MediaPlayer mplayer;
 	ImageView imageview;
+
 	// Layout
 	TextView LayoutTitle;
 	TextView LayoutTitle2;
@@ -99,9 +133,15 @@ public class SPiSave extends Activity {
 	Button developerinfo;
 	Button donate;
 
+	// Dialog
+	protected ProgressDialog mProgressDialog;
+
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.spisave);
+		// Layout
+		LayoutTitle = (TextView) findViewById(R.id.tabtextview);
+		LayoutTitle.setTypeface(MainActivity.Font);
 		apply = (Button) findViewById(R.id.apply);
 		info = (Button) findViewById(R.id.info);
 		apply.setTypeface(MainActivity.Font);
@@ -109,9 +149,10 @@ public class SPiSave extends Activity {
 		LayoutTitle2 = (TextView) findViewById(R.id.tabtextview2);
 		LayoutTitle2.setTypeface(MainActivity.Font);
 
-		// Layout
-		LayoutTitle = (TextView) findViewById(R.id.tabtextview);
-		LayoutTitle.setTypeface(MainActivity.Font);
+		// Keep the screen (and device) active as long as this app is frontmost.
+		// This is to avoid going to sleep during the download.
+		// http://stackoverflow.com/questions/4376902/difference-between-wakelock-and-flag-keep-screen-on
+		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
 		// Slide Menu
 		main = (Button) findViewById(R.id.mainscreen);
@@ -151,15 +192,11 @@ public class SPiSave extends Activity {
 			@Override
 			public void onClick(View v) {
 				if (RootTools.isAccessGiven()) {
-					try {
-						DownloadProcess.URLCheck(SPiSave.this);
-						Intent();
-					} catch (MalformedURLException e) {
-						e.printStackTrace();
-					}
+					startDownload(v);
+					Intent();
 				} else {
-					Toast.makeText(SPiSave.this, R.string.noroottoast, Toast.LENGTH_LONG)
-							.show();
+					Toast.makeText(SPiSave.this, R.string.noroottoast,
+							Toast.LENGTH_LONG).show();
 				}
 			}
 		});
@@ -179,7 +216,194 @@ public class SPiSave extends Activity {
 			}
 		});
 	}
-	
+
+	public void Intent() {
+		Intent intent = new Intent(this, RootToolsInstallProcess.class);
+		intent.putExtra("Version", "SPiSave");
+		startActivity(intent);
+	}
+
+	/**
+	 * Invoked when user presses "Start download" button.
+	 */
+	public void startDownload(View v) {
+		String url = "http://gecp.kr/dn/newdn.zip";
+		new DownloadTask().execute(url);
+	}
+
+	// ////////////////////////////////////////////////////////////////////////
+	// Background Task
+	// ////////////////////////////////////////////////////////////////////////
+
+	/**
+	 * Background task to download and unpack .zip file in background.
+	 */
+	private class DownloadTask extends AsyncTask<String, Void, Exception> {
+
+		@Override
+		protected void onPreExecute() {
+			showProgress();
+		}
+
+		@Override
+		protected Exception doInBackground(String... params) {
+			String url = (String) params[0];
+
+			try {
+				downloadAllAssets(url);
+			} catch (Exception e) {
+				return e;
+			}
+
+			return null;
+		}
+
+		@Override
+		protected void onPostExecute(Exception result) {
+			dismissProgress();
+			if (result == null) {
+				return;
+			}
+			// something went wrong, post a message to user - you could use a
+			// dialog here or whatever
+			Toast.makeText(SPiSave.this, result.getLocalizedMessage(),
+					Toast.LENGTH_LONG).show();
+		}
+	}
+
+	// ////////////////////////////////////////////////////////////////////////
+	// Progress Dialog
+	// ////////////////////////////////////////////////////////////////////////
+
+	protected void showProgress() {
+		mProgressDialog = new ProgressDialog(this);
+		mProgressDialog.setTitle(R.string.progress_title);
+		mProgressDialog.setMessage(getString(R.string.progress_detail));
+		mProgressDialog.setIndeterminate(true);
+		mProgressDialog.setCancelable(false);
+		mProgressDialog.show();
+	}
+
+	protected void dismissProgress() {
+		// You can't be too careful.
+		if (mProgressDialog != null && mProgressDialog.isShowing()
+				&& mProgressDialog.getWindow() != null) {
+			try {
+				mProgressDialog.dismiss();
+			} catch (IllegalArgumentException ignore) {
+				;
+			}
+		}
+		mProgressDialog = null;
+	}
+
+	// ////////////////////////////////////////////////////////////////////////
+	// File Download
+	// ////////////////////////////////////////////////////////////////////////
+
+	/**
+	 * Download .zip file specified by url, then unzip it to a folder in
+	 * external storage.
+	 * 
+	 * @param url
+	 */
+	private void downloadAllAssets(String url) {
+		// Temp folder for holding asset during download
+		File zipDir = ExternalStorage.getSDCacheDir(this, "tmp");
+		// File path to store .zip file before unzipping
+		File zipFile = new File(zipDir.getPath() + "/newdn.zip");
+		// Folder to hold unzipped output
+		File outputDir = ExternalStorage.getSDCacheDir(this, "");
+
+		try {
+			DownloadFile.download(url, zipFile, zipDir);
+			unzipFile(zipFile, outputDir);
+		} finally {
+			zipFile.delete();
+		}
+	}
+
+	// ////////////////////////////////////////////////////////////////////////
+	// Zip Extraction
+	// ////////////////////////////////////////////////////////////////////////
+
+	/**
+	 * Unpack .zip file.
+	 * 
+	 * @param zipFile
+	 * @param destination
+	 */
+	protected void unzipFile(File zipFile, File destination) {
+		DecompressZip decomp = new DecompressZip(zipFile.getPath(),
+				destination.getPath() + File.separator);
+		decomp.unzip();
+	}
+
+	public void dialog() {
+		View view = this.getLayoutInflater().inflate(R.layout.customdialog,
+				null);
+		TextView txtTitle = (TextView) view.findViewById(R.id.title);
+		txtTitle.setText(R.string.spisave_title);
+		txtTitle.setTextColor(Color.WHITE);
+		txtTitle.setTextSize(20);
+		TextView message = (TextView) view.findViewById(R.id.message);
+		message.setText(R.string.spisave_info);
+		message.setTextColor(Color.WHITE);
+		AlertDialog.Builder builder = new Builder(SPiSave.this);
+		builder.setView(view);
+		builder.setCancelable(false);
+		builder.setPositiveButton(R.string.infoclose,
+				new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						dialog.dismiss();
+					}
+				}
+
+		)
+				.setNegativeButton(R.string.voice,
+						new DialogInterface.OnClickListener() {
+							@Override
+							public void onClick(DialogInterface dialog,
+									int which) {
+								mplayer.start();
+							}
+						}).show();
+	}
+
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if (keyCode == KeyEvent.KEYCODE_BACK) {
+
+			View view = this.getLayoutInflater().inflate(R.layout.customdialog,
+					null);
+			TextView txtTitle = (TextView) view.findViewById(R.id.title);
+			txtTitle.setText(R.string.quittitle);
+			txtTitle.setTextColor(Color.WHITE);
+			txtTitle.setTextSize(20);
+			txtTitle.setTypeface(MainActivity.Font);
+			TextView message = (TextView) view.findViewById(R.id.message);
+			message.setText(R.string.quitmessage);
+			message.setTextColor(Color.WHITE);
+			message.setTypeface(MainActivity.Font);
+			AlertDialog.Builder builer = new AlertDialog.Builder(this);
+			builer.setView(view);
+			builer.setPositiveButton(android.R.string.yes,
+					new DialogInterface.OnClickListener() {
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							android.os.Process.killProcess(android.os.Process
+									.myPid());
+						}
+					});
+			builer.setNegativeButton(android.R.string.no, null).show();
+
+			return true;
+		}
+
+		return super.onKeyDown(keyCode, event);
+	}
+
 	@Override
 	public void onResume() {
 		super.onResume();
@@ -254,77 +478,6 @@ public class SPiSave extends Activity {
 		builder.setPositiveButton(android.R.string.ok, null).create().show();
 	}
 
-	public void Intent() {
-		Intent intent = new Intent(this, RootToolsInstallProcess.class);
-		intent.putExtra("Version", "SPiSave");
-		startActivity(intent);
-	}
-	
-	@Override
-	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		if (keyCode == KeyEvent.KEYCODE_BACK) {
-
-			View view = this.getLayoutInflater().inflate(R.layout.customdialog,
-					null);
-			TextView txtTitle = (TextView) view.findViewById(R.id.title);
-			txtTitle.setText(R.string.quittitle);
-			txtTitle.setTextColor(Color.WHITE);
-			txtTitle.setTextSize(20);
-			txtTitle.setTypeface(MainActivity.Font);
-			TextView message = (TextView) view.findViewById(R.id.message);
-			message.setText(R.string.quitmessage);
-			message.setTextColor(Color.WHITE);
-			message.setTypeface(MainActivity.Font);
-			AlertDialog.Builder builer = new AlertDialog.Builder(this);
-			builer.setView(view);
-			builer.setPositiveButton(android.R.string.yes,
-					new DialogInterface.OnClickListener() {
-						@Override
-						public void onClick(DialogInterface dialog, int which) {
-							android.os.Process.killProcess(android.os.Process
-									.myPid());
-						}
-					});
-			builer.setNegativeButton(android.R.string.no, null).show();
-
-			return true;
-		}
-
-		return super.onKeyDown(keyCode, event);
-	}
-
-	public void dialog() {
-		View view = this.getLayoutInflater().inflate(R.layout.customdialog,
-				null);
-		TextView txtTitle = (TextView) view.findViewById(R.id.title);
-		txtTitle.setText(R.string.spisave_title);
-		txtTitle.setTextColor(Color.WHITE);
-		txtTitle.setTextSize(20);
-		TextView message = (TextView) view.findViewById(R.id.message);
-		message.setText(R.string.spisave_info);
-		message.setTextColor(Color.WHITE);
-		AlertDialog.Builder builder = new Builder(SPiSave.this);
-		builder.setView(view);
-		builder.setCancelable(false);
-		builder.setPositiveButton(R.string.infoclose,
-				new DialogInterface.OnClickListener() {
-					@Override
-					public void onClick(DialogInterface dialog, int which) {
-						dialog.dismiss();
-					}
-				}
-
-		)
-				.setNegativeButton(R.string.voice,
-						new DialogInterface.OnClickListener() {
-							@Override
-							public void onClick(DialogInterface dialog,
-									int which) {
-								mplayer.start();
-							}
-						}).show();
-	}
-
 	public void mainscreen(View v) {
 		startActivity(new Intent(this, MainActivity.class));
 		finish();
@@ -356,17 +509,18 @@ public class SPiSave extends Activity {
 	}
 
 	public void miraclescreen(View v) {
-		startActivity(new Intent(this, Miracle.class));
-		finish();
+		 startActivity(new Intent(this, Miracle.class));
+		 finish();
 	}
 
 	public void brandscreen(View v) {
-		startActivity(new Intent(this, Brand.class));
-		finish();
+		 startActivity(new Intent(this, Brand.class));
+		 finish();
 	}
 
 	public void spisavescreen(View v) {
-		// startActivity(new Intent(this, SPiSave.class));
+		//startActivity(new Intent(this, SPiSave.class));
+		//finish();
 	}
 
 	public void deletescreen(View v) {

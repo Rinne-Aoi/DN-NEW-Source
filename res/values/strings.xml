@@ -58,6 +58,8 @@
     <string name="ishavekatok">Not installed KakaoTalk</string>
     <string name="introduce1">To listen to a Description</string>
     <string name="introduce2">It is already in play.</string>
+    <string name="progress_title">Downloading..</string>
+    <string name="progress_detail">Please Wait for Downloading</string>
     
     <!-- Menu -->
     <string name="menu">Menu</string>

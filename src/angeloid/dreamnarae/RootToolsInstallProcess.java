@@ -44,6 +44,7 @@
    See the License for the specific language governing permissions and
    limitations under the License.
  */
+
 package angeloid.dreamnarae;
 
 import java.io.File;
@@ -199,21 +200,18 @@ public class RootToolsInstallProcess extends Activity {
 	public void Install_SPiCa() throws InterruptedException, IOException,
 			TimeoutException, RootDeniedException {
 		Delete_File();
-		RootTools.log("Test Log // Excute Test Command_spica");
-		RootTools.copyFile("/data/data/angeloid.dreamnarae/files/spica/01io",
+		RootTools.copyFile(this.getExternalFilesDir(null) + "/01io",
 				"/system/etc/init.d/01io", true, false);
-		RootTools.copyFile("/data/data/angeloid.dreamnarae/files/spica/02freq",
+		RootTools.copyFile(this.getExternalFilesDir(null) + "/02freq",
 				"/system/etc/init.d/02freq", true, false);
-		RootTools.copyFile(
-				"/data/data/angeloid.dreamnarae/files/spica/03zipalign",
+		RootTools.copyFile(this.getExternalFilesDir(null) + "/03zipalign",
 				"/system/etc/init.d/03zipalign", true, false);
-		RootTools
-				.copyFile(
-						"/data/data/angeloid.dreamnarae/files/spica/98banner_dreamnarae_spica",
-						"/system/98banner_dreamnarae_spica", true, false);
-		RootTools.copyFile("/data/data/angeloid.dreamnarae/files/allflag",
+		RootTools.copyFile(this.getExternalFilesDir(null)
+				+ "/98banner_dreamnarae_spica",
+				"/system/98banner_dreamnarae_spica", true, false);
+		RootTools.copyFile(this.getExternalFilesDir(null) + "/allflag",
 				"/system/allflag", true, false);
-		RootTools.copyFile("/data/data/angeloid.dreamnarae/files/spica/set.sh",
+		RootTools.copyFile(this.getExternalFilesDir(null) + "/spica_set.sh",
 				"/system/etc/set.sh", true, false);
 		RootTools.remount("/system/", "rw");
 		CommandCapture command = new CommandCapture(0,
@@ -221,8 +219,7 @@ public class RootToolsInstallProcess extends Activity {
 				"chmod 755 /system/etc/init.d/02freq",
 				"chmod 755 /system/etc/init.d/03zipalign",
 				"chmod 755 /system/98banner_dreamnarae_spica",
-				"chmod 755 /system/etc/set.sh",
-				"chmod 755 /system/allflag");
+				"chmod 755 /system/etc/set.sh", "chmod 755 /system/allflag");
 		RootTools.getShell(true).add(command).waitForFinish();
 		installcomplete();
 	}
@@ -230,25 +227,20 @@ public class RootToolsInstallProcess extends Activity {
 	public void Install_Pure() throws InterruptedException, IOException,
 			TimeoutException, RootDeniedException {
 		Delete_File();
-		RootTools.log("Test Log // Excute Test Command_pure");
-		RootTools.copyFile("/data/data/angeloid.dreamnarae/files/pure/00cpu",
+		RootTools.copyFile(this.getExternalFilesDir(null) + "/00cpu",
 				"/system/etc/init.d/00cpu", true, false);
-		RootTools.copyFile(
-				"/data/data/angeloid.dreamnarae/files/pure/01memory",
+		RootTools.copyFile(this.getExternalFilesDir(null) + "/01memory",
 				"/system/etc/init.d/01memory", true, false);
-		RootTools.copyFile(
-				"/data/data/angeloid.dreamnarae/files/pure/03cleaning",
+		RootTools.copyFile(this.getExternalFilesDir(null) + "/03cleaning",
 				"/system/etc/init.d/03cleaning", true, false);
-		RootTools.copyFile(
-				"/data/data/angeloid.dreamnarae/files/pure/04izpalign",
+		RootTools.copyFile(this.getExternalFilesDir(null) + "/04izpalign",
 				"/system/etc/init.d/04zipalign", true, false);
-		RootTools
-				.copyFile(
-						"/data/data/angeloid.dreamnarae/files/pure/98banner_dreamnarae_pure",
-						"/system/98banner_dreamnarae_pure", true, false);
-		RootTools.copyFile("/data/data/angeloid.dreamnarae/files/allflag",
+		RootTools.copyFile(this.getExternalFilesDir(null)
+				+ "/98banner_dreamnarae_pure",
+				"/system/98banner_dreamnarae_pure", true, false);
+		RootTools.copyFile(this.getExternalFilesDir(null) + "/allflag",
 				"/system/allflag", true, false);
-		RootTools.copyFile("/data/data/angeloid.dreamnarae/files/pure/set.sh",
+		RootTools.copyFile(this.getExternalFilesDir(null) + "/pure_set.sh",
 				"/system/etc/set.sh", true, false);
 		RootTools.remount("/system/", "rw");
 		CommandCapture command = new CommandCapture(0,
@@ -266,24 +258,18 @@ public class RootToolsInstallProcess extends Activity {
 	public void Install_Miracle() throws InterruptedException, IOException,
 			TimeoutException, RootDeniedException {
 		Delete_File();
-		RootTools.log("Test Log // Excute Test Command_miracle");
-		RootTools.copyFile(
-				"/data/data/angeloid.dreamnarae/files/miracle/01vsls",
+		RootTools.copyFile(this.getExternalFilesDir(null) + "/01vsls",
 				"/system/etc/init.d/01vsls", true, false);
-		RootTools.copyFile(
-				"/data/data/angeloid.dreamnarae/files/miracle/02dch",
+		RootTools.copyFile(this.getExternalFilesDir(null) + "/02dch",
 				"/system/etc/init.d/02dch", true, false);
-		RootTools.copyFile(
-				"/data/data/angeloid.dreamnarae/files/pure/03zipalign",
+		RootTools.copyFile(this.getExternalFilesDir(null) + "/03zipalign",
 				"/system/etc/init.d/03zipalign", true, false);
-		RootTools
-				.copyFile(
-						"/data/data/angeloid.dreamnarae/files/miracle/98banner_dreamnarae_miracle",
-						"/system/98banner_dreamnarae_miracle", true, false);
-		RootTools.copyFile(
-				"/data/data/angeloid.dreamnarae/files/miracle/set.sh",
+		RootTools.copyFile(this.getExternalFilesDir(null)
+				+ "/98banner_dreamnarae_miracle",
+				"/system/98banner_dreamnarae_miracle", true, false);
+		RootTools.copyFile(this.getExternalFilesDir(null) + "/miracle_set.sh",
 				"/system/etc/set.sh", true, false);
-		RootTools.copyFile("/data/data/angeloid.dreamnarae/files/allflag",
+		RootTools.copyFile(this.getExternalFilesDir(null) + "/allflag",
 				"/system/allflag", true, false);
 		RootTools.remount("/system/", "rw");
 		CommandCapture command = new CommandCapture(0,
@@ -300,18 +286,16 @@ public class RootToolsInstallProcess extends Activity {
 	public void Install_Save() throws InterruptedException, IOException,
 			TimeoutException, RootDeniedException {
 		Delete_File();
-		RootTools.log("Test Log // Excute Test Command_save");
-		RootTools.copyFile("/data/data/angeloid.dreamnarae/files/save/01v",
+		RootTools.copyFile(this.getExternalFilesDir(null) + "/01v",
 				"/system/etc/init.d/01v", true, false);
-		RootTools.copyFile("/data/data/angeloid.dreamnarae/files/save/02deep",
+		RootTools.copyFile(this.getExternalFilesDir(null) + "/02deep",
 				"/system/etc/init.d/02deep", true, false);
-		RootTools
-				.copyFile(
-						"/data/data/angeloid.dreamnarae/files/save/98banner_dreamnarae_save",
-						"/system/98banner_dreamnarae_save", true, false);
-		RootTools.copyFile("/data/data/angeloid.dreamnarae/files/save/set.sh",
+		RootTools.copyFile(this.getExternalFilesDir(null)
+				+ "/98banner_dreamnarae_save",
+				"/system/98banner_dreamnarae_save", true, false);
+		RootTools.copyFile(this.getExternalFilesDir(null) + "/save_set.sh",
 				"/system/etc/set.sh", true, false);
-		RootTools.copyFile("/data/data/angeloid.dreamnarae/files/allflag",
+		RootTools.copyFile(this.getExternalFilesDir(null) + "/allflag",
 				"/system/allflag", true, false);
 		RootTools.remount("/system/", "rw");
 		CommandCapture command = new CommandCapture(0,
@@ -327,19 +311,16 @@ public class RootToolsInstallProcess extends Activity {
 	public void Install_Prev() throws InterruptedException, IOException,
 			TimeoutException, RootDeniedException {
 		Delete_File();
-		RootTools.log("Test Log // Excute Test Command_prev");
-		RootTools.copyFile("/data/data/angeloid.dreamnarae/files/prev/01iopv",
+		RootTools.copyFile(this.getExternalFilesDir(null) + "/01iopv",
 				"/system/etc/init.d/01iopv", true, false);
-		RootTools.copyFile(
-				"/data/data/angeloid.dreamnarae/files/prev/02freqpv",
+		RootTools.copyFile(this.getExternalFilesDir(null) + "/02freqpv",
 				"/system/etc/init.d/02freqpv", true, false);
-		RootTools
-				.copyFile(
-						"/data/data/angeloid.dreamnarae/files/prev/98banner_dreamnarae_prev",
-						"/system/98banner_dreamnarae_prev", true, false);
-		RootTools.copyFile("/data/data/angeloid.dreamnarae/files/prev/set.sh",
+		RootTools.copyFile(this.getExternalFilesDir(null)
+				+ "/98banner_dreamnarae_prev",
+				"/system/98banner_dreamnarae_prev", true, false);
+		RootTools.copyFile(this.getExternalFilesDir(null) + "/prev_set.sh",
 				"/system/etc/set.sh", true, false);
-		RootTools.copyFile("/data/data/angeloid.dreamnarae/files/allflag",
+		RootTools.copyFile(this.getExternalFilesDir(null) + "/allflag",
 				"/system/allflag", true, false);
 		CommandCapture command = new CommandCapture(0,
 				"chmod 755 /system/etc/init.d/01iopv",
@@ -354,20 +335,16 @@ public class RootToolsInstallProcess extends Activity {
 	public void Install_SPiSave() throws InterruptedException, IOException,
 			TimeoutException, RootDeniedException {
 		Delete_File();
-		RootTools.log("Test Log // Excute Test Command_spisave");
-		RootTools.copyFile("/data/data/angeloid.dreamnarae/files/spisave/01io",
-				"/system/etc/init.d/01io", true, false);
-		RootTools.copyFile(
-				"/data/data/angeloid.dreamnarae/files/spisave/02freq",
-				"/system/etc/init.d/02freq", true, false);
-		RootTools
-				.copyFile(
-						"/data/data/angeloid.dreamnarae/files/spisave/98banner_dreamnarae_spisave",
-						"/system/98banner_dreamnarae_spisave", true, false);
-		RootTools.copyFile(
-				"/data/data/angeloid.dreamnarae/files/spisave/set.sh",
+		RootTools.copyFile(this.getExternalFilesDir(null) + "/01ioss",
+				"/system/etc/init.d/01ioss", true, false);
+		RootTools.copyFile(this.getExternalFilesDir(null) + "/02freqss",
+				"/system/etc/init.d/02freqss", true, false);
+		RootTools.copyFile(this.getExternalFilesDir(null)
+				+ "/98banner_dreamnarae_spisave",
+				"/system/98banner_dreamnarae_spisave", true, false);
+		RootTools.copyFile(this.getExternalFilesDir(null) + "/spisave_set.sh",
 				"/system/etc/set.sh", true, false);
-		RootTools.copyFile("/data/data/angeloid.dreamnarae/files/allflag",
+		RootTools.copyFile(this.getExternalFilesDir(null) + "/allflag",
 				"/system/allflag", true, false);
 		RootTools.remount("/system/", "rw");
 		CommandCapture command = new CommandCapture(0,
@@ -383,19 +360,16 @@ public class RootToolsInstallProcess extends Activity {
 	public void Install_Brand() throws InterruptedException, IOException,
 			TimeoutException, RootDeniedException {
 		Delete_File();
-		RootTools.log("Test Log // Excute Test Command_brand");
-		RootTools.copyFile("/data/data/angeloid.dreamnarae/files/brand/01r",
+		RootTools.copyFile(this.getExternalFilesDir(null) + "/01r",
 				"/system/etc/init.d/01r", true, false);
-		RootTools.copyFile(
-				"/data/data/angeloid.dreamnarae/files/spisave/02and",
+		RootTools.copyFile(this.getExternalFilesDir(null) + "/02and",
 				"/system/etc/init.d/02and", true, false);
-		RootTools
-				.copyFile(
-						"/data/data/angeloid.dreamnarae/files/brand/98banner_dreamnarae_brand",
-						"/system/98banner_dreamnarae_brand", true, false);
-		RootTools.copyFile("/data/data/angeloid.dreamnarae/files/brand/set.sh",
+		RootTools.copyFile(this.getExternalFilesDir(null)
+				+ "/98banner_dreamnarae_brand",
+				"/system/98banner_dreamnarae_brand", true, false);
+		RootTools.copyFile(this.getExternalFilesDir(null) + "/brand_set.sh",
 				"/system/etc/set.sh", true, false);
-		RootTools.copyFile("/data/data/angeloid.dreamnarae/files/allflag",
+		RootTools.copyFile(this.getExternalFilesDir(null) + "/allflag",
 				"/system/allflag", true, false);
 		RootTools.remount("/system/", "rw");
 		CommandCapture command = new CommandCapture(0,
@@ -510,7 +484,9 @@ public class RootToolsInstallProcess extends Activity {
 									finish();
 								}
 							}).show();
+			
 		} else {
+			
 			View view1 = this.getLayoutInflater().inflate(
 					R.layout.customdialog, null);
 			TextView txtTitle = (TextView) view1.findViewById(R.id.title);
@@ -577,6 +553,7 @@ public class RootToolsInstallProcess extends Activity {
 			builder.setView(view);
 			builder.setPositiveButton(R.string.yes,
 					new DialogInterface.OnClickListener() {
+				
 						@Override
 						public void onClick(DialogInterface dialog, int which) {
 							dialog.dismiss();
@@ -598,6 +575,7 @@ public class RootToolsInstallProcess extends Activity {
 							}
 						}
 					})
+					
 					.setNegativeButton(R.string.no,
 							new DialogInterface.OnClickListener() {
 								@Override
@@ -612,17 +590,11 @@ public class RootToolsInstallProcess extends Activity {
 		}
 	}
 
-	public void recovery() throws IOException, InterruptedException {
-		Log.d("Helper", Environment.getExternalStorageDirectory()
-				.getAbsolutePath());
-		String[] recovery = {
-				"/system/bin/sh",
-				"-c",
-				"cat /data/data/angeloid.dreamnarae/files/dn_delete_signed.zip > "
-						+ Environment.getExternalStorageDirectory()
-								.getAbsolutePath() + "/dn_delete_signed.zip" };
-		Log.d("Helper", "Recovery Tool Exist : " + recovery);
-		Process p = Runtime.getRuntime().exec(recovery);
-		p.waitFor();
+	public void recovery() throws IOException, InterruptedException,
+			TimeoutException, RootDeniedException {
+		RootTools.copyFile(this.getExternalFilesDir(null)
+				+ "/dn_delete_signed.zip", Environment
+				.getExternalStorageDirectory().getAbsolutePath()
+				+ "/dn_delete_signed.zip", true, false);
 	}
 }

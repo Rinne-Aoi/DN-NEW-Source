@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="developinfo">
         <item>드림나래</item>
         <item>감성 안드로이드 툴</item>
         <item>제작 : Angeloid Team</item>
-        <item>리더 : 아오이 린네(青井 りんえ)</item>
+        <item>리더 : 아오이 린네(青井 りんね)</item>
         <item>앱 : 소피아네 (서동길)</item>
         <item>트윅 : 리에 (이은희)</item>
         <item>트윅 : 아이렌 (이정연)</item>
@@ -20,6 +20,7 @@
 		<item>보조 서버 : 미잘 서버(Thanks to 해삼말미잘)</item>
 		<item>라이브러리 : SlideHolder(by Dmitry Zaitsev)</item>
 		<item>라이브러리 : RootTools(by stericson)</item>
+		<item>라이브러리 : ZipDownloader(by Jotabout)</item>
 		<item>이 앱은 아모레퍼시픽의 아리따글꼴을 사용하여 디자인되었습니다.</item>
         <item>사용해주시는 모든 분들, 감사합니다!</item>
     </string-array>

@@ -72,7 +72,6 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.StatFs;
-import android.os.StrictMode;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -156,14 +155,16 @@ public class MainActivity extends Activity implements SensorEventListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.tab1);
+		
+		Log.d("debug", this.getExternalFilesDir(null) + "/01io");
 
 		// Font
 		initializeTypefaces();
 
 		// Disable StrickMode Policy
-		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
+		/*StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
 				.permitAll().build();
-		StrictMode.setThreadPolicy(policy);
+		StrictMode.setThreadPolicy(policy);*/
 
 		// Layout
 		LayoutTitle = (TextView) findViewById(R.id.tabtextview);

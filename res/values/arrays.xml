@@ -4,7 +4,7 @@
         <item>DreamNarae</item>
         <item>Emotional Android Tools</item>
         <item>Produced by Angeloid Team</item>
-        <item>Leader : Rinne Aoi (青井 りんえ)</item>
+        <item>Leader : Rinne Aoi (青井 りんね)</item>
         <item>Application : Sopiane (Dong Gil, Seo)</item>
         <item>Tweak : Rie (Eun Hee, Lee)</item>
         <item>Tweak : Iren (Jung Yeon, Lee)</item>
@@ -20,7 +20,8 @@
 		<item>Sub Server : Mizal Server(Thank to Hesam Malmizal)</item>
 		<item>Library : SlideHolder(by Dmitry Zaitsev)</item>
 		<item>Library : RootTools(by stericson)</item>
-		<item>"This Design use "Arita Font" which made by "AmorePersipic""5</item>
+		<item>Library : ZipDownloader(by Jotabout)</item>
+		<item>"This Design use "Arita Font" which made by "AmorePersipic""</item>
         <item>All of People use DreamNarae, Thanks You!</item>
     </string-array>
     <string-array name="updateinfo">
