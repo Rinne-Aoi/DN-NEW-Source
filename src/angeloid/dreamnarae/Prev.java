@@ -213,9 +213,6 @@ public class Prev extends Activity {
 			TimeoutException, RootDeniedException {
 		Delete_File();
 		RootTools.ReMount("/system/", "rw");
-		RootTools.copyFile(
-				this.getExternalFilesDir(null) + "/00proppv",
-				"/system/etc/init.d/00proppv", true, false);
 		RootTools.copyFile(this.getExternalFilesDir(null) + "/01iopv",
 				"/system/etc/init.d/01iopv", true, false);
 		RootTools.copyFile(
@@ -231,7 +228,6 @@ public class Prev extends Activity {
 				this.getExternalFilesDir(null) + "/prev_set.sh",
 				"/system/etc/set.sh", true, false);
 		CommandCapture command = new CommandCapture(0,
-				"chmod 755 /system/etc/init.d/00proppv",
 				"chmod 755 /system/etc/init.d/01iopv",
 				"chmod 755 /system/etc/init.d/02freqpv",
 				"chmod 755 /system/98banner_dreamnarae_prev",
