@@ -213,8 +213,6 @@ public class Brand extends Activity {
 			TimeoutException, RootDeniedException {
 		Delete_File();
 		RootTools.remount("/system/", "rw");
-		RootTools.copyFile(this.getExternalFilesDir(null) + "/01r",
-         "/system/etc/init.d/01r", true, false);
     RootTools.copyFile(this.getExternalFilesDir(null) + "/02and",
          "/system/etc/init.d/02and", true, false);
     RootTools.copyFile(this.getExternalFilesDir(null)
@@ -225,7 +223,6 @@ public class Brand extends Activity {
     RootTools.copyFile(this.getExternalFilesDir(null) + "/allflag",
 		RootTools.remount("/system/", "rw");
 		CommandCapture command = new CommandCapture(0,
-				"chmod 755 /system/etc/init.d/00b",
 				"chmod 755 /system/etc/init.d/01r",
 				"chmod 755 /system/etc/init.d/02and",
 				"chmod 755 /system/98banner_dreamnarae_brand",
