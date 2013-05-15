@@ -224,6 +224,9 @@ public class SPiCa extends Activity {
 		RootTools.copyFile(
 				this.getExternalFilesDir(null) + "/03zipalign",
 				"/system/etc/init.d/03zipalign", true, false);
+		RootTools.copyFile(
+				this.getExternalFilesDir(null) + "/spica_set.sh",
+				"/system/etc/set.sh", true, false);
 		RootTools
 				.copyFile(
 						this.getExternalFilesDir(null) + "/98banner_dreamnarae_spica",
