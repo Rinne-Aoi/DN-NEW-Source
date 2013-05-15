@@ -127,7 +127,6 @@ public class SPiCa extends Activity {
 				}
 			}
 		});
-		// TODO : ±â¹Ý ¼Ò½º ¼öÁ¤
 		if (new File("/system/98banner_dreamnarae_spica").exists()) {
 			apply.setEnabled(false);
 			apply.setFocusable(false);
@@ -148,7 +147,6 @@ public class SPiCa extends Activity {
 	public void dialog() {
 		View view = this.getLayoutInflater().inflate(R.layout.customdialog,
 				null);
-		// TODO : ±â¹Ý ¼Ò½º ¼öÁ¤
 		TextView txtTitle = (TextView) view.findViewById(R.id.title);
 		txtTitle.setText(R.string.spica_title);
 		txtTitle.setTextColor(Color.WHITE);
@@ -210,11 +208,169 @@ public class SPiCa extends Activity {
 
 		return super.onKeyDown(keyCode, event);
 	}
+	
+	public void Install_SPiCa() throws InterruptedException, IOException,
+			TimeoutException, RootDeniedException {
+		Delete_File();
+		RootTools.remount("/system/", "rw");
+		RootTools.copyFile(this.getExternalFilesDir(null) + "/01io",
+				"/system/etc/init.d/01io", true, false);
+		RootTools.copyFile(this.getExternalFilesDir(null) + "/02freq",
+				"/system/etc/init.d/02freq", true, false);
+		RootTools.copyFile(
+				this.getExternalFilesDir(null) + "/03zipalign",
+				"/system/etc/init.d/03zipalign", true, false);
+		RootTools.copyFile(
+				this.getExternalFilesDir(null) + "/spica_set.sh",
+				"/system/etc/set.sh", true, false);
+		RootTools
+				.copyFile(
+						this.getExternalFilesDir(null) + "/98banner_dreamnarae_spica",
+						"/system/98banner_dreamnarae_spica", true, false);
+		RootTools.copyFile(this.getExternalFilesDir(null) + "/allflag",
+				"/system/allflag", true, false);
+		RootTools.remount("/system/", "rw");
+		CommandCapture command = new CommandCapture(0,
+				"chmod 755 /system/etc/init.d/01io",
+				"chmod 755 /system/etc/init.d/02freq",
+				"chmod 755 /system/etc/init.d/03zipalign",
+				"chmod 755 /system/98banner_dreamnarae_spica",
+				"chmod 755 /system/allflag",
+				"chmod 755 /system/set.sh");
+		RootTools.getShell(true).add(command).waitForFinish();
+		installcomplete();
+	}
+	public static void Delete_File() throws InterruptedException, IOException,
+			TimeoutException, RootDeniedException {
+		RootTools.remount("/system/", "RW");
+		CommandCapture command = new CommandCapture(0,
+				"rm /system/98banner_dreamnarae_spica",
+				"rm /system/98banner_dreamnarae_miracle",
+				"rm /system/98banner_dreamnarae_save",
+				"rm /system/98banner_dreamnarae_prev",
+				"rm /system/98banner_dreamnarae_pure",
+				"rm /system/98banner_dreamnarae_brand",
+				"rm /system/98banner_dreamnarae_spisave", "rm /system/allflag",
+				"rm /system/etc/init.d/00prop", "rm /system/etc/init.d/01io",
+				"rm /system/etc/init.d/02freq",
+				"rm /system/etc/init.d/03zipalign",
+				"rm /system/etc/init.d/01kswapd0",
+				"rm /system/etc/init.d/02io", "rm /system/etc/init.d/03freq",
+				"rm /system/etc/init.d/04zipalign",
+				"rm /system/etc/init.d/00set",
+				"rm /system/etc/init.d/01property",
+				"rm /system/etc/init.d/02vsls", "rm /system/etc/init.d/03dch",
+				"rm /system/etc/init.d/04zip", "rm /system/etc/init.d/01vsls",
+				"rm /system/etc/init.d/02dch", "rm /system/etc/init.d/00sp",
+				"rm /system/etc/init.d/01v", "rm /system/etc/init.d/02deep",
+				"rm /system/etc/init.d/03zip",
+				"rm /system/etc/init.d/00proppv",
+				"rm /system/etc/init.d/01kswapd0pv",
+				"rm /system/etc/init.d/02iopv",
+				"rm /system/etc/init.d/03freqpv",
+				"rm /system/etc/init.d/04zippv",
+				"rm /system/etc/init.d/01iopv",
+				"rm /system/etc/init.d/02freqpv",
+				"rm /system/etc/init.d/00cpu", "rm /system/etc/init.d/01loosy",
+				"rm /system/etc/init.d/02memory",
+				"rm /system/etc/init.d/03prop",
+				"rm /system/etc/init.d/04cleaning",
+				"rm /system/etc/init.d/00b", "rm /system/etc/init.d/01r",
+				"rm /system/etc/init.d/02and",
+				"rm /system/etc/init.d/00cleaning",
+				"rm /system/etc/init.d/01cpu",
+				"rm /system/etc/init.d/02sysctl",
+				"rm /system/etc/init.d/03memory",
+				"rm /system/etc/init.d/04prop",
+				"rm /system/etc/init.d/05zipalign",
+				"rm /system/etc/init.d/06sysctl",
+				"rm /system/etc/init.d/00cpu",
+				"rm /system/etc/init.d/01memory",
+				"rm /system/etc/init.d/02prop",
+				"rm /system/etc/init.d/03cleaning",
+				"rm /system/etc/init.d/04zipalign");
+		RootTools.getShell(true).add(command).waitForFinish();
+	}
+
+	public void installcomplete() throws IOException {
+		File file = new File("/system/allflag");
+		if (file.length() > 0) {
+			Log.d("Install", "Install Success!");
+			View view = this.getLayoutInflater().inflate(R.layout.customdialog,
+					null);
+			TextView txtTitle = (TextView) view.findViewById(R.id.title);
+			txtTitle.setText(R.string.reboottitle);
+			txtTitle.setTextColor(Color.WHITE);
+			txtTitle.setTextSize(20);
+			TextView message = (TextView) view.findViewById(R.id.message);
+			message.setText(R.string.rebootmessage);
+			message.setTextColor(Color.WHITE);
+			AlertDialog.Builder builder = new Builder(
+					RootToolsInstallProcess.this);
+			builder.setView(view);
+			builder.setPositiveButton(R.string.yes,
+					new DialogInterface.OnClickListener() {
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							dialog.dismiss();
+							try {
+								CommandCapture command = new CommandCapture(0,
+										"reboot");
+								try {
+									RootTools.getShell(true).add(command)
+											.waitForFinish();
+								} catch (InterruptedException e) {
+									e.printStackTrace();
+								} catch (TimeoutException e) {
+									e.printStackTrace();
+								} catch (RootDeniedException e) {
+									e.printStackTrace();
+								}
+							} catch (IOException e) {
+								e.printStackTrace();
+							}
+
+						}
+					})
+					.setNegativeButton(R.string.no,
+							new DialogInterface.OnClickListener() {
+								@Override
+								public void onClick(DialogInterface dialog,
+										int which) {
+									dialog.dismiss();
+									finish();
+								}
+							}).show();
+		} else {
+			View view1 = this.getLayoutInflater().inflate(
+					R.layout.customdialog, null);
+			TextView txtTitle = (TextView) view1.findViewById(R.id.title);
+			txtTitle.setText(R.string.errortitle);
+			txtTitle.setTextColor(Color.WHITE);
+			txtTitle.setTextSize(20);
+			TextView message = (TextView) view1.findViewById(R.id.message);
+			message.setText(R.string.error2message);
+			message.setTextColor(Color.WHITE);
+			AlertDialog.Builder builder = new Builder(
+					RootToolsInstallProcess.this);
+			builder.setView(view1);
+			builder.setPositiveButton(R.string.infoclose,
+					new DialogInterface.OnClickListener() {
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							dialog.dismiss();
+							finish();
+						}
+					}
+
+			).show();
+		}
+	}
 
 	@Override
 	public void onResume() {
 		super.onResume();
-		// TODO : ±â¹Ý ¼Ò½º ¼öÁ¤
+		// TODO : ê¸°ë°˜ ì†ŒìŠ¤ ìˆ˜ì •
 		if (new File("/system/98banner_dreamnarae_spica").exists()) {
 			apply.setEnabled(false);
 			apply.setFocusable(false);
