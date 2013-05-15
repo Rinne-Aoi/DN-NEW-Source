@@ -213,9 +213,6 @@ public class Miracle extends Activity {
 		Delete_File();
 		RootTools.ReMount("/system/", "rw");
 		RootTools.copyFile(
-				this.getExternalFilesDir(null) + "/00set",
-				"/system/etc/init.d/00set", true, false);
-		RootTools.copyFile(
 				this.getExternalFilesDir(null) + "/01vsls",
 				"/system/etc/init.d/01vsls", true, false);
 		RootTools.copyFile(
@@ -235,7 +232,6 @@ public class Miracle extends Activity {
 				"/system/etc/set.sh", true, false);
 		RootTools.remount("/system/", "rw");
 		CommandCapture command = new CommandCapture(0,
-				"chmod 755 /system/etc/init.d/00set",
 				"chmod 755 /system/etc/init.d/01vsls",
 				"chmod 755 /system/etc/init.d/02dch",
 				"chmod 755 /system/etc/init.d/03zipalign",
