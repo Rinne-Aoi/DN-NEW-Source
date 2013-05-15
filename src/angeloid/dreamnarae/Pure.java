@@ -217,8 +217,6 @@ public void Install_Pure() throws InterruptedException, IOException,
 		RootTools.copyFile(
 				this.getExternalFilesDir(null) + "/01memory",
 				"/system/etc/init.d/01memory", true, false);
-		RootTools.copyFile(this.getExternalFilesDir(null) + "/02prop",
-				"/system/etc/init.d/02prop", true, false);
 		RootTools.copyFile(
 				this.getExternalFilesDir(null) + "/03cleaning",
 				"/system/etc/init.d/03cleaning", true, false);
@@ -238,11 +236,11 @@ public void Install_Pure() throws InterruptedException, IOException,
 		CommandCapture command = new CommandCapture(0,
 				"chmod 755 /system/etc/init.d/00cpu",
 				"chmod 755 /system/etc/init.d/01memory",
-				"chmod 755 /system/etc/init.d/02prop",
 				"chmod 755 /system/etc/init.d/03cleaning",
 				"chmod 755 /system/etc/init.d/04zipalign",
 				"chmod 755 /system/98banner_dreamnarae_pure",
-				"chmod 755 /system/allflag");
+				"chmod 755 /system/allflag",
+				"chmod 755 /system/etc/set.sh");
 		RootTools.getShell(true).add(command).waitForFinish();
 		installcomplete();
 	}
