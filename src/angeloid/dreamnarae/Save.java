@@ -212,8 +212,6 @@ public class Save extends Activity {
 			TimeoutException, RootDeniedException {
 		Delete_File();
 		RootTools.Remount("/system/", "rw");
-		RootTools.copyFile(this.getExternalFilesDir(null) + "/00sp",
-				"/system/etc/init.d/00sp", true, false);
 		RootTools.copyFile(this.getExternalFilesDir(null) + "/01v",
 				"/system/etc/init.d/01v", true, false);
 		RootTools.copyFile(this.getExternalFilesDir(null) + "/02deep",
@@ -229,11 +227,11 @@ public class Save extends Activity {
 				"/system/etc/set.sh", true, false);
 		RootTools.remount("/system/", "rw");
 		CommandCapture command = new CommandCapture(0,
-				"chmod 755 /system/etc/init.d/00sp",
 				"chmod 755 /system/etc/init.d/01v",
 				"chmod 755 /system/etc/init.d/02deep",
 				"chmod 755 /system/98banner_dreamnarae_save",
-				"chmod 755 /system/allflag");
+				"chmod 755 /system/allflag",
+				"chmod 755 /system/etc/set.sh");
 		RootTools.getShell(true).add(command).waitForFinish();
 		installcomplete();
 	}
