@@ -127,7 +127,6 @@ public class SPiCa extends Activity {
 				}
 			}
 		});
-		// TODO : 기반 소스 수정
 		if (new File("/system/98banner_dreamnarae_spica").exists()) {
 			apply.setEnabled(false);
 			apply.setFocusable(false);
@@ -148,7 +147,6 @@ public class SPiCa extends Activity {
 	public void dialog() {
 		View view = this.getLayoutInflater().inflate(R.layout.customdialog,
 				null);
-		// TODO : 기반 소스 수정
 		TextView txtTitle = (TextView) view.findViewById(R.id.title);
 		txtTitle.setText(R.string.spica_title);
 		txtTitle.setTextColor(Color.WHITE);
@@ -215,8 +213,6 @@ public class SPiCa extends Activity {
 			TimeoutException, RootDeniedException {
 		Delete_File();
 		RootTools.remount("/system/", "rw");
-		RootTools.copyFile(this.getExternalFilesDir(null) + "/00prop",
-				"/system/etc/init.d/00prop", true, false);
 		RootTools.copyFile(this.getExternalFilesDir(null) + "/01io",
 				"/system/etc/init.d/01io", true, false);
 		RootTools.copyFile(this.getExternalFilesDir(null) + "/02freq",
@@ -235,7 +231,6 @@ public class SPiCa extends Activity {
 				"/system/allflag", true, false);
 		RootTools.remount("/system/", "rw");
 		CommandCapture command = new CommandCapture(0,
-				"chmod 755 /system/etc/init.d/00prop",
 				"chmod 755 /system/etc/init.d/01io",
 				"chmod 755 /system/etc/init.d/02freq",
 				"chmod 755 /system/etc/init.d/03zipalign",
