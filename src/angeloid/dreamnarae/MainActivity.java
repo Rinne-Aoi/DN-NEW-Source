@@ -49,6 +49,7 @@
  See the License for the specific language governing permissions and
  limitations under the License.
  */
+
 package angeloid.dreamnarae;
 
 import java.util.ArrayList;
@@ -70,20 +71,16 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.os.Environment;
-import android.os.StatFs;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 public class MainActivity extends Activity implements SensorEventListener {
-
 	// Layout
 	TextView LayoutTitle;
 	TextView LayoutTitle2;
@@ -112,25 +109,6 @@ public class MainActivity extends Activity implements SensorEventListener {
 	// Kakao Link / Story Link
 	private String encoding = "UTF-8";
 
-	// Slide Holder
-	private SlideMenu mSlideHolder;
-
-	// Slide Menu
-	Button main;
-	Button update;
-	Button spica;
-	Button pure;
-	Button save;
-	Button prev;
-	Button miracle;
-	Button brand;
-	Button spisave;
-	Button delete;
-	Button promoting;
-	Button setting;
-	Button developerinfo;
-	Button donate;
-
 	// MainFillper
 	ImageView iv1;
 	ImageView iv2;
@@ -147,30 +125,20 @@ public class MainActivity extends Activity implements SensorEventListener {
 
 	// Fonts
 	public static Typeface Font;
-	
+
 	// MediaPlayer
 	MediaPlayer mplayer;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.tab1);
-		
-		Log.d("debug", this.getExternalFilesDir(null) + "/01io");
-
+		setContentView(R.layout.activity_main);
 		// Font
 		initializeTypefaces();
-
-		// Disable StrickMode Policy
-		/*StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
-				.permitAll().build();
-		StrictMode.setThreadPolicy(policy);*/
 
 		// Layout
 		LayoutTitle = (TextView) findViewById(R.id.tabtextview);
 		LayoutTitle.setTypeface(MainActivity.Font);
-		LayoutTitle2 = (TextView) findViewById(R.id.tabtextview2);
-		LayoutTitle2.setTypeface(MainActivity.Font);
 
 		// Sensor
 		sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
@@ -181,44 +149,8 @@ public class MainActivity extends Activity implements SensorEventListener {
 		random = String.valueOf(m_rand.nextInt(1000 + 1));
 		MainActivity.easteregg = random;
 
-		// SlideHolder
-		mSlideHolder = (SlideMenu) findViewById(R.id.slideHolder);
-		mSlideHolder.toggle();
-		
 		// MediaPlayer
 		mplayer = MediaPlayer.create(MainActivity.this, R.raw.fullintro);
-
-		// Slide Menu
-		main = (Button) findViewById(R.id.mainscreen);
-		update = (Button) findViewById(R.id.updatelog);
-		spica = (Button) findViewById(R.id.spica);
-		pure = (Button) findViewById(R.id.pure);
-		save = (Button) findViewById(R.id.save);
-		prev = (Button) findViewById(R.id.prev);
-		miracle = (Button) findViewById(R.id.miracle);
-		brand = (Button) findViewById(R.id.brand);
-		spisave = (Button) findViewById(R.id.spisave);
-		delete = (Button) findViewById(R.id.delete);
-		promoting = (Button) findViewById(R.id.promoting);
-		setting = (Button) findViewById(R.id.setting);
-		developerinfo = (Button) findViewById(R.id.developerinfo);
-		donate = (Button) findViewById(R.id.donate);
-
-		// Slide Menu Fonts
-		main.setTypeface(MainActivity.Font);
-		update.setTypeface(MainActivity.Font);
-		spica.setTypeface(MainActivity.Font);
-		pure.setTypeface(MainActivity.Font);
-		save.setTypeface(MainActivity.Font);
-		prev.setTypeface(MainActivity.Font);
-		miracle.setTypeface(MainActivity.Font);
-		brand.setTypeface(MainActivity.Font);
-		spisave.setTypeface(MainActivity.Font);
-		delete.setTypeface(MainActivity.Font);
-		promoting.setTypeface(MainActivity.Font);
-		setting.setTypeface(MainActivity.Font);
-		developerinfo.setTypeface(MainActivity.Font);
-		donate.setTypeface(MainActivity.Font);
 
 		// MainFippler
 		vf = (ViewFlipper) findViewById(R.id.viewFlipper1);
@@ -240,36 +172,6 @@ public class MainActivity extends Activity implements SensorEventListener {
 				R.anim.left_out));
 		vf.startFlipping();
 
-		// SDCard Check
-		StatFs stat = new StatFs(Environment.getExternalStorageDirectory()
-				.getPath());
-		double sdAvailSize = (double) stat.getAvailableBlocks()
-				* (double) stat.getBlockSize();
-		double megaAvailable = sdAvailSize / 1048576;
-		if (megaAvailable < 10.0) {
-			View view = this.getLayoutInflater().inflate(R.layout.customdialog,
-					null);
-			TextView txtTitle = (TextView) view.findViewById(R.id.title);
-			txtTitle.setText(R.string.sdcarderrortitle);
-			txtTitle.setTextColor(Color.WHITE);
-			txtTitle.setTextSize(20);
-			txtTitle.setTypeface(MainActivity.Font);
-			TextView message = (TextView) view.findViewById(R.id.message);
-			message.setText(R.string.sdcarderrormessage);
-			message.setTextColor(Color.WHITE);
-			message.setTypeface(MainActivity.Font);
-			AlertDialog.Builder builder1 = new Builder(MainActivity.this);
-			builder1.setView(view);
-			builder1.setCancelable(false);
-			builder1.setPositiveButton(R.string.infoclose,
-					new DialogInterface.OnClickListener() {
-						@Override
-						public void onClick(DialogInterface dialog, int which) {
-							dialog.dismiss();
-							finish();
-						}
-					}).show();
-		}
 	}
 
 	private void initializeTypefaces() {
@@ -277,13 +179,8 @@ public class MainActivity extends Activity implements SensorEventListener {
 				"fonts/Arita.otf");
 	}
 
-	/**
-	 * Send App data
-	 */
 	public void sendAppData(View v) throws NameNotFoundException {
 		ArrayList<Map<String, String>> metaInfoArray = new ArrayList<Map<String, String>>();
-
-		// If application is support Android platform.
 		Map<String, String> metaInfoAndroid = new Hashtable<String, String>(1);
 		metaInfoAndroid.put("os", "android");
 		metaInfoAndroid.put("devicetype", "phone");
@@ -291,28 +188,14 @@ public class MainActivity extends Activity implements SensorEventListener {
 				"market://details?id=angeloid.dreamnarae");
 		metaInfoAndroid.put("executeurl", "kakaoLinkTest://starActivity");
 
-		// add to array
 		metaInfoArray.add(metaInfoAndroid);
 
-		// Recommended: Use application context for parameter.
 		KakaoLink kakaoLink = KakaoLink.getLink(getApplicationContext());
-
-		// check, intent is available.
 		if (!kakaoLink.isAvailableIntent()) {
 			alert(getString(R.string.ishavekatok));
 			return;
 		}
 
-		/**
-		 * @param activity
-		 * @param url
-		 * @param message
-		 * @param appId
-		 * @param appVer
-		 * @param appName
-		 * @param encoding
-		 * @param metaInfoArray
-		 */
 		String app_name = getString(R.string.app_name);
 		String message = getString(R.string.kakaotalkmessage);
 		kakaoLink
@@ -338,46 +221,6 @@ public class MainActivity extends Activity implements SensorEventListener {
 		AlertDialog.Builder builder = new Builder(MainActivity.this);
 		builder.setView(view);
 		builder.setPositiveButton(android.R.string.ok, null).create().show();
-	}
-
-	@Override
-	public void onStart() {
-		super.onStart();
-
-		if (accelerormeterSensor != null)
-			sensorManager.registerListener(this, accelerormeterSensor,
-					SensorManager.SENSOR_DELAY_GAME);
-	}
-
-	@Override
-	public void onStop() {
-		super.onStop();
-
-		if (sensorManager != null)
-			sensorManager.unregisterListener(this);
-	}
-
-	@Override
-	public void onSensorChanged(SensorEvent event) {
-		if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
-			long currentTime = System.currentTimeMillis();
-			long gabOfTime = (currentTime - lastTime);
-
-			if (gabOfTime > 100) {
-				lastTime = currentTime;
-
-				x = event.values[SensorManager.AXIS_X];
-				y = event.values[SensorManager.AXIS_Y];
-
-				speed = Math.abs(x + y - lastX - lastY) / gabOfTime * 10000;
-
-				if (speed > SHAKE_THRESHOLD) {
-					handleShakeEvent();
-				}
-				lastX = event.values[DATA_X];
-				lastY = event.values[DATA_Y];
-			}
-		}
 	}
 
 	@Override
@@ -429,7 +272,7 @@ public class MainActivity extends Activity implements SensorEventListener {
 		}
 
 	}
-	
+
 	public void Introduce(View v) {
 		int i = Integer.parseInt(intro) - 1;
 		intro = String.valueOf(i);
@@ -444,13 +287,13 @@ public class MainActivity extends Activity implements SensorEventListener {
 			intro = "5";
 			mplayer.start();
 			if (mplayer.isPlaying() == true) {
-				Toast.makeText(this, R.string.introduce2, Toast.LENGTH_SHORT).show();
+				Toast.makeText(this, R.string.introduce2, Toast.LENGTH_SHORT)
+						.show();
 			}
 		}
 	}
 
 	public void eastereggevent(View v) {
-		mSlideHolder.toggle();
 		int i = Integer.parseInt(easteregg) - 1;
 		MainActivity.easteregg = String.valueOf(i);
 		String easteregg2 = getString(R.string.easteregg1);
@@ -469,79 +312,48 @@ public class MainActivity extends Activity implements SensorEventListener {
 	}
 
 	@Override
-	public void onAccuracyChanged(Sensor arg0, int arg1) {
-
+	public void onAccuracyChanged(Sensor sensor, int accuracy) {
+		
 	}
 
-	public void mainscreen(View v) {
-		// startActivity(new Intent(this, MainActivity.class));
-	}
+	@Override
+	public void onSensorChanged(SensorEvent event) {
+		if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
+			long currentTime = System.currentTimeMillis();
+			long gabOfTime = (currentTime - lastTime);
 
-	public void updatelog(View v) {
-		startActivity(new Intent(this, Update_Main.class));
-		finish();
-	}
+			if (gabOfTime > 100) {
+				lastTime = currentTime;
 
-	public void spicascreen(View v) {
-		startActivity(new Intent(this, SPiCa.class));
-		finish();
-	}
+				x = event.values[SensorManager.AXIS_X];
+				y = event.values[SensorManager.AXIS_Y];
 
-	public void purescreen(View v) {
-		startActivity(new Intent(this, Pure.class));
-		finish();
-	}
+				speed = Math.abs(x + y - lastX - lastY) / gabOfTime * 10000;
 
-	public void savescreen(View v) {
-		startActivity(new Intent(this, Save.class));
-		finish();
-	}
-
-	public void prevscreen(View v) {
-		startActivity(new Intent(this, Prev.class));
-		finish();
-	}
-
-	public void miraclescreen(View v) {
-		startActivity(new Intent(this, Miracle.class));
-		finish();
-	}
-
-	public void brandscreen(View v) {
-		startActivity(new Intent(this, Brand.class));
-		finish();
-	}
-
-	public void spisavescreen(View v) {
-		startActivity(new Intent(this, SPiSave.class));
-		finish();
-	}
-
-	public void deletescreen(View v) {
-		startActivity(new Intent(this, Delete.class));
-		finish();
-	}
-
-	public void promotingscreen(View v) {
-		try {
-			sendAppData(v);
-		} catch (NameNotFoundException e) {
-			e.printStackTrace();
+				if (speed > SHAKE_THRESHOLD) {
+					handleShakeEvent();
+				}
+				lastX = event.values[DATA_X];
+				lastY = event.values[DATA_Y];
+			}
 		}
 	}
 
-	public void settingscreen(View v) {
-		startActivity(new Intent(this, Settings.class));
-		finish();
+	@Override
+	public void onStart() {
+		super.onStart();
+
+		if (accelerormeterSensor != null)
+			sensorManager.registerListener(this, accelerormeterSensor,
+					SensorManager.SENSOR_DELAY_GAME);
 	}
 
-	public void developerinfoscreen(View v) {
-		startActivity(new Intent(this, Developer_Info.class));
-		finish();
+	@Override
+	public void onStop() {
+		super.onStop();
+
+		if (sensorManager != null)
+			sensorManager.unregisterListener(this);
 	}
 
-	public void donatescreen(View v) {
-		startActivity(new Intent(this, Donate.class));
-		finish();
-	}
 }

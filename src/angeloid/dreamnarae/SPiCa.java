@@ -43,9 +43,7 @@
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
- */
-
-/**
+   /**
  * ZipDownloader
  * 
  * A simple app to demonstrate downloading and unpacking a .zip file
@@ -75,17 +73,12 @@
 package angeloid.dreamnarae;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Hashtable;
-import java.util.Map;
 
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.pm.PackageManager.NameNotFoundException;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.AsyncTask;
@@ -104,102 +97,37 @@ import com.jotabout.zipdownloader.util.ExternalStorage;
 import com.stericson.RootTools.RootTools;
 
 public class SPiCa extends Activity {
-
 	Button apply;
 	Button info;
 	static MediaPlayer mplayer;
 	ImageView imageview;
-
-	// Layout
 	TextView LayoutTitle;
-	TextView LayoutTitle2;
-
-	// Kakao Link / Story Link
-	private String encoding = "UTF-8";
-
-	// Slide Menu
-	Button main;
-	Button update;
-	Button spica;
-	Button pure;
-	Button save;
-	Button prev;
-	Button miracle;
-	Button brand;
-	Button spisave;
-	Button delete;
-	Button promoting;
-	Button setting;
-	Button developerinfo;
-	Button donate;
-
-	// Dialog
 	protected ProgressDialog mProgressDialog;
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.spica);
-		// Layout
 		LayoutTitle = (TextView) findViewById(R.id.tabtextview);
 		LayoutTitle.setTypeface(MainActivity.Font);
 		apply = (Button) findViewById(R.id.apply);
 		info = (Button) findViewById(R.id.info);
 		apply.setTypeface(MainActivity.Font);
 		info.setTypeface(MainActivity.Font);
-		LayoutTitle2 = (TextView) findViewById(R.id.tabtextview2);
-		LayoutTitle2.setTypeface(MainActivity.Font);
-
-		// Keep the screen (and device) active as long as this app is frontmost.
-		// This is to avoid going to sleep during the download.
-		// http://stackoverflow.com/questions/4376902/difference-between-wakelock-and-flag-keep-screen-on
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-
-		// Slide Menu
-		main = (Button) findViewById(R.id.mainscreen);
-		update = (Button) findViewById(R.id.updatelog);
-		spica = (Button) findViewById(R.id.spica);
-		pure = (Button) findViewById(R.id.pure);
-		save = (Button) findViewById(R.id.save);
-		prev = (Button) findViewById(R.id.prev);
-		miracle = (Button) findViewById(R.id.miracle);
-		brand = (Button) findViewById(R.id.brand);
-		spisave = (Button) findViewById(R.id.spisave);
-		delete = (Button) findViewById(R.id.delete);
-		promoting = (Button) findViewById(R.id.promoting);
-		setting = (Button) findViewById(R.id.setting);
-		developerinfo = (Button) findViewById(R.id.developerinfo);
-		donate = (Button) findViewById(R.id.donate);
-
-		// Slide Menu Fonts
-		main.setTypeface(MainActivity.Font);
-		update.setTypeface(MainActivity.Font);
-		spica.setTypeface(MainActivity.Font);
-		pure.setTypeface(MainActivity.Font);
-		save.setTypeface(MainActivity.Font);
-		prev.setTypeface(MainActivity.Font);
-		miracle.setTypeface(MainActivity.Font);
-		brand.setTypeface(MainActivity.Font);
-		spisave.setTypeface(MainActivity.Font);
-		delete.setTypeface(MainActivity.Font);
-		promoting.setTypeface(MainActivity.Font);
-		setting.setTypeface(MainActivity.Font);
-		developerinfo.setTypeface(MainActivity.Font);
-		donate.setTypeface(MainActivity.Font);
 		imageview = (ImageView) findViewById(R.id.imageview);
 		mplayer = MediaPlayer.create(SPiCa.this, R.raw.spica);
 		apply.setOnClickListener(new View.OnClickListener() {
-
 			@Override
 			public void onClick(View v) {
 				if (RootTools.isAccessGiven()) {
 					startDownload(v);
-					Intent();
 				} else {
 					Toast.makeText(SPiCa.this, R.string.noroottoast,
 							Toast.LENGTH_LONG).show();
 				}
 			}
 		});
+		// TODO : 기반 소스 수정
 		if (new File("/system/98banner_dreamnarae_spica").exists()) {
 			apply.setEnabled(false);
 			apply.setFocusable(false);
@@ -217,131 +145,10 @@ public class SPiCa extends Activity {
 		});
 	}
 
-	public void Intent() {
-		Intent intent = new Intent(this, RootToolsInstallProcess.class);
-		intent.putExtra("Version", "SPiCa");
-		startActivity(intent);
-	}
-
-	/**
-	 * Invoked when user presses "Start download" button.
-	 */
-	public void startDownload(View v) {
-		String url = "http://gecp.kr/dn/newdn.zip";
-		new DownloadTask().execute(url);
-	}
-
-	// ////////////////////////////////////////////////////////////////////////
-	// Background Task
-	// ////////////////////////////////////////////////////////////////////////
-
-	/**
-	 * Background task to download and unpack .zip file in background.
-	 */
-	private class DownloadTask extends AsyncTask<String, Void, Exception> {
-
-		@Override
-		protected void onPreExecute() {
-			showProgress();
-		}
-
-		@Override
-		protected Exception doInBackground(String... params) {
-			String url = (String) params[0];
-
-			try {
-				downloadAllAssets(url);
-			} catch (Exception e) {
-				return e;
-			}
-
-			return null;
-		}
-
-		@Override
-		protected void onPostExecute(Exception result) {
-			dismissProgress();
-			if (result == null) {
-				return;
-			}
-			// something went wrong, post a message to user - you could use a
-			// dialog here or whatever
-			Toast.makeText(SPiCa.this, result.getLocalizedMessage(),
-					Toast.LENGTH_LONG).show();
-		}
-	}
-
-	// ////////////////////////////////////////////////////////////////////////
-	// Progress Dialog
-	// ////////////////////////////////////////////////////////////////////////
-
-	protected void showProgress() {
-		mProgressDialog = new ProgressDialog(this);
-		mProgressDialog.setTitle(R.string.progress_title);
-		mProgressDialog.setMessage(getString(R.string.progress_detail));
-		mProgressDialog.setIndeterminate(true);
-		mProgressDialog.setCancelable(false);
-		mProgressDialog.show();
-	}
-
-	protected void dismissProgress() {
-		// You can't be too careful.
-		if (mProgressDialog != null && mProgressDialog.isShowing()
-				&& mProgressDialog.getWindow() != null) {
-			try {
-				mProgressDialog.dismiss();
-			} catch (IllegalArgumentException ignore) {
-				;
-			}
-		}
-		mProgressDialog = null;
-	}
-
-	// ////////////////////////////////////////////////////////////////////////
-	// File Download
-	// ////////////////////////////////////////////////////////////////////////
-
-	/**
-	 * Download .zip file specified by url, then unzip it to a folder in
-	 * external storage.
-	 * 
-	 * @param url
-	 */
-	private void downloadAllAssets(String url) {
-		// Temp folder for holding asset during download
-		File zipDir = ExternalStorage.getSDCacheDir(this, "tmp");
-		// File path to store .zip file before unzipping
-		File zipFile = new File(zipDir.getPath() + "/newdn.zip");
-		// Folder to hold unzipped output
-		File outputDir = ExternalStorage.getSDCacheDir(this, "");
-
-		try {
-			DownloadFile.download(url, zipFile, zipDir);
-			unzipFile(zipFile, outputDir);
-		} finally {
-			zipFile.delete();
-		}
-	}
-
-	// ////////////////////////////////////////////////////////////////////////
-	// Zip Extraction
-	// ////////////////////////////////////////////////////////////////////////
-
-	/**
-	 * Unpack .zip file.
-	 * 
-	 * @param zipFile
-	 * @param destination
-	 */
-	protected void unzipFile(File zipFile, File destination) {
-		DecompressZip decomp = new DecompressZip(zipFile.getPath(),
-				destination.getPath() + File.separator);
-		decomp.unzip();
-	}
-
 	public void dialog() {
 		View view = this.getLayoutInflater().inflate(R.layout.customdialog,
 				null);
+		// TODO : 기반 소스 수정
 		TextView txtTitle = (TextView) view.findViewById(R.id.title);
 		txtTitle.setText(R.string.spica_title);
 		txtTitle.setTextColor(Color.WHITE);
@@ -407,6 +214,7 @@ public class SPiCa extends Activity {
 	@Override
 	public void onResume() {
 		super.onResume();
+		// TODO : 기반 소스 수정
 		if (new File("/system/98banner_dreamnarae_spica").exists()) {
 			apply.setEnabled(false);
 			apply.setFocusable(false);
@@ -415,139 +223,79 @@ public class SPiCa extends Activity {
 		}
 	}
 
-	/**
-	 * Send App data
-	 */
-	public void sendAppData(View v) throws NameNotFoundException {
-		ArrayList<Map<String, String>> metaInfoArray = new ArrayList<Map<String, String>>();
+	public void startDownload(View v) {
+		String url = "http://gecp.kr/dn/newdn.zip";
+		new DownloadTask().execute(url);
+	}
 
-		// If application is support Android platform.
-		Map<String, String> metaInfoAndroid = new Hashtable<String, String>(1);
-		metaInfoAndroid.put("os", "android");
-		metaInfoAndroid.put("devicetype", "phone");
-		metaInfoAndroid.put("installurl",
-				"market://details?id=angeloid.dreamnarae");
-		metaInfoAndroid.put("executeurl", "kakaoLinkTest://starActivity");
+	private class DownloadTask extends AsyncTask<String, Void, Exception> {
 
-		// add to array
-		metaInfoArray.add(metaInfoAndroid);
-
-		// Recommended: Use application context for parameter.
-		KakaoLink kakaoLink = KakaoLink.getLink(getApplicationContext());
-
-		// check, intent is available.
-		if (!kakaoLink.isAvailableIntent()) {
-			alert(getString(R.string.ishavekatok));
-			return;
+		@Override
+		protected void onPreExecute() {
+			showProgress();
 		}
 
-		/**
-		 * @param activity
-		 * @param url
-		 * @param message
-		 * @param appId
-		 * @param appVer
-		 * @param appName
-		 * @param encoding
-		 * @param metaInfoArray
-		 */
-		String app_name = getString(R.string.app_name);
-		String message = getString(R.string.kakaotalkmessage);
-		kakaoLink
-				.openKakaoAppLink(
-						this,
-						"market://details?id=angeloid.dreamnarae",
-						message,
-						getPackageName(),
-						getPackageManager().getPackageInfo(getPackageName(), 0).versionName,
-						app_name, encoding, metaInfoArray);
+		@Override
+		protected Exception doInBackground(String... params) {
+			String url = (String) params[0];
+
+			try {
+				downloadAllAssets(url);
+			} catch (Exception e) {
+				return e;
+			}
+
+			return null;
+		}
+
+		@Override
+		protected void onPostExecute(Exception result) {
+			dismissProgress();
+			if (result == null) {
+				return;
+			}
+			Toast.makeText(SPiCa.this, result.getLocalizedMessage(),
+					Toast.LENGTH_LONG).show();
+		}
 	}
 
-	private void alert(String message) {
-		View view = this.getLayoutInflater().inflate(R.layout.customdialog,
-				null);
-		TextView txtTitle = (TextView) view.findViewById(R.id.title);
-		txtTitle.setText(R.string.app_name);
-		txtTitle.setTextColor(Color.WHITE);
-		txtTitle.setTextSize(20);
-		TextView message1 = (TextView) view.findViewById(R.id.message);
-		message1.setText(message);
-		message1.setTextColor(Color.WHITE);
-		AlertDialog.Builder builder = new Builder(SPiCa.this);
-		builder.setView(view);
-		builder.setPositiveButton(android.R.string.ok, null).create().show();
+	protected void showProgress() {
+		mProgressDialog = new ProgressDialog(this);
+		mProgressDialog.setTitle(R.string.progress_title);
+		mProgressDialog.setMessage(getString(R.string.progress_detail));
+		mProgressDialog.setIndeterminate(true);
+		mProgressDialog.setCancelable(false);
+		mProgressDialog.show();
 	}
 
-	public void mainscreen(View v) {
-		startActivity(new Intent(this, MainActivity.class));
-		finish();
+	protected void dismissProgress() {
+		if (mProgressDialog != null && mProgressDialog.isShowing()
+				&& mProgressDialog.getWindow() != null) {
+			try {
+				mProgressDialog.dismiss();
+			} catch (IllegalArgumentException ignore) {
+				;
+			}
+		}
+		mProgressDialog = null;
 	}
 
-	public void updatelog(View v) {
-		startActivity(new Intent(this, Update_Main.class));
-		finish();
-	}
+	private void downloadAllAssets(String url) {
+		File zipDir = ExternalStorage.getSDCacheDir(this, "tmp");
+		File zipFile = new File(zipDir.getPath() + "/newdn.zip");
+		File outputDir = ExternalStorage.getSDCacheDir(this, "");
 
-	public void spicascreen(View v) {
-		// startActivity(new Intent(this, SPiCa.class));
-		// finish();
-	}
-
-	public void purescreen(View v) {
-		startActivity(new Intent(this, Pure.class));
-		finish();
-	}
-
-	public void savescreen(View v) {
-		startActivity(new Intent(this, Save.class));
-		finish();
-	}
-
-	public void prevscreen(View v) {
-		startActivity(new Intent(this, Prev.class));
-		finish();
-	}
-
-	public void miraclescreen(View v) {
-		startActivity(new Intent(this, Miracle.class));
-		finish();
-	}
-
-	public void brandscreen(View v) {
-		startActivity(new Intent(this, Brand.class));
-		finish();
-	}
-
-	public void spisavescreen(View v) {
-		startActivity(new Intent(this, SPiSave.class));
-		finish();
-	}
-
-	public void deletescreen(View v) {
-		startActivity(new Intent(this, Delete.class));
-		finish();
-	}
-
-	public void promotingscreen(View v) {
 		try {
-			sendAppData(v);
-		} catch (NameNotFoundException e) {
-			e.printStackTrace();
+			DownloadFile.download(url, zipFile, zipDir);
+			unzipFile(zipFile, outputDir);
+		} finally {
+			zipFile.delete();
 		}
 	}
 
-	public void settingscreen(View v) {
-		startActivity(new Intent(this, Settings.class));
-		finish();
-	}
-
-	public void developerinfoscreen(View v) {
-		startActivity(new Intent(this, Developer_Info.class));
-		finish();
-	}
-
-	public void donatescreen(View v) {
-		startActivity(new Intent(this, Donate.class));
-		finish();
+	protected void unzipFile(File zipFile, File destination) {
+		DecompressZip decomp = new DecompressZip(zipFile.getPath(),
+				destination.getPath() + File.separator);
+		decomp.unzip();
 	}
 }
