@@ -96,7 +96,7 @@ import com.jotabout.zipdownloader.util.DownloadFile;
 import com.jotabout.zipdownloader.util.ExternalStorage;
 import com.stericson.RootTools.RootTools;
 
-public class SPiCa extends Activity {
+public class Brand extends Activity {
 	Button apply;
 	Button info;
 	static MediaPlayer mplayer;
@@ -106,7 +106,7 @@ public class SPiCa extends Activity {
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.spica);
+		setContentView(R.layout.brand);
 		LayoutTitle = (TextView) findViewById(R.id.tabtextview);
 		LayoutTitle.setTypeface(MainActivity.Font);
 		apply = (Button) findViewById(R.id.apply);
@@ -115,20 +115,19 @@ public class SPiCa extends Activity {
 		info.setTypeface(MainActivity.Font);
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 		imageview = (ImageView) findViewById(R.id.imageview);
-		mplayer = MediaPlayer.create(SPiCa.this, R.raw.spica);
+		mplayer = MediaPlayer.create(Brand.this, R.raw.spica);
 		apply.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				if (RootTools.isAccessGiven()) {
 					startDownload(v);
 				} else {
-					Toast.makeText(SPiCa.this, R.string.noroottoast,
+					Toast.makeText(Brand.this, R.string.noroottoast,
 							Toast.LENGTH_LONG).show();
 				}
 			}
 		});
-		// TODO : 기반 소스 수정
-		if (new File("/system/98banner_dreamnarae_spica").exists()) {
+		if (new File("/system/98banner_dreamnarae_brand").exists()) {
 			apply.setEnabled(false);
 			apply.setFocusable(false);
 			imageview.setImageResource(R.drawable.apply);
@@ -148,15 +147,14 @@ public class SPiCa extends Activity {
 	public void dialog() {
 		View view = this.getLayoutInflater().inflate(R.layout.customdialog,
 				null);
-		// TODO : 기반 소스 수정
 		TextView txtTitle = (TextView) view.findViewById(R.id.title);
-		txtTitle.setText(R.string.spica_title);
+		txtTitle.setText(R.string.brand_title);
 		txtTitle.setTextColor(Color.WHITE);
 		txtTitle.setTextSize(20);
 		TextView message = (TextView) view.findViewById(R.id.message);
-		message.setText(R.string.spica_info);
+		message.setText(R.string.brand_info);
 		message.setTextColor(Color.WHITE);
-		AlertDialog.Builder builder = new Builder(SPiCa.this);
+		AlertDialog.Builder builder = new Builder(Brand.this);
 		builder.setView(view);
 		builder.setCancelable(false);
 		builder.setPositiveButton(R.string.infoclose,
@@ -211,32 +209,26 @@ public class SPiCa extends Activity {
 		return super.onKeyDown(keyCode, event);
 	}
 	
-	public void Install_SPiCa() throws InterruptedException, IOException,
+	public void Install_Brand() throws InterruptedException, IOException,
 			TimeoutException, RootDeniedException {
 		Delete_File();
 		RootTools.remount("/system/", "rw");
-		RootTools.copyFile(this.getExternalFilesDir(null) + "/00prop",
-				"/system/etc/init.d/00prop", true, false);
-		RootTools.copyFile(this.getExternalFilesDir(null) + "/01io",
-				"/system/etc/init.d/01io", true, false);
-		RootTools.copyFile(this.getExternalFilesDir(null) + "/02freq",
-				"/system/etc/init.d/02freq", true, false);
-		RootTools.copyFile(
-				this.getExternalFilesDir(null) + "/03zipalign",
-				"/system/etc/init.d/03zipalign", true, false);
-		RootTools
-				.copyFile(
-						this.getExternalFilesDir(null) + "/98banner_dreamnarae_spica",
-						"/system/98banner_dreamnarae_spica", true, false);
-		RootTools.copyFile(this.getExternalFilesDir(null) + "/allflag",
-				"/system/allflag", true, false);
+		RootTools.copyFile(this.getExternalFilesDir(null) + "/01r",
+         "/system/etc/init.d/01r", true, false);
+    RootTools.copyFile(this.getExternalFilesDir(null) + "/02and",
+         "/system/etc/init.d/02and", true, false);
+    RootTools.copyFile(this.getExternalFilesDir(null)
+        + "/98banner_dreamnarae_brand",
+        "/system/98banner_dreamnarae_brand", true, false);
+    RootTools.copyFile(this.getExternalFilesDir(null) + "/brand_set.sh",
+         "/system/etc/set.sh", true, false)
+    RootTools.copyFile(this.getExternalFilesDir(null) + "/allflag",
 		RootTools.remount("/system/", "rw");
 		CommandCapture command = new CommandCapture(0,
-				"chmod 755 /system/etc/init.d/00prop",
-				"chmod 755 /system/etc/init.d/01io",
-				"chmod 755 /system/etc/init.d/02freq",
-				"chmod 755 /system/etc/init.d/03zipalign",
-				"chmod 755 /system/98banner_dreamnarae_spica",
+				"chmod 755 /system/etc/init.d/00b",
+				"chmod 755 /system/etc/init.d/01r",
+				"chmod 755 /system/etc/init.d/02and",
+				"chmod 755 /system/98banner_dreamnarae_brand",
 				"chmod 755 /system/allflag",
 				"chmod 755 /system/set.sh");
 		RootTools.getShell(true).add(command).waitForFinish();
@@ -372,8 +364,7 @@ public class SPiCa extends Activity {
 	@Override
 	public void onResume() {
 		super.onResume();
-		// TODO : 기반 소스 수정
-		if (new File("/system/98banner_dreamnarae_spica").exists()) {
+		if (new File("/system/98banner_dreamnarae_brand").exists()) {
 			apply.setEnabled(false);
 			apply.setFocusable(false);
 			imageview.setImageResource(R.drawable.apply);
@@ -412,7 +403,7 @@ public class SPiCa extends Activity {
 			if (result == null) {
 				return;
 			}
-			Toast.makeText(SPiCa.this, result.getLocalizedMessage(),
+			Toast.makeText(Brand.this, result.getLocalizedMessage(),
 					Toast.LENGTH_LONG).show();
 		}
 	}
