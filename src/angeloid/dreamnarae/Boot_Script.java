@@ -58,6 +58,7 @@ import java.util.concurrent.TimeoutException;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.stericson.RootTools.RootTools;
@@ -71,14 +72,15 @@ public class Boot_Script extends BroadcastReceiver {
 		if (!(RootTools.isAccessGiven())) {
 			Toast.makeText(c, R.string.noroottoast, Toast.LENGTH_LONG).show();
 		} else {
-				if (new File("/system/allflag").exists()) {
+				if (new File("/system/etc/dreamnarae.sh").exists()) {
 					CommandCapture command = new CommandCapture(0,
-							"busybox mount -o rw,remount /system",
-							"sh /system/etc/install-recovery.sh",
-							"busybox run-parts /system/etc/init.d",
-							"sh /system/etc/set.sh");
+							"mount -o rw,remount /system",
+							"sh /system/etc/dreamnarae.sh",
+							"sh /system/etc/install-recovery.sh");
+					
 					try {
 						RootTools.getShell(true).add(command).waitForFinish();
+						Log.d("debug", "ok!");
 						Toast.makeText(c, R.string.bootcomplete,
 								Toast.LENGTH_SHORT).show();
 					} catch (InterruptedException e) {
