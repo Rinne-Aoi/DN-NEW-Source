@@ -286,4 +286,4 @@ if [ -e /sys/module/pm_hotplug/parameters/rate_scroff ]; then
 	echo 800 > /sys/module/pm_hotplug/parameters/rate_scroff;
 	echo "Activited!"
 fi
-echo "05zipalign Start!"
+echo "DreamNarae SPiCa"
