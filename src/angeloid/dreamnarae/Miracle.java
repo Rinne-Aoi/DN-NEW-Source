@@ -57,18 +57,13 @@ public class Miracle extends Activity {
 	Button info;
 	static MediaPlayer mplayer;
 	ImageView imageview;
-	TextView LayoutTitle;
 	protected ProgressDialog mProgressDialog;
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.miracle);
-		LayoutTitle = (TextView) findViewById(R.id.tabtextview);
-		LayoutTitle.setTypeface(MainActivity.Font);
 		apply = (Button) findViewById(R.id.apply);
 		info = (Button) findViewById(R.id.info);
-		apply.setTypeface(MainActivity.Font);
-		info.setTypeface(MainActivity.Font);
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 		imageview = (ImageView) findViewById(R.id.imageview);
 		mplayer = MediaPlayer.create(Miracle.this, R.raw.spica);
@@ -77,7 +72,18 @@ public class Miracle extends Activity {
 			public void onClick(View v) {
 				if (RootTools.isAccessGiven()) {
 					startDownload(v);
-				} else {
+                    try {
+                        Install_Miracle();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (TimeoutException e) {
+                        e.printStackTrace();
+                    } catch (RootDeniedException e) {
+                        e.printStackTrace();
+                    }
+                } else {
 					Toast.makeText(Miracle.this, R.string.noroottoast,
 							Toast.LENGTH_LONG).show();
 				}
@@ -132,39 +138,6 @@ public class Miracle extends Activity {
 						}).show();
 	}
 
-	@Override
-	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		if (keyCode == KeyEvent.KEYCODE_BACK) {
-
-			View view = this.getLayoutInflater().inflate(R.layout.customdialog,
-					null);
-			TextView txtTitle = (TextView) view.findViewById(R.id.title);
-			txtTitle.setText(R.string.quittitle);
-			txtTitle.setTextColor(Color.WHITE);
-			txtTitle.setTextSize(20);
-			txtTitle.setTypeface(MainActivity.Font);
-			TextView message = (TextView) view.findViewById(R.id.message);
-			message.setText(R.string.quitmessage);
-			message.setTextColor(Color.WHITE);
-			message.setTypeface(MainActivity.Font);
-			AlertDialog.Builder builer = new AlertDialog.Builder(this);
-			builer.setView(view);
-			builer.setPositiveButton(android.R.string.yes,
-					new DialogInterface.OnClickListener() {
-						@Override
-						public void onClick(DialogInterface dialog, int which) {
-							android.os.Process.killProcess(android.os.Process
-									.myPid());
-						}
-					});
-			builer.setNegativeButton(android.R.string.no, null).show();
-
-			return true;
-		}
-
-		return super.onKeyDown(keyCode, event);
-	}
-
 	public void Install_Miracle() throws InterruptedException, IOException,
 			TimeoutException, RootDeniedException {
 		Delete_File();
@@ -196,7 +169,7 @@ public class Miracle extends Activity {
 	public void installcomplete() throws IOException, InterruptedException,
 			TimeoutException, RootDeniedException {
 		recovery();
-		File file = new File("/system/allflag");
+		File file = new File("/system/etc/dreamnarae.sh");
 		if (file.length() > 0) {
 			CommandCapture command = new CommandCapture(0,
 					"busybox touch /system/98banner_dreamnarae_miracle",
@@ -214,6 +187,7 @@ public class Miracle extends Activity {
 			message.setTextColor(Color.WHITE);
 			AlertDialog.Builder builder = new Builder(Miracle.this);
 			builder.setView(view);
+            builder.setCancelable(false);
 			builder.setPositiveButton(R.string.yes,
 					new DialogInterface.OnClickListener() {
 						@Override
@@ -244,7 +218,12 @@ public class Miracle extends Activity {
 								public void onClick(DialogInterface dialog,
 										int which) {
 									dialog.dismiss();
-									finish();
+                                    if (new File("/system/98banner_dreamnarae_miracle").exists()) {
+                                        apply.setEnabled(false);
+                                        apply.setFocusable(false);
+                                        imageview.setImageResource(R.drawable.apply);
+                                    } else {
+                                    }
 								}
 							}).show();
 		} else {
@@ -259,6 +238,7 @@ public class Miracle extends Activity {
 			message.setTextColor(Color.WHITE);
 			AlertDialog.Builder builder = new Builder(Miracle.this);
 			builder.setView(view1);
+            builder.setCancelable(false);
 			builder.setPositiveButton(R.string.infoclose,
 					new DialogInterface.OnClickListener() {
 						@Override
@@ -278,17 +258,6 @@ public class Miracle extends Activity {
 				+ "/dn_delete_signed.zip", Environment
 				.getExternalStorageDirectory().getAbsolutePath()
 				+ "/dn_delete_signed.zip", true, false);
-	}
-
-	@Override
-	public void onResume() {
-		super.onResume();
-		if (new File("/system/98banner_dreamnarae_miracle").exists()) {
-			apply.setEnabled(false);
-			apply.setFocusable(false);
-			imageview.setImageResource(R.drawable.apply);
-		} else {
-		}
 	}
 
 	public void startDownload(View v) {

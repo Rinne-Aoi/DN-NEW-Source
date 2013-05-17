@@ -131,7 +131,7 @@
             android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" >
         </activity>
         <activity
-            android:name="angeloid.dreamnarae.Settings"
+            android:name="angeloid.dreamnarae.Setting"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" >

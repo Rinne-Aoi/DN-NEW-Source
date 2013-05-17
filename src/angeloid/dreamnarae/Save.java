@@ -58,18 +58,13 @@ public class Save extends Activity {
 	Button info;
 	static MediaPlayer mplayer;
 	ImageView imageview;
-	TextView LayoutTitle;
 	protected ProgressDialog mProgressDialog;
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.save);
-		LayoutTitle = (TextView) findViewById(R.id.tabtextview);
-		LayoutTitle.setTypeface(MainActivity.Font);
 		apply = (Button) findViewById(R.id.apply);
 		info = (Button) findViewById(R.id.info);
-		apply.setTypeface(MainActivity.Font);
-		info.setTypeface(MainActivity.Font);
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 		imageview = (ImageView) findViewById(R.id.imageview);
 		mplayer = MediaPlayer.create(Save.this, R.raw.spica);
@@ -78,7 +73,18 @@ public class Save extends Activity {
 			public void onClick(View v) {
 				if (RootTools.isAccessGiven()) {
 					startDownload(v);
-				} else {
+                    try {
+                        Install_Save();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (TimeoutException e) {
+                        e.printStackTrace();
+                    } catch (RootDeniedException e) {
+                        e.printStackTrace();
+                    }
+                } else {
 					Toast.makeText(Save.this, R.string.noroottoast,
 							Toast.LENGTH_LONG).show();
 				}
@@ -133,51 +139,18 @@ public class Save extends Activity {
 						}).show();
 	}
 
-	@Override
-	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		if (keyCode == KeyEvent.KEYCODE_BACK) {
-
-			View view = this.getLayoutInflater().inflate(R.layout.customdialog,
-					null);
-			TextView txtTitle = (TextView) view.findViewById(R.id.title);
-			txtTitle.setText(R.string.quittitle);
-			txtTitle.setTextColor(Color.WHITE);
-			txtTitle.setTextSize(20);
-			txtTitle.setTypeface(MainActivity.Font);
-			TextView message = (TextView) view.findViewById(R.id.message);
-			message.setText(R.string.quitmessage);
-			message.setTextColor(Color.WHITE);
-			message.setTypeface(MainActivity.Font);
-			AlertDialog.Builder builer = new AlertDialog.Builder(this);
-			builer.setView(view);
-			builer.setPositiveButton(android.R.string.yes,
-					new DialogInterface.OnClickListener() {
-						@Override
-						public void onClick(DialogInterface dialog, int which) {
-							android.os.Process.killProcess(android.os.Process
-									.myPid());
-						}
-					});
-			builer.setNegativeButton(android.R.string.no, null).show();
-
-			return true;
-		}
-
-		return super.onKeyDown(keyCode, event);
-	}
-
 	public void Install_Save() throws InterruptedException, IOException,
-			TimeoutException, RootDeniedException {
-		Delete_File();
-		RootTools.remount("/system/", "rw");
-		RootTools.copyFile(this.getExternalFilesDir(null) + "/save_set.sh",
-				"/system/etc/dreamnarae.sh", true, false);
-		RootTools.remount("/system/", "rw");
-		CommandCapture command = new CommandCapture(0,
-				"chmod 755 /system/etc/dreamnarae.sh");
-		RootTools.getShell(true).add(command).waitForFinish();
-		installcomplete();
-	}
+            TimeoutException, RootDeniedException {
+        Delete_File();
+        RootTools.remount("/system/", "rw");
+        RootTools.copyFile(this.getExternalFilesDir(null) + "/save_set.sh",
+                "/system/etc/dreamnarae.sh", true, false);
+        RootTools.remount("/system/", "rw");
+        CommandCapture command = new CommandCapture(0,
+                "chmod 755 /system/etc/dreamnarae.sh");
+        RootTools.getShell(true).add(command).waitForFinish();
+        installcomplete();
+    }
 
 	public static void Delete_File() throws InterruptedException, IOException,
 			TimeoutException, RootDeniedException {
@@ -197,7 +170,7 @@ public class Save extends Activity {
 	public void installcomplete() throws IOException, InterruptedException,
 			TimeoutException, RootDeniedException {
 		recovery();
-		File file = new File("/system/allflag");
+		File file = new File("/system/etc/dreamnarae.sh");
 		if (file.length() > 0) {
 			Log.d("Install", "Install Success!");
 			CommandCapture command = new CommandCapture(0,
@@ -215,6 +188,7 @@ public class Save extends Activity {
 			message.setTextColor(Color.WHITE);
 			AlertDialog.Builder builder = new Builder(Save.this);
 			builder.setView(view);
+            builder.setCancelable(false);
 			builder.setPositiveButton(R.string.yes,
 					new DialogInterface.OnClickListener() {
 						@Override
@@ -245,7 +219,12 @@ public class Save extends Activity {
 								public void onClick(DialogInterface dialog,
 										int which) {
 									dialog.dismiss();
-									finish();
+                                    if (new File("/system/98banner_dreamnarae_save").exists()) {
+                                        apply.setEnabled(false);
+                                        apply.setFocusable(false);
+                                        imageview.setImageResource(R.drawable.apply);
+                                    } else {
+                                    }
 								}
 							}).show();
 		} else {
@@ -260,6 +239,7 @@ public class Save extends Activity {
 			message.setTextColor(Color.WHITE);
 			AlertDialog.Builder builder = new Builder(Save.this);
 			builder.setView(view1);
+            builder.setCancelable(false);
 			builder.setPositiveButton(R.string.infoclose,
 					new DialogInterface.OnClickListener() {
 						@Override
@@ -279,17 +259,6 @@ public class Save extends Activity {
 				+ "/dn_delete_signed.zip", Environment
 				.getExternalStorageDirectory().getAbsolutePath()
 				+ "/dn_delete_signed.zip", true, false);
-	}
-
-	@Override
-	public void onResume() {
-		super.onResume();
-		if (new File("/system/98banner_dreamnarae_save").exists()) {
-			apply.setEnabled(false);
-			apply.setFocusable(false);
-			imageview.setImageResource(R.drawable.apply);
-		} else {
-		}
 	}
 
 	public void startDownload(View v) {

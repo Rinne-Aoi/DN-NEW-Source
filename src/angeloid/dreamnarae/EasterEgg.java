@@ -47,10 +47,6 @@ public class EasterEgg extends Activity {
 		remain = (TextView) findViewById(R.id.remain);
 		obtain = (TextView) findViewById(R.id.obtain);
 		present = (ImageView) findViewById(R.id.presentview);
-		tab.setTypeface(MainActivity.Font);
-		title.setTypeface(MainActivity.Font);
-		remain.setTypeface(MainActivity.Font);
-		obtain.setTypeface(MainActivity.Font);
 		remain.setText(easteregg);
 	}
 	

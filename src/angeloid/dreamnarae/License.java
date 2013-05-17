@@ -41,7 +41,6 @@ public class License extends Activity {
 
 		setContentView(R.layout.license);
 		TextView text = (TextView) findViewById(R.id.license);
-		text.setTypeface(MainActivity.Font);
 		Locale systemLocale = getResources().getConfiguration().locale;
 		 String strLanguage = systemLocale.getLanguage();
 		try {

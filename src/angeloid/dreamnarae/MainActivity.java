@@ -93,9 +93,6 @@ public class MainActivity extends SlidingActivity implements SensorEventListener
 	ImageView iv11;
 	ViewFlipper vf;
 
-	// Fonts
-	public static Typeface Font;
-
 	// MediaPlayer
 	MediaPlayer mplayer;
 
@@ -104,7 +101,9 @@ public class MainActivity extends SlidingActivity implements SensorEventListener
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
         setBehindContentView(R.layout.menu);
+
         // SlideingMenu
+
         ListView list =(ListView) findViewById(R.id.list);
         ArrayAdapter<CharSequence> menu_array = ArrayAdapter
                 .createFromResource(MainActivity.this, R.array.menu,
@@ -119,13 +118,49 @@ public class MainActivity extends SlidingActivity implements SensorEventListener
         menu.setFadeDegree(0.35f);
         menu.attachToActivity(this, SlidingMenu.SLIDING_CONTENT);
         menu.setMenu(R.layout.menu);
+        list.setOnItemClickListener(new ListView.OnItemClickListener() {
 
-		// Font
-		initializeTypefaces();
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                Class<?> cls = null;
+                if (position == 0) {
+                    cls = MainActivity.class;
+                } else if (position == 1) {
+                    cls = Update_Main.class;
+                } else if (position == 2) {
+                    try {
+                        sendAppData(view);
+                    } catch (NameNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                } else if (position == 3) {
+                   cls = Setting.class;
+                } else if (position == 4) {
+                   cls = Developer_Info.class;
+               } else if (position == 5) {
+                   cls = Donate.class;
+                } else if (position == 6) {
+                   cls = SPiCa.class;
+                } else if (position == 7) {
+                   cls = Pure.class;
+                } else if (position == 8) {
+                   cls = Save.class;
+                } else if (position == 9) {
+                   cls = Prev.class;
+                } else if (position == 10) {
+                    cls = Miracle.class;
+                } else if (position == 11) {
+                    cls = Brand.class;
+                } else if (position == 12) {
+                    cls = SPiSave.class;
+                }
+                Intent intent = new Intent(MainActivity.this, cls);
+                startActivity(intent);
+            }
 
-		// Layout
-		LayoutTitle = (TextView) findViewById(R.id.tabtextview);
-		LayoutTitle.setTypeface(MainActivity.Font);
+        });
+
 
 		// Sensor
 		sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
@@ -161,10 +196,6 @@ public class MainActivity extends SlidingActivity implements SensorEventListener
 
 	}
 
-	private void initializeTypefaces() {
-		MainActivity.Font = Typeface.createFromAsset(getAssets(),
-				"fonts/Arita.otf");
-	}
 
 	public void sendAppData(View v) throws NameNotFoundException {
 		ArrayList<Map<String, String>> metaInfoArray = new ArrayList<Map<String, String>>();
@@ -220,11 +251,9 @@ public class MainActivity extends SlidingActivity implements SensorEventListener
 			txtTitle.setText(R.string.quittitle);
 			txtTitle.setTextColor(Color.WHITE);
 			txtTitle.setTextSize(20);
-			txtTitle.setTypeface(MainActivity.Font);
 			TextView message = (TextView) view.findViewById(R.id.message);
 			message.setText(R.string.quitmessage);
 			message.setTextColor(Color.WHITE);
-			message.setTypeface(MainActivity.Font);
 			AlertDialog.Builder builer = new AlertDialog.Builder(this);
 			builer.setView(view);
 			builer.setPositiveButton(android.R.string.yes,
