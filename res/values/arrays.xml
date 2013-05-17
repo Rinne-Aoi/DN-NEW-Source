@@ -55,5 +55,20 @@
 		<item>Delete : Option of Disable Boot Script</item>
 		<item>Delete : Some Tweak File(Measures to reduce the possibility of a brick.)</item>
     </string-array>
+    <string-array name="menu">
+        <item>Main</item>
+        <item>Update Log</item>
+        <item>Promoting</item>
+        <item>Setting</item>
+        <item>Developer Info</item>
+        <item>Donate</item>
+        <item>"SPiCa 39's"</item>
+        <item>Pure 2.5</item>
+        <item>Save 4.0</item>
+        <item>Prev Final</item>
+        <item>Miracle Final</item>
+        <item>Brand Final</item>
+        <item>SPiSave Final</item>
+    </string-array>
 
 </resources> 

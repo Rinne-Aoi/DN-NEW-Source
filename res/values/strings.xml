@@ -60,6 +60,7 @@
     <string name="introduce2">It is already in play.</string>
     <string name="progress_title">Downloading..</string>
     <string name="progress_detail">Please Wait for Downloading</string>
+    <string name="anim_scale">Anim</string>
     
     <!-- Menu -->
     <string name="menu">Menu</string>

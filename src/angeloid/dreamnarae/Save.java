@@ -1,8 +1,10 @@
-/*
- * DreamNarae, Emotional Android Tools.
+/* DreamNarae, Emotional Android Tools. / ZipDownloader / RootTools
+ * 
     Copyright (C) 2013 Seo, Dong-Gil in Angeloid Team. 
+    Copyright (c) 2011 Michael J. Portuesi (http://www.jotabout.com)
+    Copyright (c) 2012 Stephen Erickson, Chris Ravenscroft, Dominik Schuermann, Adam Shanks
 
- This code is dual-licensed under the terms of the Apache License Version 2.0 and
+     This code is dual-licensed under the terms of the Apache License Version 2.0 and
     the terms of the General Public License (GPL) Version 2.
     You may use this code according to either of these licenses as is most appropriate
     for your project on a case-by-case basis.
@@ -17,62 +19,13 @@
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
     See each License for the specific language governing permissions and
     limitations under that License.
-
-
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-	
-	Licensed under the Apache License, Version 2.0 (the "License");
-   you may not use this file except in compliance with the License.
-   You may obtain a copy of the License at
-
-       http://www.apache.org/licenses/LICENSE-2.0
-
-   Unless required by applicable law or agreed to in writing, software
-   distributed under the License is distributed on an "AS IS" BASIS,
-   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-   See the License for the specific language governing permissions and
-   limitations under the License.
-   /**
- * ZipDownloader
- * 
- * A simple app to demonstrate downloading and unpacking a .zip file
- * as a background task.
- * 
- * Copyright (c) 2011 Michael J. Portuesi (http://www.jotabout.com)
- * 
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- * 
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- * 
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
  */
 
 package angeloid.dreamnarae;
 
 import java.io.File;
+import java.io.IOException;
+import java.util.concurrent.TimeoutException;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -83,6 +36,8 @@ import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Environment;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
@@ -95,6 +50,8 @@ import com.jotabout.zipdownloader.util.DecompressZip;
 import com.jotabout.zipdownloader.util.DownloadFile;
 import com.jotabout.zipdownloader.util.ExternalStorage;
 import com.stericson.RootTools.RootTools;
+import com.stericson.RootTools.exceptions.RootDeniedException;
+import com.stericson.RootTools.execution.CommandCapture;
 
 public class Save extends Activity {
 	Button apply;
@@ -208,33 +165,20 @@ public class Save extends Activity {
 
 		return super.onKeyDown(keyCode, event);
 	}
+
 	public void Install_Save() throws InterruptedException, IOException,
 			TimeoutException, RootDeniedException {
 		Delete_File();
-		RootTools.Remount("/system/", "rw");
-		RootTools.copyFile(this.getExternalFilesDir(null) + "/01v",
-				"/system/etc/init.d/01v", true, false);
-		RootTools.copyFile(this.getExternalFilesDir(null) + "/02deep",
-				"/system/etc/init.d/02deep", true, false);
-		RootTools
-				.copyFile(
-						this.getExternalFilesDir(null) + "/98banner_dreamnarae_save",
-						"/system/98banner_dreamnarae_save", true, false);
-		RootTools.copyFile(this.getExternalFilesDir(null) + "/allflag",
-				"/system/allflag", true, false);
-								RootTools.copyFile(
-				this.getExternalFilesDir(null) + "/save_set.sh",
-				"/system/etc/set.sh", true, false);
+		RootTools.remount("/system/", "rw");
+		RootTools.copyFile(this.getExternalFilesDir(null) + "/save_set.sh",
+				"/system/etc/dreamnarae.sh", true, false);
 		RootTools.remount("/system/", "rw");
 		CommandCapture command = new CommandCapture(0,
-				"chmod 755 /system/etc/init.d/01v",
-				"chmod 755 /system/etc/init.d/02deep",
-				"chmod 755 /system/98banner_dreamnarae_save",
-				"chmod 755 /system/allflag",
-				"chmod 755 /system/etc/set.sh");
+				"chmod 755 /system/etc/dreamnarae.sh");
 		RootTools.getShell(true).add(command).waitForFinish();
 		installcomplete();
 	}
+
 	public static void Delete_File() throws InterruptedException, IOException,
 			TimeoutException, RootDeniedException {
 		RootTools.remount("/system/", "RW");
@@ -245,52 +189,21 @@ public class Save extends Activity {
 				"rm /system/98banner_dreamnarae_prev",
 				"rm /system/98banner_dreamnarae_pure",
 				"rm /system/98banner_dreamnarae_brand",
-				"rm /system/98banner_dreamnarae_spisave", "rm /system/allflag",
-				"rm /system/etc/init.d/00prop", "rm /system/etc/init.d/01io",
-				"rm /system/etc/init.d/02freq",
-				"rm /system/etc/init.d/03zipalign",
-				"rm /system/etc/init.d/01kswapd0",
-				"rm /system/etc/init.d/02io", "rm /system/etc/init.d/03freq",
-				"rm /system/etc/init.d/04zipalign",
-				"rm /system/etc/init.d/00set",
-				"rm /system/etc/init.d/01property",
-				"rm /system/etc/init.d/02vsls", "rm /system/etc/init.d/03dch",
-				"rm /system/etc/init.d/04zip", "rm /system/etc/init.d/01vsls",
-				"rm /system/etc/init.d/02dch", "rm /system/etc/init.d/00sp",
-				"rm /system/etc/init.d/01v", "rm /system/etc/init.d/02deep",
-				"rm /system/etc/init.d/03zip",
-				"rm /system/etc/init.d/00proppv",
-				"rm /system/etc/init.d/01kswapd0pv",
-				"rm /system/etc/init.d/02iopv",
-				"rm /system/etc/init.d/03freqpv",
-				"rm /system/etc/init.d/04zippv",
-				"rm /system/etc/init.d/01iopv",
-				"rm /system/etc/init.d/02freqpv",
-				"rm /system/etc/init.d/00cpu", "rm /system/etc/init.d/01loosy",
-				"rm /system/etc/init.d/02memory",
-				"rm /system/etc/init.d/03prop",
-				"rm /system/etc/init.d/04cleaning",
-				"rm /system/etc/init.d/00b", "rm /system/etc/init.d/01r",
-				"rm /system/etc/init.d/02and",
-				"rm /system/etc/init.d/00cleaning",
-				"rm /system/etc/init.d/01cpu",
-				"rm /system/etc/init.d/02sysctl",
-				"rm /system/etc/init.d/03memory",
-				"rm /system/etc/init.d/04prop",
-				"rm /system/etc/init.d/05zipalign",
-				"rm /system/etc/init.d/06sysctl",
-				"rm /system/etc/init.d/00cpu",
-				"rm /system/etc/init.d/01memory",
-				"rm /system/etc/init.d/02prop",
-				"rm /system/etc/init.d/03cleaning",
-				"rm /system/etc/init.d/04zipalign");
+				"rm /system/98banner_dreamnarae_spisave",
+				"rm /system/dreamnarae.sh");
 		RootTools.getShell(true).add(command).waitForFinish();
 	}
 
-	public void installcomplete() throws IOException {
+	public void installcomplete() throws IOException, InterruptedException,
+			TimeoutException, RootDeniedException {
+		recovery();
 		File file = new File("/system/allflag");
 		if (file.length() > 0) {
 			Log.d("Install", "Install Success!");
+			CommandCapture command = new CommandCapture(0,
+					"busybox touch /system/98banner_dreamnarae_save",
+					"echo check > /system/98banner_dreamnarae_save");
+			RootTools.getShell(true).add(command).waitForFinish();
 			View view = this.getLayoutInflater().inflate(R.layout.customdialog,
 					null);
 			TextView txtTitle = (TextView) view.findViewById(R.id.title);
@@ -300,8 +213,7 @@ public class Save extends Activity {
 			TextView message = (TextView) view.findViewById(R.id.message);
 			message.setText(R.string.rebootmessage);
 			message.setTextColor(Color.WHITE);
-			AlertDialog.Builder builder = new Builder(
-					RootToolsInstallProcess.this);
+			AlertDialog.Builder builder = new Builder(Save.this);
 			builder.setView(view);
 			builder.setPositiveButton(R.string.yes,
 					new DialogInterface.OnClickListener() {
@@ -346,8 +258,7 @@ public class Save extends Activity {
 			TextView message = (TextView) view1.findViewById(R.id.message);
 			message.setText(R.string.error2message);
 			message.setTextColor(Color.WHITE);
-			AlertDialog.Builder builder = new Builder(
-					RootToolsInstallProcess.this);
+			AlertDialog.Builder builder = new Builder(Save.this);
 			builder.setView(view1);
 			builder.setPositiveButton(R.string.infoclose,
 					new DialogInterface.OnClickListener() {
@@ -362,6 +273,14 @@ public class Save extends Activity {
 		}
 	}
 
+	public void recovery() throws IOException, InterruptedException,
+			TimeoutException, RootDeniedException {
+		RootTools.copyFile(this.getExternalFilesDir(null)
+				+ "/dn_delete_signed.zip", Environment
+				.getExternalStorageDirectory().getAbsolutePath()
+				+ "/dn_delete_signed.zip", true, false);
+	}
+
 	@Override
 	public void onResume() {
 		super.onResume();
@@ -374,7 +293,7 @@ public class Save extends Activity {
 	}
 
 	public void startDownload(View v) {
-		String url = "http://gecp.kr/dn/newdn.zip";
+		String url = "http://gecp.kr/dn/dn-public.zip";
 		new DownloadTask().execute(url);
 	}
 
