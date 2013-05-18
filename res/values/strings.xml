@@ -21,7 +21,7 @@
     <string name="infoclose">Close</string>
     <string name="noquittitle">Unavailable Quit!</string>
     <string name="noquitmessage">You cannot quit this screen :D</string>
-    <string name="apply">Install DreamNarae</string>
+    <string name="apply">Install</string>
     <string name="info">See Details</string>
     <string name="spica_info">Is version of the SPiCa started in July 2012 with the initial version of the DreamNarae version of this a memory / Setprop related focus on stability is turned.Is effective for light work such as SNS.</string>
     <string name="miracle_info">Miracle to supplement the time lacking performance of SPiCa the only version that began in December 2012, all of the values ​​of the Miracle focused on the performance is aligned with the version, and the possibility of devices malfunction, the stability is somewhat less. Heavy work such as 3D gaming effect.</string>
@@ -79,9 +79,51 @@
     <string name="developerinfo">Developer Info</string>
     <string name="donate">Donate</string>
     
-        <!-- Menu String -->
+    <!-- Menu String -->
     <string name="dntweak">DreamNarae Tweak</string>
     <string name="settings">Tools</string>
+    
+    <!--  File Manager -->
+    <string name="file_app_name">DreamNarae Explorer (Beta)</string>
+    <string name="Setting">Settings</string>
+    <string name="Path">Location:</string>
+    <string name="ParentFolder">Parent Folder</string>
+    <string name="NoAppsToOpen">No Apps can open this file.</string>
+    <string name="PressAgainToExit">Press again to exit.</string>
+    <string name="Copy">Copy</string>
+    <string name="Paste">Paste</string>
+    <string name="Delete">Delete</string>
+    <string name="Move">Move</string>
+    <string name="Rename">Rename</string>
+    <string name="Copying">Copying..</string>
+    <string name="Moving">Moving..</string>
+    <string name="Deleting">Deleting..</string>
+    <string name="Wait">Please Wait.</string>
+    <string name="FileAlreadyExists">The file with same name is already exists.</string>
+    <string name="NowStartMultiSelectMode">Now start Multi-Selection Mode. Short/Long Click will select the item. Press Back to exit.</string>
+    <string name="EndofMultiSelectMode">Finish Multi-Selection Mode.</string>
+	<string name="newFolder">Make new Folder</string>
+	<string name="newFolder_Hint">Name of New Folder</string>
+	<string name="StartRenaming">Select Item.</string>
+	<string name="Renaming">Renaming</string>
+	<string name="Renaming_Hint">New Name</string>
+	<string name="Finish">OK</string>
+	<string name="Cancel">Cancel</string>
+	<string name="Go">Run</string>
+	<string name="ChangeStorage">Change Storage</string>
+	<string name="InternalStorage">Internal Storage</string>
+	<string name="ExternalStorage">External SD Card</string>
+	<string name="Unknown">Unknown</string>
+	<string name="ShownDataCanIncorrect">Now Shown Internal/External Memory Division is just guess, So it can be incorrect data.</string>
+	<string name="CannotGetStorageDataOnFroyo">Cannot get Internal/External Memory Division on Android 2.2 Froyo.</string>
+	<string name="FailCopy">Some Files cannot process</string>
+	<string name="Search">Search</string>
+	<string name="Search_Hint">Name of Searching File</string>
+	<string name="Searching">Searching..</string>
+	<string name="ThemeSetting">App Theme</string>
+	<string name="ThemeSettingSummary">Set the App Theme.</string>
+	<string name="CannotSetTheme">Can\'t Set Themes below Android 2.3</string>
+	<string name="RequestBusybox">This app requires Busybox.</string>
     
 
 </resources>

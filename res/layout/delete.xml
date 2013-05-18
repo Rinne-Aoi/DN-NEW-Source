@@ -40,10 +40,15 @@
                 <Button
                     android:id="@+id/apply"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="48.0dip"
+                    android:background="#b6b0b3"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginBottom="10dp"
                     android:layout_alignParentBottom="true"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentRight="true"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="@string/delete" />
 
 </RelativeLayout>

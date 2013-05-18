@@ -23,6 +23,10 @@
 
 package angeloid.dreamnarae;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.concurrent.TimeoutException;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -34,14 +38,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.stericson.RootTools.RootTools;
 import com.stericson.RootTools.exceptions.RootDeniedException;
 import com.stericson.RootTools.execution.CommandCapture;
-import com.stericson.RootTools.internal.RootToolsInternalMethods;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.concurrent.TimeoutException;
 
 public class Delete extends Activity {
     Button apply;
@@ -50,13 +50,22 @@ public class Delete extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.delete);
         apply = (Button) findViewById(R.id.apply);
-
         apply.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 if (RootTools.isAccessGiven()) {
-
+                    try {
+                        Delete_File();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (TimeoutException e) {
+                        e.printStackTrace();
+                    } catch (RootDeniedException e) {
+                        e.printStackTrace();
+                    }
                 } else {
                     Toast.makeText(Delete.this, R.string.noroottoast,
                             Toast.LENGTH_LONG).show();

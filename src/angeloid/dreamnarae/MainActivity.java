@@ -28,15 +28,12 @@ import java.util.Hashtable;
 import java.util.Map;
 import java.util.Random;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager.NameNotFoundException;
-import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Typeface;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -47,7 +44,14 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.animation.AnimationUtils;
-import android.widget.*;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.ViewFlipper;
+
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.jeremyfeinstein.slidingmenu.lib.app.SlidingActivity;
 
@@ -103,12 +107,16 @@ public class MainActivity extends SlidingActivity implements SensorEventListener
         setBehindContentView(R.layout.menu);
 
         // SlideingMenu
-
         ListView list =(ListView) findViewById(R.id.list);
+        ListView list2 = (ListView) findViewById(R.id.list2);
         ArrayAdapter<CharSequence> menu_array = ArrayAdapter
                 .createFromResource(MainActivity.this, R.array.menu,
                         R.layout.listviewlayout);
+        ArrayAdapter<CharSequence> menu_array2 = ArrayAdapter
+                .createFromResource(MainActivity.this, R.array.tweak,
+                        R.layout.listviewlayout);
         list.setAdapter(menu_array);
+        list2.setAdapter(menu_array2);
         SlidingMenu menu = new SlidingMenu(this);
         menu.setMode(SlidingMenu.LEFT);
         menu.setTouchModeAbove(SlidingMenu.TOUCHMODE_MARGIN);
@@ -116,7 +124,7 @@ public class MainActivity extends SlidingActivity implements SensorEventListener
         menu.setShadowDrawable(R.drawable.shadow);
         menu.setBehindOffsetRes(R.dimen.slidingmenu_offset);
         menu.setFadeDegree(0.35f);
-        menu.attachToActivity(this, SlidingMenu.SLIDING_CONTENT);
+        menu.attachToActivity(this, SlidingMenu.SLIDING_WINDOW);
         menu.setMenu(R.layout.menu);
         list.setOnItemClickListener(new ListView.OnItemClickListener() {
 
@@ -135,25 +143,39 @@ public class MainActivity extends SlidingActivity implements SensorEventListener
                         e.printStackTrace();
                     }
                 } else if (position == 3) {
-                   cls = Setting.class;
+                    cls = Setting.class;
                 } else if (position == 4) {
-                   cls = Developer_Info.class;
-               } else if (position == 5) {
-                   cls = Donate.class;
-                } else if (position == 6) {
-                   cls = SPiCa.class;
-                } else if (position == 7) {
-                   cls = Pure.class;
-                } else if (position == 8) {
-                   cls = Save.class;
-                } else if (position == 9) {
-                   cls = Prev.class;
-                } else if (position == 10) {
+                    cls = Developer_Info.class;
+                } else if (position == 5) {
+                    cls = Donate.class;
+                }
+                Intent intent = new Intent(MainActivity.this, cls);
+                startActivity(intent);
+            }
+
+        });
+        list2.setOnItemClickListener(new ListView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                Class<?> cls = null;
+                if (position == 0) {
+                    cls = SPiCa.class;
+                } else if (position == 1) {
+                    cls = Pure.class;
+                } else if (position == 2) {
+                    cls = Save.class;
+                } else if (position == 3) {
+                    cls = Prev.class;
+                } else if (position == 4) {
                     cls = Miracle.class;
-                } else if (position == 11) {
+                } else if (position == 5) {
                     cls = Brand.class;
-                } else if (position == 12) {
+                } else if (position == 6) {
                     cls = SPiSave.class;
+                } else if (position == 7) {
+                    cls = Delete.class;
                 }
                 Intent intent = new Intent(MainActivity.this, cls);
                 startActivity(intent);
