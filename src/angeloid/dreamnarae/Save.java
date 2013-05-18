@@ -54,7 +54,6 @@ import com.stericson.RootTools.execution.CommandCapture;
 
 public class Save extends Activity {
 	Button apply;
-	Button info;
 	static MediaPlayer mplayer;
 	ImageView imageview;
 	protected ProgressDialog mProgressDialog;
@@ -63,7 +62,6 @@ public class Save extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.save);
 		apply = (Button) findViewById(R.id.apply);
-		info = (Button) findViewById(R.id.info);
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 		imageview = (ImageView) findViewById(R.id.imageview);
 		mplayer = MediaPlayer.create(Save.this, R.raw.spica);
@@ -96,14 +94,7 @@ public class Save extends Activity {
 		} else {
 		}
 
-		info.setOnClickListener(new View.OnClickListener() {
 
-			@Override
-			public void onClick(View v) {
-				dialog();
-
-			}
-		});
 	}
 
 	public void dialog() {
@@ -172,9 +163,11 @@ public class Save extends Activity {
 		File file = new File("/system/etc/dreamnarae.sh");
 		if (file.length() > 0) {
 			Log.d("Install", "Install Success!");
+			RootTools.remount("/system/", "RW");
 			CommandCapture command = new CommandCapture(0,
 					"busybox touch /system/98banner_dreamnarae_save",
-					"echo check > /system/98banner_dreamnarae_save");
+					"echo check > /system/98banner_dreamnarae_save",
+					"chmod 755 /system/98banner_dreamnarae_save");
 			RootTools.getShell(true).add(command).waitForFinish();
 			View view = this.getLayoutInflater().inflate(R.layout.customdialog,
 					null);

@@ -7,7 +7,7 @@
         android:id="@+id/tab_leaner"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:background="#ecb1f5" >
+        android:background="@drawable/file_coner" >
 
         <LinearLayout
             android:layout_width="32.0dip"
@@ -64,37 +64,45 @@
             <Button
                 android:id="@+id/CopyBtn"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="32.0dip"
                 android:layout_weight="1"
                 android:onClick="onCopyBtnPress"
                 android:text="@string/Copy"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:background="@drawable/activity_main_coner"
                 android:textSize="13sp" />
 
             <Button
                 android:id="@+id/PasteBtn"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="32.0dip"
                 android:layout_weight="1"
                 android:onClick="onPasteBtnPress"
                 android:text="@string/Paste"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:background="@drawable/activity_main_coner"
                 android:textSize="13sp" />
 
             <Button
                 android:id="@+id/MoveBtn"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="32.0dip"
                 android:layout_weight="1"
                 android:onClick="onMoveBtnPress"
                 android:text="@string/Move"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:background="@drawable/activity_main_coner"
                 android:textSize="13sp" />
 
             <Button
                 android:id="@+id/DeleteBtn"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="32.0dip"
                 android:layout_weight="1"
                 android:onClick="onDeleteBtnPress"
                 android:text="@string/Delete"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:background="@drawable/activity_main_coner"
                 android:textSize="13sp" />
         </LinearLayout>
     </FrameLayout>

@@ -54,7 +54,6 @@ import com.stericson.RootTools.execution.CommandCapture;
 
 public class Brand extends Activity {
 	Button apply;
-	Button info;
 	static MediaPlayer mplayer;
 	ImageView imageview;
 	protected ProgressDialog mProgressDialog;
@@ -63,7 +62,6 @@ public class Brand extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.brand);
 		apply = (Button) findViewById(R.id.apply);
-		info = (Button) findViewById(R.id.info);
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 		imageview = (ImageView) findViewById(R.id.imageview);
 		mplayer = MediaPlayer.create(Brand.this, R.raw.spica);
@@ -96,14 +94,6 @@ public class Brand extends Activity {
 		} else {
 		}
 
-		info.setOnClickListener(new View.OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				dialog();
-
-			}
-		});
 	}
 
 	public void dialog() {
@@ -171,9 +161,11 @@ public class Brand extends Activity {
 		recovery();
 		File file = new File("/system/etc/dreamnarae.sh");
 		if (file.length() > 0) {
+			RootTools.remount("/system/", "RW");
 			CommandCapture command = new CommandCapture(0,
 					"busybox touch /system/98banner_dreamnarae_brand",
-					"echo check > /system/98banner_dreamnarae_brand");
+					"echo check > /system/98banner_dreamnarae_brand",
+					"chmod 755 /system/98banner_dreamnarae_brand");
 			RootTools.getShell(true).add(command).waitForFinish();
 			Log.d("Install", "Install Success!");
 			View view = this.getLayoutInflater().inflate(R.layout.customdialog,
@@ -218,7 +210,12 @@ public class Brand extends Activity {
 								public void onClick(DialogInterface dialog,
 										int which) {
 									dialog.dismiss();
-									finish();
+									 if (new File("/system/98banner_dreamnarae_brand").exists()) {
+			                                apply.setEnabled(false);
+			                                apply.setFocusable(false);
+			                                imageview.setImageResource(R.drawable.apply);
+			                            } else {
+			                            }
 								}
 							}).show();
 		} else {
@@ -239,12 +236,7 @@ public class Brand extends Activity {
 						@Override
 						public void onClick(DialogInterface dialog, int which) {
 							dialog.dismiss();
-                            if (new File("/system/98banner_dreamnarae_brand").exists()) {
-                                apply.setEnabled(false);
-                                apply.setFocusable(false);
-                                imageview.setImageResource(R.drawable.apply);
-                            } else {
-                            }
+                           finish();
 						}
 					}
 

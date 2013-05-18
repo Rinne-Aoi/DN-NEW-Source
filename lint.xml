@@ -3,5 +3,6 @@
     <issue id="DefaultLocale" severity="ignore" />
     <issue id="ExportedActivity" severity="ignore" />
     <issue id="HandlerLeak" severity="ignore" />
+    <issue id="TextFields" severity="ignore" />
     <issue id="UseValueOf" severity="ignore" />
 </lint>

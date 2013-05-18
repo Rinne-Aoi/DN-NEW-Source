@@ -50,6 +50,7 @@ public class Delete extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.delete);
         apply = (Button) findViewById(R.id.apply);
+        imageview = (ImageView) findViewById(R.id.imageview);
         apply.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -73,7 +74,7 @@ public class Delete extends Activity {
             }
         });
     }
-        public static void Delete_File() throws InterruptedException, IOException,
+        public void Delete_File() throws InterruptedException, IOException,
             TimeoutException, RootDeniedException {
             RootTools.remount("/system/", "RW");
             CommandCapture command = new CommandCapture(0,
@@ -127,6 +128,7 @@ public class Delete extends Activity {
                     "rm /system/etc/init.d/04zipalign",
                     "rm /system/etc/dreamnarae.sh");
             RootTools.getShell(true).add(command).waitForFinish();
+            DeleteComplete();
         }
     public void DeleteComplete() throws IOException {
         File file = new File("/system/etc/dreamnarae.sh");
@@ -151,7 +153,7 @@ public class Delete extends Activity {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             dialog.dismiss();
-                            finish();
+                            
                         }
                     }
 
@@ -201,7 +203,7 @@ public class Delete extends Activity {
                                 public void onClick(DialogInterface dialog,
                                                     int which) {
                                     dialog.dismiss();
-                                    finish();
+                                    imageview.setImageResource(R.drawable.apply);
 
                                 }
                             }).show();

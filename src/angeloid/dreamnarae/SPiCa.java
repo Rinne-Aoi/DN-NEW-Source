@@ -54,7 +54,6 @@ import com.stericson.RootTools.execution.CommandCapture;
 
 public class SPiCa extends Activity {
 	Button apply;
-	Button info;
 	static MediaPlayer mplayer;
 	ImageView imageview;
 	protected ProgressDialog mProgressDialog;
@@ -63,7 +62,6 @@ public class SPiCa extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.spica);
 		apply = (Button) findViewById(R.id.apply);
-		info = (Button) findViewById(R.id.info);
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 		imageview = (ImageView) findViewById(R.id.imageview);
 		mplayer = MediaPlayer.create(SPiCa.this, R.raw.spica);
@@ -96,14 +94,7 @@ public class SPiCa extends Activity {
 		} else {
 		}
 
-		info.setOnClickListener(new View.OnClickListener() {
 
-			@Override
-			public void onClick(View v) {
-				dialog();
-
-			}
-		});
 	}
 
 	public void dialog() {
@@ -171,9 +162,11 @@ public class SPiCa extends Activity {
 		recovery();
 		File file = new File("/system/etc/dreamnarae.sh");
 		if (file.length() > 0) {
+			RootTools.remount("/system/", "RW");
 			CommandCapture command = new CommandCapture(0,
 					"busybox touch /system/98banner_dreamnarae_spica",
-					"echo check > /system/98banner_dreamnarae_spica");
+					"echo check > /system/98banner_dreamnarae_spica",
+					"chmod 755 /system/98banner_dreamnarae_spica");
 			RootTools.getShell(true).add(command).waitForFinish();
 			Log.d("Install", "Install Success!");
 			View view = this.getLayoutInflater().inflate(R.layout.customdialog,
