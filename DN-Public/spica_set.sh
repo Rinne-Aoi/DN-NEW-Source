@@ -69,18 +69,27 @@ setprop ro.voltage.cycle 1
 setprop video.accelerate.hw 1
 setprop windowsmgr.max_events_per_sec 300
 setprop wifi.supplicant_scan_interval 60
-echo 50 > /proc/sys/vm/swappiness
-echo 3072 > /proc/sys/vm/min_free_kbytes
-echo 3072 > /proc/sys/vm/dirty_expire_centisecs
+
+if [ -e /proc/sys/vm/swappiness ]; then
+    echo 50 > /proc/sys/vm/swappiness;
+    echo 50 > /proc/sys/vm/swappiness
+    echo "Activited!"
+fi
+
+if [ -e /proc/sys/vm/min_free_kbytes ]; then
+    echo 3072 > /proc/sys/vm/dirty_expire_centisecs;
+    echo 3072 > /proc/sys/vm/dirty_expire_centisecs
+    echo "Activited!"
+fi
 
 if [ -e /proc/sys/vm/dirty_expire_centisecs ]; then
-    echo 3072 > /proc/sys/vm/dirty_expire_centisecs;
+        echo 3072 > /proc/sys/vm/dirty_expire_centisecs;
 	echo 3072 > /proc/sys/vm/dirty_expire_centisecs
 	echo "Activited!"
 fi
 
 if [ -e /proc/sys/vm/dirty_writeback_centisecs ]; then
-    echo 1500 > /proc/sys/vm/dirty_writeback_centisecs;
+        echo 1500 > /proc/sys/vm/dirty_writeback_centisecs;
 	echo 1500 > /proc/sys/vm/dirty_writeback_centisecs
 	echo "Activited!"
 fi
