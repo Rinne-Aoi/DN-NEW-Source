@@ -4,7 +4,7 @@
 # Version Final
 # Made by Jung-Yun, Lee(dear6752@naver.com)
 # Colorful Harmony Team- Angeloid Team
-# http://www.sirospace.info
+# http://www.angeloiddev.com
 # DO NOT EDIT THIS SCRIPT!
 #==============================================================================
 setprop dalvik.vm.execution-mode int:fast
@@ -217,7 +217,6 @@ if [ -e /sys/devices/system/cpu/cpu3/cpufreq/smooth_offset ]; then
 	echo "Activited!"
 fi
 
-echo "DreamNarae SPiSave"
 if [ -e /sys/devices/system/cpu/cpu0/cpufreq/smooth_step ]; then
 	echo "1" > /sys/devices/system/cpu/cpu0/cpufreq/smooth_step
 	echo "1" > /sys/devices/system/cpu/cpu0/cpufreq/smooth_step;
@@ -240,3 +239,5 @@ if [ -e /sys/devices/system/cpu/cpu3/cpufreq/smooth_step ]; then
 	echo "1" > /sys/devices/system/cpu/cpu3/cpufreq/smooth_step;
 	echo "Activited!"
 fi
+
+echo "DreamNarae SPiSave"
