@@ -5,7 +5,7 @@
 # Made by Eun-hee, Lee(rie6752@naver.com)
 # Edit by Sopiane(http://www.sirospace.com)
 # Colorful Harmony Team- Angeloid Team 
-# http://www.sirospace.info
+# http://www.angeloiddev.info
 # DO NOT EDIT THIS SCRIPT!
 #==============================================================================
 setprop dalvik.vm.execution-mode int:jit
