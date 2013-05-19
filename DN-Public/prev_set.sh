@@ -1,21 +1,16 @@
 #!/system/bin/sh
 #==============================================================================
 # DreamNarae Prev
-# Version 2.0
+# Version Final
 # Made by Eun-hee, Lee(rie6752@naver.com)
 # Edit by Sopiane(http://www.sirospace.com)
 # Colorful Harmony Team- Angeloid Team
-# http://www.sirospace.info
+# http://www.angeloiddev.com
 # DO NOT EDIT THIS SCRIPT!
 #==============================================================================
 setprop dalvik.vm.execution-mode int:jit
-setprop debug.composition.type cpu
+setprop debug.composition.type dyn
 setprop debug.composition.type-mode parallel
-setprop debug.egl.hw 1
-setprop debug.egl.profiler 1
-setprop debug.performance.tuning 1
-setprop debug.ram.applicationforce 1
-setprop debug.sf.enable_hgl 1
 setprop debug.sf.hw 1
 setprop enable.frequency.save 10
 setprop enable.NW:NW.operate Hand-over
@@ -65,6 +60,7 @@ setprop ro.voltage.cycle 1
 setprop video.accelerate.hw 1
 setprop windowsmgr.max_events_per_sec 300
 setprop wifi.supplicant_scan_interval 180
+
 if [ -e /proc/sys/vm/swappiness ]; then
     echo 50 > /proc/sys/vm/swappiness;
 	echo 50 > /proc/sys/vm/swappiness
@@ -240,60 +236,6 @@ fi
 if [ -e /sys/devices/system/cpu/cpu3/cpufreq/smooth_step ]; then
 	echo "1" > /sys/devices/system/cpu/cpu3/cpufreq/smooth_step
 	echo "1" > /sys/devices/system/cpu/cpu3/cpufreq/smooth_step;
-	echo "Activited!"
-fi
-
-if [ -e /sys/devices/virtual/misc/second_core/hotplug_on ]; then
-	echo "on" > /sys/devices/virtual/misc/second_core/hotplug_on
-	echo "on" > /sys/devices/virtual/misc/second_core/hotplug_on;
-	echo "Activited!"
-fi
-
-if [ -e /sys/module/pm_hotplug/parameters/loadl ]; then
-	echo 25 > /sys/module/pm_hotplug/parameters/loadl
-	echo 25 > /sys/module/pm_hotplug/parameters/loadl;
-	echo "Activited!"
-fi
-
-if [ -e /sys/module/pm_hotplug/parameters/loadh ]; then
-	echo 25 > /sys/module/pm_hotplug/parameters/loadh
-	echo 25 > /sys/module/pm_hotplug/parameters/loadh;
-	echo "Activited!"
-fi
-
-if [ -e /sys/module/pm_hotplug/parameters/loadl_scroff ]; then
-	echo 25 > /sys/module/pm_hotplug/parameters/loadl_scroff
-	echo 25 > /sys/module/pm_hotplug/parameters/loadl_scroff;
-	echo "Activited!"
-fi
-
-if [ -e /sys/module/pm_hotplug/parameters/loadh_scroff ]; then
-	echo 25 > /sys/module/pm_hotplug/parameters/loadh_scroff
-	echo 25 > /sys/module/pm_hotplug/parameters/loadh_scroff;
-	echo "Activited!"
-fi
-
-if [ -e /sys/module/pm_hotplug/parameters/freq_cpu1on ]; then
-	echo 500000 > /sys/module/pm_hotplug/parameters/freq_cpu1on
-	echo 500000 > /sys/module/pm_hotplug/parameters/freq_cpu1on;
-	echo "Activited!"
-fi
-
-if [ -e /sys/module/pm_hotplug/parameters/rate ]; then
-	echo 200 > /sys/module/pm_hotplug/parameters/rate
-	echo 200 > /sys/module/pm_hotplug/parameters/rate;
-	echo "Activited!"
-fi
-
-if [ -e /sys/module/pm_hotplug/parameters/rate_cpuon ]; then
-	echo 400 > /sys/module/pm_hotplug/parameters/rate_cpuon
-	echo 400 > /sys/module/pm_hotplug/parameters/rate_cpuon;
-	echo "Activited!"
-fi
-
-if [ -e /sys/module/pm_hotplug/parameters/rate_scroff ]; then
-	echo 800 > /sys/module/pm_hotplug/parameters/rate_scroff
-	echo 800 > /sys/module/pm_hotplug/parameters/rate_scroff;
 	echo "Activited!"
 fi
 
