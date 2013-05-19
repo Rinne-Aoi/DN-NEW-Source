@@ -5,7 +5,7 @@
 # Made by Eun-hee, Lee(rie6752@naver.com)
 # Edit by Sopiane(http://www.sirospace.com)
 # Colorful Harmony Team- Angeloid Team 
-# http://www.sirospace.info
+# http://www.angeloiddev.info
 # DO NOT EDIT THIS SCRIPT!
 #==============================================================================
 setprop dalvik.vm.execution-mode int:jit
@@ -242,57 +242,4 @@ if [ -e /sys/devices/system/cpu/cpu3/cpufreq/smooth_step ]; then
 	echo "Activited!"
 fi
 
-if [ -e /sys/devices/virtual/misc/second_core/hotplug_on ]; then
-	echo "on" > /sys/devices/virtual/misc/second_core/hotplug_on
-	echo "on" > /sys/devices/virtual/misc/second_core/hotplug_on;
-	echo "Activited!"
-fi
-
-if [ -e /sys/module/pm_hotplug/parameters/loadl ]; then
-	echo 25 > /sys/module/pm_hotplug/parameters/loadl
-	echo 25 > /sys/module/pm_hotplug/parameters/loadl;
-	echo "Activited!"
-fi
-
-if [ -e /sys/module/pm_hotplug/parameters/loadh ]; then
-	echo 25 > /sys/module/pm_hotplug/parameters/loadh
-	echo 25 > /sys/module/pm_hotplug/parameters/loadh;
-	echo "Activited!"
-fi
-
-if [ -e /sys/module/pm_hotplug/parameters/loadl_scroff ]; then
-	echo 25 > /sys/module/pm_hotplug/parameters/loadl_scroff
-	echo 25 > /sys/module/pm_hotplug/parameters/loadl_scroff;
-	echo "Activited!"
-fi
-
-if [ -e /sys/module/pm_hotplug/parameters/loadh_scroff ]; then
-	echo 25 > /sys/module/pm_hotplug/parameters/loadh_scroff
-	echo 25 > /sys/module/pm_hotplug/parameters/loadh_scroff;
-	echo "Activited!"
-fi
-
-if [ -e /sys/module/pm_hotplug/parameters/freq_cpu1on ]; then
-	echo 500000 > /sys/module/pm_hotplug/parameters/freq_cpu1on
-	echo 500000 > /sys/module/pm_hotplug/parameters/freq_cpu1on;
-	echo "Activited!"
-fi
-
-if [ -e /sys/module/pm_hotplug/parameters/rate ]; then
-	echo 200 > /sys/module/pm_hotplug/parameters/rate
-	echo 200 > /sys/module/pm_hotplug/parameters/rate;
-	echo "Activited!"
-fi
-
-if [ -e /sys/module/pm_hotplug/parameters/rate_cpuon ]; then
-	echo 400 > /sys/module/pm_hotplug/parameters/rate_cpuon
-	echo 400 > /sys/module/pm_hotplug/parameters/rate_cpuon;
-	echo "Activited!"
-fi
-
-if [ -e /sys/module/pm_hotplug/parameters/rate_scroff ]; then
-	echo 800 > /sys/module/pm_hotplug/parameters/rate_scroff
-	echo 800 > /sys/module/pm_hotplug/parameters/rate_scroff;
-	echo "Activited!"
-fi
 echo "DreamNarae SPiCa"

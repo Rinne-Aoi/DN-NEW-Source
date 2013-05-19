@@ -1,27 +1,26 @@
 #!/system/bin/sh
-######################################################################
-###################### DreamNarae Pure Girls ###########################
-#################################Best of DreamNarae Tweak#############
-## Made by Sopiane(Dong Gil, Seo)
-## and Rie (Eun Hee, Lee)
-## and Iren (Jung Yeon, Lee)
-## and Ayana (Eun Jung, Lee)
-## With four people going to make the best Android Tweak!
-## Supported by Colorful Harmony Team- Angeloid Team
-## Thanks to Developer, and User.
-## This Version is Final Version We made.
-## Enjoy Your Device With DreamNarae!
-######################################################################
+#==============================================================================
+# DreamNarae Pure
+# Version 2.0
+# Made by Eun-hee, Lee(rie6752@naver.com)
+# Made by Jung Yeon, Lee(dear6752@naver.com)
+# Made by Eun-Jung, Lee(riina_01@naver.com)
+# Edit by Sopiane(http://www.sirospace.com)
+# Edit by Karina Yuuki(aikawa6752@naver.com)
+# Colorful Harmony Team- Angeloid Team 
+# http://www.angeloiddev.info
+# DO NOT EDIT THIS SCRIPT!
+#==============================================================================
 
 if [ -e /sys/devices/system/cpu/cpu0/cpufreq/deepsleep_cpulevel ]; then
-    echo "4" > /sys/devices/system/cpu/cpu0/cpufreq/deepsleep_cpulevel
-    echo "4" > /sys/devices/system/cpu/cpu0/cpufreq/deepsleep_cpulevel;
+    echo "5" > /sys/devices/system/cpu/cpu0/cpufreq/deepsleep_cpulevel
+    echo "5" > /sys/devices/system/cpu/cpu0/cpufreq/deepsleep_cpulevel;
 	echo "Activited!"
 fi
 
 if [ -e /sys/devices/system/cpu/cpu0/cpufreq/deepsleep_buslevel ]; then
-    echo "1" > /sys/devices/system/cpu/cpu0/cpufreq/deepsleep_buslevel
-    echo "1" > /sys/devices/system/cpu/cpu0/cpufreq/deepsleep_buslevel;
+    echo "3" > /sys/devices/system/cpu/cpu0/cpufreq/deepsleep_buslevel
+    echo "3" > /sys/devices/system/cpu/cpu0/cpufreq/deepsleep_buslevel;
 	echo "Activited!"
 fi
 
@@ -162,12 +161,6 @@ if [ -e /sys/module/pm_hotplug/parameters/rate_scroff ]; then
 	echo "Activited!"
 fi
 
-if [ -e /proc/sys/vm/panic_on_oom ]; then
-   echo 0 > /proc/sys/vm/panic_on_oom
-   echo 0 > /proc/sys/vm/panic_on_oom;
-   echo "Activited!"
-fi
-
 if [ -e /proc/sys/kernel/panic ]; then 
    echo 0 > /proc/sys/kernel/panic
    echo 0 > /proc/sys/kernel/panic;
@@ -201,12 +194,6 @@ fi
 if [ -e /proc/sys/vm/min_free_kbytes ]; then
     echo 3072 > /proc/sys/vm/min_free_kbytes;
 	echo 3072 > /proc/sys/vm/min_free_kbytes
-	echo "Activited!"
-fi
-
-if [ -e /proc/sys/vm/dirty_expire_centisecs ]; then
-    echo 3072 > /proc/sys/vm/dirty_expire_centisecs;
-	echo 3072 > /proc/sys/vm/dirty_expire_centisecs
 	echo "Activited!"
 fi
 
@@ -378,7 +365,7 @@ do
 done;
 
 setprop dalvik.vm.execution-mode int:jit
-setprop debug.composition.type dyn
+setprop debug.composition.type cpu
 setprop debug.composition.type-mode parallel
 setprop debug.egl.hw 1
 setprop debug.egl.profiler 1
