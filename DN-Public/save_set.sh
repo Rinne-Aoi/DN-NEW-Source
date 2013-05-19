@@ -21,7 +21,7 @@ setprop pm.sleep_mode 1
 setprop proximity_incall enable
 setprop ro.battery,hw.run.mode parallel
 setprop ro.battery.voltage.cooperate true
-setprop ro.cache.memoery.cooperate true
+setprop ro.cache.memory.cooperate true
 setprop ro.config.cpuui.rendering false
 setprop ro.config.hw_power_saving 1
 setprop ro.config.hw_quickpoweron true
