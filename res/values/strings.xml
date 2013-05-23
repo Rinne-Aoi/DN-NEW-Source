@@ -16,13 +16,10 @@
     <string name="rebootmessage">Reboot your Device?</string>
     <string name="errortitle">Failed!</string>
     <string name="error2message">DreamNarae has not been applied properly. Please try again later.</string>
-    <string name="sdcarderrortitle">SDCard Error</string>
-    <string name="sdcarderrormessage">Not Access to SDCard. check your sdcard.</string>
     <string name="infoclose">Close</string>
     <string name="noquittitle">Unavailable Quit!</string>
     <string name="noquitmessage">You cannot quit this screen :D</string>
     <string name="apply">Install</string>
-    <string name="info">See Details</string>
     <string name="spica_info">Is version of the SPiCa started in July 2012 with the initial version of the DreamNarae version of this a memory / Setprop related focus on stability is turned.Is effective for light work such as SNS.</string>
     <string name="miracle_info">Miracle to supplement the time lacking performance of SPiCa the only version that began in December 2012, all of the values ​​of the Miracle focused on the performance is aligned with the version, and the possibility of devices malfunction, the stability is somewhat less. Heavy work such as 3D gaming effect.</string>
     <string name="save_info">Save the standby battery efficiency, in both versions of the existing version of the memory-related values ​​that began in December 2012, focused on battery efficiency version. The standby battery efficiency / use the battery more quickly exhausted, but very large effect on the music.</string>
@@ -38,7 +35,6 @@
     <string name="brand_title">DreamNarae Brand 1.5 information</string>
     <string name="pure_title">DreamNarae Pure 1.5 information</string>
     <string name="voice">Listen Info</string>
-    <string name="installactivity">Installing..</string>
     <string name="kakaotalkmessage">The wings on the phone! Just Use the Angeloid of works DreamNarae, and Experience the faster your device!</string>
     <string name="receivepresent">The gift has arrived!</string>
     <string name="obtain">Obtained by clicking</string>
@@ -50,21 +46,16 @@
     <string name="setting4_title">DreamNarae License</string>
     <string name="setting4_summary">Show DreamNarae License</string>
     <string name="license">License</string>
-    <string name="applysetting">Apply Settings</string>
     <string name="go">Go</string>
-    <string name="savedsetting">Saved Settings</string>
-    <string name="downloadfailed">Download Failed. Try Another Server..</string>
     <string name="setwallpaper">Set Wallpaper</string>
     <string name="ishavekatok">Not installed KakaoTalk</string>
     <string name="introduce1">To listen to a Description</string>
     <string name="introduce2">It is already in play.</string>
     <string name="progress_title">Downloading..</string>
     <string name="progress_detail">Please Wait for Downloading</string>
-    <string name="anim_scale">Anim</string>
     
     <!-- Menu -->
-    <string name="menu">Menu</string>
-    <string name="main">Main Screen</string>
+    <string name="main">Main</string>
     <string name="update">Update Log</string>
     <string name="spica">SPiCa</string>
     <string name="pure">Pure</string>
@@ -74,18 +65,15 @@
     <string name="brand">Brand</string>
     <string name="spisave">SPiSave</string>
     <string name="delete">Delete</string>
-    <string name="promoting">Promoting</string>
     <string name="setting">Setting</string>
     <string name="developerinfo">Developer Info</string>
     <string name="donate">Donate</string>
     
     <!-- Menu String -->
     <string name="dntweak">DreamNarae Tweak</string>
-    <string name="settings">Tools</string>
     
     <!--  File Manager -->
     <string name="file_app_name">DreamNarae Explorer (Beta)</string>
-    <string name="Setting">Settings</string>
     <string name="Path">Location:</string>
     <string name="ParentFolder">Parent Folder</string>
     <string name="NoAppsToOpen">No Apps can open this file.</string>
@@ -109,21 +97,34 @@
 	<string name="Renaming_Hint">New Name</string>
 	<string name="Finish">OK</string>
 	<string name="Cancel">Cancel</string>
-	<string name="Go">Run</string>
 	<string name="ChangeStorage">Change Storage</string>
 	<string name="InternalStorage">Internal Storage</string>
 	<string name="ExternalStorage">External SD Card</string>
 	<string name="Unknown">Unknown</string>
 	<string name="ShownDataCanIncorrect">Now Shown Internal/External Memory Division is just guess, So it can be incorrect data.</string>
 	<string name="CannotGetStorageDataOnFroyo">Cannot get Internal/External Memory Division on Android 2.2 Froyo.</string>
-	<string name="FailCopy">Some Files cannot process</string>
 	<string name="Search">Search</string>
 	<string name="Search_Hint">Name of Searching File</string>
 	<string name="Searching">Searching..</string>
-	<string name="ThemeSetting">App Theme</string>
-	<string name="ThemeSettingSummary">Set the App Theme.</string>
-	<string name="CannotSetTheme">Can\'t Set Themes below Android 2.3</string>
 	<string name="RequestBusybox">This app requires Busybox.</string>
+	<string name="Perm">Change Permission</string>
+	<string name="WillOpenTextEditor">This file seem a text file, so open this with my internal Text Editor.</string>
+    
+	<!-- Cleaner -->
+	<string name="listsystem">list</string>
+    <string name="sizer_title">DreamNarae Cleaner</string>
+    <string name="caution">Caution!</string>
+    <string name="sizer_message_startup">This tool allows you to delete system apps. Use with caution and only delete apps you know are safe to be removed.\n\nThis tool has been original developed by SlimROM Team, all credits goes to them!</string>
+    <string name="cancel">Cancel</string>
+    <string name="sizer_message_delete">Are you sure you want to delete this app?</string>
+    <string name="delete_success">Deleted</string>
+    <string name="delete_fail">Unable to delete</string>
+    <string name="sizer_message_sdnowrite">Cannot write to SD Card.</string>
+    <string name="sizer_message_sdnoread">Cannot read SD Card.</string>
+    <string name="sizer_message_filesuccess">Created profile.</string>
+    <string name="sizer_message_filefail">Failed to create profile.</string>
+    <string name="sizer_message_noselect">Nothing selected.</string>
+    <string name="ok">OK</string>
     
 
 </resources>

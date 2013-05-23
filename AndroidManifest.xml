@@ -18,6 +18,7 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.SET_WALLPAPER" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <uses-feature
@@ -167,13 +168,21 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="angeloid.dreamnarae.cleaner.Cleaner"
+            android:finishOnCloseSystemDialogs="true"
+            android:icon="@drawable/cleaner_launcher"
+            android:launchMode="singleTask"
+            android:label="@string/sizer_title"
+            android:screenOrientation="nosensor"
+            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
          <activity
             android:name="angeloid.dreamnarae.file.manager.SearchActivity"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" >
-        </activity>
-        <activity
-            android:name="angeloid.dreamnarae.file.manager.SettingsActivity"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" >
         </activity>
@@ -188,6 +197,16 @@
             android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" >
         </activity>
         <activity
+            android:name="angeloid.dreamnarae.file.manager.StorageList"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" >
+        </activity>
+        <activity
+            android:name="angeloid.dreamnarae.file.manager.TextEditor"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" >
+        </activity>
+        <activity
             android:name="angeloid.dreamnarae.file.manager.MainActivity"
             android:icon="@drawable/file_launcher"
             android:label="@string/file_app_name" >
@@ -196,6 +215,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.jeremyfeinstein.slidingmenu.lib.app.SlidingActivity" />
+        <activity android:name="com.jeremyfeinstein.slidingmenu.lib.app.SlidingFragmentActivity" />
     </application>
 
 </manifest>

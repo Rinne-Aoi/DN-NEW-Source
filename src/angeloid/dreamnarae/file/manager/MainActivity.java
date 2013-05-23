@@ -1,3 +1,25 @@
+/* Power File Manager / RootTools
+ * 
+    Copyright (C) 2013 Mu Hwan, Kim
+    Copyright (c) 2012 Stephen Erickson, Chris Ravenscroft, Dominik Schuermann, Adam Shanks
+
+     This code is dual-licensed under the terms of the Apache License Version 2.0 and
+    the terms of the General Public License (GPL) Version 2.
+    You may use this code according to either of these licenses as is most appropriate
+    for your project on a case-by-case basis.
+
+    The terms of each license can be found in the root directory of this project's repository as well as at:
+
+    * http://www.apache.org/licenses/LICENSE-2.0
+    * http://www.gnu.org/licenses/gpl-2.0.txt
+ 
+    Unless required by applicable law or agreed to in writing, software
+    distributed under these Licenses is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See each License for the specific language governing permissions and
+    limitations under that License.
+*/
+
 package angeloid.dreamnarae.file.manager;
 
 import android.annotation.SuppressLint;
@@ -24,8 +46,9 @@ import android.widget.AdapterView.OnItemLongClickListener;
 import java.io.*;
 import java.util.*;
 
-import com.stericson.RootTools.RootTools;
 import angeloid.dreamnarae.R;
+
+import com.stericson.RootTools.RootTools;
 
 public class MainActivity extends ListActivity {
 	
@@ -119,6 +142,7 @@ public class MainActivity extends ListActivity {
 	    
 	    File f = new File(dirPath);
 	    File[] files = f.listFiles();
+	    
 	    for(int i = 0; i <= MAX_LIST_ITEMS; i++) isSelected[i] = View.INVISIBLE;	// initialize isSelected with View.INVISIBLE [No Selected Items]
 	    NumberofSelectedItems = 0;
         
@@ -402,7 +426,7 @@ public class MainActivity extends ListActivity {
 	        case R.id.Search:
 	        	InitializeSearch();
 	        	return true;
-	        	
+	   
 	        default:
 	            return super.onOptionsItemSelected(item);
 	    }

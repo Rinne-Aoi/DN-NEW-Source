@@ -5,7 +5,7 @@
 # Made by Jung Yun, Lee(dear6752@naver.com)
 # Edit by Sopiane (http://www.sirospace.com)
 # Colorful Harmony Team- Angeloid Team
-# http://www.sirospace.info
+# http://www.angeloiddev.com
 # DO NOT EDIT THIS SCRIPT!
 #==============================================================================
 setprop dalvik.vm.execution-mode int:jit
@@ -22,7 +22,6 @@ setprop dev.sfbootcomplete 0
 setprop enable.NW:NW.operate Hand-over
 setprop enable.Ram,Memory.run.parallel 1
 setprop enable.sf.cache.type memory
-setprop enable.work.run.mainboard power
 setprop enale.nextAction.reckon earlier
 setprop persist.cache.operate quickdrop
 setprop persist.sys.purgeable_assets 1
@@ -32,8 +31,6 @@ setprop persist.sys.use_dithering 0
 setprop persist.text.type clear
 setprop pm.sleep_mode 1
 setprop ro.A/D,D/A.translation true
-setprop ro.battery,hw.run.mode parallel
-setprop ro.battery.voltage.cooperate true
 setprop ro.cache.memoery.cooperate true
 setprop ro.config.cpu.handling.delay few
 setprop ro.config.cpuui.rendering false
@@ -58,7 +55,6 @@ setprop ro.ril.enable.amr.wideband 1
 setprop ro.ril.fast.dormancy.rule 0
 setprop ro.ril.spender.bending 1
 setprop ro.screen.rendering false
-setprop ro.sf.cache.type memory
 setprop ro.sf.compbypass.enable 1
 setprop ro.sf.data.load.type hw
 setprop ro.sf.data.suspend.type n

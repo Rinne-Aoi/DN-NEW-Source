@@ -4,7 +4,7 @@
     android:orientation="vertical" >
 
     <LinearLayout
-         android:id="@+id/tab_leaner"
+        android:id="@+id/tab_leaner"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/file_coner" >
@@ -29,12 +29,11 @@
     </LinearLayout>
 
     <FrameLayout
-         android:id="@+id/tab_frame"
-        android:layout_below="@+id/tab_leaner"
+        android:id="@+id/tab_frame"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-         >
+        android:layout_below="@+id/tab_leaner"
+        android:orientation="vertical" >
 
         <LinearLayout
             android:id="@+id/RootMainLayout"
@@ -46,7 +45,7 @@
                 android:id="@+id/rpath"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#c01dc8"
+                android:textColor="?android:attr/textColorPrimary"
                 android:textIsSelectable="false" />
 
             <ListView
@@ -55,56 +54,72 @@
                 android:layout_height="match_parent" />
         </LinearLayout>
 
-        <LinearLayout
+        <TableLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="bottom"
-            android:orientation="horizontal" >
+            android:gravity="bottom" >
 
-            <Button
-                android:id="@+id/rCopyBtn"
-                android:layout_width="fill_parent"
-                android:layout_height="32.0dip"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:layout_weight="1"
-                android:background="@drawable/activity_main_coner"
-                android:onClick="onrCopyBtnPress"
-                android:text="@string/Copy"
-                android:textSize="13sp" />
+            <TableRow>
 
-            <Button
-                android:id="@+id/rPasteBtn"
-                android:layout_width="fill_parent"
-                android:layout_height="32.0dip"
-                android:layout_weight="1"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:background="@drawable/activity_main_coner"
-                android:onClick="onrPasteBtnPress"
-                android:text="@string/Paste"
-                android:textSize="13sp" />
+                <Button
+                    android:id="@+id/rPermBtn"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/activity_main_coner"
+                    android:onClick="onrPermBtnPress"
+                    android:text="@string/Perm"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textSize="13sp" />
+            </TableRow>
 
-            <Button
-                android:id="@+id/rMoveBtn"
-                android:layout_width="fill_parent"
-                android:layout_height="32.0dip"
-                android:layout_weight="1"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:background="@drawable/activity_main_coner"
-                android:onClick="onrMoveBtnPress"
-                android:text="@string/Move"
-                android:textSize="13sp" />
+            <TableRow>
 
-            <Button
-                android:id="@+id/rDeleteBtn"
-                android:layout_width="fill_parent"
-                android:layout_height="32.0dip"
-                android:layout_weight="1"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:background="@drawable/activity_main_coner"
-                android:onClick="onrDeleteBtnPress"
-                android:text="@string/Delete"
-                android:textSize="13sp" />
-        </LinearLayout>
+                <Button
+                    android:id="@+id/rCopyBtn"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/activity_main_coner"
+                    android:onClick="onrCopyBtnPress"
+                    android:text="@string/Copy"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textSize="13sp" />
+
+                <Button
+                    android:id="@+id/rPasteBtn"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/activity_main_coner"
+                    android:onClick="onrPasteBtnPress"
+                    android:text="@string/Paste"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textSize="13sp" />
+
+                <Button
+                    android:id="@+id/rMoveBtn"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/activity_main_coner"
+                    android:onClick="onrMoveBtnPress"
+                    android:text="@string/Move"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textSize="13sp" />
+
+                <Button
+                    android:id="@+id/rDeleteBtn"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/activity_main_coner"
+                    android:onClick="onrDeleteBtnPress"
+                    android:text="@string/Delete"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textSize="13sp" />
+            </TableRow>
+        </TableLayout>
     </FrameLayout>
 
 </RelativeLayout>

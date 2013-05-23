@@ -1,0 +1,78 @@
+    <!--
+ *=========================================================================
+ *
+ *  PROJECT:  SlimRoms
+ *            Team Slimroms (http://www.slimroms.net)
+ *
+ *  COPYRIGHT Copyright (C) 2013 Slimroms http://www.slimroms.net
+ *            All rights reserved
+ *
+ *  LICENSE   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ *
+ *  AUTHORS:     fronti90
+ *  DESCRIPTION: SlimSizer: manage your apps
+ *
+ *=========================================================================
+ *
+-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Declutter" >
+    <LinearLayout
+        android:id="@+id/tab_leaner"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/cleaner_coner" >
+    
+    <LinearLayout
+            android:layout_width="32.0dip"
+            android:layout_height="32.0dip"
+            android:layout_marginBottom="8.0dip"
+            android:layout_marginLeft="12.0dip"
+            android:layout_marginTop="8.0dip"
+            android:background="@drawable/file_launcher" />
+
+        <TextView
+            android:id="@+id/tabtextview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5.0dip"
+            android:layout_marginTop="13.0dip"
+            android:text="@string/sizer_title"
+            android:textColor="#000000"
+            android:textSize="9pt" />
+        </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:background="@android:color/transparent"
+        android:drawableLeft="@drawable/content_discard" />
+
+    <Button
+        android:id="@+id/btn_profile"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:background="@android:color/transparent"
+        android:drawableLeft="@drawable/content_save"
+        android:visibility="invisible" />
+
+    <ListView
+        android:id="@string/listsystem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btn_delete"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/tab_leaner" >
+
+    </ListView>
+
+</RelativeLayout>

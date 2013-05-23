@@ -1,6 +1,26 @@
-package angeloid.dreamnarae.file.manager;
+/* Power File Manager / RootTools
+ * 
+    Copyright (C) 2013 Mu Hwan, Kim
+    Copyright (c) 2012 Stephen Erickson, Chris Ravenscroft, Dominik Schuermann, Adam Shanks
 
-import angeloid.dreamnarae.R;
+     This code is dual-licensed under the terms of the Apache License Version 2.0 and
+    the terms of the General Public License (GPL) Version 2.
+    You may use this code according to either of these licenses as is most appropriate
+    for your project on a case-by-case basis.
+
+    The terms of each license can be found in the root directory of this project's repository as well as at:
+
+    * http://www.apache.org/licenses/LICENSE-2.0
+    * http://www.gnu.org/licenses/gpl-2.0.txt
+ 
+    Unless required by applicable law or agreed to in writing, software
+    distributed under these Licenses is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See each License for the specific language governing permissions and
+    limitations under that License.
+*/
+
+package angeloid.dreamnarae.file.manager;
 
 import android.annotation.SuppressLint;
 import android.app.*;
@@ -9,7 +29,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.*;
-import android.content.res.*;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.*;
 import android.net.Uri;
@@ -20,7 +40,9 @@ import android.view.*;
 import android.view.inputmethod.InputMethodManager;
 import android.webkit.MimeTypeMap;
 import android.widget.*;
+import android.widget.AbsListView.OnScrollListener;
 import android.widget.AdapterView.OnItemLongClickListener;
+import angeloid.dreamnarae.R;
 
 import java.io.*;
 import java.util.*;
@@ -30,8 +52,9 @@ import com.stericson.RootTools.execution.Command;
 @SuppressLint("HandlerLeak")
 public class RootActivity extends ListActivity {
 	
-	ArrayList<RootFileProperty> item = null;
-	ArrayList<String> path = null;
+	ArrayList<RootFileProperty> item = new ArrayList<RootFileProperty>();
+	ArrayList<String> path = new ArrayList<String>();
+	ArrayList<Drawable> icon = new ArrayList<Drawable>();
 	final int MAX_LIST_ITEMS = 1000;
 	String[] clipboard = new String [MAX_LIST_ITEMS + 1];
 	int NumberofClipboardItems = 0;
@@ -49,6 +72,14 @@ public class RootActivity extends ListActivity {
 	int NumberOfImageFiles = 0;
 	String sfilename;
 	String appTheme;
+	Drawable nowIcon;
+	FileAdapter adapter;
+	Resources res;
+	Drawable Folder;
+	Drawable Others;
+	Drawable Image;
+	Drawable Audio;
+	Drawable Compressed;
 	
 	@SuppressLint("InlinedApi")
 	@Override
@@ -66,12 +97,52 @@ public class RootActivity extends ListActivity {
         if(appTheme == null) appTheme = "Light";
         
         setContentView(R.layout.file_rootmain);
+    	
         myPath = (TextView) findViewById(R.id.rpath);
         root = "/";
         findViewById(R.id.rCopyBtn).setVisibility(View.INVISIBLE);
 	    findViewById(R.id.rPasteBtn).setVisibility(View.INVISIBLE);
 	    findViewById(R.id.rMoveBtn).setVisibility(View.INVISIBLE);
 	    findViewById(R.id.rDeleteBtn).setVisibility(View.INVISIBLE);
+	    findViewById(R.id.rPermBtn).setVisibility(View.INVISIBLE);
+	    
+	    list = (ListView) findViewById(android.R.id.list);
+	    
+	    list.setOnItemLongClickListener(new OnItemLongClickListener() {
+			@Override
+			public boolean onItemLongClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				SelectionItems(parent, position);
+				if(showMultiSelectToast) { showToast(getString(R.string.NowStartMultiSelectMode)); showMultiSelectToast = false; }
+				return true;
+			}
+	    });
+	    
+	    list.setOnScrollListener(new OnScrollListener() {     
+            public void onScrollStateChanged(AbsListView view, int scrollState) {   
+                if (scrollState != 0)
+                    ((FileAdapter) list.getAdapter()).isScrolling = true;
+                else {
+                	((FileAdapter) list.getAdapter()).isScrolling = false;
+                    ((FileAdapter) list.getAdapter()).notifyDataSetChanged();
+                }
+            }
+
+			@Override
+			public void onScroll(AbsListView view, int firstVisibleItem,
+					int visibleItemCount, int totalItemCount) {
+			}
+	    });
+	    
+	    list.setScrollingCacheEnabled(true);
+	    
+	    res = getResources();
+		Folder = res.getDrawable(R.drawable.folder);
+		Others = res.getDrawable(R.drawable.others);
+		Image = res.getDrawable(R.drawable.image);
+		Audio = res.getDrawable(R.drawable.audio);
+		Compressed = res.getDrawable(R.drawable.compressed);
+		
         getDir(root);
     }
 
@@ -88,18 +159,9 @@ public class RootActivity extends ListActivity {
 		if(path_len - tag_len < dirPath.length()) nowlevel++;	// Go into
 		else if(path_len - tag_len > dirPath.length()) nowlevel--;	// Go back
 	    nowPath = dirPath;
-	    item = new ArrayList<RootFileProperty>();
-	    path = new ArrayList<String>();
-	    list = (ListView) findViewById(android.R.id.list);
-	    list.setOnItemLongClickListener(new OnItemLongClickListener() {
-			@Override
-			public boolean onItemLongClick(AdapterView<?> parent, View view,
-					int position, long id) {
-				SelectionItems(parent, position);
-				if(showMultiSelectToast) { showToast(getString(R.string.NowStartMultiSelectMode)); showMultiSelectToast = false; }
-				return true;
-			}
-	    });
+	    item.clear();
+	    path.clear();
+	    icon.clear();
 	    
 	    RootFile f = new RootFile(dirPath);
 	    RootFile files[] = f.listFiles();
@@ -130,37 +192,44 @@ public class RootActivity extends ListActivity {
 	    				file.getPerms()));
 	    	}
 	    }
-
-	    // Sort Array 'item'
-	    for(int i = 0; i <= item.size()-2; i++)
+	    
+	    String file, mimeType;
+	    for(int i = 0; i < path.size(); i++)
 	    {
-	    	if(i == 0 && !nowPath.equals(root)) i = 1;
-	    	for(int j = i+1; j <= item.size()-1; j++)
-	    	{
-	    		if(item.get(i).getName().compareTo(item.get(j).getName()) > 0)
-	    		{
-	    			RootFileProperty temp = item.get(i);
-	    			item.remove(i);
-	    			item.add(i, item.get(j-1));
-	    			item.remove(j);
-	    			item.add(j, temp);
-	    		}
-	    	}
+	    	if(new RootFile(path.get(i)).isDirectory()) icon.add(Folder);
+			else
+			{
+				file = getExtension(new RootFile(path.get(i)));
+				mimeType = getMIME(file);
+				if (file.equals("zip") || 
+					file.equals("7z")  || 
+					file.equals("rar") ||
+					file.equals("tar")) icon.add(Compressed);
+
+				else if(mimeType == null) icon.add(Others);
+
+				else if(mimeType.startsWith("image")) icon.add(Image);
+
+				else if(mimeType.startsWith("audio")) icon.add(Audio);
+				
+				else if(file.equals("apk")) icon.add(null);	// set NULL when apk file
+			}	
 	    }
 	    
-	    // Sort Array 'path'
-	    Collections.sort(path);
-	    FileAdapter adapter = new FileAdapter(item);
+	    adapter = new FileAdapter(item);
 	    if(path_len - tag_len <= dirPath.length()) // Go Into
 	    {
+	    	adapter.loader.clearCache();
 	    	list_state[nowlevel] = list.onSaveInstanceState();
 	    	list.setAdapter(adapter);
 	    }
 	    else if(path_len - tag_len > dirPath.length())	// Go Back
 	    {
+	    	adapter.loader.clearCache();
 	    	list.setAdapter(adapter);
 	    	list.onRestoreInstanceState(list_state[nowlevel+1]);
 	    }
+	    
 	    myPath.setText(getString(R.string.Path) + " " + dirPath);
 	}
 
@@ -199,7 +268,14 @@ public class RootActivity extends ListActivity {
 			if(ext != null) temp = ext.reverse();
 			String extension = temp.toString();
 			String mimeType =  MimeTypeMap.getSingleton().getMimeTypeFromExtension(extension.toLowerCase());
-			if(mimeType == null) { showToast(getString(R.string.NoAppsToOpen)); return; }
+			if(mimeType == null) 
+			{
+				showToast(getString(R.string.WillOpenTextEditor));
+				Intent intent = new Intent(RootActivity.this, TextEditor.class);
+				intent.putExtra("filepath", file.getPath());
+				startActivity(intent);
+				return;
+			}
 			runFile(file, mimeType);
 		}
 		
@@ -209,6 +285,7 @@ public class RootActivity extends ListActivity {
 		    findViewById(R.id.rPasteBtn).setVisibility(View.INVISIBLE);
 		    findViewById(R.id.rMoveBtn).setVisibility(View.INVISIBLE);
 		    findViewById(R.id.rDeleteBtn).setVisibility(View.INVISIBLE);
+		    findViewById(R.id.rPermBtn).setVisibility(View.INVISIBLE);
 		}
 	}
 
@@ -225,6 +302,7 @@ public class RootActivity extends ListActivity {
 		    findViewById(R.id.rPasteBtn).setVisibility(View.INVISIBLE);
 		    findViewById(R.id.rMoveBtn).setVisibility(View.INVISIBLE);
 		    findViewById(R.id.rDeleteBtn).setVisibility(View.INVISIBLE);
+		    findViewById(R.id.rPermBtn).setVisibility(View.INVISIBLE);
 		}
 		else 
 		{
@@ -260,6 +338,8 @@ public class RootActivity extends ListActivity {
 		NumberofSelectedItems = 0;
 		getDir(nowPath);
 		findViewById(R.id.rCopyBtn).setVisibility(View.INVISIBLE);
+		findViewById(R.id.rPermBtn).setVisibility(View.INVISIBLE);
+		findViewById(R.id.rDeleteBtn).setVisibility(View.INVISIBLE);
 		findViewById(R.id.rPasteBtn).setVisibility(View.VISIBLE);
 		findViewById(R.id.rMoveBtn).setVisibility(View.VISIBLE);
 	}
@@ -297,6 +377,7 @@ public class RootActivity extends ListActivity {
 	    findViewById(R.id.rPasteBtn).setVisibility(View.INVISIBLE);
 	    findViewById(R.id.rMoveBtn).setVisibility(View.INVISIBLE);
 	    findViewById(R.id.rDeleteBtn).setVisibility(View.INVISIBLE);
+	    findViewById(R.id.rPermBtn).setVisibility(View.INVISIBLE);
 	}
 	
 	public void onrDeleteBtnPress(View v) {
@@ -332,6 +413,7 @@ public class RootActivity extends ListActivity {
 		findViewById(R.id.rPasteBtn).setVisibility(View.INVISIBLE);
 		findViewById(R.id.rMoveBtn).setVisibility(View.INVISIBLE);
 		findViewById(R.id.rDeleteBtn).setVisibility(View.INVISIBLE);
+		findViewById(R.id.rPermBtn).setVisibility(View.INVISIBLE);
 	}
 	
 	public void onrMoveBtnPress(View v) {
@@ -368,8 +450,61 @@ public class RootActivity extends ListActivity {
 	    findViewById(R.id.rPasteBtn).setVisibility(View.INVISIBLE);
 	    findViewById(R.id.rMoveBtn).setVisibility(View.INVISIBLE);
 	    findViewById(R.id.rDeleteBtn).setVisibility(View.INVISIBLE);
+	    findViewById(R.id.rPermBtn).setVisibility(View.INVISIBLE);
 	}
 
+	public void onrPermBtnPress(View v) {
+		Context mContext = getApplicationContext();
+    	LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(LAYOUT_INFLATER_SERVICE);
+    	final View layout = inflater.inflate(R.layout.permset, null);
+    	final EditText NumPerm = (EditText) layout.findViewById(R.id.NumericPerm);
+    	if(appTheme.equals("Light")) NumPerm.setTextColor(Color.BLACK);
+    	if(appTheme.equals("Dark")) NumPerm.setTextColor(Color.WHITE);
+    	AlertDialog.Builder aDialog = new AlertDialog.Builder(RootActivity.this);
+    	aDialog.setTitle(getString(R.string.Perm));
+    	aDialog.setView(layout);
+    	
+    	aDialog.setPositiveButton(getString(R.string.Finish), new DialogInterface.OnClickListener() {
+    		public void onClick(DialogInterface dialog, int which) {
+    			String newPerm = NumPerm.getText().toString();
+    			RootTools.remount(nowPath, "rw");
+    			int i = 0;
+    			while(true)
+    			{
+    				String aPath = new String();
+    				if(isSelected[i] == View.VISIBLE) aPath = path.get(i);
+    				{
+    					final String w = "busybox chmod " + newPerm + " " + aPath;
+    					Command cmd = new Command(0, w) {
+    						@Override
+    						public void output(int id, String line) {}
+    					};
+        	        
+    					try { RootTools.getShell(true).add(cmd).waitForFinish(); } 
+    					catch (Exception e) { showToast(e.getMessage()); }
+    				}
+    				
+        	        if(i < path.size()) i++;
+        	        else break;
+    			}
+    	    	
+    			getDir(nowPath);
+    			InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+    			imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
+    		}
+    	});
+    	
+    	AlertDialog ad = aDialog.create();
+    	ad.show();
+    	InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+    	imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
+		findViewById(R.id.rCopyBtn).setVisibility(View.INVISIBLE);
+	    findViewById(R.id.rPasteBtn).setVisibility(View.INVISIBLE);
+	    findViewById(R.id.rMoveBtn).setVisibility(View.INVISIBLE);
+	    findViewById(R.id.rDeleteBtn).setVisibility(View.INVISIBLE);
+	    findViewById(R.id.rPermBtn).setVisibility(View.INVISIBLE);
+	}
+	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 	    switch (item.getItemId()) {
@@ -398,6 +533,7 @@ public class RootActivity extends ListActivity {
 	public void SelectionItems(AdapterView<?> parent, int position) {
 		Button rCopyBtn = (Button) findViewById(R.id.rCopyBtn);
 		Button rDeleteBtn = (Button) findViewById(R.id.rDeleteBtn);
+		Button rPermBtn = (Button) findViewById(R.id.rPermBtn);
 		
 		if(isSelected[position] == View.VISIBLE)	// Already Selected
 		{
@@ -421,6 +557,7 @@ public class RootActivity extends ListActivity {
 		
 		rCopyBtn.setVisibility(View.VISIBLE);	// Set Visible
 		rDeleteBtn.setVisibility(View.VISIBLE);	// Set Visible
+		rPermBtn.setVisibility(View.VISIBLE);	// Set Visible
 		isSelected[position] = View.VISIBLE;	// Set Visible
 		NumberofSelectedItems++;
 		int firstPos = parent.getFirstVisiblePosition();
@@ -647,38 +784,21 @@ public class RootActivity extends ListActivity {
 		
 		return arr;
 	}
-	
-	public Drawable getIcon(String file, String filePath) {
-		Resources res = getApplicationContext().getResources();
-		Drawable icon = res.getDrawable(R.drawable.others);
-		if (new RootFile(filePath).isDirectory()) return res.getDrawable(R.drawable.folder);
-		if (file.equals("apk")) {
-			PackageInfo packageInfo = 
-					getPackageManager().getPackageArchiveInfo(filePath, PackageManager.GET_ACTIVITIES);
-			if(packageInfo == null) return icon;
-			ApplicationInfo appInfo = packageInfo.applicationInfo;
-			appInfo.sourceDir = filePath;
-			appInfo.publicSourceDir = filePath;
-			icon = appInfo.loadIcon(getPackageManager());
-		}
-		
-		if (	file.equals("zip") || 
-				file.equals("7z")  || 
-				file.equals("rar") ||
-				file.equals("tar")) icon = res.getDrawable(R.drawable.compressed);
 
-		String mimeType = getMIME(file);
-		if(mimeType == null) return icon;
-		
-		if(mimeType.startsWith("image")) icon = res.getDrawable(R.drawable.image);
-		
-		if(mimeType.startsWith("audio")) icon = res.getDrawable(R.drawable.audio);
-		return icon;
+	public Drawable getApkIcon(String filePath) {
+		PackageInfo packageInfo = 
+				getPackageManager().getPackageArchiveInfo(filePath, PackageManager.GET_ACTIVITIES);
+		if(packageInfo == null) return null;
+		ApplicationInfo appInfo = packageInfo.applicationInfo;
+		appInfo.sourceDir = filePath;
+		appInfo.publicSourceDir = filePath;
+		return appInfo.loadIcon(getPackageManager());
 	}
 	
 	public String getExtension(RootFile file) {
 		String name = file.getName();
 		int length = name.length() - 1;
+		if(length < 0) return "";
 		StringBuffer ext = new StringBuffer();
 		while(true)
 		{
@@ -734,6 +854,12 @@ public class RootActivity extends ListActivity {
 	
 	public class FileAdapter extends BaseAdapter {
 		private ArrayList<RootFileProperty> object;
+		ImageLoader loader = new ImageLoader(getApplicationContext());
+		boolean isScrolling = false;
+		String filename, filedate, fileperm, filesize, txtPerm;
+		String file, mimeType;
+		StringBuilder sb = new StringBuilder(100);
+		ViewHolder holder;
 		
 		public FileAdapter(ArrayList<RootFileProperty> object) {
 			super();
@@ -757,47 +883,57 @@ public class RootActivity extends ListActivity {
 
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
-			ViewHolder holder;
-			if(convertView == null) {
+			View row = convertView;
+			if(row == null) {
 				LayoutInflater inflater = LayoutInflater.from(RootActivity.this);
-				convertView = inflater.inflate(R.layout.file_rootrow, parent, false);
+				row = inflater.inflate(R.layout.file_rootrow, parent, false);
 				holder = new ViewHolder();
 				
 				// Find View
-				holder.fileicon = (ImageView) convertView.findViewById(R.id.icon);
-				holder.filename = (TextView) convertView.findViewById(R.id.filename);
-				holder.filedate = (TextView) convertView.findViewById(R.id.filedate);
-				holder.fileperm = (TextView) convertView.findViewById(R.id.fileperm);
-				holder.filesize = (TextView) convertView.findViewById(R.id.filesize);
-				holder.check = (ImageView) convertView.findViewById(R.id.check);
-				convertView.setTag(holder);
+				holder.fileicon = (ImageView) row.findViewById(R.id.icon);
+				holder.filename = (TextView) row.findViewById(R.id.filename);
+				holder.filedate = (TextView) row.findViewById(R.id.filedate);
+				holder.fileperm = (TextView) row.findViewById(R.id.fileperm);
+				holder.filesize = (TextView) row.findViewById(R.id.filesize);
+				holder.check = (ImageView) row.findViewById(R.id.check);
+				row.setTag(holder);
 			}
-			else holder = (ViewHolder) convertView.getTag();
+			else holder = (ViewHolder) row.getTag();
 			
-			String fileicon = object.get(position).getIcon();
-			String filename = object.get(position).getName();
-			String filedate = object.get(position).getDate();
-			String fileperm = object.get(position).getPerm();
-			String filesize = object.get(position).getSize();
+			filename = object.get(position).getName();
+			filedate = object.get(position).getDate();
+			fileperm = object.get(position).getPerm();
+			filesize = object.get(position).getSize();
 			
-			String txtPerm = fileperm.equals("") ? "" : fileperm + " [" + Integer.toString(calcPerm(fileperm)) + "]";
-			// Set Resources
-			holder.fileicon.setImageDrawable(getIcon(fileicon, nowPath + "/" + filename));
+			sb.setLength(0);
+			if(fileperm.equals("")) txtPerm = "";
+			else txtPerm = sb.append(fileperm).append(" [").append(Integer.toString(calcPerm(fileperm))).append("]").toString();
+			
+			String dir = nowPath.equals(root) ? nowPath + object.get(position).getName() : nowPath + "/" + object.get(position).getName();
+			
+			if(icon.get(position) != null) holder.fileicon.setImageDrawable(icon.get(position));
+			else
+			{
+				if(isScrolling) holder.fileicon.setImageResource(R.drawable.android);
+				else loader.DisplayImage(object.get(position).getName(), 
+						((BitmapDrawable) getApkIcon(dir)).getBitmap(), holder.fileicon);
+			}
+			
 			holder.filename.setText(filename);
 			holder.filedate.setText(filedate);
 			holder.fileperm.setText(txtPerm);
 			holder.filesize.setText(filesize);
 			holder.check.setVisibility(isSelected[position]);
-			return convertView;
+			return row;
 		}
-		
-		class ViewHolder {
-			ImageView fileicon;
-			TextView filename;
-			TextView filedate;
-			TextView fileperm;
-			TextView filesize;
-			ImageView check;
-		}
+	}
+	
+	static class ViewHolder {
+		ImageView fileicon;
+		TextView filename;
+		TextView filedate;
+		TextView fileperm;
+		TextView filesize;
+		ImageView check;
 	}
 }
