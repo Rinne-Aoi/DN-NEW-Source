@@ -11,15 +11,15 @@
 
     The terms of each license can be found in the root directory of this project's repository as well as at:
 
-    * http://www.apache.org/licenses/LICENSE-2.0
-    * http://www.gnu.org/licenses/gpl-2.0.txt
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.gnu.org/licenses/gpl-2.0.txt
  
     Unless required by applicable law or agreed to in writing, software
     distributed under these Licenses is distributed on an "AS IS" BASIS,
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
     See each License for the specific language governing permissions and
     limitations under that License.
-*/
+ */
 
 package angeloid.dreamnarae;
 
@@ -27,9 +27,12 @@ import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
 
+import android.app.NotificationManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
+import android.os.Vibrator;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -39,38 +42,53 @@ import com.stericson.RootTools.execution.CommandCapture;
 
 public class Boot_Script extends BroadcastReceiver {
 
+	private NotificationManager mNotiManager;
 	@Override
 	public void onReceive(Context c, Intent i) {
 		if (!(RootTools.isAccessGiven())) {
 			Toast.makeText(c, R.string.noroottoast, Toast.LENGTH_LONG).show();
 		} else {
-				if (new File("/system/etc/dreamnarae.sh").exists()) {
-					CommandCapture command = new CommandCapture(0,
-							"mount -o rw,remount /system",
-							"sh /system/etc/dreamnarae.sh",
-							"sh /system/etc/install-recovery.sh");
-					
-					try {
-						RootTools.getShell(true).add(command).waitForFinish();
-						Log.d("debug", "ok!");
-						Toast.makeText(c, R.string.bootcomplete,
-								Toast.LENGTH_SHORT).show();
-					} catch (InterruptedException e) {
-						e.printStackTrace();
+			if (new File("/system/etc/dreamnarae.sh").exists()) {
+				CommandCapture command = new CommandCapture(0,
+						"mount -o rw,remount /system",
+						"sh /system/etc/dreamnarae.sh",
+						"sh /system/etc/install-recovery.sh");
 
-					} catch (IOException e) {
-						e.printStackTrace();
-
-					} catch (TimeoutException e) {
-						e.printStackTrace();
-
-					} catch (RootDeniedException e) {
-						e.printStackTrace();
-
+				try {
+					RootTools.getShell(true).add(command).waitForFinish();
+					Log.d("debug", "ok!");
+					Vibrator vibe = (Vibrator) c
+							.getSystemService(Context.VIBRATOR_SERVICE);
+					long[] pattern = { 1000, 200, 1000, 2000 };
+					vibe.vibrate(pattern, 0);
+					if (Build.VERSION.SDK_INT < 11) {
+						// TODO 진저 알림
+						/*CharSequence Ginger_Top = String.valueOf(R.string.boot_top);
+						CharSequence Ginger_Medium = String.valueOf(R.string.boot_medium);
+						CharSequence Ginger_Bottom = String.valueOf(R.string.boot_bottom);
+						Notification noti = new Notification(R.drawable.ic_launcher, Ginger_Top, System.currentTimeMillis());
+						noti.flags = Notification.FLAG_AUTO_CANCEL;
+						noti.setLatestEventInfo(this, Ginger_Medium, Ginger_Bottom, pi); */
+					} else {
+						// TODO 허니콤 이상 알림
 					}
 
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+
+				} catch (IOException e) {
+					e.printStackTrace();
+
+				} catch (TimeoutException e) {
+					e.printStackTrace();
+
+				} catch (RootDeniedException e) {
+					e.printStackTrace();
+
 				}
-			
+
+			}
+
 		}
 	}
 }
