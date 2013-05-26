@@ -5,7 +5,7 @@
     android:layout_width="250dp"
     android:layout_height="fill_parent"
     sliding:viewAbove="@layout/menu"
-    sliding:viewBehind="@layout/menueasteregg"
+    sliding:viewBehind="@layout/hiddenmenu"
     sliding:touchModeAbove="margin"
     sliding:behindWidth="@dimen/slidingmenu_width"
     sliding:shadowDrawable="@drawable/shadow"

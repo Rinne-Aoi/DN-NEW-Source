@@ -27,7 +27,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
 
-import android.app.NotificationManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -41,8 +40,6 @@ import com.stericson.RootTools.exceptions.RootDeniedException;
 import com.stericson.RootTools.execution.CommandCapture;
 
 public class Boot_Script extends BroadcastReceiver {
-
-	private NotificationManager mNotiManager;
 	@Override
 	public void onReceive(Context c, Intent i) {
 		if (!(RootTools.isAccessGiven())) {
@@ -59,18 +56,11 @@ public class Boot_Script extends BroadcastReceiver {
 					Log.d("debug", "ok!");
 					Vibrator vibe = (Vibrator) c
 							.getSystemService(Context.VIBRATOR_SERVICE);
-					long[] pattern = { 1000, 200, 1000, 2000 };
-					vibe.vibrate(pattern, 0);
+					vibe.vibrate(200);
 					if (Build.VERSION.SDK_INT < 11) {
-						// TODO ì§„ì € ì•Œë¦¼
-						/*CharSequence Ginger_Top = String.valueOf(R.string.boot_top);
-						CharSequence Ginger_Medium = String.valueOf(R.string.boot_medium);
-						CharSequence Ginger_Bottom = String.valueOf(R.string.boot_bottom);
-						Notification noti = new Notification(R.drawable.ic_launcher, Ginger_Top, System.currentTimeMillis());
-						noti.flags = Notification.FLAG_AUTO_CANCEL;
-						noti.setLatestEventInfo(this, Ginger_Medium, Ginger_Bottom, pi); */
+						// TODO ÁøÀú ¾Ë¸²
 					} else {
-						// TODO í—ˆë‹ˆì½¤ ì´ìƒ ì•Œë¦¼
+						// TODO Çã´ÏÄÞ ÀÌ»ó ¾Ë¸²
 					}
 
 				} catch (InterruptedException e) {

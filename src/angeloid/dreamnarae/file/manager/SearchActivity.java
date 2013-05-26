@@ -66,7 +66,7 @@ public class SearchActivity extends ListActivity {
 	        if(appTheme.equals("Dark")) setTheme(android.R.style.Theme_Holo);
         }
         
-        setContentView(R.layout.file_search);
+        setContentView(R.layout.search);
         
         Intent intent = this.getIntent();
         filelist = intent.getParcelableArrayListExtra("filelist");
@@ -190,7 +190,7 @@ public class SearchActivity extends ListActivity {
 			ViewHolder holder;
 			if(convertView == null) {
 				LayoutInflater inflater = LayoutInflater.from(SearchActivity.this);
-				convertView = inflater.inflate(R.layout.file_searchrow, parent, false);
+				convertView = inflater.inflate(R.layout.searchrow, parent, false);
 				holder = new ViewHolder();
 				
 				// Find View

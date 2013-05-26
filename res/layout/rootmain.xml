@@ -60,64 +60,54 @@
             android:gravity="bottom" >
 
             <TableRow>
-
                 <Button
                     android:id="@+id/rPermBtn"
                     android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_weight="1"
-                    android:background="@drawable/activity_main_coner"
+                    android:background="@drawable/file_coner"
                     android:onClick="onrPermBtnPress"
                     android:text="@string/Perm"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textSize="13sp" />
+                    android:textSize="15sp" />
             </TableRow>
 
             <TableRow>
-
                 <Button
                     android:id="@+id/rCopyBtn"
                     android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_weight="1"
-                    android:background="@drawable/activity_main_coner"
+                    android:background="@drawable/file_coner"
                     android:onClick="onrCopyBtnPress"
                     android:text="@string/Copy"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textSize="13sp" />
-
+                    android:textSize="15sp" />
                 <Button
                     android:id="@+id/rPasteBtn"
                     android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_weight="1"
-                    android:background="@drawable/activity_main_coner"
+                    android:background="@drawable/file_coner"
                     android:onClick="onrPasteBtnPress"
                     android:text="@string/Paste"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textSize="13sp" />
-
+                    android:textSize="15sp" />
                 <Button
                     android:id="@+id/rMoveBtn"
                     android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_weight="1"
-                    android:background="@drawable/activity_main_coner"
+                    android:background="@drawable/file_coner"
                     android:onClick="onrMoveBtnPress"
                     android:text="@string/Move"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textSize="13sp" />
-
+                    android:textSize="15sp" />
                 <Button
                     android:id="@+id/rDeleteBtn"
                     android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_weight="1"
-                    android:background="@drawable/activity_main_coner"
+                    android:background="@drawable/file_coner"
                     android:onClick="onrDeleteBtnPress"
                     android:text="@string/Delete"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textSize="13sp" />
+                    android:textSize="15sp" />
             </TableRow>
         </TableLayout>
     </FrameLayout>

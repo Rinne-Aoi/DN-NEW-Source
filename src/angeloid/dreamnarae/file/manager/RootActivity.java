@@ -42,19 +42,20 @@ import android.webkit.MimeTypeMap;
 import android.widget.*;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.AdapterView.OnItemLongClickListener;
-import angeloid.dreamnarae.R;
 
 import java.io.*;
 import java.util.*;
+
 import com.stericson.RootTools.RootTools;
 import com.stericson.RootTools.execution.Command;
+import angeloid.dreamnarae.R;
 
 @SuppressLint("HandlerLeak")
 public class RootActivity extends ListActivity {
 	
 	ArrayList<RootFileProperty> item = new ArrayList<RootFileProperty>();
 	ArrayList<String> path = new ArrayList<String>();
-	ArrayList<Drawable> icon = new ArrayList<Drawable>();
+	Drawable[] icon;
 	final int MAX_LIST_ITEMS = 1000;
 	String[] clipboard = new String [MAX_LIST_ITEMS + 1];
 	int NumberofClipboardItems = 0;
@@ -96,7 +97,7 @@ public class RootActivity extends ListActivity {
         
         if(appTheme == null) appTheme = "Light";
         
-        setContentView(R.layout.file_rootmain);
+        setContentView(R.layout.rootmain);
     	
         myPath = (TextView) findViewById(R.id.rpath);
         root = "/";
@@ -154,14 +155,13 @@ public class RootActivity extends ListActivity {
     }
     
 	private void getDir(String dirPath) {
-		int path_len = myPath.getText().toString().length();		// Get Path's Length
-		int tag_len = 10;	// Length of "Location: "
+		final int path_len = myPath.getText().toString().length();		// Get Path's Length
+		final int tag_len = 10;	// Length of "Location: "
 		if(path_len - tag_len < dirPath.length()) nowlevel++;	// Go into
 		else if(path_len - tag_len > dirPath.length()) nowlevel--;	// Go back
 	    nowPath = dirPath;
 	    item.clear();
 	    path.clear();
-	    icon.clear();
 	    
 	    RootFile f = new RootFile(dirPath);
 	    RootFile files[] = f.listFiles();
@@ -175,7 +175,8 @@ public class RootActivity extends ListActivity {
         	path.add(f.getParent()); 
 	    }
 
-	    for(int i = 0; i < files.length; i++)
+        int filelen = files.length;
+	    for(int i = 0; i < filelen; i++)
 	    {
 	    	RootFile file = files[i];
 	      
@@ -183,9 +184,11 @@ public class RootActivity extends ListActivity {
 	    	{
 	    		path.add(file.getPath());
 	    		
+	    		String icontype = file.isDirectory() ? "FOLDER" : getExtension(file);
 	    		String filesize = file.isDirectory() ? "" : formatFileSize(file.length());
+	    		if(file.getPerms().equals("")) filesize = "";
 	    		item.add(new RootFileProperty(
-	    				getExtension(file),
+	    				icontype,
 	    				file.getName(),
 	    				DateFormat.format("yyyy.MM.dd kk:mm", file.lastModified()).toString(),
 	    				filesize,
@@ -193,28 +196,40 @@ public class RootActivity extends ListActivity {
 	    	}
 	    }
 	    
-	    String file, mimeType;
-	    for(int i = 0; i < path.size(); i++)
-	    {
-	    	if(new RootFile(path.get(i)).isDirectory()) icon.add(Folder);
-			else
-			{
-				file = getExtension(new RootFile(path.get(i)));
-				mimeType = getMIME(file);
-				if (file.equals("zip") || 
-					file.equals("7z")  || 
-					file.equals("rar") ||
-					file.equals("tar")) icon.add(Compressed);
+	    final int psize = path.size();
+	    icon = new Drawable[psize];
+	    
+	    Thread getIcons = new Thread() {
+	    	public void run() {
+	    		String file, mimeType;
+	    	    for(int i = 0; i < psize; i++)
+	    	    {
+	    	    	if(item.get(i).getIcon().equals("FOLDER")) icon[i] = Folder;
+	    			else
+	    			{
+	    				file = item.get(i).getIcon();
+	    				mimeType = getMIME(file);
+	    				if (file.equals("zip") || 
+	    					file.equals("7z")  || 
+	    					file.equals("rar") ||
+	    					file.equals("tar")) icon[i] = Compressed;
 
-				else if(mimeType == null) icon.add(Others);
+	    				else if(mimeType == null) icon[i] = Others;
 
-				else if(mimeType.startsWith("image")) icon.add(Image);
+	    				else if(mimeType.startsWith("image")) icon[i] = Image;
 
-				else if(mimeType.startsWith("audio")) icon.add(Audio);
-				
-				else if(file.equals("apk")) icon.add(null);	// set NULL when apk file
-			}	
-	    }
+	    				else if(mimeType.startsWith("audio")) icon[i] = Audio;
+	    				
+	    				else if(!file.equals("apk")) icon[i] = Others;
+	    				
+	    				else if(file.equals("apk")) icon[i] = null;	// set NULL when apk file
+	    			}	
+	    	    }
+	    	}
+	    };
+	    
+	    
+	    runOnUiThread(getIcons);
 	    
 	    adapter = new FileAdapter(item);
 	    if(path_len - tag_len <= dirPath.length()) // Go Into
@@ -361,9 +376,9 @@ public class RootActivity extends ListActivity {
 	            {
 					for(int i = 0; i < NumberofClipboardItems; i++)
 					{
-						copyDirectory(new RootFile(clipboard[i]), new RootFile(nowPath));
+						FileCopy(new RootFile(clipboard[i]), new RootFile(nowPath));
 					}
-				} 
+				}
 				catch (IOException e) 
 				{
 					showToast(e.getMessage());
@@ -517,10 +532,6 @@ public class RootActivity extends ListActivity {
 	        	showToast(getString(R.string.StartRenaming));
 	        	return true;
 	        	
-	        case R.id.ChangeStorage:
-	        	ChangeStorage();
-	        	return true;
-	        	
 	        case R.id.Search:
 	        	InitializeSearch();
 	        	return true;
@@ -592,13 +603,17 @@ public class RootActivity extends ListActivity {
 		Intent intent = new Intent(Intent.ACTION_VIEW);
 		Uri uri = Uri.fromFile(file);
 		intent.setDataAndType(uri, MimeType);
-		startActivity(intent);
+		PackageManager packageManager = getPackageManager();
+		List<ResolveInfo> activities = packageManager.queryIntentActivities(intent, 0);
+		boolean isIntentSafe = activities.size() > 0;
+		if (isIntentSafe) startActivity(intent);
+		else showToast(getString(R.string.NoAppsToOpen));
 	}
 	
 	public void FileRename(final String filepath) {
 		Context mContext = getApplicationContext();
     	LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(LAYOUT_INFLATER_SERVICE);
-    	final View layout = inflater.inflate(R.layout.file_rename, null);
+    	final View layout = inflater.inflate(R.layout.rename, null);
     	EditText name = (EditText) layout.findViewById(R.id.NewName);
     	if(appTheme.equals("Light")) name.setTextColor(Color.BLACK);
     	if(appTheme.equals("Dark")) name.setTextColor(Color.WHITE);
@@ -634,7 +649,7 @@ public class RootActivity extends ListActivity {
 	public void MakeNewFolder() {
 		Context mContext = getApplicationContext();
     	LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(LAYOUT_INFLATER_SERVICE);
-    	final View layout = inflater.inflate(R.layout.file_getname, null);
+    	final View layout = inflater.inflate(R.layout.getname, null);
     	final EditText FolderName = (EditText) layout.findViewById(R.id.gettingName);
     	if(appTheme.equals("Light")) FolderName.setTextColor(Color.BLACK);
     	if(appTheme.equals("Dark")) FolderName.setTextColor(Color.WHITE);
@@ -667,56 +682,10 @@ public class RootActivity extends ListActivity {
     	imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
 	}
 	
-	public void ChangeStorage() {
-    	AlertDialog.Builder aDialog = new AlertDialog.Builder(RootActivity.this);
-    	aDialog.setTitle(getString(R.string.ChangeStorage));
-    	
-    	StorageList.getStorageOptions();
-    	if (!(Build.VERSION.SDK_INT < Build.VERSION_CODES.GINGERBREAD))
-    		showToast(getString(R.string.ShownDataCanIncorrect));
-    	else showToast(getString(R.string.CannotGetStorageDataOnFroyo));
-    	
-    	String[] items = new String[StorageList.paths.length];
-    	
-    	int NowSelected = 0;
-    	for(int i = 0; i < StorageList.paths.length; i++)
-    	{
-    		items[i] = StorageList.paths[i] + "\n[" + getString(StorageList.labels[i]) + "]";
-    		if(StorageList.paths[i].equalsIgnoreCase(root)) NowSelected = i;
-    	}
-
-    	aDialog.setSingleChoiceItems(items, NowSelected, new DialogInterface.OnClickListener() {
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				item = null;
-				path = null;
-				clipboard = new String [MAX_LIST_ITEMS + 1];
-				NumberofClipboardItems = 0;
-				nowlevel = -1;
-				list_state = new Parcelable [MAX_LIST_ITEMS + 1];
-				isSelected = new int [MAX_LIST_ITEMS + 1];
-				NumberofSelectedItems = 0;
-				backPressedTime = 0;
-				nowPath = "";
-				showMultiSelectToast = true;
-				Renaming = false;
-				
-				root = StorageList.paths[which];
-				myPath.setText("/");
-				getDir(root);
-				
-				dialog.dismiss();
-			}
-    	});
-    	
-    	AlertDialog ad = aDialog.create();
-    	ad.show();
-	}
-	
 	public void InitializeSearch() {
 		Context mContext = getApplicationContext();
 		LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(LAYOUT_INFLATER_SERVICE);
-		final View layout = inflater.inflate(R.layout.file_getname, null);
+		final View layout = inflater.inflate(R.layout.getname, null);
 		final EditText SearchingFileName = (EditText) layout.findViewById(R.id.gettingName);
 		if(appTheme.equals("Light")) SearchingFileName.setTextColor(Color.BLACK);
     	if(appTheme.equals("Dark")) SearchingFileName.setTextColor(Color.WHITE);
@@ -766,7 +735,8 @@ public class RootActivity extends ListActivity {
 		if(file.equals(null)) return null;
 	    RootFile[] list = file.listFiles();
 	    
-		for(int i = 0; i < list.length; i++)
+	    int len = list.length;
+		for(int i = 0; i < len; i++)
 		{
 			if(list[i].isDirectory() && !list[i].isHidden()) Search(list[i].getAbsolutePath(), Name, arr);
 			else
@@ -816,20 +786,29 @@ public class RootActivity extends ListActivity {
 		return MimeTypeMap.getSingleton().getMimeTypeFromExtension(ext.toLowerCase());
 	}
 	
-    public boolean copyDirectory(RootFile sourceLocation, RootFile targetLocation) throws IOException {
-    	RootTools.remount(targetLocation.getAbsolutePath(), "rw");
-    	final String w = "busybox cp -r " + sourceLocation.getAbsolutePath() + " " + targetLocation.getAbsolutePath();
-    	Command cmd = new Command(0, w) {
-            @Override
-            public void output(int id, String line) {}
-        };
-        
-        try { RootTools.getShell(true).add(cmd).waitForFinish(); } 
-        catch (Exception e) { showToast(e.getMessage()); }
-        return true;
+    public void FileCopy(RootFile from, RootFile to) throws IOException {
+    	RootTools.remount(to.getAbsolutePath(), "rw");
+    	String from_path = from.getAbsolutePath();
+    	String to_path = to.getAbsolutePath();
+    	if (from.isFile()) RootTools.copyFile(from_path, to_path, false, true);
+    	else if (from.isDirectory()) {
+            RootFile files[] = from.listFiles();
+            String dir = to_path + from_path.substring(from.getAbsolutePath().lastIndexOf("/"), from_path.length());
+            int len = files.length;
+
+            new RootFile(dir).mkdir();
+
+            for(int i = 0; i < len; i++) 
+            {
+                if((new RootFile(from_path + "/" + files[i].getName())).isDirectory()) 
+                	FileCopy(new RootFile(from_path + "/" + files[i].getName()), new RootFile(dir));
+                
+                else RootTools.copyFile(from_path + "/" + files[i].getName(), dir, false, true);
+            }
+        }
     }
     
-    public int calcPerm(String perm) {
+    public String calcPerm(String perm) {
     	int ret = 0;
     	if(perm.charAt(0) == 'r') ret += 400;
     	if(perm.charAt(1) == 'w') ret += 200;
@@ -841,7 +820,7 @@ public class RootActivity extends ListActivity {
     	if(perm.charAt(7) == 'w') ret += 2;
     	if(perm.charAt(8) == 'x') ret += 1;
     	
-    	return ret;
+    	return String.format("%03d", ret);
     }
     
 	public void showToast(final String Msg) {
@@ -886,7 +865,7 @@ public class RootActivity extends ListActivity {
 			View row = convertView;
 			if(row == null) {
 				LayoutInflater inflater = LayoutInflater.from(RootActivity.this);
-				row = inflater.inflate(R.layout.file_rootrow, parent, false);
+				row = inflater.inflate(R.layout.rootrow, parent, false);
 				holder = new ViewHolder();
 				
 				// Find View
@@ -907,16 +886,19 @@ public class RootActivity extends ListActivity {
 			
 			sb.setLength(0);
 			if(fileperm.equals("")) txtPerm = "";
-			else txtPerm = sb.append(fileperm).append(" [").append(Integer.toString(calcPerm(fileperm))).append("]").toString();
+			else txtPerm = sb.append(fileperm).append(" [").append(calcPerm(fileperm)).append("]").toString();
 			
 			String dir = nowPath.equals(root) ? nowPath + object.get(position).getName() : nowPath + "/" + object.get(position).getName();
 			
-			if(icon.get(position) != null) holder.fileicon.setImageDrawable(icon.get(position));
+			if(icon[position] != null) holder.fileicon.setImageDrawable(icon[position]);
 			else
 			{
 				if(isScrolling) holder.fileicon.setImageResource(R.drawable.android);
-				else loader.DisplayImage(object.get(position).getName(), 
-						((BitmapDrawable) getApkIcon(dir)).getBitmap(), holder.fileicon);
+				else {
+					loader.DisplayImage(object.get(position).getName(), 
+							((BitmapDrawable) getApkIcon(dir)).getBitmap(), holder.fileicon);
+					icon[position] = getApkIcon(dir);
+				}
 			}
 			
 			holder.filename.setText(filename);

@@ -96,38 +96,6 @@ public class Brand extends Activity {
 
 	}
 
-	public void dialog() {
-		View view = this.getLayoutInflater().inflate(R.layout.customdialog,
-				null);
-		TextView txtTitle = (TextView) view.findViewById(R.id.title);
-		txtTitle.setText(R.string.brand_title);
-		txtTitle.setTextColor(Color.WHITE);
-		txtTitle.setTextSize(20);
-		TextView message = (TextView) view.findViewById(R.id.message);
-		message.setText(R.string.brand_info);
-		message.setTextColor(Color.WHITE);
-		AlertDialog.Builder builder = new Builder(Brand.this);
-		builder.setView(view);
-		builder.setCancelable(false);
-		builder.setPositiveButton(R.string.infoclose,
-				new DialogInterface.OnClickListener() {
-					@Override
-					public void onClick(DialogInterface dialog, int which) {
-						dialog.dismiss();
-					}
-				}
-
-		)
-				.setNegativeButton(R.string.voice,
-						new DialogInterface.OnClickListener() {
-							@Override
-							public void onClick(DialogInterface dialog,
-									int which) {
-								mplayer.start();
-							}
-						}).show();
-	}
-
 	public void Install_Brand() throws InterruptedException, IOException,
 			TimeoutException, RootDeniedException {
 		Delete_File();

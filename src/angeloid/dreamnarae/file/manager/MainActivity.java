@@ -22,30 +22,55 @@
 
 package angeloid.dreamnarae.file.manager;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.Collections;
+
 import android.annotation.SuppressLint;
-import android.app.*;
+import android.app.AlertDialog;
+import android.app.ListActivity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.*;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.content.res.*;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.graphics.Color;
-import android.graphics.drawable.*;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.os.*;
+import android.os.Build;
+import android.os.Bundle;
+import android.os.Environment;
+import android.os.Handler;
+import android.os.Message;
+import android.os.Parcelable;
 import android.preference.PreferenceManager;
 import android.text.format.DateFormat;
-import android.view.*;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.webkit.MimeTypeMap;
-import android.widget.*;
+import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemLongClickListener;
-
-import java.io.*;
-import java.util.*;
-
+import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 import angeloid.dreamnarae.R;
 
 import com.stericson.RootTools.RootTools;
@@ -98,7 +123,7 @@ public class MainActivity extends ListActivity {
         
         if(appTheme == null) appTheme = "Light";
         
-        setContentView(R.layout.file_main);
+        setContentView(R.layout.main);
         myPath = (TextView) findViewById(R.id.path);
         root = Environment.getExternalStorageDirectory().toString();	// Get Storage Path
         
@@ -106,11 +131,6 @@ public class MainActivity extends ListActivity {
 	    findViewById(R.id.PasteBtn).setVisibility(View.INVISIBLE);
 	    findViewById(R.id.MoveBtn).setVisibility(View.INVISIBLE);
 	    findViewById(R.id.DeleteBtn).setVisibility(View.INVISIBLE);
-	    PackageInfo pi = null;
-		try { pi = getApplicationContext().getPackageManager().getPackageInfo(getApplicationContext().getPackageName(), 0); } 
-		catch (NameNotFoundException e) {}
-	    String version = pi.versionName;
-	    showToast("Version " + version);
         getDir(root);
     }
 
@@ -426,7 +446,7 @@ public class MainActivity extends ListActivity {
 	        case R.id.Search:
 	        	InitializeSearch();
 	        	return true;
-	   
+	        	
 	        default:
 	            return super.onOptionsItemSelected(item);
 	    }
@@ -498,7 +518,7 @@ public class MainActivity extends ListActivity {
 	public void FileRename(final String filepath) {
 		Context mContext = getApplicationContext();
     	LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(LAYOUT_INFLATER_SERVICE);
-    	final View layout = inflater.inflate(R.layout.file_rename, null);
+    	final View layout = inflater.inflate(R.layout.rename, null);
     	EditText name = (EditText) layout.findViewById(R.id.NewName);
     	if(appTheme.equals("Light")) name.setTextColor(Color.BLACK);
     	if(appTheme.equals("Dark")) name.setTextColor(Color.WHITE);
@@ -534,7 +554,7 @@ public class MainActivity extends ListActivity {
 	public void MakeNewFolder() {
 		Context mContext = getApplicationContext();
     	LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(LAYOUT_INFLATER_SERVICE);
-    	final View layout = inflater.inflate(R.layout.file_getname, null);
+    	final View layout = inflater.inflate(R.layout.getname, null);
     	final EditText FolderName = (EditText) layout.findViewById(R.id.gettingName);
     	if(appTheme.equals("Light")) FolderName.setTextColor(Color.BLACK);
     	if(appTheme.equals("Dark")) FolderName.setTextColor(Color.WHITE);
@@ -616,7 +636,7 @@ public class MainActivity extends ListActivity {
 	public void InitializeSearch() {
 		Context mContext = getApplicationContext();
 		LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(LAYOUT_INFLATER_SERVICE);
-		final View layout = inflater.inflate(R.layout.file_getname, null);
+		final View layout = inflater.inflate(R.layout.getname, null);
 		final EditText SearchingFileName = (EditText) layout.findViewById(R.id.gettingName);
     	if(appTheme.equals("Light")) SearchingFileName.setTextColor(Color.BLACK);
     	if(appTheme.equals("Dark")) SearchingFileName.setTextColor(Color.WHITE);
@@ -820,7 +840,7 @@ public class MainActivity extends ListActivity {
 			ViewHolder holder;
 			if(convertView == null) {
 				LayoutInflater inflater = LayoutInflater.from(MainActivity.this);
-				convertView = inflater.inflate(R.layout.file_row, parent, false);
+				convertView = inflater.inflate(R.layout.row, parent, false);
 				holder = new ViewHolder();
 				
 				// Find View

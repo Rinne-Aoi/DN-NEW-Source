@@ -22,6 +22,7 @@
 
 package angeloid.dreamnarae.file.manager;
 
+import java.util.StringTokenizer;
 import com.stericson.RootTools.RootTools;
 import com.stericson.RootTools.execution.Command;
 
@@ -32,12 +33,17 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.text.Editable;
 import android.util.Log;
+import android.view.View;
 import android.widget.EditText;
 import angeloid.dreamnarae.R;
 
 public class TextEditor extends Activity {
 
+	String filepath;
+	EditText e;
+	
 	@SuppressLint("InlinedApi")
 	@Override
     public void onCreate(Bundle savedInstanceState) {
@@ -55,9 +61,9 @@ public class TextEditor extends Activity {
         
         setContentView(R.layout.texteditor);
         Intent intent = this.getIntent();
-        String filepath = intent.getStringExtra("filepath");
+        filepath = intent.getStringExtra("filepath");
         
-        EditText e = (EditText) findViewById(R.id.TextEdit);
+        e = (EditText) findViewById(R.id.TextEdit);
         
         final StringBuilder outLines = new StringBuilder();
         try 
@@ -68,7 +74,7 @@ public class TextEditor extends Activity {
                 public void output(int id, String line) {
                     if(line.indexOf("\n") > -1) 
                     {
-                        for(String s : line.split("\n")) output(id, s);
+                    	for(String s : line.split("\n")) output(id, s);
                     }
                     else if(!outLines.toString().equals("")) outLines.append("\n" + line);
                     else outLines.append(line);
@@ -80,4 +86,42 @@ public class TextEditor extends Activity {
         
         e.setText(outLines);
     }
+	
+	public void onFileSaveBtnPress(View v) {
+		RootTools.remount(new RootFile(filepath).getParent(), "rw");
+		Editable data = e.getText();
+		String p = data.toString();
+    	StringTokenizer stk = new StringTokenizer(p, "\n");
+    	boolean startFlag = true;
+    	while(stk.hasMoreElements())
+    	{
+    		String w;
+    		if(startFlag)
+    		{
+    			w = "echo " + "" + " > " + filepath;
+    			Command cmd = new Command(0, w) {
+                    @Override
+                    public void output(int id, String line) {}
+                };
+                
+                try {
+    				RootTools.getShell(true).add(cmd).waitForFinish();
+    			}
+                catch (Exception e) {}
+    			startFlag = false;
+    		}
+
+    		w = "echo \"" + stk.nextToken() + "\" >> " + filepath;
+        	Command cmd = new Command(0, w) {
+                @Override
+                public void output(int id, String line) {}
+            };
+            
+            try {
+				RootTools.getShell(true).add(cmd).waitForFinish();
+			}
+            catch (Exception e) {}
+        }
+    	finish();
+	}
 }

@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">DreamNarae</string>
+    <string name="app_id">190914181061582</string>
     <string name="bootcomplete">Success Excute DreamNarae Boot Script! Enjoy Your Device with DreamNarae!</string>
     <string name="noroottoast">The non-root mode in the applicable DreamNarae / delete disabled, but you can use all the other features.</string>
     <string name="quittitle">Quit</string>
@@ -20,21 +21,6 @@
     <string name="noquittitle">Unavailable Quit!</string>
     <string name="noquitmessage">You cannot quit this screen :D</string>
     <string name="apply">Install</string>
-    <string name="spica_info">Is version of the SPiCa started in July 2012 with the initial version of the DreamNarae version of this a memory / Setprop related focus on stability is turned.Is effective for light work such as SNS.</string>
-    <string name="miracle_info">Miracle to supplement the time lacking performance of SPiCa the only version that began in December 2012, all of the values ​​of the Miracle focused on the performance is aligned with the version, and the possibility of devices malfunction, the stability is somewhat less. Heavy work such as 3D gaming effect.</string>
-    <string name="save_info">Save the standby battery efficiency, in both versions of the existing version of the memory-related values ​​that began in December 2012, focused on battery efficiency version. The standby battery efficiency / use the battery more quickly exhausted, but very large effect on the music.</string>
-    <string name="prev_info">Prev at the time the effect of SPiCa the away day by day, it is a version of memory-related value of stability and battery efficiency focused on improving a little bit more stability sought by the former SPiCa version started in January 2013. It is mainly effective for light work.</string>
-    <string name="spisave_info">SPiSave is geared than one purpose, to enjoy at the same time the efficiency the stability of SPiCa and Save standby battery time, starting in January 2013, but As a result of the failure of adjust the value of Tweak staff focused on the performance and the possibility of device malfunction. Effect mainly from the heavy work.</string>
-    <string name="brand_info">The disadvantages was the use of the time, save battery exhausted, in order to prevent the increase began in February 2013 version Save more focus on efficiency using the battery are tailored version of the Brand. Effect light and music.</string>
-    <string name="pure_info">Gained on the basis of the know-how for about five months, began in February 2013 version of the final version of the DreamNarae the Pure, the efficiency of the batteries performance and stability focus on the effects of three kinds of harmony is aligned inversion.Of current DreamNarae version is the recommended version, mainly very large effect on light work and music.</string>
-    <string name="spica_title">DreamNarae SPiCa 5.5 information</string>
-    <string name="miracle_title">DreamNarae Miracle 3.5 information</string>
-    <string name="save_title">DreamNarae Save 3.5 information</string>
-    <string name="prev_title">DreamNarae Prev 2.0 information</string>
-    <string name="spisave_title">DreamNarae SPiSave 1.5 information</string>
-    <string name="brand_title">DreamNarae Brand 1.5 information</string>
-    <string name="pure_title">DreamNarae Pure 1.5 information</string>
-    <string name="voice">Listen Info</string>
     <string name="kakaotalkmessage">The wings on the phone! Just Use the Angeloid of works DreamNarae, and Experience the faster your device!</string>
     <string name="receivepresent">The gift has arrived!</string>
     <string name="obtain">Obtained by clicking</string>
@@ -53,8 +39,14 @@
     <string name="introduce2">It is already in play.</string>
     <string name="progress_title">Downloading..</string>
     <string name="progress_detail">Please Wait for Downloading</string>
+    <string name="boot_top">DreamNarae applied successfully!</string>
+    <string name="boot_medium">DreamNarae Boot</string>
+    <string name="boot_bottom">Enjoy Your Device with DreamNarae!</string>
+    <string name="isemailapp">Not installed Email-Application.</string>
+    <string name="hidden1">Hidden Menu</string>
+    <string name="wrongpw">Wrong Password</string>
     
-    <!-- Menu -->
+    <!-- title -->
     <string name="main">Main</string>
     <string name="update">Update Log</string>
     <string name="spica">SPiCa</string>
@@ -68,12 +60,30 @@
     <string name="setting">Setting</string>
     <string name="developerinfo">Developer Info</string>
     <string name="donate">Donate</string>
+    <string name="promoting">Promoting</string>
     
-    <!-- Menu String -->
-    <string name="dntweak">DreamNarae Tweak</string>
+    <!-- Subtitle -->
+    <string name="main_sub">Go to Main</string>
+    <string name="update_sub">Check Update Log</string>
+    <string name="spica_sub">"Version : 39's"</string>
+    <string name="pure_sub">Version : 2.0</string>
+    <string name="save_sub">Version : 4.0</string>
+    <string name="prev_sub">Version : Final</string>
+    <string name="miracle_sub">Version : Final</string>
+    <string name="brand_sub">Version : Final</string>
+    <string name="spisave_sub">Version : Final</string>
+    <string name="delete_sub">Delete DreamNarae</string>
+    <string name="setting_sub">Setting about DreamNarae</string>
+    <string name="developerinfo_sub">See Developer Info</string>
+    <string name="donate_sub">Donate to Angeloid, Dev</string>
+    <string name="promoting_sub">Promoting to Friend</string>
+    
+    <!-- Showcase -->
+    <string name="tostart">To start DreamNarae..</string>
+    <string name="tostartmessage">Slide to Right!</string>
     
     <!--  File Manager -->
-    <string name="file_app_name">DreamNarae Explorer (Beta)</string>
+    <string name="file_app_name">DreamNarae File Manager</string>
     <string name="Path">Location:</string>
     <string name="ParentFolder">Parent Folder</string>
     <string name="NoAppsToOpen">No Apps can open this file.</string>
@@ -109,6 +119,7 @@
 	<string name="RequestBusybox">This app requires Busybox.</string>
 	<string name="Perm">Change Permission</string>
 	<string name="WillOpenTextEditor">This file seem a text file, so open this with my internal Text Editor.</string>
+	<string name="SaveFile">Save</string>
     
 	<!-- Cleaner -->
 	<string name="listsystem">list</string>

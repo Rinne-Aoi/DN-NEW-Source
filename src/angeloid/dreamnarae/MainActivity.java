@@ -24,58 +24,50 @@
 package angeloid.dreamnarae;
 
 import java.util.ArrayList;
-import java.util.Hashtable;
-import java.util.Map;
 import java.util.Random;
 
 import android.app.AlertDialog;
-import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.content.res.Resources;
-import android.content.res.TypedArray;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.KeyEvent;
-import android.view.LayoutInflater;
-import angeloid.dreamnarae.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
 
+import com.github.espiandev.showcaseview.ShowcaseView;
 import com.jeremyfeinstein.slidingmenu.lib.app.SlidingActivity;
 
 public class MainActivity extends SlidingActivity implements
-		SensorEventListener {
-
-	// Layout
-	TextView LayoutTitle;
-	TextView LayoutTitle2;
+		SensorEventListener, View.OnClickListener,
+		ShowcaseView.OnShowcaseEventListener {
 
 	// Easter Egg
 	private static Random m_rand = new Random();
 	String random = "";
 	String random1 = "";
+	String random2 = "";
 	String easteregg1 = "O";
 	String man = "20000";
 	static String easteregg = "";
 	String intro = "5";
+	EditText hiddenedit;
+	TextView hidden1;
 
 	// Sensor
 	private long lastTime;
@@ -87,9 +79,6 @@ public class MainActivity extends SlidingActivity implements
 	private static final int DATA_Y = SensorManager.AXIS_Y;
 	private SensorManager sensorManager;
 	private Sensor accelerormeterSensor;
-
-	// Kakao Link
-	private String encoding = "UTF-8";
 
 	// MainFillper
 	ImageView iv1;
@@ -107,66 +96,69 @@ public class MainActivity extends SlidingActivity implements
 
 	// MediaPlayer
 	MediaPlayer mplayer;
-	
-	// Drawable
-	Drawable icon_brand;
-	Drawable icon_delete;
-	Drawable icon_developerinfo;
-	Drawable icon_donate;
-	Drawable icon_home;
-	Drawable icon_miracle;
-	Drawable icon_prev;
-	Drawable icon_promoting;
-	Drawable icon_pure;
-	Drawable icon_save;
-	Drawable icon_settings;
-	Drawable icon_spica;
-	Drawable icon_spisave;
-	Drawable icon_updatelog;
-	TypedArray Menu;
-	TypedArray Tweak;
+
+	// ListView
+	private ArrayList<DNMenu> Array_Data;
+	private DNMenu data;
+	private ListAdapter adapter;
+
+	// ShowCase
+	ShowcaseView sv;
+	ImageButton button;
+	String scview;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		setBehindContentView(R.layout.slidingmenumain);
-		
-		// MenuIcon
-		Resources res = getResources();
-		Menu = res.obtainTypedArray(R.array.menu);
-		Tweak = res.obtainTypedArray(R.array.tweak);
-		icon_brand = res.getDrawable(R.drawable.icon_brand);
-		icon_delete = res.getDrawable(R.drawable.icon_delete);
-		icon_developerinfo = res.getDrawable(R.drawable.icon_developerinfo);
-		icon_donate = res.getDrawable(R.drawable.icon_donate);
-		icon_home = res.getDrawable(R.drawable.icon_home);
-		icon_miracle = res.getDrawable(R.drawable.icon_miracle);
-		icon_prev = res.getDrawable(R.drawable.icon_prev);
-		icon_promoting = res.getDrawable(R.drawable.icon_promoting);
-		icon_pure = res.getDrawable(R.drawable.icon_pure);
-		icon_save = res.getDrawable(R.drawable.icon_save);
-		icon_settings = res.getDrawable(R.drawable.icon_settings);
-		icon_spica = res.getDrawable(R.drawable.icon_spica);
-		icon_spisave = res.getDrawable(R.drawable.icon_spisave);
-		icon_updatelog = res.getDrawable(R.drawable.icon_updatelog);
-	
 
-		// SlideingMenu
-		View header = getLayoutInflater().inflate(R.layout.header, null, false);
-		header.setClickable(false);
+		// ListView
 		ListView list = (ListView) findViewById(R.id.list);
-		ListView list2 = (ListView) findViewById(R.id.list2);
-		ArrayAdapter<CharSequence> menu_array = ArrayAdapter
-				.createFromResource(MainActivity.this, R.array.menu,
-						R.layout.listviewlayout);
-		ArrayAdapter<CharSequence> menu_array2 = ArrayAdapter
-				.createFromResource(MainActivity.this, R.array.tweak,
-						R.layout.listviewlayout);
-		list2.addHeaderView(header);
-		list.setAdapter(menu_array);
-		list2.setAdapter(menu_array2);
-		
+		Array_Data = new ArrayList<DNMenu>();
+		data = new DNMenu(R.drawable.icon_home, getString(R.string.main),
+				getString(R.string.main_sub));
+		Array_Data.add(data);
+		data = new DNMenu(R.drawable.icon_updatelog,
+				getString(R.string.update), getString(R.string.update_sub));
+		Array_Data.add(data);
+		data = new DNMenu(R.drawable.icon_promoting,
+				getString(R.string.promoting),
+				getString(R.string.promoting_sub));
+		Array_Data.add(data);
+		data = new DNMenu(R.drawable.icon_settings,
+				getString(R.string.setting), getString(R.string.setting_sub));
+		Array_Data.add(data);
+		data = new DNMenu(R.drawable.icon_developerinfo,
+				getString(R.string.developerinfo),
+				getString(R.string.developerinfo_sub));
+		Array_Data.add(data);
+		data = new DNMenu(R.drawable.icon_donate, getString(R.string.donate),
+				getString(R.string.donate_sub));
+		Array_Data.add(data);
+		data = new DNMenu(R.drawable.icon_spica, getString(R.string.spica),
+				getString(R.string.spica_sub));
+		Array_Data.add(data);
+		data = new DNMenu(R.drawable.icon_pure, getString(R.string.pure),
+				getString(R.string.pure_sub));
+		Array_Data.add(data);
+		data = new DNMenu(R.drawable.icon_save, getString(R.string.save),
+				getString(R.string.save_sub));
+		Array_Data.add(data);
+		data = new DNMenu(R.drawable.icon_prev, getString(R.string.prev),
+				getString(R.string.prev_sub));
+		Array_Data.add(data);
+		data = new DNMenu(R.drawable.icon_brand, getString(R.string.brand),
+				getString(R.string.brand_sub));
+		Array_Data.add(data);
+		data = new DNMenu(R.drawable.icon_miracle, getString(R.string.miracle),
+				getString(R.string.miracle_sub));
+		Array_Data.add(data);
+		data = new DNMenu(R.drawable.icon_spisave, getString(R.string.spisave),
+				getString(R.string.spisave_sub));
+		Array_Data.add(data);
+		adapter = new ListAdapter(this, R.layout.listviewlayout, Array_Data);
+		list.setAdapter(adapter);
 		list.setOnItemClickListener(new ListView.OnItemClickListener() {
 
 			@Override
@@ -178,50 +170,31 @@ public class MainActivity extends SlidingActivity implements
 				} else if (position == 1) {
 					cls = Update_Main.class;
 				} else if (position == 2) {
-					try {
-						sendAppData(view);
-					} catch (NameNotFoundException e) {
-						e.printStackTrace();
-					}
+					cls = Promoting.class;
 				} else if (position == 3) {
 					cls = Setting.class;
 				} else if (position == 4) {
 					cls = Developer_Info.class;
 				} else if (position == 5) {
 					cls = Donate.class;
-				}
-				Intent intent = new Intent(MainActivity.this, cls);
-				startActivity(intent);
-			}
-
-		});
-		list2.setOnItemClickListener(new ListView.OnItemClickListener() {
-
-			@Override
-			public void onItemClick(AdapterView<?> parent, View view,
-					int position, long id) {
-				Class<?> cls = null;
-				if (position == 1) {
-					cls = SPiCa.class;
-				} else if (position == 2) {
-					cls = Pure.class;
-				} else if (position == 3) {
-					cls = Save.class;
-				} else if (position == 4) {
-					cls = Prev.class;
-				} else if (position == 5) {
-					cls = Miracle.class;
 				} else if (position == 6) {
-					cls = Brand.class;
+					cls = SPiCa.class;
 				} else if (position == 7) {
-					cls = SPiSave.class;
+					cls = Pure.class;
 				} else if (position == 8) {
-					cls = Delete.class;
+					cls = Save.class;
+				} else if (position == 9) {
+					cls = Prev.class;
+				} else if (position == 10) {
+					cls = Brand.class;
+				} else if (position == 11) {
+					cls = Miracle.class;
+				} else if (position == 12) {
+					cls = SPiSave.class;
 				}
 				Intent intent = new Intent(MainActivity.this, cls);
 				startActivity(intent);
 			}
-
 		});
 
 		// Sensor
@@ -232,6 +205,8 @@ public class MainActivity extends SlidingActivity implements
 		// Easter Egg
 		random = String.valueOf(m_rand.nextInt(1000 + 1));
 		MainActivity.easteregg = random;
+		random2 = String.valueOf(m_rand.nextInt(30 + 1));
+		Log.d("ee", random2);
 
 		// MediaPlayer
 		mplayer = MediaPlayer.create(MainActivity.this, R.raw.fullintro);
@@ -255,51 +230,21 @@ public class MainActivity extends SlidingActivity implements
 		vf.setOutAnimation(AnimationUtils.loadAnimation(MainActivity.this,
 				R.anim.left_out));
 		vf.startFlipping();
+		Handler mHandler = new Handler();
+		mHandler.postDelayed(new Runnable() {
+			@Override
+			public void run() {
+				// ShowCase
+				button = (ImageButton) findViewById(R.id.dummy);
+				ShowcaseView.ConfigOptions co = new ShowcaseView.ConfigOptions();
+				co.hideOnClickOutside = true;
+				sv = ShowcaseView.insertShowcaseView(R.id.dummy,
+						MainActivity.this, getString(R.string.tostart),
+						getString(R.string.tostartmessage), co);
+				sv.animateGesture(0, 0, 200, 0);
+			}
+		}, 500);
 
-	}
-
-	public void sendAppData(View v) throws NameNotFoundException {
-		ArrayList<Map<String, String>> metaInfoArray = new ArrayList<Map<String, String>>();
-		Map<String, String> metaInfoAndroid = new Hashtable<String, String>(1);
-		metaInfoAndroid.put("os", "android");
-		metaInfoAndroid.put("devicetype", "phone");
-		metaInfoAndroid.put("installurl",
-				"market://details?id=angeloid.dreamnarae");
-		metaInfoAndroid.put("executeurl", "kakaoLinkTest://starActivity");
-
-		metaInfoArray.add(metaInfoAndroid);
-
-		KakaoLink kakaoLink = KakaoLink.getLink(getApplicationContext());
-		if (!kakaoLink.isAvailableIntent()) {
-			alert(getString(R.string.ishavekatok));
-			return;
-		}
-
-		String app_name = getString(R.string.app_name);
-		String message = getString(R.string.kakaotalkmessage);
-		kakaoLink
-				.openKakaoAppLink(
-						this,
-						"market://details?id=angeloid.dreamnarae",
-						message,
-						getPackageName(),
-						getPackageManager().getPackageInfo(getPackageName(), 0).versionName,
-						app_name, encoding, metaInfoArray);
-	}
-
-	private void alert(String message) {
-		View view = this.getLayoutInflater().inflate(R.layout.customdialog,
-				null);
-		TextView txtTitle = (TextView) view.findViewById(R.id.title);
-		txtTitle.setText(R.string.app_name);
-		txtTitle.setTextColor(Color.WHITE);
-		txtTitle.setTextSize(20);
-		TextView message1 = (TextView) view.findViewById(R.id.message);
-		message1.setText(message);
-		message1.setTextColor(Color.WHITE);
-		AlertDialog.Builder builder = new Builder(MainActivity.this);
-		builder.setView(view);
-		builder.setPositiveButton(android.R.string.ok, null).create().show();
 	}
 
 	@Override
@@ -370,6 +315,16 @@ public class MainActivity extends SlidingActivity implements
 		}
 	}
 
+	public void hiddengo(View v) {
+		hiddenedit = (EditText) findViewById(R.id.hiddenedit);
+		hidden1 = (TextView) findViewById(R.id.hidden1);
+		if (random2.equals(hiddenedit.getText().toString())) {
+			// TODO HIDDEN ACTIVITY
+		} {
+		  hidden1.setText(R.string.wrongpw);
+		  hidden1.setTextColor(getResources().getColor(R.color.Red));
+		}
+	}
 	public void eastereggevent(View v) {
 		int i = Integer.parseInt(easteregg) - 1;
 		MainActivity.easteregg = String.valueOf(i);
@@ -424,6 +379,7 @@ public class MainActivity extends SlidingActivity implements
 		if (accelerormeterSensor != null)
 			sensorManager.registerListener(this, accelerormeterSensor,
 					SensorManager.SENSOR_DELAY_GAME);
+
 	}
 
 	@Override
@@ -434,62 +390,20 @@ public class MainActivity extends SlidingActivity implements
 			sensorManager.unregisterListener(this);
 	}
 
-	  public class MenuAdapter extends BaseAdapter {
-		private ArrayList<MenuItem> object;
+	@Override
+	public void onShowcaseViewHide(ShowcaseView showcaseView) {
 
-		public MenuAdapter(ArrayList<MenuItem> object) {
-			super();
-			this.object = object;
-		}
+	}
 
-		@Override
-		public int getCount() {
-			return object.size();
-		}
+	@Override
+	public void onShowcaseViewShow(ShowcaseView showcaseView) {
 
-		@Override
-		public Object getItem(int arg0) {
-			return null;
-		}
+	}
 
-		@Override
-		public long getItemId(int arg0) {
-			return 0;
-		}
+	@Override
+	public void onClick(View arg0) {
+		// TODO Auto-generated method stub
 
-
-		@Override
-		public View getView(int position, View convertView, ViewGroup parent) {
-			ViewHolder holder;
-			if (convertView == null) {
-				LayoutInflater inflater = LayoutInflater
-						.from(MainActivity.this);
-				convertView = inflater.inflate(R.layout.dnmenulayout, parent,
-						false);
-				holder = new ViewHolder();
-
-				// Find View
-				holder.icon = (ImageView) convertView.findViewById(R.id.icon);
-				holder.TweakName = (TextView) convertView
-						.findViewById(R.id.TweakName);
-				convertView.setTag(holder);
-			} else
-				holder = (ViewHolder) convertView.getTag();
-
-			Drawable icon = object.get(position).getIcon();
-			String Tname = object.get(position).getName();
-
-			// Set Resources
-			holder.icon.setImageDrawable(icon);
-			holder.TweakName.setText(Tname);
-			return convertView;
-		}
-
-		class ViewHolder {
-			ImageView icon;
-			TextView TweakName;
-		}
-
- 	} 
+	}
 
 }

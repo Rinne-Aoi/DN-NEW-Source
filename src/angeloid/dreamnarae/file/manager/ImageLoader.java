@@ -16,7 +16,6 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.widget.ImageView;
-
 import angeloid.dreamnarae.R;
 
 public class ImageLoader 
@@ -28,7 +27,7 @@ public class ImageLoader
  
     public ImageLoader(Context context) {
         fileCache = new FileCache(context);
-        executorService = Executors.newFixedThreadPool(2);
+        executorService = Executors.newFixedThreadPool(5);
     }
  
     final int stub_id = R.drawable.android;
