@@ -23,7 +23,6 @@
 
 package angeloid.dreamnarae;
 
-import java.util.ArrayList;
 import java.util.Random;
 
 import android.app.AlertDialog;
@@ -41,19 +40,17 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.animation.AnimationUtils;
-import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import com.github.espiandev.showcaseview.ShowcaseView;
-import com.jeremyfeinstein.slidingmenu.lib.app.SlidingActivity;
+import angeloid.dreamnarae.BaseSlidingActivity;
 
-public class MainActivity extends SlidingActivity implements
+public class MainActivity extends BaseSlidingActivity implements
 		SensorEventListener, View.OnClickListener,
 		ShowcaseView.OnShowcaseEventListener {
 
@@ -97,11 +94,6 @@ public class MainActivity extends SlidingActivity implements
 	// MediaPlayer
 	MediaPlayer mplayer;
 
-	// ListView
-	private ArrayList<DNMenu> Array_Data;
-	private DNMenu data;
-	private ListAdapter adapter;
-
 	// ShowCase
 	ShowcaseView sv;
 	ImageButton button;
@@ -111,91 +103,6 @@ public class MainActivity extends SlidingActivity implements
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		setBehindContentView(R.layout.slidingmenumain);
-
-		// ListView
-		ListView list = (ListView) findViewById(R.id.list);
-		Array_Data = new ArrayList<DNMenu>();
-		data = new DNMenu(R.drawable.icon_home, getString(R.string.main),
-				getString(R.string.main_sub));
-		Array_Data.add(data);
-		data = new DNMenu(R.drawable.icon_updatelog,
-				getString(R.string.update), getString(R.string.update_sub));
-		Array_Data.add(data);
-		data = new DNMenu(R.drawable.icon_promoting,
-				getString(R.string.promoting),
-				getString(R.string.promoting_sub));
-		Array_Data.add(data);
-		data = new DNMenu(R.drawable.icon_settings,
-				getString(R.string.setting), getString(R.string.setting_sub));
-		Array_Data.add(data);
-		data = new DNMenu(R.drawable.icon_developerinfo,
-				getString(R.string.developerinfo),
-				getString(R.string.developerinfo_sub));
-		Array_Data.add(data);
-		data = new DNMenu(R.drawable.icon_donate, getString(R.string.donate),
-				getString(R.string.donate_sub));
-		Array_Data.add(data);
-		data = new DNMenu(R.drawable.icon_spica, getString(R.string.spica),
-				getString(R.string.spica_sub));
-		Array_Data.add(data);
-		data = new DNMenu(R.drawable.icon_pure, getString(R.string.pure),
-				getString(R.string.pure_sub));
-		Array_Data.add(data);
-		data = new DNMenu(R.drawable.icon_save, getString(R.string.save),
-				getString(R.string.save_sub));
-		Array_Data.add(data);
-		data = new DNMenu(R.drawable.icon_prev, getString(R.string.prev),
-				getString(R.string.prev_sub));
-		Array_Data.add(data);
-		data = new DNMenu(R.drawable.icon_brand, getString(R.string.brand),
-				getString(R.string.brand_sub));
-		Array_Data.add(data);
-		data = new DNMenu(R.drawable.icon_miracle, getString(R.string.miracle),
-				getString(R.string.miracle_sub));
-		Array_Data.add(data);
-		data = new DNMenu(R.drawable.icon_spisave, getString(R.string.spisave),
-				getString(R.string.spisave_sub));
-		Array_Data.add(data);
-		adapter = new ListAdapter(this, R.layout.listviewlayout, Array_Data);
-		list.setAdapter(adapter);
-		list.setOnItemClickListener(new ListView.OnItemClickListener() {
-
-			@Override
-			public void onItemClick(AdapterView<?> parent, View view,
-					int position, long id) {
-				Class<?> cls = null;
-				if (position == 0) {
-					cls = MainActivity.class;
-				} else if (position == 1) {
-					cls = Update_Main.class;
-				} else if (position == 2) {
-					cls = Promoting.class;
-				} else if (position == 3) {
-					cls = Setting.class;
-				} else if (position == 4) {
-					cls = Developer_Info.class;
-				} else if (position == 5) {
-					cls = Donate.class;
-				} else if (position == 6) {
-					cls = SPiCa.class;
-				} else if (position == 7) {
-					cls = Pure.class;
-				} else if (position == 8) {
-					cls = Save.class;
-				} else if (position == 9) {
-					cls = Prev.class;
-				} else if (position == 10) {
-					cls = Brand.class;
-				} else if (position == 11) {
-					cls = Miracle.class;
-				} else if (position == 12) {
-					cls = SPiSave.class;
-				}
-				Intent intent = new Intent(MainActivity.this, cls);
-				startActivity(intent);
-			}
-		});
 
 		// Sensor
 		sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
@@ -279,6 +186,7 @@ public class MainActivity extends SlidingActivity implements
 	}
 
 	public void handleShakeEvent() {
+		// TODO Delay Toast
 		int i = Integer.parseInt(man) - 1;
 		man = String.valueOf(i);
 		String secondegg1 = getString(R.string.secondegg1);
@@ -296,6 +204,7 @@ public class MainActivity extends SlidingActivity implements
 	}
 
 	public void Introduce(View v) {
+		// TODO Delay Toast
 		int i = Integer.parseInt(intro) - 1;
 		intro = String.valueOf(i);
 		String secondegg1 = getString(R.string.introduce1);
@@ -319,13 +228,15 @@ public class MainActivity extends SlidingActivity implements
 		hiddenedit = (EditText) findViewById(R.id.hiddenedit);
 		hidden1 = (TextView) findViewById(R.id.hidden1);
 		if (random2.equals(hiddenedit.getText().toString())) {
-			// TODO HIDDEN ACTIVITY
-		} {
-		  hidden1.setText(R.string.wrongpw);
-		  hidden1.setTextColor(getResources().getColor(R.color.Red));
+			startActivity(new Intent(MainActivity.this, Hidden.class));
+		} else {
+			hidden1.setText(R.string.wrongpw);
+			hidden1.setTextColor(getResources().getColor(R.color.Red));
 		}
 	}
+
 	public void eastereggevent(View v) {
+		// TODO Delay Toast
 		int i = Integer.parseInt(easteregg) - 1;
 		MainActivity.easteregg = String.valueOf(i);
 		String easteregg2 = getString(R.string.easteregg1);

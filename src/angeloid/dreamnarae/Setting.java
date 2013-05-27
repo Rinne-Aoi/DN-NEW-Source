@@ -25,7 +25,6 @@ package angeloid.dreamnarae;
 
 import java.util.List;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.content.Intent;
@@ -38,7 +37,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class Setting extends Activity {
+public class Setting extends BaseSlidingActivity {
 
     TextView setting3_title;
     TextView setting4_title;
@@ -47,7 +46,7 @@ public class Setting extends Activity {
     Button go1;
     Button go2;
 
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings);
         setting3_title = (TextView) findViewById(R.id.setting3_title);

@@ -27,7 +27,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.app.ProgressDialog;
@@ -52,19 +51,18 @@ import com.stericson.RootTools.RootTools;
 import com.stericson.RootTools.exceptions.RootDeniedException;
 import com.stericson.RootTools.execution.CommandCapture;
 
-public class SPiCa extends Activity {
+public class SPiCa extends BaseSlidingActivity {
 	Button apply;
 	static MediaPlayer mplayer;
 	ImageView imageview;
 	protected ProgressDialog mProgressDialog;
 
-	protected void onCreate(Bundle savedInstanceState) {
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.spica);
 		apply = (Button) findViewById(R.id.apply);
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 		imageview = (ImageView) findViewById(R.id.imageview);
-		mplayer = MediaPlayer.create(SPiCa.this, R.raw.spica);
 		apply.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {

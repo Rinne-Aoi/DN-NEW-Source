@@ -1,6 +1,6 @@
 /* DreamNarae, Emotional Android Tools. / ZipDownloader / RootTools
- *
-    Copyright (C) 2013 Seo, Dong-Gil in Angeloid Team.
+ * 
+    Copyright (C) 2013 Seo, Dong-Gil in Angeloid Team. 
     Copyright (c) 2011 Michael J. Portuesi (http://www.jotabout.com)
     Copyright (c) 2012 Stephen Erickson, Chris Ravenscroft, Dominik Schuermann, Adam Shanks
 
@@ -13,7 +13,7 @@
 
  * http://www.apache.org/licenses/LICENSE-2.0
  * http://www.gnu.org/licenses/gpl-2.0.txt
-
+ 
     Unless required by applicable law or agreed to in writing, software
     distributed under these Licenses is distributed on an "AS IS" BASIS,
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -23,59 +23,37 @@
 
 package angeloid.dreamnarae;
 
-import android.media.MediaPlayer;
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
-public class Developer_Info extends BaseSlidingActivity {
-
-	// MediaPlayer
-	MediaPlayer mplayer;
-	String man = "10";
+public class Hidden extends Activity {
 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.developer);
+		setContentView(R.layout.hidden);
 		// ListView
 		ListView list = (ListView) findViewById(R.id.list);
-		ArrayAdapter<CharSequence> developerinfo = ArrayAdapter
-				.createFromResource(Developer_Info.this, R.array.developinfo,
+		ArrayAdapter<CharSequence> updatemain = ArrayAdapter
+				.createFromResource(Hidden.this, R.array.hidden,
 						R.layout.listviewlayout);
-		list.setAdapter(developerinfo);
+		list.setAdapter(updatemain);
 		list.setOnItemClickListener(new ListView.OnItemClickListener() {
 
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				if (position == 0) {
-					mplayer();
-				}
-
+				Class<?> cls = null;
+				cls = SecondEgg.class;
+				Intent intent = new Intent(Hidden.this, cls);
+				startActivity(intent);
+				finish();
 			}
-
 		});
-
 	}
 
-	public void mplayer() {
-
-		int i = Integer.parseInt(man) - 1;
-		man = String.valueOf(i);
-		if (mplayer.isPlaying() == false) {
-			Log.d("Developer_Info", man);
-		}
-		if (man.equals("0")) {
-			man = "10";
-			mplayer.start();
-			if (mplayer.isPlaying() == true) {
-				Toast.makeText(this, R.string.introduce2, Toast.LENGTH_SHORT)
-						.show();
-			}
-		}
-	}
 }

@@ -55,27 +55,16 @@
 		<item>Delete : Option of Disable Boot Script</item>
 		<item>Delete : Some Tweak File(Measures to reduce the possibility of a brick.)</item>
     </string-array>
-    <string-array name="menu">
-        <item>Main</item>
-        <item>Update Log</item>
-        <item>Promoting</item>
-        <item>Setting</item>
-        <item>Developer Info</item>
-        <item>Donate</item>
-    </string-array>
-    <string-array name="tweak">
-        <item>"SPiCa 39's"</item>
-        <item>Pure 2.5</item>
-        <item>Save 4.0</item>
-        <item>Prev Final</item>
-        <item>Miracle Final</item>
-        <item>Brand Final</item>
-        <item>SPiSave Final</item>
-        <item>Delete</item>
-    </string-array>
     <string-array name="slimsizer_profile_array">
         <item >Load Profile</item>
         <item >Save Profile</item>
+    </string-array>
+    <string-array name="hidden">
+        <item>Enable DreamNarae PE</item>
+        <item>Enable DreamNarae Plan</item>
+        <item>Enable DreamNarae Unstable Mod</item>
+        <item>Edit Voice Actor to Team Leader</item>
+        <item>Edit Voice Actor to Rie(Tweak Maintainer)</item>
     </string-array>
 
 </resources> 

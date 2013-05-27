@@ -5,7 +5,6 @@ import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.content.Intent;
@@ -17,12 +16,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-public class Promoting extends Activity {
+public class Promoting extends BaseSlidingActivity {
 
 	// Kakao Link
 	private String encoding = "UTF-8";
 
-	protected void onCreate(Bundle savedInstanceState) {
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.promoting);
 

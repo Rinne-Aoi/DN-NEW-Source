@@ -23,15 +23,14 @@
 
 package angeloid.dreamnarae;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-public class Update_Main extends Activity {
+public class Update_Main extends BaseSlidingActivity {
 
 
-	protected void onCreate(Bundle savedInstanceState) {
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.update);
 		// ListView
