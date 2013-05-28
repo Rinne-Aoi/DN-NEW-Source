@@ -35,6 +35,7 @@ import android.media.MediaPlayer;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
@@ -65,23 +66,32 @@ public class Miracle extends BaseSlidingActivity {
 		apply.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				if (RootTools.isAccessGiven()) {
-					startDownload(v);
-                    try {
-                        Install_Miracle();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    } catch (TimeoutException e) {
-                        e.printStackTrace();
-                    } catch (RootDeniedException e) {
-                        e.printStackTrace();
-                    }
-                } else {
-					Toast.makeText(Miracle.this, R.string.noroottoast,
-							Toast.LENGTH_LONG).show();
-				}
+				apply.setEnabled(false);
+				apply.setFocusable(false);
+				startDownload(v);
+				Handler mHandler = new Handler();
+				mHandler.postDelayed(new Runnable() {
+					@Override
+					public void run() {
+						if (RootTools.isAccessGiven()) {
+		                    try {
+		                        Install_Miracle();
+		                    } catch (InterruptedException e) {
+		                        e.printStackTrace();
+		                    } catch (IOException e) {
+		                        e.printStackTrace();
+		                    } catch (TimeoutException e) {
+		                        e.printStackTrace();
+		                    } catch (RootDeniedException e) {
+		                        e.printStackTrace();
+		                    }
+		                } else {
+							Toast.makeText(Miracle.this, R.string.noroottoast,
+									Toast.LENGTH_LONG).show();
+						}
+					}
+				}, 2000);
+				
 			}
 		});
 		if (new File("/system/98banner_dreamnarae_miracle").exists()) {

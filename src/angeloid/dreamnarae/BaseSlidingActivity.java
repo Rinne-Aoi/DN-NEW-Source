@@ -2,11 +2,16 @@ package angeloid.dreamnarae;
 
 import java.util.ArrayList;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.jeremyfeinstein.slidingmenu.lib.app.SlidingActivity;
 
@@ -16,6 +21,7 @@ public class BaseSlidingActivity extends SlidingActivity {
 	private ArrayList<DNMenu> Array_Data;
 	private DNMenu data;
 	private ListAdapter adapter;
+	ListView list;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -23,7 +29,7 @@ public class BaseSlidingActivity extends SlidingActivity {
 		setBehindContentView(R.layout.slidingmenumain);
 
 		// ListView
-		ListView list = (ListView) findViewById(R.id.list);
+		list = (ListView) findViewById(R.id.list);
 		Array_Data = new ArrayList<DNMenu>();
 		data = new DNMenu(R.drawable.icon_home, getString(R.string.main),
 				getString(R.string.main_sub));
@@ -107,5 +113,35 @@ public class BaseSlidingActivity extends SlidingActivity {
 			}
 		});
 
+	}
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if (keyCode == KeyEvent.KEYCODE_BACK) {
+
+			View view = this.getLayoutInflater().inflate(R.layout.customdialog,
+					null);
+			TextView txtTitle = (TextView) view.findViewById(R.id.title);
+			txtTitle.setText(R.string.quittitle);
+			txtTitle.setTextColor(Color.WHITE);
+			txtTitle.setTextSize(20);
+			TextView message = (TextView) view.findViewById(R.id.message);
+			message.setText(R.string.quitmessage);
+			message.setTextColor(Color.WHITE);
+			AlertDialog.Builder builer = new AlertDialog.Builder(this);
+			builer.setView(view);
+			builer.setPositiveButton(android.R.string.yes,
+					new DialogInterface.OnClickListener() {
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							android.os.Process.killProcess(android.os.Process
+									.myPid());
+						}
+					});
+			builer.setNegativeButton(android.R.string.no, null).show();
+
+			return true;
+		}
+
+		return super.onKeyDown(keyCode, event);
 	}
 }

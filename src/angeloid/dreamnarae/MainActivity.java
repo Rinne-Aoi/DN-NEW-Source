@@ -25,10 +25,7 @@ package angeloid.dreamnarae;
 
 import java.util.Random;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -36,8 +33,6 @@ import android.hardware.SensorManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.EditText;
@@ -48,7 +43,6 @@ import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import com.github.espiandev.showcaseview.ShowcaseView;
-import angeloid.dreamnarae.BaseSlidingActivity;
 
 public class MainActivity extends BaseSlidingActivity implements
 		SensorEventListener, View.OnClickListener,
@@ -65,6 +59,15 @@ public class MainActivity extends BaseSlidingActivity implements
 	String intro = "5";
 	EditText hiddenedit;
 	TextView hidden1;
+	String easteregg2;
+	String easteregg3;
+	String easteregg4;
+	String secondegg1;
+	String secondegg2;
+	String secondegg3;
+	CharSequence toasttrick;
+	CharSequence toasttrick2;
+	CharSequence toasttrick3;
 
 	// Sensor
 	private long lastTime;
@@ -113,7 +116,16 @@ public class MainActivity extends BaseSlidingActivity implements
 		random = String.valueOf(m_rand.nextInt(1000 + 1));
 		MainActivity.easteregg = random;
 		random2 = String.valueOf(m_rand.nextInt(30 + 1));
-		Log.d("ee", random2);
+		easteregg3 = getString(R.string.easteregg2);
+		easteregg4 = getString(R.string.easteregg3);
+		secondegg1 = getString(R.string.introduce1);
+		secondegg2 = getString(R.string.easteregg2);
+		secondegg3 = getString(R.string.secondegg2);
+		easteregg2 = getString(R.string.easteregg1);
+		toasttrick = secondegg1 + " " + man + " " + secondegg2;
+		toasttrick2 = secondegg1 + " " + intro + " " + secondegg2;
+		toasttrick3 = easteregg2 + " " + MainActivity.easteregg + " "
+				+ easteregg3;
 
 		// MediaPlayer
 		mplayer = MediaPlayer.create(MainActivity.this, R.raw.fullintro);
@@ -154,74 +166,16 @@ public class MainActivity extends BaseSlidingActivity implements
 
 	}
 
-	@Override
-	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		if (keyCode == KeyEvent.KEYCODE_BACK) {
-
-			View view = this.getLayoutInflater().inflate(R.layout.customdialog,
-					null);
-			TextView txtTitle = (TextView) view.findViewById(R.id.title);
-			txtTitle.setText(R.string.quittitle);
-			txtTitle.setTextColor(Color.WHITE);
-			txtTitle.setTextSize(20);
-			TextView message = (TextView) view.findViewById(R.id.message);
-			message.setText(R.string.quitmessage);
-			message.setTextColor(Color.WHITE);
-			AlertDialog.Builder builer = new AlertDialog.Builder(this);
-			builer.setView(view);
-			builer.setPositiveButton(android.R.string.yes,
-					new DialogInterface.OnClickListener() {
-						@Override
-						public void onClick(DialogInterface dialog, int which) {
-							android.os.Process.killProcess(android.os.Process
-									.myPid());
-						}
-					});
-			builer.setNegativeButton(android.R.string.no, null).show();
-
-			return true;
-		}
-
-		return super.onKeyDown(keyCode, event);
-	}
-
 	public void handleShakeEvent() {
-		// TODO Delay Toast
 		int i = Integer.parseInt(man) - 1;
 		man = String.valueOf(i);
-		String secondegg1 = getString(R.string.secondegg1);
-		String secondegg2 = getString(R.string.easteregg2);
-		String secondegg3 = getString(R.string.secondegg2);
-		CharSequence toasttrick = secondegg1 + " " + man + " " + secondegg2;
-		Toast.makeText(this, toasttrick, Toast.LENGTH_SHORT).show();
-		Log.d("Tab_MainActivity", man);
+		Toast.makeText(this, toasttrick2, Toast.LENGTH_SHORT).show();
 		if (man.equals("0")) {
 			startActivity(new Intent(MainActivity.this, SecondEgg.class));
 			man = "10000";
 			Toast.makeText(this, secondegg3, Toast.LENGTH_SHORT).show();
 		}
 
-	}
-
-	public void Introduce(View v) {
-		// TODO Delay Toast
-		int i = Integer.parseInt(intro) - 1;
-		intro = String.valueOf(i);
-		String secondegg1 = getString(R.string.introduce1);
-		String secondegg2 = getString(R.string.easteregg2);
-		CharSequence toasttrick = secondegg1 + " " + intro + " " + secondegg2;
-		if (mplayer.isPlaying() == false) {
-			Toast.makeText(this, toasttrick, Toast.LENGTH_SHORT).show();
-			Log.d("Tab_MainActivity", intro);
-		}
-		if (intro.equals("0")) {
-			intro = "5";
-			mplayer.start();
-			if (mplayer.isPlaying() == true) {
-				Toast.makeText(this, R.string.introduce2, Toast.LENGTH_SHORT)
-						.show();
-			}
-		}
 	}
 
 	public void hiddengo(View v) {
@@ -236,16 +190,9 @@ public class MainActivity extends BaseSlidingActivity implements
 	}
 
 	public void eastereggevent(View v) {
-		// TODO Delay Toast
 		int i = Integer.parseInt(easteregg) - 1;
 		MainActivity.easteregg = String.valueOf(i);
-		String easteregg2 = getString(R.string.easteregg1);
-		String easteregg3 = getString(R.string.easteregg2);
-		String easteregg4 = getString(R.string.easteregg3);
-		CharSequence toasttrick = easteregg2 + " " + MainActivity.easteregg
-				+ " " + easteregg3;
 		Toast.makeText(this, toasttrick, Toast.LENGTH_SHORT).show();
-		Log.d("Tab_MainActivity", MainActivity.easteregg);
 		if (MainActivity.easteregg.equals("0")) {
 			startActivity(new Intent(MainActivity.this, EasterEgg.class));
 			random = String.valueOf(m_rand.nextInt(1000 + 1));
