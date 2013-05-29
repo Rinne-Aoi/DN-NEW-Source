@@ -40,7 +40,6 @@
     <string name="progress_title">Downloading..</string>
     <string name="progress_detail">Please Wait for Downloading</string>
     <string name="boot_top">DreamNarae applied successfully!</string>
-    <string name="boot_medium">DreamNarae Boot</string>
     <string name="boot_bottom">Enjoy Your Device with DreamNarae!</string>
     <string name="isemailapp">Not installed Email-Application.</string>
     <string name="hidden1">Hidden Menu</string>
@@ -61,6 +60,7 @@
     <string name="developerinfo">Developer Info</string>
     <string name="donate">Donate</string>
     <string name="promoting">Promoting</string>
+    <string name="cleaner">Cleaner</string>
     
     <!-- Subtitle -->
     <string name="main_sub">Go to Main</string>
@@ -77,6 +77,7 @@
     <string name="developerinfo_sub">See Developer Info</string>
     <string name="donate_sub">Donate to Angeloid, Dev</string>
     <string name="promoting_sub">Promoting to Friend</string>
+    <string name="cleaner_sub">Clean system application</string>
     
     <!-- Showcase -->
     <string name="tostart">To start DreamNarae..</string>

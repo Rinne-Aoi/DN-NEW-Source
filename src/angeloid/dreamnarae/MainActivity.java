@@ -23,62 +23,18 @@
 
 package angeloid.dreamnarae;
 
-import java.util.Random;
-
-import android.content.Intent;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.View;
 import android.view.animation.AnimationUtils;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import com.github.espiandev.showcaseview.ShowcaseView;
 
 public class MainActivity extends BaseSlidingActivity implements
-		SensorEventListener, View.OnClickListener,
 		ShowcaseView.OnShowcaseEventListener {
 
-	// Easter Egg
-	private static Random m_rand = new Random();
-	String random = "";
-	String random1 = "";
-	String random2 = "";
-	String easteregg1 = "O";
-	String man = "20000";
-	static String easteregg = "";
-	String intro = "5";
-	EditText hiddenedit;
-	TextView hidden1;
-	String easteregg2;
-	String easteregg3;
-	String easteregg4;
-	String secondegg1;
-	String secondegg2;
-	String secondegg3;
-	CharSequence toasttrick;
-	CharSequence toasttrick2;
-	CharSequence toasttrick3;
-
-	// Sensor
-	private long lastTime;
-	private float lastX;
-	private float lastY;
-	private float x, y;
-	private static final int SHAKE_THRESHOLD = 800;
-	private static final int DATA_X = SensorManager.AXIS_X;
-	private static final int DATA_Y = SensorManager.AXIS_Y;
-	private SensorManager sensorManager;
-	private Sensor accelerormeterSensor;
 
 	// MainFillper
 	ImageView iv1;
@@ -91,11 +47,7 @@ public class MainActivity extends BaseSlidingActivity implements
 	ImageView iv8;
 	ImageView iv9;
 	ImageView iv10;
-	ImageView iv11;
 	ViewFlipper vf;
-
-	// MediaPlayer
-	MediaPlayer mplayer;
 
 	// ShowCase
 	ShowcaseView sv;
@@ -106,29 +58,6 @@ public class MainActivity extends BaseSlidingActivity implements
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-
-		// Sensor
-		sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
-		accelerormeterSensor = sensorManager
-				.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-
-		// Easter Egg
-		random = String.valueOf(m_rand.nextInt(1000 + 1));
-		MainActivity.easteregg = random;
-		random2 = String.valueOf(m_rand.nextInt(30 + 1));
-		easteregg3 = getString(R.string.easteregg2);
-		easteregg4 = getString(R.string.easteregg3);
-		secondegg1 = getString(R.string.introduce1);
-		secondegg2 = getString(R.string.easteregg2);
-		secondegg3 = getString(R.string.secondegg2);
-		easteregg2 = getString(R.string.easteregg1);
-		toasttrick = secondegg1 + " " + man + " " + secondegg2;
-		toasttrick2 = secondegg1 + " " + intro + " " + secondegg2;
-		toasttrick3 = easteregg2 + " " + MainActivity.easteregg + " "
-				+ easteregg3;
-
-		// MediaPlayer
-		mplayer = MediaPlayer.create(MainActivity.this, R.raw.fullintro);
 
 		// MainFippler
 		vf = (ViewFlipper) findViewById(R.id.viewFlipper1);
@@ -141,8 +70,7 @@ public class MainActivity extends BaseSlidingActivity implements
 		iv7 = (ImageView) findViewById(R.id.imageView7);
 		iv8 = (ImageView) findViewById(R.id.imageView8);
 		iv9 = (ImageView) findViewById(R.id.imageView9);
-		iv10 = (ImageView) findViewById(R.id.imageView10);
-		iv11 = (ImageView) findViewById(R.id.imageView11);
+		iv10 = (ImageView) findViewById(R.id.imageView11);
 		vf.setFlipInterval(6500);
 		vf.setInAnimation(AnimationUtils.loadAnimation(MainActivity.this,
 				R.anim.left_in));
@@ -166,88 +94,6 @@ public class MainActivity extends BaseSlidingActivity implements
 
 	}
 
-	public void handleShakeEvent() {
-		int i = Integer.parseInt(man) - 1;
-		man = String.valueOf(i);
-		Toast.makeText(this, toasttrick2, Toast.LENGTH_SHORT).show();
-		if (man.equals("0")) {
-			startActivity(new Intent(MainActivity.this, SecondEgg.class));
-			man = "10000";
-			Toast.makeText(this, secondegg3, Toast.LENGTH_SHORT).show();
-		}
-
-	}
-
-	public void hiddengo(View v) {
-		hiddenedit = (EditText) findViewById(R.id.hiddenedit);
-		hidden1 = (TextView) findViewById(R.id.hidden1);
-		if (random2.equals(hiddenedit.getText().toString())) {
-			startActivity(new Intent(MainActivity.this, Hidden.class));
-		} else {
-			hidden1.setText(R.string.wrongpw);
-			hidden1.setTextColor(getResources().getColor(R.color.Red));
-		}
-	}
-
-	public void eastereggevent(View v) {
-		int i = Integer.parseInt(easteregg) - 1;
-		MainActivity.easteregg = String.valueOf(i);
-		Toast.makeText(this, toasttrick, Toast.LENGTH_SHORT).show();
-		if (MainActivity.easteregg.equals("0")) {
-			startActivity(new Intent(MainActivity.this, EasterEgg.class));
-			random = String.valueOf(m_rand.nextInt(1000 + 1));
-			MainActivity.easteregg = random;
-			Toast.makeText(this, easteregg4, Toast.LENGTH_SHORT).show();
-		}
-	}
-
-	@Override
-	public void onAccuracyChanged(Sensor sensor, int accuracy) {
-
-	}
-
-	@Override
-	public void onSensorChanged(SensorEvent event) {
-		if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
-			long currentTime = System.currentTimeMillis();
-			long gabOfTime = (currentTime - lastTime);
-
-			if (gabOfTime > 100) {
-				lastTime = currentTime;
-
-				x = event.values[SensorManager.AXIS_X];
-				y = event.values[SensorManager.AXIS_Y];
-
-				float speed = Math.abs(x + y - lastX - lastY) / gabOfTime
-						* 10000;
-
-				if (speed > SHAKE_THRESHOLD) {
-					handleShakeEvent();
-				}
-				lastX = event.values[DATA_X];
-				lastY = event.values[DATA_Y];
-			}
-		}
-	}
-
-	@Override
-	public void onStart() {
-		super.onStart();
-
-		if (accelerormeterSensor != null)
-			sensorManager.registerListener(this, accelerormeterSensor,
-					SensorManager.SENSOR_DELAY_GAME);
-
-	}
-
-	@Override
-	public void onStop() {
-		super.onStop();
-
-		if (sensorManager != null)
-			sensorManager.unregisterListener(this);
-	}
-
 	@Override
 	public void onShowcaseViewHide(ShowcaseView showcaseView) {
 
@@ -255,12 +101,6 @@ public class MainActivity extends BaseSlidingActivity implements
 
 	@Override
 	public void onShowcaseViewShow(ShowcaseView showcaseView) {
-
-	}
-
-	@Override
-	public void onClick(View arg0) {
-		// TODO Auto-generated method stub
 
 	}
 

@@ -1,6 +1,7 @@
 package angeloid.dreamnarae;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -10,8 +11,10 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import angeloid.dreamnarae.cleaner.Cleaner;
 
 import com.jeremyfeinstein.slidingmenu.lib.app.SlidingActivity;
 
@@ -22,11 +25,20 @@ public class BaseSlidingActivity extends SlidingActivity {
 	private DNMenu data;
 	private ListAdapter adapter;
 	ListView list;
+	
+	// Easter Egg
+	private static Random m_rand = new Random();
+	EditText hiddenedit;
+	TextView hidden1;
+	String random2;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setBehindContentView(R.layout.slidingmenumain);
+		
+		// Easter Egg
+		random2 = String.valueOf(m_rand.nextInt(30 + 1));
 
 		// ListView
 		list = (ListView) findViewById(R.id.list);
@@ -72,6 +84,9 @@ public class BaseSlidingActivity extends SlidingActivity {
 		data = new DNMenu(R.drawable.icon_spisave, getString(R.string.spisave),
 				getString(R.string.spisave_sub));
 		Array_Data.add(data);
+		data = new DNMenu(R.drawable.icon_cleaner, getString(R.string.cleaner),
+				getString(R.string.cleaner_sub));
+		Array_Data.add(data);
 		adapter = new ListAdapter(this, R.layout.listviewlayout, Array_Data);
 		list.setAdapter(adapter);
 		list.setOnItemClickListener(new ListView.OnItemClickListener() {
@@ -106,6 +121,8 @@ public class BaseSlidingActivity extends SlidingActivity {
 					cls = Miracle.class;
 				} else if (position == 12) {
 					cls = SPiSave.class;
+				} else if (position == 13) {
+					cls = Cleaner.class;
 				}
 				Intent intent = new Intent(BaseSlidingActivity.this, cls);
 				startActivity(intent);
@@ -114,6 +131,18 @@ public class BaseSlidingActivity extends SlidingActivity {
 		});
 
 	}
+	
+	public void hiddengo(View v) {
+		hiddenedit = (EditText) findViewById(R.id.hiddenedit);
+		hidden1 = (TextView) findViewById(R.id.hidden1);
+		if (random2.equals(hiddenedit.getText().toString())) {
+			startActivity(new Intent(BaseSlidingActivity.this, Hidden.class));
+		} else {
+			hidden1.setText(R.string.wrongpw);
+			hidden1.setTextColor(getResources().getColor(R.color.Red));
+		}
+	}
+	
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		if (keyCode == KeyEvent.KEYCODE_BACK) {

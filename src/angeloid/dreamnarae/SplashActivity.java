@@ -64,7 +64,7 @@ public class SplashActivity extends Activity {
 
 				case 2:
 					Intent i = new Intent(SplashActivity.this,
-							SplashActivity2.class);
+							MainActivity.class);
 
 					startActivity(i);
 					overridePendingTransition(R.anim.fade, R.anim.hold);

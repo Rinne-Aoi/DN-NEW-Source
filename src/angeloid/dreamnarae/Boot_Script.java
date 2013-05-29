@@ -30,8 +30,8 @@ import java.util.concurrent.TimeoutException;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Vibrator;
+import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -40,8 +40,14 @@ import com.stericson.RootTools.exceptions.RootDeniedException;
 import com.stericson.RootTools.execution.CommandCapture;
 
 public class Boot_Script extends BroadcastReceiver {
+
+	CharSequence boot_top;
+	CharSequence boot_bottom;
+
 	@Override
 	public void onReceive(Context c, Intent i) {
+		boot_top = String.valueOf(R.string.boot_top);
+		boot_bottom = String.valueOf(R.string.boot_bottom);
 		if (!(RootTools.isAccessGiven())) {
 			Toast.makeText(c, R.string.noroottoast, Toast.LENGTH_LONG).show();
 		} else {
@@ -57,24 +63,16 @@ public class Boot_Script extends BroadcastReceiver {
 					Vibrator vibe = (Vibrator) c
 							.getSystemService(Context.VIBRATOR_SERVICE);
 					vibe.vibrate(200);
-					if (Build.VERSION.SDK_INT < 11) {
-						// TODO 진저 알림
-					} else {
-						// TODO 허니콤 이상 알림
-					}
-
+					NotificationCompat.Builder ncbuilder = new NotificationCompat.Builder(
+							c);
+					ncbuilder.setContentTitle(boot_top);
+					ncbuilder.setContentText(boot_bottom);
+					ncbuilder.setSmallIcon(R.drawable.ic_launcher);
+					ncbuilder.build();
 				} catch (InterruptedException e) {
-					e.printStackTrace();
-
 				} catch (IOException e) {
-					e.printStackTrace();
-
 				} catch (TimeoutException e) {
-					e.printStackTrace();
-
 				} catch (RootDeniedException e) {
-					e.printStackTrace();
-
 				}
 
 			}

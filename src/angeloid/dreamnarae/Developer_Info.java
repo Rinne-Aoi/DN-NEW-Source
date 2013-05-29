@@ -55,7 +55,6 @@ public class Developer_Info extends BaseSlidingActivity {
 				if (position == 0) {
 					mplayer();
 				}
-
 			}
 
 		});

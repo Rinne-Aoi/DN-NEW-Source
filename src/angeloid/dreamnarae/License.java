@@ -34,15 +34,17 @@ import android.widget.TextView;
 public class License extends Activity {
 
 	private String assetTxt;
+	TextView text;
+	Locale systemLocale;
+	String strLanguage;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
 		setContentView(R.layout.license);
-		TextView text = (TextView) findViewById(R.id.license);
-		Locale systemLocale = getResources().getConfiguration().locale;
-		 String strLanguage = systemLocale.getLanguage();
+		text = (TextView) findViewById(R.id.license);
+		systemLocale = getResources().getConfiguration().locale;
+		strLanguage = systemLocale.getLanguage();
 		try {
 			if (strLanguage.equals("ko")) {
 				assetTxt = readText("license/liceense(kor).txt");
@@ -50,7 +52,6 @@ public class License extends Activity {
 				assetTxt = readText("license/liceense(eng).txt");
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
 		}
 
 		text.setText(assetTxt);

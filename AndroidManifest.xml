@@ -48,12 +48,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="angeloid.dreamnarae.SplashActivity2"
-            android:noHistory="true"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" >
-        </activity>
-        <activity
             android:name="angeloid.dreamnarae.MainActivity"
             android:clearTaskOnLaunch="true"
             android:label="@string/app_name"
@@ -61,108 +55,85 @@
             android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" >
         </activity>
         <activity
-            android:name="angeloid.dreamnarae.EasterEgg"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" >
-        </activity>
-        <activity
             android:name="angeloid.dreamnarae.SecondEgg"
-            android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" >
         </activity>
         <activity
             android:name="angeloid.dreamnarae.Update_Main"
-            android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" >
         </activity>
         <activity
             android:name="angeloid.dreamnarae.Developer_Info"
-            android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" >
         </activity>
         <activity
             android:name="angeloid.dreamnarae.SPiCa"
-            android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" >
         </activity>
         <activity
             android:name="angeloid.dreamnarae.Miracle"
-            android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" >
         </activity>
         <activity
             android:name="angeloid.dreamnarae.Save"
-            android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" >
         </activity>
         <activity
             android:name="angeloid.dreamnarae.Prev"
-            android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" >
         </activity>
         <activity
             android:name="angeloid.dreamnarae.SPiSave"
-            android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" >
         </activity>
         <activity
             android:name="angeloid.dreamnarae.Brand"
-            android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" >
         </activity>
         <activity
             android:name="angeloid.dreamnarae.Pure"
-            android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" >
         </activity>
         <activity
             android:name="angeloid.dreamnarae.Delete"
-            android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" >
         </activity>
         <activity
             android:name="angeloid.dreamnarae.Donate"
-            android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" >
         </activity>
         <activity
             android:name="angeloid.dreamnarae.Setting"
-            android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" >
         </activity>
         <activity
             android:name="angeloid.dreamnarae.License"
-            android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" >
         </activity>
         <activity
             android:name="angeloid.dreamnarae.Promoting"
-            android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" >
         </activity>
         <activity
             android:name="angeloid.dreamnarae.Hidden"
-            android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" >
         </activity>
-
         <receiver
             android:name="angeloid.dreamnarae.Boot_Script"
             android:enabled="true"
@@ -173,12 +144,10 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </receiver>
-
         <activity
             android:name="angeloid.dreamnarae.WallPaper"
             android:finishOnCloseSystemDialogs="true"
             android:icon="@drawable/ic_launcher"
-            android:label="@string/app_name"
             android:screenOrientation="nosensor" >
             <intent-filter>
                 <action android:name="android.intent.action.SET_WALLPAPER" />
@@ -196,8 +165,6 @@
             android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity

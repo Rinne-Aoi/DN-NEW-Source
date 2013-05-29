@@ -96,12 +96,6 @@
                     android:src="@drawable/main9" />
 
                 <ImageView
-                    android:id="@+id/imageView10"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/main10" />
-
-                <ImageView
                     android:id="@+id/imageView11"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"

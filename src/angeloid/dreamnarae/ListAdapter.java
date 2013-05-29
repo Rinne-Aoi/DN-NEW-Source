@@ -31,12 +31,10 @@ public class ListAdapter extends ArrayAdapter<DNMenu> {
         DNMenu custom_list_data = items.get(position);
  
         if (custom_list_data != null) {
-            //하나의 이미지뷰와 2개의 텍스트뷰 정보를 받아온다.
             ImageView iv = (ImageView)v.findViewById(R.id.icon);
             TextView tv_Main = (TextView) v.findViewById(R.id.title);
             TextView tv_Sub = (TextView) v.findViewById(R.id.subtitle);
-             
-            // 현재 item의 position에 맞는 이미지와 글을 넣어준다.          
+                  
             iv.setBackgroundResource(custom_list_data.getImage_ID());
             tv_Main.setText(custom_list_data.getMain_Title());
             tv_Sub.setText(custom_list_data.getSub_Title());

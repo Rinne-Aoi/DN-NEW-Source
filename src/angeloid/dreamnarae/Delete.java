@@ -58,13 +58,9 @@ public class Delete extends BaseSlidingActivity {
                     try {
                         Delete_File();
                     } catch (InterruptedException e) {
-                        e.printStackTrace();
                     } catch (IOException e) {
-                        e.printStackTrace();
                     } catch (TimeoutException e) {
-                        e.printStackTrace();
                     } catch (RootDeniedException e) {
-                        e.printStackTrace();
                     }
                 } else {
                     Toast.makeText(Delete.this, R.string.noroottoast,

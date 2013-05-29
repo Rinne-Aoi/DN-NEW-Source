@@ -29,7 +29,6 @@ import android.content.DialogInterface;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.KeyEvent;
-import android.widget.Toast;
 
 public class SecondEgg extends Activity {
 	MediaPlayer mplayer;
@@ -64,7 +63,6 @@ public class SecondEgg extends Activity {
 	}
 	protected void onPause() {
 		super.onPause();
-		Toast.makeText(this, R.string.isleaving, Toast.LENGTH_SHORT).show();
 		mplayer.stop();
 		finish();
 		
@@ -72,7 +70,6 @@ public class SecondEgg extends Activity {
 
 	protected void onStop() {
 		super.onStop();
-		Toast.makeText(this, R.string.isleaving, Toast.LENGTH_SHORT).show();
 		mplayer.stop();
 		finish();
 	}

@@ -39,7 +39,6 @@ public class Update_Main extends BaseSlidingActivity {
 				.createFromResource(Update_Main.this, R.array.updateinfo,
 						R.layout.listviewlayout);
 		list.setAdapter(updatemain);
-
 	}
 
 }
