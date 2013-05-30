@@ -23,23 +23,16 @@
 
 package angeloid.dreamnarae;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
 
-public class Donate extends Activity {
-    TextView paypal;
-    TextView thank;
-    TextView koreaaccount;
+public class Donate extends BaseSlidingActivity {
     Button gopaypal;
-    ImageView accountimage;
 
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.donate);
         gopaypal = (Button) findViewById(R.id.gopaypal);

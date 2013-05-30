@@ -25,12 +25,8 @@ package angeloid.dreamnarae;
 
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 public class Developer_Info extends BaseSlidingActivity {
 
@@ -47,34 +43,7 @@ public class Developer_Info extends BaseSlidingActivity {
 				.createFromResource(Developer_Info.this, R.array.developinfo,
 						R.layout.listviewlayout);
 		list.setAdapter(developerinfo);
-		list.setOnItemClickListener(new ListView.OnItemClickListener() {
-
-			@Override
-			public void onItemClick(AdapterView<?> parent, View view,
-					int position, long id) {
-				if (position == 0) {
-					mplayer();
-				}
-			}
-
-		});
 
 	}
 
-	public void mplayer() {
-
-		int i = Integer.parseInt(man) - 1;
-		man = String.valueOf(i);
-		if (mplayer.isPlaying() == false) {
-			Log.d("Developer_Info", man);
-		}
-		if (man.equals("0")) {
-			man = "10";
-			mplayer.start();
-			if (mplayer.isPlaying() == true) {
-				Toast.makeText(this, R.string.introduce2, Toast.LENGTH_SHORT)
-						.show();
-			}
-		}
-	}
 }

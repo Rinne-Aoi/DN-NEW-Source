@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string-array name="developinfo">
         <item>DreamNarae</item>
         <item>Emotional Android Tools</item>
@@ -9,62 +10,58 @@
         <item>Tweak : Rie (Eun Hee, Lee)</item>
         <item>Tweak : Iren (Jung Yeon, Lee)</item>
         <item>Tweak : Ayana (Eun Jung, Lee)</item>
-		<item>Tweak : Karina Yuuki(誘起 かりな)</item>
-		<item>Main Design : Rinne Aoi(青井 りんね)</item>
-        <item>Sub Design : Ghana(Seung-Woo, Yeom)</item>
-		<item>Debug : ITCraft</item>
-		<item>Voice : Dorothy</item>
+        <item>Code Performance : Karina Yuuki(誘起 かりな)</item>
+        <item>Main Design : Rinne Aoi(青井 りんね)</item>
+        <item>File Manager Code : ITCraft</item>
+        <item>Team : Ghana</item>
         <item>Team : Primes</item>
         <item>Team : NEON</item>
-		<item>Main Server : Chung-Buk High School Environment Club AuRe(아우Re)</item>
-		<item>Sub Server : Mizal Server(Thank to Hesam Malmizal)</item>
-		<item>Library : SlideHolder(by Dmitry Zaitsev)</item>
-		<item>Library : RootTools(by stericson)</item>
-		<item>Library : ZipDownloader(by Jotabout)</item>
-		<item>"This Design use "Arita Font" which made by "AmorePersipic""</item>
+        <item>Main Server : Chung-Buk High School Environment Club AuRe(아우Re)</item>
+        <item>Library : SlideHolder(by Jeremyfeinstein)</item>
+        <item>Library : RootTools(by stericson)</item>
+        <item>Library : ZipDownloader(by Jotabout)</item>
+        <item>Library : NineoldAndroids</item>
+        <item>Library : ShowCase View(by Espiandev)</item>
         <item>All of People use DreamNarae, Thanks You!</item>
     </string-array>
     <string-array name="updateinfo">
-        <item>DreamNarae Version 2.1</item>
-		<item>Release : May 12, 2013.</item>
-		<item>"DreamNarae 4th Major Update, 'All New DreamNarae'"</item>
-		<item>full of Emotional Design by Angeloid / Enjoy Re-born DreamNarae which have many New and Fun Fuctions!</item>
-		<item>New : 2nd Easter Egg(Fun Content!)</item>
-		<item>New : 3rd Easter Egg(Fun Content!)</item>
-		<item>New : Logo Wallpaer of Angeloid Team</item>
-		<item>New : (Korean) Support Voice! (Very Cute Voice:D)</item>
-		<item>New : (Korean) Support Introduce Voice! (Very Cute Voice:D)</item>
-		<item>New : Muitiple Download Server</item>
-		<item>New : Promote DreamNarae by Kakao Talk!</item>
-		<item>New : Non-Root Mode</item>
-		<item>New : License Screen</item>
-		<item>Edit : Edit Layout(Design By Rinne Aoi)</item>
-		<item>Edit : New Library for Stability Application</item>
-		<item>Edit : +40 first Easter Egg</item>
-		<item>Edit : Font (Arita Font)</item>
-		<item>Edit : Boot Script</item>
-		<item>Edit : Splash Image</item>
-		<item>Edit : Clean Useless Soruce</item>
-		<item>Edit : Icon</item>
-		<item>Edit : Custom ListView</item>
-		<item>Edit : Custom Dialog</item>
-		<item>Edit : Bug Report</item>
-		<item>Edit : Root Check</item>
-		<item>Edit : Apply DreamNarae Tweak</item>
-		<item>Edit : Fast Check of DreamNarae Tweak</item>
-		<item>Delete : Option of Disable Boot Script</item>
-		<item>Delete : Some Tweak File(Measures to reduce the possibility of a brick.)</item>
+        <item>DreamNarae Version 2.2</item>
+        <item>Release : June 6th, 2013.</item>
+        <item>"DreamNarae 4th Major Update, 'All New DreamNarae'"</item>
+        <item>full of Emotional Design by Angeloid / Enjoy Re-born DreamNarae which have many New and Fun Fuctions!</item>
+        <item>1. Tweak Update</item>
+        <item>"DreamNarae SPiCa 39's update (Angeloid Tweak original system, Optimus G Pro optimized)"</item>
+        <item>DreamNarae Save 4.0 update (Angeloid Tweak original system, Optimus G Pro optimized)</item>
+        <item>DreamNarae Pure 2.0 update (Angeloid Tweak original system, Optimus G Pro optimized)</item>
+        <item>DreamNarae Miracle Final Update (Angeloid Tweak original system, Optimus G Pro optimized)</item>
+        <item>DreamNarae Brand Final Update (Angeloid Tweak original system, Optimus G Pro optimized)</item>
+        <item>DreamNarae Prev Final Update (Angeloid Tweak original system, Optimus G Pro optimized)</item>
+        <item>DreamNarae SPiSave Final Update (Angeloid Tweak original system, Optimus G Pro optimized)</item>
+        <item>2. Add Features</item>
+        <item>DreamNarae File Manager</item>
+        <item>DreamNarae cleaner</item>
+        <item>DreamNarae guide book</item>
+        <item>boot script alarms</item>
+        <item>Intro Showcase</item>
+        <item>Add Japanese translation</item>
+        <item>3. Function modifier</item>
+        <item>change Slide menu library</item>
+        <item>entire UI changes</item>
+        <item>remove Easter egg</item>
+        <item>remove Voice</item>
+        <item>Remove splash image</item>
+        <item>App source optimization</item>
+        <item>increased versatility App</item>
+        <item>library replacement</item>
     </string-array>
     <string-array name="slimsizer_profile_array">
-        <item >Load Profile</item>
-        <item >Save Profile</item>
+        <item>Load Profile</item>
+        <item>Save Profile</item>
     </string-array>
     <string-array name="hidden">
         <item>Enable DreamNarae PE</item>
         <item>Enable DreamNarae Plan</item>
         <item>Enable DreamNarae Unstable Mod</item>
-        <item>Edit Voice Actor to Team Leader</item>
-        <item>Edit Voice Actor to Rie(Tweak Maintainer)</item>
     </string-array>
 
-</resources> 
+</resources>

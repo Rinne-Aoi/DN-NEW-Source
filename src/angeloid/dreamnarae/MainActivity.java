@@ -35,7 +35,6 @@ import com.github.espiandev.showcaseview.ShowcaseView;
 public class MainActivity extends BaseSlidingActivity implements
 		ShowcaseView.OnShowcaseEventListener {
 
-
 	// MainFillper
 	ImageView iv1;
 	ImageView iv2;

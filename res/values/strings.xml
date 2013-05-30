@@ -1,29 +1,21 @@
 <resources>
+
     <string name="app_name">DreamNarae</string>
     <string name="app_id">190914181061582</string>
-    <string name="bootcomplete">Success Excute DreamNarae Boot Script! Enjoy Your Device with DreamNarae!</string>
     <string name="noroottoast">The non-root mode in the applicable DreamNarae / delete disabled, but you can use all the other features.</string>
     <string name="quittitle">Quit</string>
     <string name="quitmessage">Do you quit DreamNarae?</string>
-    <string name="easteregg1">To be Developer,</string>
-    <string name="easteregg2">Step left.</string>
-    <string name="easteregg3">Are you the developer. So please Rating.</string>
-    <string name="secondegg1">To be the god of this world</string>
-    <string name="isleaving">The god of the world, tries to break away!</string>
-    <string name="secondegg2">Became the god of this world.</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="reboottitle">Reboot?</string>
     <string name="rebootmessage">Reboot your Device?</string>
-    <string name="errortitle">Failed!</string>
+    <string name="errortitle">Oops!</string>
     <string name="error2message">DreamNarae has not been applied properly. Please try again later.</string>
     <string name="infoclose">Close</string>
     <string name="noquittitle">Unavailable Quit!</string>
     <string name="noquitmessage">You cannot quit this screen :D</string>
     <string name="apply">Install</string>
     <string name="kakaotalkmessage">The wings on the phone! Just Use the Angeloid of works DreamNarae, and Experience the faster your device!</string>
-    <string name="receivepresent">The gift has arrived!</string>
-    <string name="obtain">Obtained by clicking</string>
     <string name="paypaldonate">Paypal Donate</string>
     <string name="thanksdonate">Thanks to Donate!</string>
     <string name="koreaaccount">Korea Account Donate(Account Holder : Dong Gil, Seo)</string>
@@ -35,16 +27,15 @@
     <string name="go">Go</string>
     <string name="setwallpaper">Set Wallpaper</string>
     <string name="ishavekatok">Not installed KakaoTalk</string>
-    <string name="introduce1">To listen to a Description</string>
-    <string name="introduce2">It is already in play.</string>
     <string name="progress_title">Downloading..</string>
     <string name="progress_detail">Please Wait for Downloading</string>
     <string name="boot_top">DreamNarae applied successfully!</string>
+    <string name="boot_tickker">DreamNarae Boot Script</string>
     <string name="boot_bottom">Enjoy Your Device with DreamNarae!</string>
     <string name="isemailapp">Not installed Email-Application.</string>
     <string name="hidden1">Hidden Menu</string>
     <string name="wrongpw">Wrong Password</string>
-    
+
     <!-- title -->
     <string name="main">Main</string>
     <string name="update">Update Log</string>
@@ -61,7 +52,7 @@
     <string name="donate">Donate</string>
     <string name="promoting">Promoting</string>
     <string name="cleaner">Cleaner</string>
-    
+
     <!-- Subtitle -->
     <string name="main_sub">Go to Main</string>
     <string name="update_sub">Check Update Log</string>
@@ -78,12 +69,12 @@
     <string name="donate_sub">Donate to Angeloid, Dev</string>
     <string name="promoting_sub">Promoting to Friend</string>
     <string name="cleaner_sub">Clean system application</string>
-    
+
     <!-- Showcase -->
     <string name="tostart">To start DreamNarae..</string>
     <string name="tostartmessage">Slide to Right!</string>
-    
-    <!--  File Manager -->
+
+    <!-- File Manager -->
     <string name="file_app_name">DreamNarae File Manager</string>
     <string name="Path">Location:</string>
     <string name="ParentFolder">Parent Folder</string>
@@ -101,29 +92,29 @@
     <string name="FileAlreadyExists">The file with same name is already exists.</string>
     <string name="NowStartMultiSelectMode">Now start Multi-Selection Mode. Short/Long Click will select the item. Press Back to exit.</string>
     <string name="EndofMultiSelectMode">Finish Multi-Selection Mode.</string>
-	<string name="newFolder">Make new Folder</string>
-	<string name="newFolder_Hint">Name of New Folder</string>
-	<string name="StartRenaming">Select Item.</string>
-	<string name="Renaming">Renaming</string>
-	<string name="Renaming_Hint">New Name</string>
-	<string name="Finish">OK</string>
-	<string name="Cancel">Cancel</string>
-	<string name="ChangeStorage">Change Storage</string>
-	<string name="InternalStorage">Internal Storage</string>
-	<string name="ExternalStorage">External SD Card</string>
-	<string name="Unknown">Unknown</string>
-	<string name="ShownDataCanIncorrect">Now Shown Internal/External Memory Division is just guess, So it can be incorrect data.</string>
-	<string name="CannotGetStorageDataOnFroyo">Cannot get Internal/External Memory Division on Android 2.2 Froyo.</string>
-	<string name="Search">Search</string>
-	<string name="Search_Hint">Name of Searching File</string>
-	<string name="Searching">Searching..</string>
-	<string name="RequestBusybox">This app requires Busybox.</string>
-	<string name="Perm">Change Permission</string>
-	<string name="WillOpenTextEditor">This file seem a text file, so open this with my internal Text Editor.</string>
-	<string name="SaveFile">Save</string>
-    
-	<!-- Cleaner -->
-	<string name="listsystem">list</string>
+    <string name="newFolder">Make new Folder</string>
+    <string name="newFolder_Hint">Name of New Folder</string>
+    <string name="StartRenaming">Select Item.</string>
+    <string name="Renaming">Renaming</string>
+    <string name="Renaming_Hint">New Name</string>
+    <string name="Finish">OK</string>
+    <string name="Cancel">Cancel</string>
+    <string name="ChangeStorage">Change Storage</string>
+    <string name="InternalStorage">Internal Storage</string>
+    <string name="ExternalStorage">External SD Card</string>
+    <string name="Unknown">Unknown</string>
+    <string name="ShownDataCanIncorrect">Now Shown Internal/External Memory Division is just guess, So it can be incorrect data.</string>
+    <string name="CannotGetStorageDataOnFroyo">Cannot get Internal/External Memory Division on Android 2.2 Froyo.</string>
+    <string name="Search">Search</string>
+    <string name="Search_Hint">Name of Searching File</string>
+    <string name="Searching">Searching..</string>
+    <string name="RequestBusybox">This app requires Busybox.</string>
+    <string name="Perm">Change Permission</string>
+    <string name="WillOpenTextEditor">This file seem a text file, so open this with my internal Text Editor.</string>
+    <string name="SaveFile">Save</string>
+
+    <!-- Cleaner -->
+    <string name="listsystem">list</string>
     <string name="sizer_title">DreamNarae Cleaner</string>
     <string name="caution">Caution!</string>
     <string name="sizer_message_startup">This tool allows you to delete system apps. Use with caution and only delete apps you know are safe to be removed.\n\nThis tool has been original developed by SlimROM Team, all credits goes to them!</string>
@@ -137,6 +128,10 @@
     <string name="sizer_message_filefail">Failed to create profile.</string>
     <string name="sizer_message_noselect">Nothing selected.</string>
     <string name="ok">OK</string>
-    
+
+    <!-- GuideBook -->
+    <string name="guldebook_main">"Angeloid's new exclusive tweak system no longer work in older way, so we can boost high range smartphones like galaxy s4. 
+        Each version pursue 6 usability (performance, stability, stand by time, actual using time, heavy work, light work). Generally, we edit or add build.prop, virtual memory, CPU with proper number and etc. 
+        We are providing some dreamnarae tweaks which can make you to use your smartphones more comfortable and more enjoyable"</string>
 
 </resources>

@@ -27,6 +27,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
 
+import android.app.NotificationManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -43,11 +44,13 @@ public class Boot_Script extends BroadcastReceiver {
 
 	CharSequence boot_top;
 	CharSequence boot_bottom;
+	CharSequence boot_ticker;
 
 	@Override
 	public void onReceive(Context c, Intent i) {
 		boot_top = String.valueOf(R.string.boot_top);
 		boot_bottom = String.valueOf(R.string.boot_bottom);
+		boot_ticker = String.valueOf(R.string.boot_tickker);
 		if (!(RootTools.isAccessGiven())) {
 			Toast.makeText(c, R.string.noroottoast, Toast.LENGTH_LONG).show();
 		} else {
@@ -63,12 +66,16 @@ public class Boot_Script extends BroadcastReceiver {
 					Vibrator vibe = (Vibrator) c
 							.getSystemService(Context.VIBRATOR_SERVICE);
 					vibe.vibrate(200);
+					NotificationManager manager = (NotificationManager) c
+							.getSystemService(Context.NOTIFICATION_SERVICE);
 					NotificationCompat.Builder ncbuilder = new NotificationCompat.Builder(
 							c);
 					ncbuilder.setContentTitle(boot_top);
 					ncbuilder.setContentText(boot_bottom);
 					ncbuilder.setSmallIcon(R.drawable.ic_launcher);
-					ncbuilder.build();
+					ncbuilder.setAutoCancel(true);
+					ncbuilder.setTicker(boot_ticker);
+					manager.notify(1, ncbuilder.build());
 				} catch (InterruptedException e) {
 				} catch (IOException e) {
 				} catch (TimeoutException e) {
