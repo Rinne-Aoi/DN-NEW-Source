@@ -1,6 +1,7 @@
 <resources>
 
     <string name="app_name">DreamNarae</string>
+    <string name="code_name">All New DreamNarae</string>
     <string name="app_id">190914181061582</string>
     <string name="noroottoast">The non-root mode in the applicable DreamNarae / delete disabled, but you can use all the other features.</string>
     <string name="quittitle">Quit</string>
@@ -52,6 +53,7 @@
     <string name="donate">Donate</string>
     <string name="promoting">Promoting</string>
     <string name="cleaner">Cleaner</string>
+    <string name="guide">Guide</string>
 
     <!-- Subtitle -->
     <string name="main_sub">Go to Main</string>
@@ -69,6 +71,7 @@
     <string name="donate_sub">Donate to Angeloid, Dev</string>
     <string name="promoting_sub">Promoting to Friend</string>
     <string name="cleaner_sub">Clean system application</string>
+    <string name="guide_sub">See DreamNarae Guide</string>
 
     <!-- Showcase -->
     <string name="tostart">To start DreamNarae..</string>
@@ -130,8 +133,23 @@
     <string name="ok">OK</string>
 
     <!-- GuideBook -->
-    <string name="guldebook_main">"Angeloid's new exclusive tweak system no longer work in older way, so we can boost high range smartphones like galaxy s4. 
+    <string name="guidebook_main">"Angeloid's new exclusive tweak system no longer work in older way, so we can boost high range smartphones like galaxy s4. 
         Each version pursue 6 usability (performance, stability, stand by time, actual using time, heavy work, light work). Generally, we edit or add build.prop, virtual memory, CPU with proper number and etc. 
         We are providing some dreamnarae tweaks which can make you to use your smartphones more comfortable and more enjoyable"</string>
+        
+    <!-- TableLayout -->
+    <string name="subject_compare">Compare DN Tweak</string>
+    <string name="version_name">Version</string>
+    <string name="performance">Performance</string>
+    <string name="battery_idle">Idle Battery</string>
+    <string name="battery_use">Use Battery</string>
+    <string name="stability">Stability</string>
+    <string name="etc">Etc</string>
+    <string name="score_1">1</string>
+    <string name="score_2">2</string>
+    <string name="score_3">3</string>
+    <string name="score_4">4</string>
+    <string name="score_5">5</string>
+    <string name="Support_stop">Support Stop</string>
 
 </resources>

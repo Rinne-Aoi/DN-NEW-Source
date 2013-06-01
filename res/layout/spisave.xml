@@ -36,8 +36,8 @@
         android:layout_above="@+id/apply"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:src="@drawable/not_apply" />
+        android:src="@drawable/not_apply"
+        android:layout_below="@+id/linearLayout1"/>
 
     <Button
         android:id="@+id/apply"

@@ -1,8 +1,5 @@
 package angeloid.dreamnarae;
 
-import java.util.ArrayList;
-import java.util.Random;
-
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -15,14 +12,17 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import angeloid.dreamnarae.cleaner.Cleaner;
-
+import com.bugsense.trace.BugSenseHandler;
 import com.jeremyfeinstein.slidingmenu.lib.app.SlidingActivity;
 
-public class BaseSlidingActivity extends SlidingActivity {
+import java.util.ArrayList;
+import java.util.Random;
 
-	// ListView
-	private ArrayList<DNMenu> Array_Data;
-	private DNMenu data;
+    public class BaseSlidingActivity extends SlidingActivity {
+
+        // ListView
+        private ArrayList<DNMenu> Array_Data;
+        private DNMenu data;
 	private ListAdapter adapter;
 	ListView list;
 	
@@ -35,6 +35,7 @@ public class BaseSlidingActivity extends SlidingActivity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		BugSenseHandler.initAndStartSession(BaseSlidingActivity.this, "431c24dd");
 		setBehindContentView(R.layout.slidingmenumain);
 		
 		// Easter Egg
@@ -87,6 +88,9 @@ public class BaseSlidingActivity extends SlidingActivity {
 		data = new DNMenu(R.drawable.icon_cleaner, getString(R.string.cleaner),
 				getString(R.string.cleaner_sub));
 		Array_Data.add(data);
+        data = new DNMenu(R.drawable.icon_guide, getString(R.string.guide),
+                getString(R.string.guide_sub));
+        Array_Data.add(data);
 		adapter = new ListAdapter(this, R.layout.listviewlayout, Array_Data);
 		list.setAdapter(adapter);
 		list.setOnItemClickListener(new ListView.OnItemClickListener() {
@@ -123,7 +127,9 @@ public class BaseSlidingActivity extends SlidingActivity {
 					cls = SPiSave.class;
 				} else if (position == 13) {
 					cls = Cleaner.class;
-				}
+				} else if (position == 14) {
+                    cls = GuideActivity.class;
+                }
 				Intent intent = new Intent(BaseSlidingActivity.this, cls);
 				startActivity(intent);
 				finish();

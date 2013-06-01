@@ -1,7 +1,9 @@
 <resources>
+
     <string name="app_name">드림나래</string>
+    <string name="code_name">All New DreamNarae</string>
     <string name="app_id">190914181061582</string>
-    <string name="noroottoast">ㅈ논 루트 모드에서는 트윅 적용 / 삭제 를 제외한 다른 기능을 사용하실 수 있습니다.</string>
+    <string name="noroottoast">논 루트 모드에서는 트윅 적용 / 삭제 를 제외한 다른 기능을 사용하실 수 있습니다.</string>
     <string name="quittitle">나가기</string>
     <string name="quitmessage">드림나래를 종료하시겠습니까?</string>
     <string name="yes">예</string>
@@ -34,7 +36,7 @@
     <string name="isemailapp">이메일 어플리케이션이 설치되어있지 않습니다</string>
     <string name="hidden1">히든 메뉴</string>
     <string name="wrongpw">잘못된 비밀번호</string>
-    
+
     <!-- title -->
     <string name="main">메인</string>
     <string name="update">업데이트 내역</string>
@@ -51,29 +53,31 @@
     <string name="donate">기부</string>
     <string name="promoting">친구에게 알리기</string>
     <string name="cleaner">청소기</string>
-    
+    <string name="guide">가이드</string>
+
     <!-- Subtitle -->
     <string name="main_sub">메인으로 가버렷!</string>
     <string name="update_sub">업데이트 내역을 확인합니다</string>
-    <string name="spica_sub">"Version : 39's"</string>
-    <string name="pure_sub">Version : 2.0</string>
-    <string name="save_sub">Version : 4.0</string>
-    <string name="prev_sub">Version : Final</string>
-    <string name="miracle_sub">Version : Final</string>
-    <string name="brand_sub">Version : Final</string>
-    <string name="spisave_sub">Version : Final</string>
+    <string name="spica_sub">"버전 : 39's"</string>
+    <string name="pure_sub">버전 : 2.0</string>
+    <string name="save_sub">버전 : 4.0</string>
+    <string name="prev_sub">버전 : Final</string>
+    <string name="miracle_sub">버전 : Final</string>
+    <string name="brand_sub">버전 : Final</string>
+    <string name="spisave_sub">버전 : Final</string>
     <string name="delete_sub">드림나래 트윅을 삭제합니다</string>
     <string name="setting_sub">드림나래의 설정을 할 수 있습니다</string>
     <string name="developerinfo_sub">개발자 정보를 봅니다</string>
     <string name="donate_sub">엔젤로이드에 자그마한 기부를 해주세요!</string>
     <string name="promoting_sub">친구에게 드림나래를 홍보합니다</string>
     <string name="cleaner_sub">시스템 앱을 지웁니다</string>
-    
+    <string name="guide_sub">드림나래 가이드를 봅니다.</string>
+
     <!-- Showcase -->
-    <string name="tostart">드림나래를 시작하려면...</string>
+    <string name="tostart">드림나래를 시작하기</string>
     <string name="tostartmessage">오른쪽으로 슬라이드 하세요!</string>
-    
-    <!--  File Manager -->
+
+    <!-- File Manager -->
     <string name="file_app_name">드림나래 파일 관리자</string>
     <string name="Path">위치:</string>
     <string name="ParentFolder">상위 폴더</string>
@@ -92,33 +96,33 @@
     <string name="FileAlreadyExists">같은 이름의 파일이 이미 존재합니다.</string>
     <string name="NowStartMultiSelectMode">지금부터는 다중선택 모드입니다. 짧은 클릭으로도 선택이 가능하고 Back키를 누르면 종료합니다.</string>
     <string name="EndofMultiSelectMode">다중선택 모드를 종료합니다.</string>
-	<string name="newFolder">새 폴더 생성</string>
-	<string name="newFolder_Hint">새 폴더의 이름</string>
-	<string name="StartRenaming">이름을 바꿀 파일이나 폴더를 선택하세요.</string>
-	<string name="Renaming">이름 바꾸기</string>
-	<string name="Renaming_Hint">새로운 이름</string>
-	<string name="Finish">완료</string>
-	<string name="Go">실행</string>
-	<string name="Cancel">취소</string>
-	<string name="ChangeStorage">내/외장 메모리 전환</string>
-	<string name="InternalStorage">내장 메모리</string>
-	<string name="ExternalStorage">외장 메모리</string>
-	<string name="Unknown">알 수 없음</string>
-	<string name="ShownDataCanIncorrect">지금 보여지는 내/외장 표기는 추측에 의한 것으로, 부정확할 수 있습니다.</string>
-	<string name="CannotGetStorageDataOnFroyo">Android 2.2 Froyo (프로요)에서는 내/외장을 구분할 수 없습니다.</string>
-	<string name="FailCopy">일부 파일을 처리할 수 없습니다.</string>
-	<string name="Search">검색</string>
-	<string name="Search_Hint">검색할 파일의 이름</string>
-	<string name="Searching">검색 중..</string>
-	<string name="ThemeSetting">테마</string>
-	<string name="ThemeSettingSummary">앱의 테마를 변경합니다.</string>
-	<string name="CannotSetTheme">Android 2.3 이하에서는 테마를 변경할 수 없습니다.</string>
-	<string name="RequestBusybox">이 앱은 Busybox를 설치해야 작동합니다. 설치 페이지로 이동합니다.</string>
-	<string name="WillOpenTextEditor">텍스트 에디터로 이 파일을 엽니다.</string>
-	<string name="SaveFile">저장</string>
-    
-	<!-- Cleaner -->
-	<string name="listsystem">리스트</string>
+    <string name="newFolder">새 폴더 생성</string>
+    <string name="newFolder_Hint">새 폴더의 이름</string>
+    <string name="StartRenaming">이름을 바꿀 파일이나 폴더를 선택하세요.</string>
+    <string name="Renaming">이름 바꾸기</string>
+    <string name="Renaming_Hint">새로운 이름</string>
+    <string name="Finish">완료</string>
+    <string name="Go">실행</string>
+    <string name="Cancel">취소</string>
+    <string name="ChangeStorage">내/외장 메모리 전환</string>
+    <string name="InternalStorage">내장 메모리</string>
+    <string name="ExternalStorage">외장 메모리</string>
+    <string name="Unknown">알 수 없음</string>
+    <string name="ShownDataCanIncorrect">지금 보여지는 내/외장 표기는 추측에 의한 것으로, 부정확할 수 있습니다.</string>
+    <string name="CannotGetStorageDataOnFroyo">Android 2.2 Froyo (프로요)에서는 내/외장을 구분할 수 없습니다.</string>
+    <string name="FailCopy">일부 파일을 처리할 수 없습니다.</string>
+    <string name="Search">검색</string>
+    <string name="Search_Hint">검색할 파일의 이름</string>
+    <string name="Searching">검색 중..</string>
+    <string name="ThemeSetting">테마</string>
+    <string name="ThemeSettingSummary">앱의 테마를 변경합니다.</string>
+    <string name="CannotSetTheme">Android 2.3 이하에서는 테마를 변경할 수 없습니다.</string>
+    <string name="RequestBusybox">이 앱은 Busybox를 설치해야 작동합니다. 설치 페이지로 이동합니다.</string>
+    <string name="WillOpenTextEditor">텍스트 에디터로 이 파일을 엽니다.</string>
+    <string name="SaveFile">저장</string>
+
+    <!-- Cleaner -->
+    <string name="listsystem">리스트</string>
     <string name="sizer_title">드림나래 청소기</string>
     <string name="caution">경고!</string>
     <string name="sizer_message_startup">이 앱은 간단한 방법으로 시스템 앱을 제거할 수 있는 툴입니다. 이 툴은 SlimRom 팀이 제작하였으며 청소기에 대한 모든 크레딧은 SlimRom팀에게 있습니다.</string>
@@ -133,8 +137,23 @@
     <string name="sizer_message_noselect">아무것도 선택되지 않았습니다.</string>
     <string name="ok">OK</string>
     
-    <string name="guldebook_main">새롭게 마련된 엔젤로이드의 독자적인 트윅 시스템으로 더 이상 예전 방식으로 적용되지 않아 갤럭시 S4와 같은 고 사양 기기들에게도 날개를 달아줄 수 있게 되었어요. 
+    <!-- GuideBook -->
+    <string name="guidebook_main">새롭게 마련된 엔젤로이드의 독자적인 트윅 시스템으로 더 이상 예전 방식으로 적용되지 않아 갤럭시 S4와 같은 고 사양 기기들에게도 날개를 달아줄 수 있게 되었어요. 
         대체적으로 빌드프롭과 가상 메모리, CPU 부분의 값들을 추가하거나 각 버전들이 추구하는 6개의 방향성(성능, 안정성, 대기 배터리, 사용 배터리, 무거운 작업, 가벼운 작업) 에 알맞게 수정하여 사용자가 기기를 사용하는 데에 있어서 좀 더 편하고, 즐겁게 사용할 수 있도록 드림나래 트윅을 마련했어요.</string>
-    
+
+    <!-- TableLayout -->
+    <string name="subject_compare">트윅 비교</string>
+    <string name="version_name">버전</string>
+    <string name="performance">성능</string>
+    <string name="battery_idle">대기 효율</string>
+    <string name="battery_use">사용 효율</string>
+    <string name="stability">안정성</string>
+    <string name="etc">기타</string>
+    <string name="score_1">1</string>
+    <string name="score_2">2</string>
+    <string name="score_3">3</string>
+    <string name="score_4">4</string>
+    <string name="score_5">5</string>
+    <string name="Support_stop">지원 중단</string>
 
 </resources>
