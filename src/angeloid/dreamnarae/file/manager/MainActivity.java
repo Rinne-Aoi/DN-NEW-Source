@@ -429,27 +429,18 @@ public class MainActivity extends ListActivity {
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-	    switch (item.getItemId()) {
-	        case R.id.NewFolder:
-	        	MakeNewFolder();
-	            return true;
-	            
-	        case R.id.Rename:
-	        	Renaming = true;
-	        	showToast(getString(R.string.StartRenaming));
-	        	return true;
-	        	
-	        case R.id.ChangeStorage:
-	        	ChangeStorage();
-	        	return true;
-	        	
-	        case R.id.Search:
-	        	InitializeSearch();
-	        	return true;
-	        	
-	        default:
-	            return super.onOptionsItemSelected(item);
-	    }
+		int id = item.getItemId();
+		if (id == R.id.NewFolder ) {
+			MakeNewFolder();
+		} else if (id == R.id.Rename) {
+			Renaming = true;
+        	showToast(getString(R.string.StartRenaming));
+		} else if (id == R.id.ChangeStorage) {
+			ChangeStorage();
+		} else if (id == R.id.Search) {
+			InitializeSearch();
+		}
+		return false;
 	}
 	
 	public void SelectionItems(AdapterView<?> parent, int position) {
