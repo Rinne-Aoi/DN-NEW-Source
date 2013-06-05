@@ -195,10 +195,10 @@ public class BaseTweakSlidingActivity extends BaseSlidingActivity {
 							}
 						}).show();
 	}
-	
+
 	public void fail_dn() {
-		View view1 = this.getLayoutInflater().inflate(
-				R.layout.customdialog, null);
+		View view1 = this.getLayoutInflater().inflate(R.layout.customdialog,
+				null);
 		TextView txtTitle = (TextView) view1.findViewById(R.id.title);
 		txtTitle.setText(R.string.errortitle);
 		txtTitle.setTextColor(Color.WHITE);
@@ -208,7 +208,7 @@ public class BaseTweakSlidingActivity extends BaseSlidingActivity {
 		message.setTextColor(Color.WHITE);
 		AlertDialog.Builder builder = new Builder(BaseTweakSlidingActivity.this);
 		builder.setView(view1);
-        builder.setCancelable(false);
+		builder.setCancelable(false);
 		builder.setPositiveButton(R.string.infoclose,
 				new DialogInterface.OnClickListener() {
 					@Override

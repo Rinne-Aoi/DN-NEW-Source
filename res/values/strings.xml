@@ -36,6 +36,7 @@
     <string name="isemailapp">Not installed Email-Application.</string>
     <string name="hidden1">Hidden Menu</string>
     <string name="wrongpw">Wrong Password</string>
+    <string name="usepfm">Do you want Muiti Permission? Just Search Power File Manager in Play Store!</string>
 
     <!-- title -->
     <string name="main">Main</string>
@@ -152,4 +153,13 @@
     <string name="score_5">5</string>
     <string name="Support_stop">Support Stop</string>
 
+     <!-- donate -->
+   <string name="todonate">When you donate to DreamNarae -</string>
+   <string name="getitem1">"DreamNarae official mascot character 'Narae's TTS service"</string>
+   <string name="getitem2">App of the development potential rise</string>
+   <string name="getitem3">DreamNarae cleaner features</string>
+   <string name="getitemall">You can get them!</string>
+   <string name="moneydonate">"$2 donation"</string>
+   <string name="AlreadyBuy">Already Donation. Thanks you!</string>
+   <string name="RestartApp">Please restart DreamNarae</string>
 </resources>

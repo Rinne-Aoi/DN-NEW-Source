@@ -31,12 +31,18 @@ public class BaseSlidingActivity extends SlidingActivity {
 	EditText hiddenedit;
 	TextView hidden1;
 	String random2;
+	
+
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setBehindContentView(R.layout.slidingmenumain);
 		BugSenseHandler.initAndStartSession(BaseSlidingActivity.this, "431c24dd");
+		
+		// Boot Script
+		
+
 		// Easter Egg
 		random2 = String.valueOf(m_rand.nextInt(30 + 1));
 

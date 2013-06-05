@@ -46,7 +46,8 @@ public class RootFile extends File {
     private String mPerms;
     private String mSym;
     private Long mSize = null;
-
+    private Command cmd;
+    
     public RootFile(String path) {
         super(path);
         
@@ -59,7 +60,7 @@ public class RootFile extends File {
         outLines = new ArrayList<String>();
         try 
         {
-            Command cmd = new Command(0, w) {
+            cmd = new Command(0, w) {
                 @Override
                 public void output(int id, String line) 
                 {
@@ -101,7 +102,7 @@ public class RootFile extends File {
         outLines = new ArrayList<String>();
         try 
         {
-            Command cmd = new Command(0, w) {
+            cmd = new Command(0, w) {
                 @Override
                 public void output(int id, String line) {
                     if(line.indexOf("\n") > -1) 
@@ -162,7 +163,7 @@ public class RootFile extends File {
         outLines = new ArrayList<String>();
         try 
         {
-            Command cmd = new Command(0, w) {
+            cmd = new Command(0, w) {
                 @Override
                 public void output(int id, String line) {
                     if(line.indexOf("\n") > -1) 
@@ -196,7 +197,7 @@ public class RootFile extends File {
         outLines = new ArrayList<String>();
         try 
         {
-            Command cmd = new Command(0, w) {
+            cmd = new Command(0, w) {
                 @Override
                 public void output(int id, String line) 
                 {
@@ -227,7 +228,7 @@ public class RootFile extends File {
         outLines = new ArrayList<String>();
         try 
         {
-            Command cmd = new Command(0, w) {
+            cmd = new Command(0, w) {
                 @Override
                 public void output(int id, String line) {
                     if(line.indexOf("\n") > -1) 

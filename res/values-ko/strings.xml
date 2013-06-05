@@ -36,6 +36,7 @@
     <string name="isemailapp">이메일 어플리케이션이 설치되어있지 않습니다</string>
     <string name="hidden1">히든 메뉴</string>
     <string name="wrongpw">잘못된 비밀번호</string>
+     <string name="usepfm">멀티 퍼미션 기능을 원하신다면 마켓에서 Power File Manager를 검색하세요!</string>
 
     <!-- title -->
     <string name="main">메인</string>
@@ -54,6 +55,7 @@
     <string name="promoting">친구에게 알리기</string>
     <string name="cleaner">청소기</string>
     <string name="guide">가이드</string>
+    
 
     <!-- Subtitle -->
     <string name="main_sub">메인으로 가버렷!</string>
@@ -155,5 +157,13 @@
     <string name="score_4">4</string>
     <string name="score_5">5</string>
     <string name="Support_stop">지원 중단</string>
-
+    
+   <!-- donate -->
+   <string name="todonate">드림나래에게 기부를 하면-</string>
+   <string name="getitem1">드림나래 공식 마스코트 캐릭터 나래의 TTS 서비스</string>
+   <string name="getitem2">앱의 발전 가능성 상승</string>
+   <string name="getitem3">드림나래 청소기 기능</string>
+   <string name="getitemall">를 얻을 수 있습니다!</string>
+   <string name="moneydonate">2달러 기부</string>
+   
 </resources>

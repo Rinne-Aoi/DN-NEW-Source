@@ -1,12 +1,3 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <lint>
-    <issue id="DefaultLocale" severity="ignore" />
-    <issue id="ExportedActivity" severity="ignore" />
-    <issue id="HandlerLeak" severity="ignore" />
-    <issue id="IconDensities" severity="ignore" />
-    <issue id="MergeRootFrame" severity="ignore" />
-    <issue id="SdCardPath" severity="ignore" />
-    <issue id="TextFields" severity="ignore" />
-    <issue id="UnusedResources" severity="ignore" />
-    <issue id="UseValueOf" severity="ignore" />
 </lint>

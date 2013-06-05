@@ -15,21 +15,16 @@
  */
 package angeloid.dreamnarae.cleaner;
 
-import java.io.BufferedWriter;
 import java.io.DataOutputStream;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.Scanner;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.os.Environment;
 import android.util.SparseBooleanArray;
 import android.view.View;
 import android.widget.AdapterView;
@@ -56,7 +51,6 @@ public class Cleaner extends BaseSlidingActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bam_cleaner);
         final Button delButton = (Button) findViewById(R.id.btn_delete);
-        final Button profileButton = (Button) findViewById(R.id.btn_profile);
 
         // create arraylist of apps not to be removed
         final ArrayList<String> safetyList = new ArrayList<String>();
@@ -128,14 +122,6 @@ public class Cleaner extends BaseSlidingActivity {
                 } else {
                     showDialog(DELETE_MULTIPLE_DIALOG, item, adapter);
                 }
-            }
-        });
-        // click button profile
-        profileButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // call select dialog
-                selectDialog(mSysApp, adapter);
             }
         });
     }
@@ -229,128 +215,12 @@ public class Cleaner extends BaseSlidingActivity {
         alert.show();
     }
 
-    // profile select dialog
-    private void selectDialog(final ArrayList<String> sysAppProfile,
-            final ArrayAdapter<String> adapter) {
-        AlertDialog.Builder select = new AlertDialog.Builder(this);
-        select.setItems(R.array.slimsizer_profile_array,
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        // The 'which' argument contains the index position
-                        // of the selected item
-                        short state = sdAvailable();
-                        File path = new File(Environment
-                                .getExternalStorageDirectory() + "/Slim");
-                        File savefile = new File(path + "/slimsizer.stf");
-                        if (which == 0) {
-                            // load profile action
-                            if (state >= 1) {
-                                String profile;
-                                try {
-                                    // read savefile and create arraylist
-                                    profile = new Scanner(savefile, "UTF-8")
-                                            .useDelimiter("\\A").next();
-                                    ArrayList<String> profileState = new ArrayList<String>(
-                                            Arrays.asList(profile.split(", ")));
-                                    // create arraylist of unique entries in
-                                    // sysAppProfile (currently installed apps)
-                                    ArrayList<String> deleteList = new ArrayList<String>();
-                                    for (String item : sysAppProfile) {
-                                        if (!profileState.contains(item)) {
-                                            deleteList.add(item);
-                                        }
-                                    }
-                                    // delete all entries in deleteList
-                                    int len = deleteList.size();
-                                    for (int i = len - 1; i > 0; i--) {
-                                        String item = deleteList.get(i);
-                                        // call delete
-                                        boolean successDel = delete(item);
-                                        if (successDel == true) {
-                                            // remove list entry
-                                            adapter.remove(item);
-                                            adapter.notifyDataSetChanged();
-                                        }
-                                    }
-                                } catch (FileNotFoundException e) {
-
-                                }
-                            } else {
-                                toast(getResources().getString(
-                                        R.string.sizer_message_sdnoread));
-                            }
-                        } else if (which == 1) {
-                            // save profile action
-                            if (state == 2) {
-                                try {
-                                    // create directory if it doesnt exist
-                                    if (!path.exists()) {
-                                        path.mkdirs();
-                                    }
-                                    // create string from arraylists
-                                    String lists = sysAppProfile.toString();
-                                    lists = lists.replace("][", ",");
-                                    lists = lists.replace("[", "");
-                                    lists = lists.replace("]", "");
-                                    // delete savefile if it exists (overwrite)
-                                    if (savefile.exists()) {
-                                        savefile.delete();
-                                    }
-                                    // create savefile and output lists to it
-                                    FileWriter outstream = new FileWriter(
-                                            savefile);
-                                    BufferedWriter save = new BufferedWriter(
-                                            outstream);
-                                    save.write(lists);
-                                    save.close();
-                                    // check for success
-                                    if (savefile.exists()) {
-                                        toast(getResources()
-                                                .getString(
-                                                        R.string.sizer_message_filesuccess));
-                                    } else {
-                                        toast(getResources()
-                                                .getString(
-                                                        R.string.sizer_message_filefail));
-                                    }
-                                } catch (IOException e) {
-
-                                }
-                            } else {
-                                toast(getResources().getString(
-                                        R.string.sizer_message_sdnowrite));
-                            }
-                        }
-                    }
-                });
-        select.show();
-    }
 
     public void toast(String text) {
         // easy toasts for all!
         Toast toast = Toast.makeText(getApplicationContext(), text,
                 Toast.LENGTH_SHORT);
         toast.show();
-    }
-
-    private short sdAvailable() {
-        // check if sdcard is available
-        // taken from developer.android.com
-        short mExternalStorageAvailable = 0;
-        String state = Environment.getExternalStorageState();
-        if (Environment.MEDIA_MOUNTED.equals(state)) {
-            // We can read and write the media
-            mExternalStorageAvailable = 2;
-        } else if (Environment.MEDIA_MOUNTED_READ_ONLY.equals(state)) {
-            // We can only read the media
-            mExternalStorageAvailable = 1;
-        } else {
-            // Something else is wrong. It may be one of many other states, but
-            // all we need
-            // to know is we can neither read nor write
-            mExternalStorageAvailable = 0;
-        }
-        return mExternalStorageAvailable;
     }
 
     private boolean delete(String appname) {
@@ -376,14 +246,5 @@ public class Cleaner extends BaseSlidingActivity {
             return true;
         }
 
-    }
-
-    // mount /system as ro on close
-    protected void onStop(Bundle savedInstanceState) throws IOException {
-        try {
-            ds.writeBytes("mount -o remount,ro /system" + "\n");
-            ds.close();
-        } catch (Exception e) {
-        }
     }
 }

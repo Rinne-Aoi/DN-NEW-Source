@@ -29,53 +29,58 @@
                 android:textSize="9pt" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/paypal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/paypaldonate"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_below="@+id/linearLayout"
-        android:layout_centerHorizontal="true"/>
-
-    <TextView
-        android:id="@+id/thank"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:text="@string/thanksdonate"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
     <Button
-        android:id="@+id/gopaypal"
-        android:background="@drawable/donate_coner"
+        android:id="@+id/button1"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="48.0dip"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/paypal"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="10dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
-        android:layout_marginTop="5dp"
-        android:text="@string/donate" />
+        android:background="@drawable/donate_coner"
+        android:text="@string/moneydonate"/>
 
     <TextView
-        android:id="@+id/koreaaccount"
+        android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/gopaypal"
-        android:text="@string/koreaaccount"
+        android:layout_below="@+id/textView2"
+        android:text="@string/getitem2" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/textView1"
+        android:text="@string/getitem1" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/linearLayout"
+        android:text="@string/todonate"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <ImageView
-        android:id="@+id/accountimage"
+    <TextView
+        android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/koreaaccount"
-        android:src="@drawable/koreaaccount" />
+        android:layout_below="@+id/textView3"
+        android:text="@string/getitem3" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/textView4"
+        android:text="@string/getitemall" />
 
 </RelativeLayout>

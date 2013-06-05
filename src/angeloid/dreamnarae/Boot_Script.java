@@ -41,16 +41,18 @@ import com.stericson.RootTools.exceptions.RootDeniedException;
 import com.stericson.RootTools.execution.CommandCapture;
 
 public class Boot_Script extends BroadcastReceiver {
-
-	CharSequence boot_top;
-	CharSequence boot_bottom;
-	CharSequence boot_ticker;
+	// Boot Script
+	static CharSequence boot_ticker;
+	static CharSequence boot_bottom;
+	static CharSequence boot_top;
 
 	@Override
 	public void onReceive(Context c, Intent i) {
+
 		boot_top = String.valueOf(R.string.boot_top);
 		boot_bottom = String.valueOf(R.string.boot_bottom);
 		boot_ticker = String.valueOf(R.string.boot_tickker);
+
 		if (!(RootTools.isAccessGiven())) {
 			Toast.makeText(c, R.string.noroottoast, Toast.LENGTH_LONG).show();
 		} else {
@@ -60,16 +62,17 @@ public class Boot_Script extends BroadcastReceiver {
 						"sh /system/etc/dreamnarae.sh",
 						"sh /system/etc/install-recovery.sh");
 
-                NotificationManager manager = (NotificationManager) c.getSystemService(Context.NOTIFICATION_SERVICE);
-                NotificationCompat.Builder ncbuilder = new NotificationCompat.Builder(
-                        c);
-                ncbuilder.setContentTitle(boot_top);
-                ncbuilder.setContentText(boot_bottom);
-                ncbuilder.setSmallIcon(R.drawable.ic_launcher);
-                ncbuilder.setAutoCancel(true);
-                ncbuilder.setTicker(boot_ticker);
-                Vibrator vibe = (Vibrator) c
-                        .getSystemService(Context.VIBRATOR_SERVICE);
+				NotificationManager manager = (NotificationManager) c
+						.getSystemService(Context.NOTIFICATION_SERVICE);
+				NotificationCompat.Builder ncbuilder = new NotificationCompat.Builder(
+						c);
+				ncbuilder.setContentTitle(boot_top);
+				ncbuilder.setContentText(boot_bottom);
+				ncbuilder.setSmallIcon(R.drawable.ic_launcher);
+				ncbuilder.setAutoCancel(true);
+				ncbuilder.setTicker(boot_ticker);
+				Vibrator vibe = (Vibrator) c
+						.getSystemService(Context.VIBRATOR_SERVICE);
 				try {
 					RootTools.getShell(true).add(command).waitForFinish();
 					Log.d("debug", "ok!");
