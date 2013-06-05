@@ -22,33 +22,58 @@
 
 package angeloid.dreamnarae.file.manager;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 import android.annotation.SuppressLint;
-import android.app.*;
+import android.app.AlertDialog;
+import android.app.ListActivity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.*;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.content.res.Resources;
 import android.graphics.Color;
-import android.graphics.drawable.*;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.os.*;
+import android.os.Build;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.os.Parcelable;
 import android.preference.PreferenceManager;
 import android.text.format.DateFormat;
-import android.view.*;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.webkit.MimeTypeMap;
-import android.widget.*;
+import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
+import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemLongClickListener;
-
-import java.io.*;
-import java.util.*;
+import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
+import angeloid.dreamnarae.R;
 
 import com.stericson.RootTools.RootTools;
 import com.stericson.RootTools.execution.Command;
-import angeloid.dreamnarae.R;
 
 @SuppressLint("HandlerLeak")
 public class RootActivity extends ListActivity {
@@ -81,6 +106,14 @@ public class RootActivity extends ListActivity {
 	Drawable Image;
 	Drawable Audio;
 	Drawable Compressed;
+	Command cmd;
+	final static int TRUE = 1;
+	final static int FALSE = 0;
+	boolean isPro = false;
+	RootFile f;
+	StringBuilder sb;
+	
+
 	
 	@SuppressLint("InlinedApi")
 	@Override
@@ -97,6 +130,8 @@ public class RootActivity extends ListActivity {
         
         if(appTheme == null) appTheme = "Light";
         
+        int temp_isPro = sharedPrefs.getInt("License", 0);
+        if(temp_isPro == TRUE) isPro = true;
         setContentView(R.layout.rootmain);
     	
         myPath = (TextView) findViewById(R.id.rpath);
@@ -144,6 +179,7 @@ public class RootActivity extends ListActivity {
 		Audio = res.getDrawable(R.drawable.audio);
 		Compressed = res.getDrawable(R.drawable.compressed);
 		
+		
         getDir(root);
     }
 
@@ -152,6 +188,12 @@ public class RootActivity extends ListActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.root, menu);
         return true;
+    }
+    
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+       
     }
     
 	private void getDir(String dirPath) {
@@ -163,7 +205,7 @@ public class RootActivity extends ListActivity {
 	    item.clear();
 	    path.clear();
 	    
-	    RootFile f = new RootFile(dirPath);
+	    f = new RootFile(dirPath);
 	    RootFile files[] = f.listFiles();
 	    
 	    for(int i = 0; i <= MAX_LIST_ITEMS; i++) isSelected[i] = View.INVISIBLE;	// initialize isSelected with View.INVISIBLE [No Selected Items]
@@ -264,34 +306,35 @@ public class RootActivity extends ListActivity {
 			return;
 		}
 		
-		RootFile file = new RootFile(path.get(position));
-		if (file.isDirectory()) getDir(path.get(position));
+		f = new RootFile(path.get(position));
+		if (f.isDirectory()) getDir(path.get(position));
 		else
 		{
-			String name = file.getName();
+			String name = f.getName();
 			int length = name.length() - 1;
-			StringBuffer ext = new StringBuffer();
+			sb.setLength(0);
+			
 			while(true)
 			{
-				if(name.charAt(length) != 46) ext.append(name.charAt(length--));
+				if(name.charAt(length) != 46) sb.append(name.charAt(length--));
 				else break;
-				if(length <= 0) { ext = null; break; }
+				if(length <= 0) { sb = null; break; }
 			}
 			
-			if(ext == null) ext = new StringBuffer().append("");
-			StringBuffer temp = new StringBuffer();
-			if(ext != null) temp = ext.reverse();
+			if(sb == null) sb = new StringBuilder().append("");
+			StringBuilder temp = new StringBuilder();
+			if(sb != null) temp = sb.reverse();
 			String extension = temp.toString();
 			String mimeType =  MimeTypeMap.getSingleton().getMimeTypeFromExtension(extension.toLowerCase());
-			if(mimeType == null) 
+			if(mimeType == null || extension.equals("xml")) 
 			{
 				showToast(getString(R.string.WillOpenTextEditor));
 				Intent intent = new Intent(RootActivity.this, TextEditor.class);
-				intent.putExtra("filepath", file.getPath());
+				intent.putExtra("filepath", f.getPath());
 				startActivity(intent);
 				return;
 			}
-			runFile(file, mimeType);
+			runFile(f, mimeType);
 		}
 		
 		if(NumberofClipboardItems == 0)
@@ -446,8 +489,8 @@ public class RootActivity extends ListActivity {
 	            for(int i = 0; i < NumberofClipboardItems; i++)
 				{
 	            	RootTools.remount(nowPath, "rw");
-					final String w = "busybox mv " + clipboard[i] + " " + nowPath;
-					Command cmd = new Command(0, w) {
+					final String w = "busybox mv \"" + clipboard[i] + "\" " + nowPath;
+					cmd = new Command(0, w) {
 				        @Override
 				        public void output(int id, String line) {}
 				    };
@@ -469,6 +512,7 @@ public class RootActivity extends ListActivity {
 	}
 
 	public void onrPermBtnPress(View v) {
+		
 		Context mContext = getApplicationContext();
     	LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(LAYOUT_INFLATER_SERVICE);
     	final View layout = inflater.inflate(R.layout.permset, null);
@@ -490,7 +534,7 @@ public class RootActivity extends ListActivity {
     				if(isSelected[i] == View.VISIBLE) aPath = path.get(i);
     				{
     					final String w = "busybox chmod " + newPerm + " " + aPath;
-    					Command cmd = new Command(0, w) {
+    					cmd = new Command(0, w) {
     						@Override
     						public void output(int id, String line) {}
     					};
@@ -506,6 +550,11 @@ public class RootActivity extends ListActivity {
     			getDir(nowPath);
     			InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
     			imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
+    			findViewById(R.id.rCopyBtn).setVisibility(View.INVISIBLE);
+    		    findViewById(R.id.rPasteBtn).setVisibility(View.INVISIBLE);
+    		    findViewById(R.id.rMoveBtn).setVisibility(View.INVISIBLE);
+    		    findViewById(R.id.rDeleteBtn).setVisibility(View.INVISIBLE);
+    		    findViewById(R.id.rPermBtn).setVisibility(View.INVISIBLE);
     		}
     	});
     	
@@ -513,32 +562,32 @@ public class RootActivity extends ListActivity {
     	ad.show();
     	InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
     	imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
-		findViewById(R.id.rCopyBtn).setVisibility(View.INVISIBLE);
-	    findViewById(R.id.rPasteBtn).setVisibility(View.INVISIBLE);
-	    findViewById(R.id.rMoveBtn).setVisibility(View.INVISIBLE);
-	    findViewById(R.id.rDeleteBtn).setVisibility(View.INVISIBLE);
-	    findViewById(R.id.rPermBtn).setVisibility(View.INVISIBLE);
 	}
 	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-	    switch (item.getItemId()) {
-	        case R.id.NewFolder:
-	        	MakeNewFolder();
-	            return true;
-	            
-	        case R.id.Rename:
-	        	Renaming = true;
-	        	showToast(getString(R.string.StartRenaming));
-	        	return true;
-	        	
-	        case R.id.Search:
-	        	InitializeSearch();
-	        	return true;
-	        	
-	        default:
-	            return super.onOptionsItemSelected(item);
-	    }
+	    int itemId = item.getItemId();
+		if (itemId == R.id.NewFolder) {
+			MakeNewFolder();
+			return true;
+		} 
+		
+		else if (itemId == R.id.Rename) {
+			Renaming = true;
+			showToast(getString(R.string.StartRenaming));
+			return true;
+		} 
+		
+		else if (itemId == R.id.Search) {
+			InitializeSearch();
+			return true;
+		} 
+		
+		
+		else {
+			return super.onOptionsItemSelected(item);
+		}
+		
 	}
 	
 	public void SelectionItems(AdapterView<?> parent, int position) {
@@ -553,6 +602,7 @@ public class RootActivity extends ListActivity {
 			{
 				rCopyBtn.setVisibility(View.INVISIBLE);
 				rDeleteBtn.setVisibility(View.INVISIBLE);
+				rPermBtn.setVisibility(View.INVISIBLE);
 			}
 			
 			isSelected[position] = View.INVISIBLE;	// Deselect
@@ -697,6 +747,7 @@ public class RootActivity extends ListActivity {
     	aDialog.setPositiveButton(getString(R.string.Finish), new DialogInterface.OnClickListener() {
     		public void onClick(DialogInterface dialog, int which) {
     			sfilename = SearchingFileName.getText().toString();
+    			if(sfilename.equals("")) return;
     			InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
     			imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
     			
@@ -731,9 +782,9 @@ public class RootActivity extends ListActivity {
 	}
 	
 	public ArrayList<SearchedRootFileProperty> Search(String Path, String Name, ArrayList<SearchedRootFileProperty> arr) {
-		RootFile file = new RootFile(Path);
-		if(file.equals(null)) return null;
-	    RootFile[] list = file.listFiles();
+		f = new RootFile(Path);
+		if(f.equals(null)) return null;
+	    RootFile[] list = f.listFiles();
 	    
 	    int len = list.length;
 		for(int i = 0; i < len; i++)
@@ -769,16 +820,16 @@ public class RootActivity extends ListActivity {
 		String name = file.getName();
 		int length = name.length() - 1;
 		if(length < 0) return "";
-		StringBuffer ext = new StringBuffer();
+		sb = new StringBuilder();
 		while(true)
 		{
-			if(name.charAt(length) != '.') ext.append(name.charAt(length--));
+			if(name.charAt(length) != '.') sb.append(name.charAt(length--));
 			else break;
 			if(length <= 0) return "";
 		}
 		
-		StringBuffer temp = new StringBuffer();
-		if(ext != null) temp = ext.reverse();
+		StringBuilder temp = new StringBuilder();
+		if(sb != null) temp = sb.reverse();
 		return temp.toString();
 	}
 	
@@ -788,22 +839,22 @@ public class RootActivity extends ListActivity {
 	
     public void FileCopy(RootFile from, RootFile to) throws IOException {
     	RootTools.remount(to.getAbsolutePath(), "rw");
-    	String from_path = from.getAbsolutePath();
-    	String to_path = to.getAbsolutePath();
+    	String from_path = "\"" + from.getAbsolutePath() + "\"";
+    	String to_path = "\"" + to.getAbsolutePath() + "\"";
     	if (from.isFile()) RootTools.copyFile(from_path, to_path, false, true);
     	else if (from.isDirectory()) {
             RootFile files[] = from.listFiles();
-            String dir = to_path + from_path.substring(from.getAbsolutePath().lastIndexOf("/"), from_path.length());
+            String dir = to.getAbsolutePath() + from.getAbsolutePath().substring(from.getAbsolutePath().lastIndexOf("/"), from.getAbsolutePath().length());
             int len = files.length;
 
             new RootFile(dir).mkdir();
 
             for(int i = 0; i < len; i++) 
             {
-                if((new RootFile(from_path + "/" + files[i].getName())).isDirectory()) 
-                	FileCopy(new RootFile(from_path + "/" + files[i].getName()), new RootFile(dir));
+                if((new RootFile(from.getAbsolutePath() + "/" + files[i].getName())).isDirectory()) 
+                	FileCopy(new RootFile(from.getAbsolutePath() + "/" + files[i].getName()), new RootFile(dir));
                 
-                else RootTools.copyFile(from_path + "/" + files[i].getName(), dir, false, true);
+                else RootTools.copyFile(from.getAbsolutePath() + "/" + files[i].getName(), dir, false, true);
             }
         }
     }
@@ -888,7 +939,11 @@ public class RootActivity extends ListActivity {
 			if(fileperm.equals("")) txtPerm = "";
 			else txtPerm = sb.append(fileperm).append(" [").append(calcPerm(fileperm)).append("]").toString();
 			
-			String dir = nowPath.equals(root) ? nowPath + object.get(position).getName() : nowPath + "/" + object.get(position).getName();
+			sb.setLength(0);
+			if(nowPath.equals(root)) sb.append(nowPath).append(object.get(position).getName());
+			else sb.append(nowPath).append("/").append(object.get(position).getName());
+			
+			String dir = sb.toString();
 			
 			if(icon[position] != null) holder.fileicon.setImageDrawable(icon[position]);
 			else

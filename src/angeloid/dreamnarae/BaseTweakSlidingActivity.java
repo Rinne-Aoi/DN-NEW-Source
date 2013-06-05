@@ -4,7 +4,11 @@ import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
 
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
@@ -12,6 +16,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jotabout.zipdownloader.util.DecompressZip;
@@ -37,7 +42,7 @@ public class BaseTweakSlidingActivity extends BaseSlidingActivity {
 		imageview = (ImageView) findViewById(R.id.imageview);
 
 	}
-	
+
 	public static void Delete_File() throws InterruptedException, IOException,
 			TimeoutException, RootDeniedException {
 		RootTools.remount("/system/", "RW");
@@ -61,7 +66,6 @@ public class BaseTweakSlidingActivity extends BaseSlidingActivity {
 				.getExternalStorageDirectory().getAbsolutePath()
 				+ "/dn_delete_signed.zip", true, false);
 	}
-
 
 	public void startDownload(View v) {
 		String url = "http://gecp.kr/dn/dn-public.zip";
@@ -94,8 +98,7 @@ public class BaseTweakSlidingActivity extends BaseSlidingActivity {
 			if (result == null) {
 				return;
 			}
-            // TODO 연결 실패 메세지 표시.
-            // 인터넷에서 파일을 불러오지 못했습니다. 전에 다운로드한 데이터로 드림나래 트윅을 적용합니다. 실패했을 경우 인터넷 연결을 확인하시고 드림나래를 적용해보세요!
+			// TODO
 			Toast.makeText(BaseTweakSlidingActivity.this,
 					result.getLocalizedMessage(), Toast.LENGTH_LONG).show();
 		}
@@ -139,5 +142,82 @@ public class BaseTweakSlidingActivity extends BaseSlidingActivity {
 		DecompressZip decomp = new DecompressZip(zipFile.getPath(),
 				destination.getPath() + File.separator);
 		decomp.unzip();
+	}
+
+	public void success_dn() {
+		View view = this.getLayoutInflater().inflate(R.layout.customdialog,
+				null);
+		TextView txtTitle = (TextView) view.findViewById(R.id.title);
+		txtTitle.setText(R.string.reboottitle);
+		txtTitle.setTextColor(Color.WHITE);
+		txtTitle.setTextSize(20);
+		TextView message = (TextView) view.findViewById(R.id.message);
+		message.setText(R.string.rebootmessage);
+		message.setTextColor(Color.WHITE);
+		AlertDialog.Builder builder = new Builder(BaseTweakSlidingActivity.this);
+		builder.setView(view);
+		builder.setCancelable(false);
+		builder.setPositiveButton(R.string.yes,
+				new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						dialog.dismiss();
+						try {
+							CommandCapture command = new CommandCapture(0,
+									"reboot");
+							try {
+								RootTools.getShell(true).add(command)
+										.waitForFinish();
+							} catch (InterruptedException e) {
+							} catch (TimeoutException e) {
+							} catch (RootDeniedException e) {
+							}
+						} catch (IOException e) {
+						}
+
+					}
+				})
+				.setNegativeButton(R.string.no,
+						new DialogInterface.OnClickListener() {
+							@Override
+							public void onClick(DialogInterface dialog,
+									int which) {
+								dialog.dismiss();
+								if (new File(
+										"/system/98banner_dreamnarae_miracle")
+										.exists()) {
+									apply.setEnabled(false);
+									apply.setFocusable(false);
+									imageview
+											.setImageResource(R.drawable.apply);
+								} else {
+								}
+							}
+						}).show();
+	}
+	
+	public void fail_dn() {
+		View view1 = this.getLayoutInflater().inflate(
+				R.layout.customdialog, null);
+		TextView txtTitle = (TextView) view1.findViewById(R.id.title);
+		txtTitle.setText(R.string.errortitle);
+		txtTitle.setTextColor(Color.WHITE);
+		txtTitle.setTextSize(20);
+		TextView message = (TextView) view1.findViewById(R.id.message);
+		message.setText(R.string.error2message);
+		message.setTextColor(Color.WHITE);
+		AlertDialog.Builder builder = new Builder(BaseTweakSlidingActivity.this);
+		builder.setView(view1);
+        builder.setCancelable(false);
+		builder.setPositiveButton(R.string.infoclose,
+				new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						dialog.dismiss();
+						finish();
+					}
+				}
+
+		).show();
 	}
 }

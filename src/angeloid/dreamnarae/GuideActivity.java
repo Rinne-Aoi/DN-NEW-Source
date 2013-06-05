@@ -36,7 +36,7 @@ public class GuideActivity extends BaseSlidingActivity implements View.OnTouchLi
 				flipper.setOutAnimation(AnimationUtils.loadAnimation(this,
 						R.anim.push_left_out));
 
-				// Â´Ã™Ã€Â½ view ÂºÂ¸Â¿Â©ÃÃœ
+				// ´ÙÀ½ view º¸¿©ÁÜ
 				flipper.showNext();
 			} else if (xAtUp > xAtDown) {
 				flipper.setInAnimation(AnimationUtils.loadAnimation(this,

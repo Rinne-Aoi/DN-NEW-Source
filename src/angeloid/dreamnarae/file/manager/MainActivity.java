@@ -22,56 +22,30 @@
 
 package angeloid.dreamnarae.file.manager;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.ArrayList;
-import java.util.Collections;
-
 import android.annotation.SuppressLint;
-import android.app.AlertDialog;
-import android.app.ListActivity;
-import android.app.ProgressDialog;
+import android.app.*;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.res.Resources;
+import android.content.pm.*;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.res.*;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
+import android.graphics.drawable.*;
 import android.net.Uri;
-import android.os.Build;
-import android.os.Bundle;
-import android.os.Environment;
-import android.os.Handler;
-import android.os.Message;
-import android.os.Parcelable;
+import android.os.*;
 import android.preference.PreferenceManager;
 import android.text.format.DateFormat;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
+import android.view.*;
 import android.view.inputmethod.InputMethodManager;
 import android.webkit.MimeTypeMap;
-import android.widget.AdapterView;
+import android.widget.*;
 import android.widget.AdapterView.OnItemLongClickListener;
-import android.widget.BaseAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 import angeloid.dreamnarae.R;
+
+import java.io.*;
+import java.util.*;
 
 import com.stericson.RootTools.RootTools;
 
@@ -96,6 +70,8 @@ public class MainActivity extends ListActivity {
 	int NumberOfImageFiles = 0;
 	String sfilename;
 	String appTheme;
+	final static int TRUE = 1;
+	final static int FALSE = 0;
 	
 	@SuppressLint("InlinedApi")
 	@Override
@@ -131,6 +107,12 @@ public class MainActivity extends ListActivity {
 	    findViewById(R.id.PasteBtn).setVisibility(View.INVISIBLE);
 	    findViewById(R.id.MoveBtn).setVisibility(View.INVISIBLE);
 	    findViewById(R.id.DeleteBtn).setVisibility(View.INVISIBLE);
+	    PackageInfo pi = null;
+		try { pi = getApplicationContext().getPackageManager().getPackageInfo(getApplicationContext().getPackageName(), 0); } 
+		catch (NameNotFoundException e) {}
+	    String version = pi.versionName;
+	    showToast("Version " + version);
+	    
         getDir(root);
     }
 
@@ -429,27 +411,31 @@ public class MainActivity extends ListActivity {
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-	    switch (item.getItemId()) {
-	        case R.id.NewFolder:
-	        	MakeNewFolder();
-	            return true;
-	            
-	        case R.id.Rename:
-	        	Renaming = true;
-	        	showToast(getString(R.string.StartRenaming));
-	        	return true;
-	        	
-	        case R.id.ChangeStorage:
-	        	ChangeStorage();
-	        	return true;
-	        	
-	        case R.id.Search:
-	        	InitializeSearch();
-	        	return true;
-	        	
-	        default:
-	            return super.onOptionsItemSelected(item);
-	    }
+	    int itemId = item.getItemId();
+		if (itemId == R.id.NewFolder) {
+			MakeNewFolder();
+			return true;
+		}
+		
+		else if (itemId == R.id.Rename) {
+			Renaming = true;
+			showToast(getString(R.string.StartRenaming));
+			return true;
+		}
+		
+		else if (itemId == R.id.ChangeStorage) {
+			ChangeStorage();
+			return true;
+		} 
+		
+		else if (itemId == R.id.Search) {
+			InitializeSearch();
+			return true;
+		}
+		
+		else {
+			return super.onOptionsItemSelected(item);
+		}
 	}
 	
 	public void SelectionItems(AdapterView<?> parent, int position) {
@@ -648,6 +634,7 @@ public class MainActivity extends ListActivity {
     	aDialog.setPositiveButton(getString(R.string.Finish), new DialogInterface.OnClickListener() {
     		public void onClick(DialogInterface dialog, int which) {
     			sfilename = SearchingFileName.getText().toString();
+    			if(sfilename.equals("")) return;
     			InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
     			imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
     			

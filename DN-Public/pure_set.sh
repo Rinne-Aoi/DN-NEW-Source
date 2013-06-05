@@ -186,14 +186,14 @@ if [ -e /proc/sys/kernel/softlockup_panic ]; then
 fi
 
 if [ -e /proc/sys/vm/swappiness ]; then
-    echo 40 > /proc/sys/vm/swappiness;
-	echo 40 > /proc/sys/vm/swappiness
+    echo 50 > /proc/sys/vm/swappiness;
+	echo 50 > /proc/sys/vm/swappiness
 	echo "Activited!"
 fi
 
 if [ -e /proc/sys/vm/min_free_kbytes ]; then
-    echo 3500 > /proc/sys/vm/min_free_kbytes;
-	echo 3500 > /proc/sys/vm/min_free_kbytes
+    echo 3072 > /proc/sys/vm/min_free_kbytes;
+	echo 3072 > /proc/sys/vm/min_free_kbytes
 	echo "Activited!"
 fi
 

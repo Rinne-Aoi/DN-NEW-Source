@@ -26,17 +26,12 @@ import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
 
-import android.app.AlertDialog;
-import android.app.AlertDialog.Builder;
-import android.content.DialogInterface;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.stericson.RootTools.RootTools;
@@ -113,78 +108,9 @@ public class Prev extends BaseTweakSlidingActivity {
 					"chmod 755 /system/98banner_dreamnarae_prev");
 			RootTools.getShell(true).add(command).waitForFinish();
 			Log.d("Install", "Install Success!");
-			View view = this.getLayoutInflater().inflate(R.layout.customdialog,
-					null);
-			TextView txtTitle = (TextView) view.findViewById(R.id.title);
-			txtTitle.setText(R.string.reboottitle);
-			txtTitle.setTextColor(Color.WHITE);
-			txtTitle.setTextSize(20);
-			TextView message = (TextView) view.findViewById(R.id.message);
-			message.setText(R.string.rebootmessage);
-			message.setTextColor(Color.WHITE);
-			AlertDialog.Builder builder = new Builder(Prev.this);
-			builder.setView(view);
-			builder.setCancelable(false);
-			builder.setPositiveButton(R.string.yes,
-					new DialogInterface.OnClickListener() {
-						@Override
-						public void onClick(DialogInterface dialog, int which) {
-							dialog.dismiss();
-							try {
-								CommandCapture command = new CommandCapture(0,
-										"reboot");
-								try {
-									RootTools.getShell(true).add(command)
-											.waitForFinish();
-								} catch (InterruptedException e) {
-								} catch (TimeoutException e) {
-								} catch (RootDeniedException e) {
-								}
-							} catch (IOException e) {
-							}
-
-						}
-					})
-					.setNegativeButton(R.string.no,
-							new DialogInterface.OnClickListener() {
-								@Override
-								public void onClick(DialogInterface dialog,
-										int which) {
-									dialog.dismiss();
-									if (new File(
-											"/system/98banner_dreamnarae_prev")
-											.exists()) {
-										apply.setEnabled(false);
-										apply.setFocusable(false);
-										imageview
-												.setImageResource(R.drawable.apply);
-									} else {
-									}
-								}
-							}).show();
+			success_dn();
 		} else {
-			View view1 = this.getLayoutInflater().inflate(
-					R.layout.customdialog, null);
-			TextView txtTitle = (TextView) view1.findViewById(R.id.title);
-			txtTitle.setText(R.string.errortitle);
-			txtTitle.setTextColor(Color.WHITE);
-			txtTitle.setTextSize(20);
-			TextView message = (TextView) view1.findViewById(R.id.message);
-			message.setText(R.string.error2message);
-			message.setTextColor(Color.WHITE);
-			AlertDialog.Builder builder = new Builder(Prev.this);
-			builder.setView(view1);
-			builder.setCancelable(false);
-			builder.setPositiveButton(R.string.infoclose,
-					new DialogInterface.OnClickListener() {
-						@Override
-						public void onClick(DialogInterface dialog, int which) {
-							dialog.dismiss();
-							finish();
-						}
-					}
-
-			).show();
+			fail_dn();
 		}
 	}
 }
