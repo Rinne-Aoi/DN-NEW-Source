@@ -51,6 +51,7 @@ public class SPiCa extends BaseTweakSlidingActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.spica);
 		apply = (Button) findViewById(R.id.apply);
+		
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 		imageview = (ImageView) findViewById(R.id.imageview);
 		apply.setOnClickListener(new View.OnClickListener() {

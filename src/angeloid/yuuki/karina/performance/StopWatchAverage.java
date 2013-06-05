@@ -10,7 +10,7 @@ public class StopWatchAverage {
 
 
 	/**
-	 * 特に名を指定していないStopWatchAverageオブジェクトを作成し、timerを開始する。
+	 * 개체의 이름을 정의하면서 StopWatchAverage의 속성과 시간을 정합니다.
 	 */
 	public StopWatchAverage() {
 		currentName ="";
@@ -18,16 +18,16 @@ public class StopWatchAverage {
 	}
 
 	/**
-	 * Threadを使用するかどうかを指定するために生成
-	 * @ param threadFlag Threadを使用するかどうか
+	 * Thread를 사용할지 안할지 결정합니다.
+	 * @ param threadFlag Thread를 사용하는가?
 	 */
 	public StopWatchAverage(boolean threadFlag) {
 		changeMessage("",true, true);
 	}
 
 	/**
-	 * メッセージだけを指定するコンストラクタ
-	 * @ param messageさらに明示するメッセージ
+	 * 메세제를 표시합니다.
+	 * @ param message 메세지를 전달받아 표시합니다.
 	 */
 	public StopWatchAverage(String message) {
 		changeMessage(message, false, true);

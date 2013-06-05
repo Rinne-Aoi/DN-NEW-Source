@@ -6,7 +6,7 @@
         android:id="@+id/viewFlipper1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/linearLayout" >
+      >
 
         <RelativeLayout
             android:id="@+id/page1"

@@ -28,9 +28,15 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class Donate extends BaseSlidingActivity {
+    TextView paypal;
+    TextView thank;
+    TextView koreaaccount;
     Button gopaypal;
+    ImageView accountimage;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

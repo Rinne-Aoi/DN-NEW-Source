@@ -35,6 +35,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,10 +45,13 @@ import com.stericson.RootTools.exceptions.RootDeniedException;
 import com.stericson.RootTools.execution.CommandCapture;
 
 public class Brand extends BaseTweakSlidingActivity {
-
+	Button apply;
+	ImageView imageview;
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.brand);
+		apply = (Button) findViewById(R.id.apply);
+		imageview = (ImageView) findViewById(R.id.imageview);
 		apply.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {

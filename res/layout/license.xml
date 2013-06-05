@@ -3,6 +3,29 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" xmlns:tools="http://schemas.android.com/tools">
 
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="#3d9af8" >
+
+            <LinearLayout
+                android:layout_width="32.0dip"
+                android:layout_height="32.0dip"
+                android:layout_marginBottom="8.0dip"
+                android:layout_marginLeft="12.0dip"
+                android:layout_marginTop="8.0dip"
+                android:background="@drawable/ic_launcher" />
+
+            <TextView
+                android:id="@+id/tabtextview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5.0dip"
+                android:layout_marginTop="13.0dip"
+                android:text="@string/license"
+                android:textColor="#000000"
+                android:textSize="9pt" />
+  </LinearLayout>
   
             <ScrollView
                 android:id="@+id/scrollView1"

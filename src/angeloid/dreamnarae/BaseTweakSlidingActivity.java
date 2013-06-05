@@ -94,6 +94,8 @@ public class BaseTweakSlidingActivity extends BaseSlidingActivity {
 			if (result == null) {
 				return;
 			}
+            // TODO 연결 실패 메세지 표시.
+            // 인터넷에서 파일을 불러오지 못했습니다. 전에 다운로드한 데이터로 드림나래 트윅을 적용합니다. 실패했을 경우 인터넷 연결을 확인하시고 드림나래를 적용해보세요!
 			Toast.makeText(BaseTweakSlidingActivity.this,
 					result.getLocalizedMessage(), Toast.LENGTH_LONG).show();
 		}

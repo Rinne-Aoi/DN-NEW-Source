@@ -3,7 +3,7 @@
     package="angeloid.dreamnarae"
     android:installLocation="internalOnly"
     android:versionCode="37"
-    android:versionName="2.2.TeamTest.RC3" >
+    android:versionName="2.2.TeamTest.RC2" >
 
     <uses-sdk
         android:minSdkVersion="9"
@@ -25,6 +25,10 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
+    <uses-feature
+        android:name="android.hardware.sensor.accelerometer"
+        android:required="true" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -36,7 +40,7 @@
             android:launchMode="singleTask"
             android:noHistory="true"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.Sherlock.Light" >
+            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -48,94 +52,88 @@
             android:clearTaskOnLaunch="true"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.Sherlock.Light" >
+            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" >
         </activity>
         <activity
             android:name="angeloid.dreamnarae.SecondEgg"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.Sherlock.Light" >
+            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" >
         </activity>
         <activity
             android:name="angeloid.dreamnarae.Update_Main"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.Sherlock.Light" >
+            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" >
         </activity>
         <activity
             android:name="angeloid.dreamnarae.Developer_Info"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.Sherlock.Light" >
+            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" >
         </activity>
         <activity
             android:name="angeloid.dreamnarae.SPiCa"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.Sherlock.Light" >
+            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" >
         </activity>
         <activity
             android:name="angeloid.dreamnarae.Miracle"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.Sherlock.Light" >
+            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" >
         </activity>
         <activity
             android:name="angeloid.dreamnarae.Save"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.Sherlock.Light" >
+            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" >
         </activity>
         <activity
             android:name="angeloid.dreamnarae.Prev"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.Sherlock.Light" >
+            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" >
         </activity>
         <activity
             android:name="angeloid.dreamnarae.SPiSave"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.Sherlock.Light" >
+            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" >
         </activity>
         <activity
             android:name="angeloid.dreamnarae.Brand"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.Sherlock.Light" >
+            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" >
         </activity>
         <activity
             android:name="angeloid.dreamnarae.Pure"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.Sherlock.Light" >
+            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" >
         </activity>
         <activity
             android:name="angeloid.dreamnarae.Delete"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.Sherlock.Light" >
+            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" >
         </activity>
         <activity
             android:name="angeloid.dreamnarae.Donate"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.Sherlock.Light" >
+            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" >
         </activity>
         <activity
             android:name="angeloid.dreamnarae.Setting"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.Sherlock.Light" >
+            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" >
         </activity>
         <activity
             android:name="angeloid.dreamnarae.License"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.Sherlock.Light" >
+            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" >
         </activity>
         <activity
             android:name="angeloid.dreamnarae.Promoting"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.Sherlock.Light" >
+            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" >
         </activity>
         <activity
             android:name="angeloid.dreamnarae.Hidden"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.Sherlock.Light" >
+            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" >
         </activity>
-        <activity
-            android:name="angeloid.dreamnarae.GuideActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.Sherlock.Light" >
-        </activity>
-
         <receiver
             android:name="angeloid.dreamnarae.Boot_Script"
             android:enabled="true"
@@ -146,7 +144,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </receiver>
-
         <activity
             android:name="angeloid.dreamnarae.WallPaper"
             android:finishOnCloseSystemDialogs="true"
@@ -165,7 +162,7 @@
             android:label="@string/sizer_title"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor"
-            android:theme="@style/Theme.Sherlock.Light" >
+            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
@@ -173,34 +170,34 @@
         <activity
             android:name="angeloid.dreamnarae.file.manager.SearchActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.Sherlock.Light" >
+            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" >
         </activity>
         <activity
             android:name="angeloid.dreamnarae.file.manager.RootActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.Sherlock.Light" >
+            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" >
         </activity>
         <activity
             android:name="angeloid.dreamnarae.file.manager.RootSearchActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.Sherlock.Light" >
+            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" >
         </activity>
         <activity
             android:name="angeloid.dreamnarae.file.manager.StorageList"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.Sherlock.Light" >
+            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" >
         </activity>
         <activity
             android:name="angeloid.dreamnarae.file.manager.TextEditor"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.Sherlock.Light" >
+            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" >
         </activity>
         <activity
             android:name="angeloid.dreamnarae.file.manager.MainActivity"
             android:icon="@drawable/file_launcher"
             android:label="@string/file_app_name"
             android:launchMode="singleTask"
-            android:theme="@style/Theme.Sherlock.Light" >
+            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

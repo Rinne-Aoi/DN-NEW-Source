@@ -26,7 +26,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Scanner;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -39,10 +38,10 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
-
+import angeloid.dreamnarae.BaseSlidingActivity;
 import angeloid.dreamnarae.R;
 
-public class Cleaner extends Activity {
+public class Cleaner extends BaseSlidingActivity {
     private final int STARTUP_DIALOG = 1;
     private final int DELETE_DIALOG = 2;
     private final int DELETE_MULTIPLE_DIALOG = 3;
@@ -53,7 +52,7 @@ public class Cleaner extends Activity {
     DataOutputStream ds;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bam_cleaner);
         final Button delButton = (Button) findViewById(R.id.btn_delete);
@@ -162,8 +161,7 @@ public class Cleaner extends Activity {
                                         ds.writeBytes("mount -o remount,rw /system" + "\n");
                                         ds.flush();
                                     } catch (IOException e) {
-                                        // TODO Auto-generated catch block
-                                        e.printStackTrace();
+
                                     }
                                     dialog.cancel();
                                 }
@@ -275,8 +273,7 @@ public class Cleaner extends Activity {
                                         }
                                     }
                                 } catch (FileNotFoundException e) {
-                                    // TODO Auto-generated catch block
-                                    e.printStackTrace();
+
                                 }
                             } else {
                                 toast(getResources().getString(
@@ -317,8 +314,7 @@ public class Cleaner extends Activity {
                                                         R.string.sizer_message_filefail));
                                     }
                                 } catch (IOException e) {
-                                    // TODO Auto-generated catch block
-                                    e.printStackTrace();
+
                                 }
                             } else {
                                 toast(getResources().getString(
@@ -367,11 +363,8 @@ public class Cleaner extends Activity {
             ds.flush();
             Thread.sleep(1500);
         } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
         } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+
         }
 
         // check if app was deleted
@@ -391,7 +384,6 @@ public class Cleaner extends Activity {
             ds.writeBytes("mount -o remount,ro /system" + "\n");
             ds.close();
         } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 }

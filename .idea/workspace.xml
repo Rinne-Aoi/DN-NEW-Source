@@ -32,12 +32,6 @@
           <theme>@style/AppTheme</theme>
         </config>
       </layout>
-      <layout url="file://$PROJECT_DIR$/res/layout/guide.xml">
-        <config>
-          <device>Nexus 4</device>
-          <theme>@style/AppTheme</theme>
-        </config>
-      </layout>
     </layouts>
   </component>
   <component name="AndroidLogFilters">
@@ -47,15 +41,15 @@
     <list default="true" id="ffbb9a2a-7754-4afa-801f-f5d8e5c7c15d" name="Default" comment="" />
     <ignored path="DreamNarae.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="$PROJECT_DIR$/gen/angeloid/dreamnarae/R.java" changelist="ffbb9a2a-7754-4afa-801f-f5d8e5c7c15d" time="1370272779250" ignored="false" />
-    <file path="$PROJECT_DIR$/gen/angeloid/dreamnarae/BuildConfig.java" changelist="ffbb9a2a-7754-4afa-801f-f5d8e5c7c15d" time="1370272917500" ignored="false" />
-    <file path="/fragment.java" changelist="ffbb9a2a-7754-4afa-801f-f5d8e5c7c15d" time="1370086569562" ignored="false" />
-    <file path="/Dummy.txt" changelist="ffbb9a2a-7754-4afa-801f-f5d8e5c7c15d" time="1368775693250" ignored="false" />
+    <file path="$PROJECT_DIR$/gen/angeloid/dreamnarae/R.java" changelist="ffbb9a2a-7754-4afa-801f-f5d8e5c7c15d" time="1369955126027" ignored="false" />
+    <file path="$PROJECT_DIR$/gen/angeloid/dreamnarae/BuildConfig.java" changelist="ffbb9a2a-7754-4afa-801f-f5d8e5c7c15d" time="1369955235741" ignored="false" />
+    <file path="/fragment.java" changelist="ffbb9a2a-7754-4afa-801f-f5d8e5c7c15d" time="1368869925421" ignored="false" />
+    <file path="/Dummy.txt" changelist="ffbb9a2a-7754-4afa-801f-f5d8e5c7c15d" time="1369962987203" ignored="false" />
     <file path="/MainActivity.java" changelist="ffbb9a2a-7754-4afa-801f-f5d8e5c7c15d" time="1368860932093" ignored="false" />
     <file path="/row.xml" changelist="ffbb9a2a-7754-4afa-801f-f5d8e5c7c15d" time="1368758702953" ignored="false" />
     <file path="/activity_main.xml" changelist="ffbb9a2a-7754-4afa-801f-f5d8e5c7c15d" time="1368870559109" ignored="false" />
     <file path="/SlidingActivityHelper.java" changelist="ffbb9a2a-7754-4afa-801f-f5d8e5c7c15d" time="1368775304687" ignored="false" />
-    <file path="/a.xml" changelist="ffbb9a2a-7754-4afa-801f-f5d8e5c7c15d" time="1368774169312" ignored="false" />
+    <file path="/a.xml" changelist="ffbb9a2a-7754-4afa-801f-f5d8e5c7c15d" time="1369966593518" ignored="false" />
     <file path="/ActionBarView.java" changelist="ffbb9a2a-7754-4afa-801f-f5d8e5c7c15d" time="1368775079828" ignored="false" />
     <file path="/ResourcesCompat.java" changelist="ffbb9a2a-7754-4afa-801f-f5d8e5c7c15d" time="1368775148250" ignored="false" />
     <file path="/AbsActionBarView.java" changelist="ffbb9a2a-7754-4afa-801f-f5d8e5c7c15d" time="1368775170609" ignored="false" />
@@ -65,12 +59,12 @@
     <file path="/MenuInflater.java" changelist="ffbb9a2a-7754-4afa-801f-f5d8e5c7c15d" time="1368775258750" ignored="false" />
     <file path="/SlidingMenu.java" changelist="ffbb9a2a-7754-4afa-801f-f5d8e5c7c15d" time="1368775338500" ignored="false" />
     <file path="/CustomViewBehind.java" changelist="ffbb9a2a-7754-4afa-801f-f5d8e5c7c15d" time="1368775366062" ignored="false" />
-    <file path="/strings.xml" changelist="ffbb9a2a-7754-4afa-801f-f5d8e5c7c15d" time="1370086906343" ignored="false" />
+    <file path="/strings.xml" changelist="ffbb9a2a-7754-4afa-801f-f5d8e5c7c15d" time="1368776820015" ignored="false" />
     <file path="/menu.xml" changelist="ffbb9a2a-7754-4afa-801f-f5d8e5c7c15d" time="1368863234140" ignored="false" />
     <file path="/arrays.xml" changelist="ffbb9a2a-7754-4afa-801f-f5d8e5c7c15d" time="1368860635734" ignored="false" />
     <file path="/listviewlayout.xml" changelist="ffbb9a2a-7754-4afa-801f-f5d8e5c7c15d" time="1368860871390" ignored="false" />
     <file path="/Developer_Info.java" changelist="ffbb9a2a-7754-4afa-801f-f5d8e5c7c15d" time="1368779785296" ignored="false" />
-    <file path="$PROJECT_DIR$/gen/angeloid/dreamnarae/Manifest.java" changelist="ffbb9a2a-7754-4afa-801f-f5d8e5c7c15d" time="1370272779250" ignored="false" />
+    <file path="$PROJECT_DIR$/gen/angeloid/dreamnarae/Manifest.java" changelist="ffbb9a2a-7754-4afa-801f-f5d8e5c7c15d" time="1369955126027" ignored="false" />
     <file path="/Delete.java" changelist="ffbb9a2a-7754-4afa-801f-f5d8e5c7c15d" time="1368860442312" ignored="false" />
     <file path="/SPiCa.java" changelist="ffbb9a2a-7754-4afa-801f-f5d8e5c7c15d" time="1368782450640" ignored="false" />
     <file path="/Brand.java" changelist="ffbb9a2a-7754-4afa-801f-f5d8e5c7c15d" time="1368782371734" ignored="false" />
@@ -85,14 +79,13 @@
     <file path="/delete.xml" changelist="ffbb9a2a-7754-4afa-801f-f5d8e5c7c15d" time="1368861561812" ignored="false" />
     <file path="/donate.xml" changelist="ffbb9a2a-7754-4afa-801f-f5d8e5c7c15d" time="1368860145640" ignored="false" />
     <file path="/miracle.xml" changelist="ffbb9a2a-7754-4afa-801f-f5d8e5c7c15d" time="1368861731843" ignored="false" />
-    <file path="/Donate.java" changelist="ffbb9a2a-7754-4afa-801f-f5d8e5c7c15d" time="1368860419328" ignored="false" />
+    <file path="/Donate.java" changelist="ffbb9a2a-7754-4afa-801f-f5d8e5c7c15d" time="1369962085716" ignored="false" />
     <file path="/prev.xml" changelist="ffbb9a2a-7754-4afa-801f-f5d8e5c7c15d" time="1368861765437" ignored="false" />
-    <file path="$PROJECT_DIR$/src/com/jeremyfeinstein/slidingmenu/lib/SlidingMenu.java" changelist="ffbb9a2a-7754-4afa-801f-f5d8e5c7c15d" time="1370085028500" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/android/lib/android.jar!/org/jetbrains/android/android.xsd" changelist="ffbb9a2a-7754-4afa-801f-f5d8e5c7c15d" time="1370085187875" ignored="false" />
-    <file path="/guide.xml" changelist="ffbb9a2a-7754-4afa-801f-f5d8e5c7c15d" time="1370085279078" ignored="false" />
-    <file path="/GuideActivity.java" changelist="ffbb9a2a-7754-4afa-801f-f5d8e5c7c15d" time="1370086263953" ignored="false" />
-    <file path="/BaseSlidingActivity.java" changelist="ffbb9a2a-7754-4afa-801f-f5d8e5c7c15d" time="1370086973437" ignored="false" />
-    <file path="/AndroidManifest.xml" changelist="ffbb9a2a-7754-4afa-801f-f5d8e5c7c15d" time="1370087047000" ignored="false" />
+    <file path="$PROJECT_DIR$/src/com/jeremyfeinstein/slidingmenu/lib/SlidingMenu.java" changelist="ffbb9a2a-7754-4afa-801f-f5d8e5c7c15d" time="1369955101605" ignored="false" />
+    <file path="/StopWatchAverage.java" changelist="ffbb9a2a-7754-4afa-801f-f5d8e5c7c15d" time="1369961225776" ignored="false" />
+    <file path="/BaseTweakSlidingActivity.java" changelist="ffbb9a2a-7754-4afa-801f-f5d8e5c7c15d" time="1369961626170" ignored="false" />
+    <file path="/FileProperty.java" changelist="ffbb9a2a-7754-4afa-801f-f5d8e5c7c15d" time="1369962861580" ignored="false" />
+    <file path="/guidebook_main.xml" changelist="ffbb9a2a-7754-4afa-801f-f5d8e5c7c15d" time="1369971272555" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,6 +105,7 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -165,7 +159,6 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </line_breakpoints>
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -175,21 +168,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="AndroidManifest.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+      <file leaf-file-name="guidebook_main.xml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/res/layout/guidebook_main.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="49" column="48" selection-start="2191" selection-end="2191" vertical-scroll-proportion="0.0">
+            <state line="16" column="18" selection-start="604" selection-end="604" vertical-scroll-proportion="0.52869564">
               <folding />
             </state>
           </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="styles.xml" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/res/values/styles.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="12" selection-start="878" selection-end="878" vertical-scroll-proportion="0.3448276">
-              <folding />
-            </state>
+          <provider editor-type-id="android-designer">
+            <state />
           </provider>
         </entry>
       </file>
@@ -203,22 +190,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
+        <option value="$PROJECT_DIR$/src/angeloid/dreamnarae/Save.java" />
+        <option value="$PROJECT_DIR$/src/angeloid/dreamnarae/Pure.java" />
         <option value="$PROJECT_DIR$/src/angeloid/dreamnarae/Prev.java" />
         <option value="$PROJECT_DIR$/src/angeloid/dreamnarae/Brand.java" />
         <option value="$PROJECT_DIR$/src/angeloid/dreamnarae/Miracle.java" />
         <option value="$PROJECT_DIR$/res/drawable/layout_coner.xml" />
         <option value="$PROJECT_DIR$/res/drawable/activity_main_coner.xml" />
         <option value="$PROJECT_DIR$/res/layout/activity_main.xml" />
-        <option value="$PROJECT_DIR$/src/angeloid/dreamnarae/Boot_Script.java" />
-        <option value="$PROJECT_DIR$/res/layout/spisave.xml" />
-        <option value="$PROJECT_DIR$/res/layout/guide.xml" />
-        <option value="$PROJECT_DIR$/src/angeloid/TestFragment.java" />
-        <option value="$PROJECT_DIR$/src/angeloid/dreamnarae/TestFragmentAdapter.java" />
-        <option value="$PROJECT_DIR$/src/angeloid/dreamnarae/GuideActivity.java" />
-        <option value="$PROJECT_DIR$/res/values/strings.xml" />
-        <option value="$PROJECT_DIR$/src/angeloid/dreamnarae/BaseSlidingActivity.java" />
         <option value="$PROJECT_DIR$/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/res/values/styles.xml" />
+        <option value="$PROJECT_DIR$/src/angeloid/dreamnarae/Boot_Script.java" />
+        <option value="$PROJECT_DIR$/src/angeloid/yuuki/karina/performance/StopWatchAverage.java" />
+        <option value="$PROJECT_DIR$/src/angeloid/dreamnarae/BaseTweakSlidingActivity.java" />
+        <option value="$PROJECT_DIR$/src/angeloid/dreamnarae/Donate.java" />
+        <option value="$PROJECT_DIR$/src/angeloid/dreamnarae/cleaner/Cleaner.java" />
+        <option value="$PROJECT_DIR$/src/angeloid/dreamnarae/file/manager/FileProperty.java" />
+        <option value="$PROJECT_DIR$/res/layout/guidebook_main.xml" />
       </list>
     </option>
   </component>
@@ -226,10 +213,10 @@
     <treeState />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-4" />
-    <option name="y" value="-4" />
-    <option name="width" value="1288" />
-    <option name="height" value="1002" />
+    <option name="x" value="54" />
+    <option name="y" value="-8" />
+    <option name="width" value="978" />
+    <option name="height" value="784" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -257,6 +244,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -285,60 +273,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DreamNarae" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DreamNarae" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="angeloid" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DreamNarae" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DreamNarae" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="angeloid" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dreamnarae" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DreamNarae" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DreamNarae" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="res" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -357,13 +291,12 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="values" />
+              <option name="myItemId" value="layout" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -376,16 +309,16 @@
     <property name="MemberChooser.sorted" value="false" />
     <property name="options.lastSelected" value="preferences.sourceCode.XML" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="9e9317f8" />
+    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="0123456789ABCDEF" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_AVD" value="ICS_Device" />
     <property name="restartRequiresConfirmation" value="true" />
-    <property name="MemberChooser.showClasses" value="true" />
     <property name="FullScreen" value="false" />
+    <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -393,7 +326,6 @@
       <recent name="C:\Documents and Settings\WS\ADT\workspace\DreamNarae\res\drawable-hdpi" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="angeloid.dreamnarae" />
       <recent name="" />
     </key>
   </component>
@@ -557,15 +489,12 @@
       <workItem from="1368869394562" duration="1334000" />
       <workItem from="1369296028953" duration="400000" />
       <workItem from="1369433836906" duration="518000" />
-      <workItem from="1370084997484" duration="30000" />
-      <workItem from="1370085119875" duration="1980000" />
-      <workItem from="1370182374140" duration="11000" />
-      <workItem from="1370272719234" duration="554000" />
+      <workItem from="1369955074827" duration="3899000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24272000" />
+    <option name="totallyTimeSpent" value="25596000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -588,59 +517,59 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-4" y="-4" width="1288" height="1002" extended-state="0" />
+    <frame x="54" y="-8" width="978" height="784" extended-state="6" />
     <editor active="false" />
     <layout>
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32532752" sideWeight="0.6702002" order="2" side_tool="false" content_ui="tabs" x="436" y="72" width="407" height="849" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3264192" sideWeight="0.6702002" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924336" sideWeight="0.6702002" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32979977" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32935154" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24959481" sideWeight="0.42773208" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24959481" sideWeight="0.42773208" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3203769" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3278496" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32979977" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24959481" sideWeight="0.6702002" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32764506" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32935154" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24948876" sideWeight="0.6702002" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298217" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.40032414" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24554294" sideWeight="0.67962307" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24539877" sideWeight="0.67064846" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32979977" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32658023" sideWeight="0.6713781" order="2" side_tool="false" content_ui="tabs" x="436" y="72" width="407" height="849" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32820097" sideWeight="0.6713781" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.6702002" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32979977" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3203769" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32658023" sideWeight="0.6713781" order="2" side_tool="false" content_ui="tabs" x="436" y="72" width="407" height="849" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32820097" sideWeight="0.6713781" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.3298217" sideWeight="0.6702002" order="2" side_tool="false" content_ui="tabs" x="436" y="72" width="407" height="849" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298217" sideWeight="0.6702002" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.6702002" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.6702002" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32979977" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32979977" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24959481" sideWeight="0.42773208" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24959481" sideWeight="0.42773208" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3203769" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3286219" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3286219" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32979977" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24959481" sideWeight="0.6702002" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.40032414" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298217" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24554294" sideWeight="0.6713781" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.40032414" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298217" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24878444" sideWeight="0.6702002" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32979977" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32979977" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -704,26 +633,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/angeloid/dreamnarae/Brand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="82" column="12" selection-start="3229" selection-end="3229" vertical-scroll-proportion="0.5382746" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/angeloid/dreamnarae/Prev.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="97" column="0" selection-start="3551" selection-end="3551" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/angeloid/dreamnarae/Miracle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="19" selection-start="2219" selection-end="2219" vertical-scroll-proportion="-0.06925881" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/drawable/activity_main_coner.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="8" selection-start="285" selection-end="285" vertical-scroll-proportion="0.17495395" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/activity_main.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="18" column="54" selection-start="857" selection-end="857" vertical-scroll-proportion="0.66023165" />
@@ -734,68 +643,112 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/angeloid/dreamnarae/Boot_Script.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="30" selection-start="2081" selection-end="2081" vertical-scroll-proportion="0.083636366" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/spisave.xml">
-      <provider editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/angeloid/dreamnarae/SPiSave.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="163" column="26" selection-start="5997" selection-end="5997" vertical-scroll-proportion="0.23161764" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/angeloid/dreamnarae/BaseTweakSlidingActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="16" selection-start="997" selection-end="997" vertical-scroll-proportion="-1.5147059" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/guide.xml">
-      <provider editor-type-id="text-editor">
-        <state line="18" column="15" selection-start="671" selection-end="671" vertical-scroll-proportion="0.0" />
-      </provider>
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/angeloid/dreamnarae/GuideActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="3" selection-start="283" selection-end="393" vertical-scroll-proportion="0.23030303">
-          <folding />
+        <state line="54" column="14" selection-start="2065" selection-end="2066" vertical-scroll-proportion="0.09689214">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/angeloid/dreamnarae/BaseSlidingActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="127" column="44" selection-start="4431" selection-end="4431" vertical-scroll-proportion="0.023030303">
+        <state line="176" column="0" selection-start="5677" selection-end="5677" vertical-scroll-proportion="0.93214285">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
+    <entry file="file://$PROJECT_DIR$/src/angeloid/dreamnarae/ListAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="72" column="49" selection-start="3876" selection-end="3876" vertical-scroll-proportion="0.023399014">
+        <state line="61" column="28" selection-start="1881" selection-end="1881" vertical-scroll-proportion="0.93214285">
           <folding />
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/angeloid/yuuki/karina/performance/StopWatchAverage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="0" selection-start="788" selection-end="788" vertical-scroll-proportion="0.8769231">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jotabout/zipdownloader/util/DecompressZip.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="121" column="1" selection-start="3818" selection-end="3818" vertical-scroll-proportion="0.93504274">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jotabout/zipdownloader/util/DownloadFile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="47" column="0" selection-start="1670" selection-end="1670" vertical-scroll-proportion="0.032478634">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/angeloid/dreamnarae/BaseTweakSlidingActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="100" column="9" selection-start="2958" selection-end="2958" vertical-scroll-proportion="0.8587571">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/angeloid/dreamnarae/Donate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="0" selection-start="1139" selection-end="1139" vertical-scroll-proportion="0.10420475">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/angeloid/dreamnarae/cleaner/Cleaner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="367" column="0" selection-start="16750" selection-end="16750" vertical-scroll-proportion="0.08829175">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/angeloid/dreamnarae/file/manager/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="77" column="13" selection-start="2732" selection-end="2732" vertical-scroll-proportion="0.16890594">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/angeloid/dreamnarae/file/manager/FileProperty.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="6" selection-start="1200" selection-end="1200" vertical-scroll-proportion="0.12921348">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/angeloid/dreamnarae/file/manager/RootActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="53" column="13" selection-start="1954" selection-end="1954" vertical-scroll-proportion="-0.04990403">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cleaner_launcher-web.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="48" selection-start="2191" selection-end="2191" vertical-scroll-proportion="0.0">
+        <state line="29" column="30" selection-start="1377" selection-end="1377" vertical-scroll-proportion="0.9160714">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/values/styles.xml">
+    <entry file="file://$PROJECT_DIR$/res/layout/guidebook_main.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="12" selection-start="878" selection-end="878" vertical-scroll-proportion="0.3448276">
+        <state line="16" column="18" selection-start="604" selection-end="604" vertical-scroll-proportion="0.52869564">
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
   </component>

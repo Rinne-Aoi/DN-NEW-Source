@@ -1,66 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="developinfo">
-        <item>드림나래</item>
-        <item>감성 안드로이드 툴</item>
-        <item>제작 : 엔젤로이드</item>
-        <item>리더 : 아오이 린네 (青井 りんね)</item>
-        <item>어플리케이션 : 소피아네 (서동길)</item>
-        <item>트윅 : 리에 (이은희)</item>
-        <item>트윅 : 아이렌 (이정연)</item>
-        <item>트윅 : 아야나 (이은정)</item>
-		<item>코드 성능 : 유우키 카리나(誘起 かりな)</item>
-		<item>디자인 : Rinne Aoi(青井 りんね)</item>
-		<item>파일 관리자 코드 : ITCraft</item>
-        <item>팀원 : Ghana</item>
-        <item>팀원 : Primes</item>
-        <item>팀원 : NEON</item>
-		<item>메인 서버 : 충북고등학교 환경동아리 아우Re</item>
-		<item>라이브러리 : SlideHolder(by Jeremyfeinstein)</item>
-		<item>라이브러리 : RootTools(by stericson)</item>
-		<item>라이브러리 : ZipDownloader(by Jotabout)</item>
-		<item>라이브러리 : NineoldAndroids</item>
-		<item>라이브러리 : ShowCase View(by Espiandev)</item>
-        <item>드림나래를 사용해주시는 많은 분들, 감사드립니다!</item>
+        <item>DreamNarae</item>
+        <item>Emotional Android Tools</item>
+        <item>Produced by Angeloid Team</item>
+        <item>Leader : Rinne Aoi (青井 りんね)</item>
+        <item>Application : Sopiane (Dong Gil, Seo)</item>
+        <item>Tweak : Rie (Eun Hee, Lee)</item>
+        <item>Tweak : Iren (Jung Yeon, Lee)</item>
+        <item>Tweak : Ayana (Eun Jung, Lee)</item>
+		<item>Tweak : Karina Yuuki(誘起 かりな)</item>
+		<item>Main Design : Rinne Aoi(青井 りんね)</item>
+        <item>Sub Design : Ghana(Seung-Woo, Yeom)</item>
+		<item>Debug : ITCraft</item>
+		<item>Voice : Dorothy</item>
+        <item>Team : Primes</item>
+        <item>Team : NEON</item>
+		<item>Main Server : Chung-Buk High School Environment Club AuRe(아우Re)</item>
+		<item>Library : SlideHolder(by Dmitry Zaitsev)</item>
+		<item>Library : RootTools(by stericson)</item>
+		<item>Library : ZipDownloader(by Jotabout)</item>
+		<item>"This Design use "Arita Font" which made by "AmorePersipic""</item>
+        <item>All of People use DreamNarae, Thanks You!</item>
     </string-array>
     <string-array name="updateinfo">
-        <item>드림나래 버전 2.2</item>
-		<item>릴리즈 : 2013년 6월 9일</item>
-		<item>"드림나래의 4번째 메이저 업데이트 'All New DreamNarae'"</item>
-		<item>엔젤로이드만의 감성과 재밌고 편해진 기능으로 드림나래를 즐겨보세요!</item>
-		<item>1. 트윅 업데이트</item>
-		<item>"드림나래 SPiCa 39's 업데이트(엔젤로이드 트윅 독자 시스템 적용, 옵티머스 G Pro 최적화)"</item>
-		<item>드림나래 Save 4.0 업데이트(엔젤로이드 트윅 독자 시스템 적용, 옵티머스 G Pro 최적화)</item>
-		<item>드림나래 Pure 2.0 업데이트(엔젤로이드 트윅 독자 시스템 적용, 옵티머스 G Pro 최적화)</item>
-		<item>드림나래 Miracle Final 업데이트(엔젤로이드 트윅 독자 시스템 적용, 옵티머스 G Pro 최적화)</item>
-		<item>드림나래 Brand Final 업데이트(엔젤로이드 트윅 독자 시스템 적용, 옵티머스 G Pro 최적화)</item>
-		<item>드림나래 Prev Final 업데이트(엔젤로이드 트윅 독자 시스템 적용, 옵티머스 G Pro 최적화)</item>
-		<item>드림나래 SPiSave Final 업데이트(엔젤로이드 트윅 독자 시스템 적용, 옵티머스 G Pro 최적화)</item>
-		<item>2. 기능 추가</item>
-		<item>드림나래 파일 관리자</item>
-		<item>드림나래 청소기</item>
-		<item>드림나래 가이드북</item>
-		<item>부팅 스크립트 알람</item>
-		<item>인트로 쇼케이스</item>
-		<item>일본어 번역 추가</item>
-		<item>3. 기능 수정</item>
-		<item>슬라이드 메뉴 라이브러리 변경</item>
-		<item>전체 UI 변경</item>
-		<item>이스터에그 제거</item>
-		<item>음성 제거</item>
-		<item>스플래시 이미지 삭제</item>
-		<item>앱 소스 최적화</item>
-		<item>앱 범용성 증가</item>
-		<item>라이브러리 교체</item>
+        <item>DreamNarae Version 2.1</item>
+		<item>Release : May 12, 2013.</item>
+		<item>"DreamNarae 4th Major Update, 'All New DreamNarae'"</item>
+		<item>full of Emotional Design by Angeloid / Enjoy Re-born DreamNarae which have many New and Fun Fuctions!</item>
     </string-array>
     <string-array name="slimsizer_profile_array">
-        <item >프로파일 불러오기</item>
-        <item >프로파일 저장하기</item>
+        <item >Load Profile</item>
+        <item >Save Profile</item>
     </string-array>
     <string-array name="hidden">
-        <item>드림나래 PE 활성화</item>
-        <item>드림나래 Plan 활성화</item>
-        <item>드림나래 비안정화 모드 활성화</item>
+        <item>Enable DreamNarae PE</item>
+        <item>Enable DreamNarae Plan</item>
+        <item>Enable DreamNarae Unstable Mod</item>
+        <item>Edit Voice Actor to Team Leader</item>
+        <item>Edit Voice Actor to Rie(Tweak Maintainer)</item>
     </string-array>
 
 </resources> 

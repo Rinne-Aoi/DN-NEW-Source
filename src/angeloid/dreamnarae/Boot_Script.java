@@ -60,21 +60,20 @@ public class Boot_Script extends BroadcastReceiver {
 						"sh /system/etc/dreamnarae.sh",
 						"sh /system/etc/install-recovery.sh");
 
+                NotificationManager manager = (NotificationManager) c.getSystemService(Context.NOTIFICATION_SERVICE);
+                NotificationCompat.Builder ncbuilder = new NotificationCompat.Builder(
+                        c);
+                ncbuilder.setContentTitle(boot_top);
+                ncbuilder.setContentText(boot_bottom);
+                ncbuilder.setSmallIcon(R.drawable.ic_launcher);
+                ncbuilder.setAutoCancel(true);
+                ncbuilder.setTicker(boot_ticker);
+                Vibrator vibe = (Vibrator) c
+                        .getSystemService(Context.VIBRATOR_SERVICE);
 				try {
 					RootTools.getShell(true).add(command).waitForFinish();
 					Log.d("debug", "ok!");
-					Vibrator vibe = (Vibrator) c
-							.getSystemService(Context.VIBRATOR_SERVICE);
 					vibe.vibrate(200);
-					NotificationManager manager = (NotificationManager) c
-							.getSystemService(Context.NOTIFICATION_SERVICE);
-					NotificationCompat.Builder ncbuilder = new NotificationCompat.Builder(
-							c);
-					ncbuilder.setContentTitle(boot_top);
-					ncbuilder.setContentText(boot_bottom);
-					ncbuilder.setSmallIcon(R.drawable.ic_launcher);
-					ncbuilder.setAutoCancel(true);
-					ncbuilder.setTicker(boot_ticker);
 					manager.notify(1, ncbuilder.build());
 				} catch (InterruptedException e) {
 				} catch (IOException e) {
