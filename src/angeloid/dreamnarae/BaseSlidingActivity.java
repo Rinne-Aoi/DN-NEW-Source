@@ -1,5 +1,8 @@
 package angeloid.dreamnarae;
 
+import java.util.ArrayList;
+import java.util.Random;
+
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -12,11 +15,9 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import angeloid.dreamnarae.cleaner.Cleaner;
+
 import com.bugsense.trace.BugSenseHandler;
 import com.jeremyfeinstein.slidingmenu.lib.app.SlidingActivity;
-
-import java.util.ArrayList;
-import java.util.Random;
 
 public class BaseSlidingActivity extends SlidingActivity {
 
@@ -31,17 +32,13 @@ public class BaseSlidingActivity extends SlidingActivity {
 	EditText hiddenedit;
 	TextView hidden1;
 	String random2;
-	
-
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setBehindContentView(R.layout.slidingmenumain);
-		BugSenseHandler.initAndStartSession(BaseSlidingActivity.this, "431c24dd");
-		
-		// Boot Script
-		
+		BugSenseHandler.initAndStartSession(BaseSlidingActivity.this,
+				"431c24dd");
 
 		// Easter Egg
 		random2 = String.valueOf(m_rand.nextInt(30 + 1));
@@ -66,8 +63,14 @@ public class BaseSlidingActivity extends SlidingActivity {
 				getString(R.string.developerinfo),
 				getString(R.string.developerinfo_sub));
 		Array_Data.add(data);
-		data = new DNMenu(R.drawable.icon_donate, getString(R.string.donate),
-				getString(R.string.donate_sub));
+		data = new DNMenu(R.drawable.icon_guide, getString(R.string.guide),
+				getString(R.string.guide_sub));
+		Array_Data.add(data);
+		data = new DNMenu(R.drawable.icon_cleaner, getString(R.string.cleaner),
+				getString(R.string.cleaner_sub));
+		Array_Data.add(data);
+		data = new DNMenu(R.drawable.icon_ttsstore,
+				getString(R.string.ttsstore), getString(R.string.ttsstore_sub));
 		Array_Data.add(data);
 		data = new DNMenu(R.drawable.icon_spica, getString(R.string.spica),
 				getString(R.string.spica_sub));
@@ -90,12 +93,6 @@ public class BaseSlidingActivity extends SlidingActivity {
 		data = new DNMenu(R.drawable.icon_spisave, getString(R.string.spisave),
 				getString(R.string.spisave_sub));
 		Array_Data.add(data);
-		data = new DNMenu(R.drawable.icon_cleaner, getString(R.string.cleaner),
-				getString(R.string.cleaner_sub));
-		Array_Data.add(data);
-		data = new DNMenu(R.drawable.icon_guide, getString(R.string.guide),
-				getString(R.string.guide_sub));
-		Array_Data.add(data);
 		adapter = new ListAdapter(this, R.layout.listviewlayout, Array_Data);
 		list.setAdapter(adapter);
 		list.setOnItemClickListener(new ListView.OnItemClickListener() {
@@ -115,26 +112,26 @@ public class BaseSlidingActivity extends SlidingActivity {
 				} else if (position == 4) {
 					cls = Developer_Info.class;
 				} else if (position == 5) {
-					cls = Donate.class;
-				} else if (position == 6) {
-					cls = SPiCa.class;
-				} else if (position == 7) {
-					cls = Pure.class;
-				} else if (position == 8) {
-					cls = Save.class;
-				} else if (position == 9) {
-					cls = Prev.class;
-				} else if (position == 10) {
-					cls = Brand.class;
-				} else if (position == 11) {
-					cls = Miracle.class;
-				} else if (position == 12) {
-					cls = SPiSave.class;
-				} else if (position == 13) {
-					cls = Cleaner.class;
-				} else if (position == 14) {
 					cls = GuideActivity.class;
-				}
+				} else if (position == 6) {
+					cls = Cleaner.class;
+				} else if (position == 7) {
+					cls = TTS_Store.class;
+				} else if (position == 8) {
+					cls = SPiCa.class;
+				} else if (position == 9) {
+					cls = Pure.class;
+				} else if (position == 10) {
+					cls = Save.class;
+				} else if (position == 11) {
+					cls = Prev.class;
+				} else if (position == 12) {
+					cls = Brand.class;
+				} else if (position == 13) {
+					cls = Miracle.class;
+				} else if (position == 14) {
+					cls = SPiSave.class;
+				} 
 				Intent intent = new Intent(BaseSlidingActivity.this, cls);
 				startActivity(intent);
 				finish();

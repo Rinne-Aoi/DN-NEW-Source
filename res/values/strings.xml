@@ -55,6 +55,7 @@
     <string name="promoting">Promoting</string>
     <string name="cleaner">Cleaner</string>
     <string name="guide">Guide</string>
+    <string name="ttsstore">TTS Store</string>
 
     <!-- Subtitle -->
     <string name="main_sub">Go to Main</string>
@@ -73,6 +74,7 @@
     <string name="promoting_sub">Promoting to Friend</string>
     <string name="cleaner_sub">Clean system application</string>
     <string name="guide_sub">See DreamNarae Guide</string>
+    <string name="ttsstore_sub">Purchase DreamNarae TTS Vocie!</string>
 
     <!-- Showcase -->
     <string name="tostart">To start DreamNarae..</string>
@@ -152,14 +154,15 @@
     <string name="score_4">4</string>
     <string name="score_5">5</string>
     <string name="Support_stop">Support Stop</string>
-
-     <!-- donate -->
-   <string name="todonate">When you donate to DreamNarae -</string>
-   <string name="getitem1">"DreamNarae official mascot character 'Narae's TTS service"</string>
-   <string name="getitem2">App of the development potential rise</string>
-   <string name="getitem3">DreamNarae cleaner features</string>
-   <string name="getitemall">You can get them!</string>
-   <string name="moneydonate">"$2 donation"</string>
-   <string name="AlreadyBuy">Already Donation. Thanks you!</string>
-   <string name="RestartApp">Please restart DreamNarae</string>
+   
+   <!-- TTS Store -->
+   <string name="maid">Maid</string>
+   <string name="friend">Friends</string>
+   <string name="narae">Narae</string>
+   <string name="alreadybuy">Already Buy!</string>
+   <string name="soption">Standard Option</string>
+   <string name="buy">Buy!</string>
+   <string name="experience">Experience Voice</string>
+   <string name="price">$1.00</string>
+   <string name="phrase">Processing...</string>
 </resources>

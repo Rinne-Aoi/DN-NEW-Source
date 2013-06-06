@@ -52,5 +52,10 @@
     <declare-styleable name="CustomTheme">
         <attr name="showcaseViewStyle" format="reference" />
     </declare-styleable>
+    <declare-styleable name="SwipeyTabs">
+        <attr name="bottomBarColor" format="color" />
+        <attr name="bottomBarHeight" format="dimension" />
+        <attr name="tabIndicatorHeight" format="dimension" />
+    </declare-styleable>
 
 </resources>
