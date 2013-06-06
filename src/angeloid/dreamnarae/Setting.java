@@ -11,15 +11,15 @@
 
     The terms of each license can be found in the root directory of this project's repository as well as at:
 
-    * http://www.apache.org/licenses/LICENSE-2.0
-    * http://www.gnu.org/licenses/gpl-2.0.txt
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.gnu.org/licenses/gpl-2.0.txt
 
     Unless required by applicable law or agreed to in writing, software
     distributed under these Licenses is distributed on an "AS IS" BASIS,
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
     See each License for the specific language governing permissions and
     limitations under that License.
-*/
+ */
 
 package angeloid.dreamnarae;
 
@@ -28,62 +28,71 @@ import java.util.List;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
-import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 public class Setting extends BaseSlidingActivity {
+	CheckBox ttscheck;
 
-    TextView setting3_title;
-    TextView setting4_title;
-    TextView setting3_summary;
-    TextView setting4_summary;
-    Button go1;
-    Button go2;
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.settings);
+		ttscheck = (CheckBox) findViewById(R.id.checkBox1);
+		SharedPreferences prefs = PreferenceManager
+				.getDefaultSharedPreferences(Setting.this);
+		String check = prefs.getString("tts", "true");
+		if (check.equals("true")) {
+			ttscheck.setChecked(true);
+		}
+		ttscheck.setOnClickListener(new View.OnClickListener() {
 
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.settings);
-        setting3_title = (TextView) findViewById(R.id.setting3_title);
-        setting4_title = (TextView) findViewById(R.id.setting4_title);
-        setting3_summary = (TextView) findViewById(R.id.setting3_summary);
-        setting4_summary = (TextView) findViewById(R.id.setting4_summary);
-        go1 = (Button) findViewById(R.id.go1);
-        go2 = (Button) findViewById(R.id.go2);
-        go1.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				if (ttscheck.isChecked() == true) {
+					SharedPreferences prefs = PreferenceManager
+							.getDefaultSharedPreferences(Setting.this);
+					SharedPreferences.Editor editor = prefs.edit();
+					editor.putString("tts", "true");
+					editor.commit();
+				} else if (ttscheck.isChecked() == false) {
+					SharedPreferences prefs = PreferenceManager
+							.getDefaultSharedPreferences(Setting.this);
+					SharedPreferences.Editor editor = prefs.edit();
+					editor.putString("tts", "false");
+					editor.commit();
+				}
 
-            @Override
-            public void onClick(View v) {
-                Uri uri = Uri.parse("mailto:sirospace@sirospace.com");
-                Intent it = new Intent(Intent.ACTION_SENDTO, uri);
-        		PackageManager packageManager = getPackageManager();
-        		List<ResolveInfo> activities = packageManager.queryIntentActivities(
-        				it, 0);
-        		boolean isIntentSafe = activities.size() > 0;
-        		if (isIntentSafe) {
-        		    startActivity(it);
-        		} else {
-        			alert(getString(R.string.isemailapp));
-        		}
-            }
-        });
-        go2.setOnClickListener(new View.OnClickListener() {
+			}
+		});
+	}
 
-            @Override
-            public void onClick(View v) {
-                licenseintent();
-            }
-        });
-    }
-    public void licenseintent() {
-        startActivity(new Intent(this, License.class));
-    }
-    private void alert(String message) {
+	public void mail() {
+		Uri uri = Uri.parse("mailto:sirospace@sirospace.com");
+		Intent it = new Intent(Intent.ACTION_SENDTO, uri);
+		PackageManager packageManager = getPackageManager();
+		List<ResolveInfo> activities = packageManager.queryIntentActivities(it,
+				0);
+		boolean isIntentSafe = activities.size() > 0;
+		if (isIntentSafe) {
+			startActivity(it);
+		} else {
+			alert(getString(R.string.isemailapp));
+		}
+	}
+
+	public void licenseintent() {
+		startActivity(new Intent(this, License.class));
+	}
+
+	private void alert(String message) {
 		View view = this.getLayoutInflater().inflate(R.layout.customdialog,
 				null);
 		TextView txtTitle = (TextView) view.findViewById(R.id.title);

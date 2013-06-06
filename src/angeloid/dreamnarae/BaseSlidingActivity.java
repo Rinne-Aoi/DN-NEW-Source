@@ -6,8 +6,12 @@ import java.util.Random;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
@@ -33,13 +37,19 @@ public class BaseSlidingActivity extends SlidingActivity {
 	TextView hidden1;
 	String random2;
 
+	// TTS
+	String istts;
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setBehindContentView(R.layout.slidingmenumain);
 		BugSenseHandler.initAndStartSession(BaseSlidingActivity.this,
 				"431c24dd");
-
+		SharedPreferences prefs = PreferenceManager
+				.getDefaultSharedPreferences(BaseSlidingActivity.this);
+		istts = prefs.getString("tts", "false");
+		Log.d("main", istts);
 		// Easter Egg
 		random2 = String.valueOf(m_rand.nextInt(30 + 1));
 
@@ -68,9 +78,6 @@ public class BaseSlidingActivity extends SlidingActivity {
 		Array_Data.add(data);
 		data = new DNMenu(R.drawable.icon_cleaner, getString(R.string.cleaner),
 				getString(R.string.cleaner_sub));
-		Array_Data.add(data);
-		data = new DNMenu(R.drawable.icon_ttsstore,
-				getString(R.string.ttsstore), getString(R.string.ttsstore_sub));
 		Array_Data.add(data);
 		data = new DNMenu(R.drawable.icon_spica, getString(R.string.spica),
 				getString(R.string.spica_sub));
@@ -104,34 +111,97 @@ public class BaseSlidingActivity extends SlidingActivity {
 				if (position == 0) {
 					cls = MainActivity.class;
 				} else if (position == 1) {
+					if (istts.equals("true")) {
+						MediaPlayer mplayer = MediaPlayer.create(
+								BaseSlidingActivity.this, R.raw.update);
+						mplayer.start();
+					}
 					cls = Update_Main.class;
 				} else if (position == 2) {
+					if (istts.equals("true")) {
+						MediaPlayer mplayer = MediaPlayer.create(
+								BaseSlidingActivity.this, R.raw.promoting);
+						mplayer.start();
+					}
 					cls = Promoting.class;
 				} else if (position == 3) {
+					if (istts.equals("true")) {
+						MediaPlayer mplayer = MediaPlayer.create(
+								BaseSlidingActivity.this, R.raw.settings);
+						mplayer.start();
+					}
 					cls = Setting.class;
 				} else if (position == 4) {
+					if (istts.equals("true")) {
+						MediaPlayer mplayer = MediaPlayer.create(
+								BaseSlidingActivity.this, R.raw.developerinfo);
+						mplayer.start();
+					}
 					cls = Developer_Info.class;
 				} else if (position == 5) {
+					if (istts.equals("true")) {
+						MediaPlayer mplayer = MediaPlayer.create(
+								BaseSlidingActivity.this, R.raw.guide);
+						mplayer.start();
+					}
 					cls = GuideActivity.class;
 				} else if (position == 6) {
+					if (istts.equals("true")) {
+						MediaPlayer mplayer = MediaPlayer.create(
+								BaseSlidingActivity.this, R.raw.cleaner);
+						mplayer.start();
+					}
 					cls = Cleaner.class;
 				} else if (position == 7) {
-					cls = TTS_Store.class;
-				} else if (position == 8) {
+					if (istts.equals("true")) {
+						MediaPlayer mplayer = MediaPlayer.create(
+								BaseSlidingActivity.this, R.raw.spica);
+						mplayer.start();
+					}
 					cls = SPiCa.class;
-				} else if (position == 9) {
+				} else if (position == 8) {
+					if (istts.equals("true")) {
+						MediaPlayer mplayer = MediaPlayer.create(
+								BaseSlidingActivity.this, R.raw.pure);
+						mplayer.start();
+					}
 					cls = Pure.class;
-				} else if (position == 10) {
+				} else if (position == 9) {
+					if (istts.equals("true")) {
+						MediaPlayer mplayer = MediaPlayer.create(
+								BaseSlidingActivity.this, R.raw.save);
+						mplayer.start();
+					}
 					cls = Save.class;
-				} else if (position == 11) {
+				} else if (position == 10) {
+					if (istts.equals("true")) {
+						MediaPlayer mplayer = MediaPlayer.create(
+								BaseSlidingActivity.this, R.raw.prev);
+						mplayer.start();
+					}
 					cls = Prev.class;
-				} else if (position == 12) {
+				} else if (position == 11) {
+					if (istts.equals("true")) {
+						MediaPlayer mplayer = MediaPlayer.create(
+								BaseSlidingActivity.this, R.raw.brand);
+						mplayer.start();
+					}
 					cls = Brand.class;
-				} else if (position == 13) {
+				} else if (position == 12) {
+					if (istts.equals("true")) {
+						MediaPlayer mplayer = MediaPlayer.create(
+								BaseSlidingActivity.this, R.raw.miracle);
+						mplayer.start();
+					}
 					cls = Miracle.class;
-				} else if (position == 14) {
+				} else if (position == 13) {
+					if (istts.equals("true")) {
+						MediaPlayer mplayer = MediaPlayer.create(
+								BaseSlidingActivity.this, R.raw.spisave);
+						mplayer.start();
+					}
 					cls = SPiSave.class;
-				} 
+				}
 				Intent intent = new Intent(BaseSlidingActivity.this, cls);
 				startActivity(intent);
 				finish();
@@ -154,7 +224,11 @@ public class BaseSlidingActivity extends SlidingActivity {
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		if (keyCode == KeyEvent.KEYCODE_BACK) {
-
+			if (istts.equals("true")) {
+				MediaPlayer mplayer = MediaPlayer.create(
+						BaseSlidingActivity.this, R.raw.exit);
+				mplayer.start();
+			}
 			View view = this.getLayoutInflater().inflate(R.layout.customdialog,
 					null);
 			TextView txtTitle = (TextView) view.findViewById(R.id.title);
@@ -170,11 +244,26 @@ public class BaseSlidingActivity extends SlidingActivity {
 					new DialogInterface.OnClickListener() {
 						@Override
 						public void onClick(DialogInterface dialog, int which) {
+							if (istts.equals("true")) {
+								MediaPlayer mplayer = MediaPlayer.create(
+										BaseSlidingActivity.this, R.raw.exit_y);
+								mplayer.start();
+							}
 							android.os.Process.killProcess(android.os.Process
 									.myPid());
 						}
 					});
-			builer.setNegativeButton(android.R.string.no, null).show();
+			builer.setNegativeButton(android.R.string.no,
+					new DialogInterface.OnClickListener() {
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							if (istts.equals("true")) {
+								MediaPlayer mplayer = MediaPlayer.create(
+										BaseSlidingActivity.this, R.raw.exit_n);
+								mplayer.start();
+							}
+						}
+					});
 
 			return true;
 		}

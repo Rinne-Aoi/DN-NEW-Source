@@ -37,6 +37,9 @@
     <string name="hidden1">히든 메뉴</string>
     <string name="wrongpw">잘못된 비밀번호</string>
      <string name="usepfm">멀티 퍼미션 기능을 원하신다면 마켓에서 Power File Manager를 검색하세요!</string>
+         <string name="ttssetting">드림나래 TTS</string>
+    <string name="ttssetting_summary">드림나래 TTS 기능을 킵니다</string>
+    <string name="ttssetting_is">드림나래 TTS 기능을 켜시겠습니까? (설정에서 해제 가능합니다)</string>
 
     <!-- title -->
     <string name="main">메인</string>

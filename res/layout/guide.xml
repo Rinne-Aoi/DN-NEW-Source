@@ -1,7 +1,30 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
-    
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearLayout"
+            android:background="@drawable/guide_coner" >
+
+        <LinearLayout
+                android:layout_width="32.0dip"
+                android:layout_height="32.0dip"
+                android:layout_marginBottom="8.0dip"
+                android:layout_marginLeft="12.0dip"
+                android:layout_marginTop="8.0dip"
+                android:background="@drawable/ic_launcher" />
+
+        <TextView
+                android:id="@+id/tabtextview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5.0dip"
+                android:layout_marginTop="13.0dip"
+                android:text="@string/guide"
+                android:textColor="#000000"
+                android:textSize="9pt" />
+    </LinearLayout>
     <ViewFlipper
         android:id="@+id/viewFlipper1"
         android:layout_width="match_parent"

@@ -23,11 +23,20 @@
 
 package angeloid.dreamnarae;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
+import android.preference.PreferenceManager;
+import android.util.Log;
+import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.ViewFlipper;
 
 import com.github.espiandev.showcaseview.ShowcaseView;
@@ -53,11 +62,13 @@ public class MainActivity extends BaseSlidingActivity implements
 	ImageButton button;
 	String scview;
 
+	String first = "0";
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-
+		Log.d("main", first);
 		// MainFippler
 		vf = (ViewFlipper) findViewById(R.id.viewFlipper1);
 		iv1 = (ImageView) findViewById(R.id.imageView1);
@@ -90,7 +101,44 @@ public class MainActivity extends BaseSlidingActivity implements
 				sv.animateGesture(0, 0, 200, 0);
 			}
 		}, 500);
-
+		if (first.equals("0")) {
+			View view = this.getLayoutInflater().inflate(R.layout.customdialog,
+					null);
+			TextView txtTitle = (TextView) view.findViewById(R.id.title);
+			txtTitle.setText(R.string.ttssetting);
+			txtTitle.setTextColor(Color.WHITE);
+			txtTitle.setTextSize(20);
+			TextView message = (TextView) view.findViewById(R.id.message);
+			message.setText(R.string.ttssetting_is);
+			message.setTextColor(Color.WHITE);
+			AlertDialog.Builder builer = new AlertDialog.Builder(this);
+			builer.setView(view);
+			builer.setPositiveButton(android.R.string.yes,
+					new DialogInterface.OnClickListener() {
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							SharedPreferences prefs = PreferenceManager
+									.getDefaultSharedPreferences(MainActivity.this);
+							SharedPreferences.Editor editor = prefs.edit();
+							editor.putBoolean("tts", true);
+							editor.commit();
+							MediaPlayer mplayer = MediaPlayer.create(
+									MainActivity.this, R.raw.start);
+							mplayer.start();
+						}
+					});
+			builer.setNegativeButton(android.R.string.no,
+					new DialogInterface.OnClickListener() {
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							SharedPreferences prefs = PreferenceManager
+									.getDefaultSharedPreferences(MainActivity.this);
+							SharedPreferences.Editor editor = prefs.edit();
+							editor.putBoolean("tts", false);
+							editor.commit();
+						}
+					});
+		}
 	}
 
 	@Override

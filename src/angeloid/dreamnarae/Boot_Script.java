@@ -49,9 +49,9 @@ public class Boot_Script extends BroadcastReceiver {
 	@Override
 	public void onReceive(Context c, Intent i) {
 
-		boot_top = String.valueOf(R.string.boot_top);
-		boot_bottom = String.valueOf(R.string.boot_bottom);
-		boot_ticker = String.valueOf(R.string.boot_tickker);
+		boot_top = c.getString(R.string.boot_top);
+		boot_bottom = c.getString(R.string.boot_bottom);
+		boot_ticker = c.getString(R.string.boot_tickker);
 
 		if (!(RootTools.isAccessGiven())) {
 			Toast.makeText(c, R.string.noroottoast, Toast.LENGTH_LONG).show();

@@ -37,6 +37,9 @@
     <string name="hidden1">Hidden Menu</string>
     <string name="wrongpw">Wrong Password</string>
     <string name="usepfm">Do you want Muiti Permission? Just Search Power File Manager in Play Store!</string>
+    <string name="ttssetting">DreamNarae TTS</string>
+    <string name="ttssetting_summary">Turn on DreamNarae TTS</string>
+    <string name="ttssetting_is">Do you want DreamNarae TTS?(Can be turned off in Settings)</string>
 
     <!-- title -->
     <string name="main">Main</string>

@@ -111,6 +111,13 @@ public class Pure extends BaseTweakSlidingActivity {
 			RootTools.getShell(true).add(command).waitForFinish();
 			Log.d("Install", "Install Success!");
 			success_dn();
+			if (new File("/system/98banner_dreamnarae_spisave").exists()) {
+				apply.setEnabled(false);
+				apply.setFocusable(false);
+				imageview.setImageResource(R.drawable.apply);
+			} else {
+			}
+
 		} else {
 			fail_dn();
 		}
