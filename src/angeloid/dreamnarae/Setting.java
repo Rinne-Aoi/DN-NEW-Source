@@ -74,7 +74,7 @@ public class Setting extends BaseSlidingActivity {
 		});
 	}
 
-	public void mail() {
+	public void mail(View v) {
 		Uri uri = Uri.parse("mailto:sirospace@sirospace.com");
 		Intent it = new Intent(Intent.ACTION_SENDTO, uri);
 		PackageManager packageManager = getPackageManager();
@@ -88,7 +88,7 @@ public class Setting extends BaseSlidingActivity {
 		}
 	}
 
-	public void licenseintent() {
+	public void licenseintent(View v) {
 		startActivity(new Intent(this, License.class));
 	}
 
