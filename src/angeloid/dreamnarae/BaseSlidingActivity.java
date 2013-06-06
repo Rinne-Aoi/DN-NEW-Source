@@ -100,6 +100,9 @@ public class BaseSlidingActivity extends SlidingActivity {
 		data = new DNMenu(R.drawable.icon_spisave, getString(R.string.spisave),
 				getString(R.string.spisave_sub));
 		Array_Data.add(data);
+		data = new DNMenu(R.drawable.icon_delete, getString(R.string.delete),
+				getString(R.string.delete_sub));
+		Array_Data.add(data);
 		adapter = new ListAdapter(this, R.layout.listviewlayout, Array_Data);
 		list.setAdapter(adapter);
 		list.setOnItemClickListener(new ListView.OnItemClickListener() {
@@ -201,6 +204,8 @@ public class BaseSlidingActivity extends SlidingActivity {
 						mplayer.start();
 					}
 					cls = SPiSave.class;
+				} else if (position == 14) {
+					els = Delete.class;
 				}
 				Intent intent = new Intent(BaseSlidingActivity.this, cls);
 				startActivity(intent);
